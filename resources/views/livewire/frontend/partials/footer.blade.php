@@ -1,0 +1,153 @@
+<!-- footer -->
+		<footer class="site-footer pbmit-footer-style-1 pbmit-bg-color-blackish">
+			<div class="pbmit-footer-big-area-wrapper">
+				<div class="pbmit-footer-big-area">
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-md-12 col-lg-6 pbmit-footer-left">
+								<h3>Pioneering a New Era of Steel working Excellence</h3>
+							</div>
+							<div class="col-md-12 col-lg-6 text-lg-end">
+								<div class="pbmit-footer-logo">
+									<img class="pbmit-main-logo" src="{{ asset('frontend/images/logo-white.svg') }}" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pbmit-footer-contact-area-wrapper">
+				<div class="pbmit-footer-contact-area">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-lg-4 pbmit-footer-contact-box">
+								<span>2220 Prestonno R02, Hopkins, Hoofddorp(HD), UK</span>	
+							</div>
+							<div class="col-md-12 col-lg-4 pbmit-footer-contact-box">
+								<span><a href="https://induyst-demo.pbminfotech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5e5253495c5e497d58455c504d5158135e5250">[email&#160;protected]</a></span>
+							</div>
+							<div class="col-md-12 col-lg-4 pbmit-footer-contact-box">
+								<span>+012 34-567-8901</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pbmit-footer-widget-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-lg-3 pbmit-footer-widget">
+							<aside class="widget">
+								<h2 class="widget-title">Our Company</h2>
+								<ul class="menu">
+									<li><a href="/about-us">About Us</a></li>
+									<li><a href="/faq">Testimonials</a></li>
+									<li><a href="/contact-us">Carriers</a></li>
+								</ul>
+							</aside>
+						</div>
+						<div class="col-md-6 col-lg-3 pbmit-footer-widget">
+							<aside class="widget">
+								<h2 class="widget-title">Our Servcices</h2>
+								<ul class="menu">
+									<li><a href="/service-details">Machine Analysis</a></li>
+									<li><a href="/service-details">Comprehensive Logits</a></li>
+									<li><a href="/service-details">Plant Maintenance</a></li>
+									<li><a href="/service-details">Maintenance & Repairing</a></li>
+								</ul>
+							</aside>
+						</div>
+						<div class="col-md-6 col-lg-3 pbmit-footer-widget">
+							<aside class="widget">
+								<h2 class="widget-title">Media</h2>
+								<ul class="menu">
+									<li><a href="/blog-classic">News</a></li>
+									<li><a href="/portfolio-grid-col-3">Events</a></li>
+									<li><a href="/portfolio-grid-col-2">Image Gallery</a></li>
+								</ul>
+							</aside>
+						</div>
+						<div class="col-md-6 col-lg-3 pbmit-footer-widget">
+							<aside class="widget">
+								<h2 class="widget-title">Quick Link</h2>
+								<ul class="menu">
+									<li><a href="/faq">Privacy Policy</a></li>
+									<li><a href="/faq">Team</a></li>
+									<li><a href="/faq">Terms of use</a></li>
+								</ul>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pbmit-footer-text-area">
+				<div class="container">
+					<div class="pbmit-footer-text-inner">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="pbmit-footer-copyright-text-area"> Copyright © 2025 
+									<a href="#">Induyst</a>, All Rights Reserved.
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class=" pbmit-footer-social-area">
+									<ul class="pbmit-social-links">
+										<li class="pbmit-social-li pbmit-social-facebook">
+											<a title="Facebook" href="#" target="_blank">
+												<span><i class="pbmit-base-icon-facebook-f"></i></span>
+											</a>
+										</li>
+										<li class="pbmit-social-li pbmit-social-twitter">
+											<a title="Twitter" href="#" target="_blank">
+												<span><i class="pbmit-base-icon-twitter-2"></i></span>
+											</a>
+										</li>
+										<li class="pbmit-social-li pbmit-social-youtube">
+											<a title="Youtube" href="#" target="_blank">
+												<span><i class="pbmit-base-icon-youtube-play"></i></span>
+											</a>
+										</li>
+										<li class="pbmit-social-li pbmit-social-instagram">
+											<a title="Instagram" href="#" target="_blank">
+												<span><i class="pbmit-base-icon-instagram"></i></span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </footer>
+		<!-- footer End -->
+
+		<!-- Search Box Start Here -->
+		<div class="pbmit-header-search-form">
+			<div class="pbmit-search-overlay"></div>
+			<div class="pbmit-header-search-form-wrapper">
+				<div class="pbmit-search-close">
+					<svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="28.163" height="28.163" viewBox="0 0 26.163 26.163">
+						<rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect>
+						<rect width="36" height="1" transform="translate(0 25.456) rotate(-45)"></rect>
+					</svg>
+				</div>
+				<form role="search" method="get" class="search-form" action="https://induyst-demo.pbminfotech.com/html-demo/index.html">
+					<input type="search" id="search-form-686df462a6c62" class="search-field" placeholder="Search …" value="" name="s">
+					<button type="submit" class="search-submit " title="Search"></button>
+					<div class="pbmit-search-line"></div>
+				</form>
+			</div>
+		</div>
+		<!-- Search Box End Here -->
+
+		<!-- Scroll To Top -->
+		<div class="pbmit-backtotop">
+			<div class="pbmit-arrow">
+				<i class="pbmit-base-icon-up-open-big"></i>
+			</div>
+			<div class="pbmit-hover-arrow">
+				<i class="pbmit-base-icon-up-open-big"></i>
+			</div>
+		</div>
+		<!-- Scroll To Top End -->
