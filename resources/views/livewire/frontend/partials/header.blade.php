@@ -103,6 +103,7 @@
 														<a href="/blogs">Blog</a>
 													</li>
 													<li class="{{ request()->is('contact-us') ? 'active' : '' }}"><a href="/contact-us">Contact Us</a></li>
+													<li class="{{ request()->is('career') ? 'active' : '' }}"><a href="/career">Career</a></li>
 												</ul>
 											</div>
 										</nav>
