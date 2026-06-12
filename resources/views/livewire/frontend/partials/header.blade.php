@@ -84,84 +84,23 @@
 													<li class="{{ request()->is('home') || request()->is('/') ? 'active' : '' }}">
 														<a href="/home">Home</a>
 													</li>
-													<li class="dropdown {{ request()->is('about-us') || request()->is('our-history') || request()->is('our-team') || request()->is('team-member-detail') || request()->is('faq') ? 'active' : '' }}">
-														<a href="#">Pages</a>
+													<li class="dropdown {{ request()->is('about-us') || request()->is('our-history') || request()->is('our-team') || request()->is('certificates') ? 'active' : '' }}">
+														<a href="#">About Us</a>
 														<ul>
-															<li class="{{ request()->is('about-us') ? 'active' : '' }}"><a href="/about-us">About Us</a></li>
+															<li class="{{ request()->is('about-us') ? 'active' : '' }}"><a href="/about-us">About Our Company</a></li>
 															<li class="{{ request()->is('our-history') ? 'active' : '' }}"><a href="/our-history">Our History</a></li>
-															<li class="{{ request()->is('our-team') ? 'active' : '' }}"><a href="/our-team">Our Team</a></li>
-															<li class="{{ request()->is('team-member-detail') ? 'active' : '' }}"><a href="/team-member-detail">Team Member Detail</a></li>
-															<li class="{{ request()->is('faq') ? 'active' : '' }}"><a href="/faq">Faq</a></li>
+															<!-- <li class="{{ request()->is('our-team') ? 'active' : '' }}"><a href="/our-team">Our Team</a></li> -->
+															<li class="{{ request()->is('certificates') ? 'active' : '' }}"><a href="/certificates">Certificates</a></li>
 														</ul>
 													</li>
-													<li class="dropdown {{ request()->is('services') || request()->is('service-details') ? 'active' : '' }}">
-														<a href="#">Services</a>
-														<ul>
-															<li class="{{ request()->is('services') ? 'active' : '' }}"><a href="/services">Services</a></li>
-															<li class="{{ request()->is('service-details') ? 'active' : '' }}"><a href="/service-details">Service Detail</a></li>
-														</ul>
+													<li class="{{ request()->is('products') || request()->is('product-details') ? 'active' : '' }}">
+														<a href="/products">Products</a>
 													</li>
-													<li class="dropdown {{ request()->is('portfolio*') ? 'active' : '' }}">
-														<a href="#">Portfolio</a>
-														<ul>
-															<li class="dropdown {{ request()->is('portfolio-m-grid*') ? 'active' : '' }}">
-																<a href="#">Masonry View</a>
-																<ul>
-																	<li class="{{ request()->is('portfolio-m-grid-col-2') ? 'active' : '' }}"><a href="/portfolio-m-grid-col-2">Grid Col 2</a></li>
-																	<li class="{{ request()->is('portfolio-m-grid-col-3') ? 'active' : '' }}"><a href="/portfolio-m-grid-col-3">Grid Col 3</a></li>
-																	<li class="{{ request()->is('portfolio-m-grid-col-4') ? 'active' : '' }}"><a href="/portfolio-m-grid-col-4">Grid Col 4</a></li>
-																	<li class="{{ request()->is('portfolio-m-grid-wide') ? 'active' : '' }}"><a href="/portfolio-m-grid-wide">Grid Wide</a></li>
-																</ul>
-															</li>
-															<li class="dropdown {{ request()->is('portfolio-grid*') && !request()->is('portfolio-m-grid*') ? 'active' : '' }}">
-																<a href="#">Grid View</a>
-																<ul>
-																	<li class="{{ request()->is('portfolio-grid-col-2') ? 'active' : '' }}"><a href="/portfolio-grid-col-2">Grid Col 2</a></li>
-																	<li class="{{ request()->is('portfolio-grid-col-3') ? 'active' : '' }}"><a href="/portfolio-grid-col-3">Grid Col 3</a></li>
-																	<li class="{{ request()->is('portfolio-grid-col-4') ? 'active' : '' }}"><a href="/portfolio-grid-col-4">Grid Col 4</a></li>
-																	<li class="{{ request()->is('portfolio-grid-no-gap') ? 'active' : '' }}"><a href="/portfolio-grid-no-gap">Grid No Gap</a></li>
-																</ul>
-															</li>
-															<li class="dropdown {{ request()->is('portfolio-sortable*') ? 'active' : '' }}">
-																<a href="#">Sortable View</a>
-																<ul>
-																	<li class="{{ request()->is('portfolio-sortable-grid-col-2') ? 'active' : '' }}"><a href="/portfolio-sortable-grid-col-2">Grid Col 2</a></li>
-																	<li class="{{ request()->is('portfolio-sortable-grid-col-3') ? 'active' : '' }}"><a href="/portfolio-sortable-grid-col-3">Grid Col 3</a></li>
-																	<li class="{{ request()->is('portfolio-sortable-grid-col-4') ? 'active' : '' }}"><a href="/portfolio-sortable-grid-col-4">Grid Col 4</a></li>
-																</ul>
-															</li>
-															<li class="dropdown {{ request()->is('portfolio-detail*') ? 'active' : '' }}">
-																<a href="#">Single Detail Style</a>
-																<ul>
-																	<li class="{{ request()->is('portfolio-detail-style-01') ? 'active' : '' }}"><a href="/portfolio-detail-style-01">Portfolio Detail Style 1</a></li>
-																	<li class="{{ request()->is('portfolio-detail-style-02') ? 'active' : '' }}"><a href="/portfolio-detail-style-02">Portfolio Detail Style 2</a></li>
-																</ul>
-															</li>
-														</ul>
+													<li class="{{ request()->is('gallery') ? 'active' : '' }}">
+														<a href="/gallery">Gallery</a>
 													</li>
-													<li class="dropdown {{ request()->is('blog*') ? 'active' : '' }}">
-														<a href="#">Blog</a>
-														<ul>
-															<li class="dropdown {{ request()->is('blog-m-grid*') || request()->is('blog-masonry*') ? 'active' : '' }}">
-																<a href="#">Blog Masonry View</a>
-																<ul>
-																	<li class="{{ request()->is('blog-m-grid-col-2') ? 'active' : '' }}"><a href="/blog-m-grid-col-2">Grid Col 2</a></li>
-																	<li class="{{ request()->is('blog-m-grid-col-3') ? 'active' : '' }}"><a href="/blog-m-grid-col-3">Grid Col 3</a></li>
-																	<li class="{{ request()->is('blog-m-grid-col-4') ? 'active' : '' }}"><a href="/blog-m-grid-col-4">Grid Col 4</a></li>
-																	<li class="{{ request()->is('blog-masonry-wide') ? 'active' : '' }}"><a href="/blog-masonry-wide">Masonry Wide</a></li>
-																</ul>
-															</li>
-															<li class="dropdown {{ request()->is('blog-grid*') || request()->is('blog-sortable*') ? 'active' : '' }}">
-																<a href="#">Blog Grid View</a>
-																<ul>
-																	<li class="{{ request()->is('blog-grid-col-3') ? 'active' : '' }}"><a href="/blog-grid-col-3">Grid Col 3</a></li>
-																	<li class="{{ request()->is('blog-grid-col-4') ? 'active' : '' }}"><a href="/blog-grid-col-4">Grid Col 4</a></li>
-																	<li class="{{ request()->is('blog-sortable-grid-view') ? 'active' : '' }}"><a href="/blog-sortable-grid-view">Sortable Grid View</a></li>
-																</ul>
-															</li>
-															<li class="{{ request()->is('blog-classic') ? 'active' : '' }}"><a href="/blog-classic">Blog Classic</a></li>
-															<li class="{{ request()->is('blog-single-details') ? 'active' : '' }}"><a href="/blog-single-details">Blog Single Details</a></li>
-														</ul>
+													<li class="{{ request()->is('blog*') ? 'active' : '' }}">
+														<a href="/blogs">Blog</a>
 													</li>
 													<li class="{{ request()->is('contact-us') ? 'active' : '' }}"><a href="/contact-us">Contact Us</a></li>
 												</ul>

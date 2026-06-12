@@ -4,14 +4,16 @@ use Illuminate\Support\Facades\Route;
 
 // Livewire Frontend Routes
 Route::get('/about-us', \App\Livewire\Frontend\AboutUs::class)->name('frontend.about-us');
+Route::get('/certificates', \App\Livewire\Frontend\Certificates::class)->name('frontend.certificates');
+Route::get('/gallery', \App\Livewire\Frontend\Gallery::class)->name('frontend.gallery');
 Route::get('/blog-classic', \App\Livewire\Frontend\BlogClassic::class)->name('frontend.blog-classic');
-Route::get('/blog-grid-col-3', \App\Livewire\Frontend\BlogGridCol3::class)->name('frontend.blog-grid-col-3');
+Route::get('/blogs', \App\Livewire\Frontend\BlogGridCol3::class)->name('frontend.blog-grid-col-3');
 Route::get('/blog-grid-col-4', \App\Livewire\Frontend\BlogGridCol4::class)->name('frontend.blog-grid-col-4');
 Route::get('/blog-m-grid-col-2', \App\Livewire\Frontend\BlogMGridCol2::class)->name('frontend.blog-m-grid-col-2');
 Route::get('/blog-m-grid-col-3', \App\Livewire\Frontend\BlogMGridCol3::class)->name('frontend.blog-m-grid-col-3');
 Route::get('/blog-m-grid-col-4', \App\Livewire\Frontend\BlogMGridCol4::class)->name('frontend.blog-m-grid-col-4');
 Route::get('/blog-masonry-wide', \App\Livewire\Frontend\BlogMasonryWide::class)->name('frontend.blog-masonry-wide');
-Route::get('/blog-single-details', \App\Livewire\Frontend\BlogSingleDetails::class)->name('frontend.blog-single-details');
+Route::get('/blog-detail', \App\Livewire\Frontend\BlogSingleDetails::class)->name('frontend.blog-single-details');
 Route::get('/blog-sortable-grid-view', \App\Livewire\Frontend\BlogSortableGridView::class)->name('frontend.blog-sortable-grid-view');
 Route::get('/contact-us', \App\Livewire\Frontend\ContactUs::class)->name('frontend.contact-us');
 Route::get('/faq', \App\Livewire\Frontend\Faq::class)->name('frontend.faq');
@@ -34,6 +36,6 @@ Route::get('/portfolio-m-grid-wide', \App\Livewire\Frontend\PortfolioMGridWide::
 Route::get('/portfolio-sortable-grid-col-2', \App\Livewire\Frontend\PortfolioSortableGridCol2::class)->name('frontend.portfolio-sortable-grid-col-2');
 Route::get('/portfolio-sortable-grid-col-3', \App\Livewire\Frontend\PortfolioSortableGridCol3::class)->name('frontend.portfolio-sortable-grid-col-3');
 Route::get('/portfolio-sortable-grid-col-4', \App\Livewire\Frontend\PortfolioSortableGridCol4::class)->name('frontend.portfolio-sortable-grid-col-4');
-Route::get('/service-details', \App\Livewire\Frontend\ServiceDetails::class)->name('frontend.service-details');
-Route::get('/services', \App\Livewire\Frontend\Services::class)->name('frontend.services');
+Route::get('/product-details', \App\Livewire\Frontend\ServiceDetails::class)->name('frontend.service-details');
+Route::get('/products', \App\Livewire\Frontend\Services::class)->name('frontend.services');
 Route::get('/team-member-detail', \App\Livewire\Frontend\TeamMemberDetail::class)->name('frontend.team-member-detail');

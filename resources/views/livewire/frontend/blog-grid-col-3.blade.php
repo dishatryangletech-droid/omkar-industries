@@ -49,7 +49,7 @@
 												<img src="{{ asset('frontend/images/blog/blog-01.jpg') }}" class="img-fluid" alt="">
 											</div>
 										</div>
-										<a class="pbmit-link" href="/blog-single-details"></a>
+										<a class="pbmit-link" href="/blog-detail"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -73,13 +73,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">The Future of Technology in Urban Development</a>
+										<a href="/blog-detail">The Future of Technology in Urban Development</a>
 									</h3>
 									<div class="pbminfotech-box-desc">
 										When evaluating a single group or company, its dominant source of revenue is typically used&hellip; 
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="/blog-single-details">
+										<a class="pbmit-button-inner" href="/blog-detail">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
@@ -100,7 +100,7 @@
 												<img src="{{ asset('frontend/images/blog/blog-02.jpg') }}" class="img-fluid" alt="">
 											</div>
 										</div>
-										<a class="pbmit-link" href="/blog-single-details"></a>
+										<a class="pbmit-link" href="/blog-detail"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -124,13 +124,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">U.S. fund managers trim bank stocks on profit worries</a>
+										<a href="/blog-detail">U.S. fund managers trim bank stocks on profit worries</a>
 									</h3>
 									<div class="pbminfotech-box-desc">
 										When evaluating a single group or company, its dominant source of revenue is typically used&hellip; 
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="/blog-single-details">
+										<a class="pbmit-button-inner" href="/blog-detail">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
@@ -151,7 +151,7 @@
 												<img src="{{ asset('frontend/images/blog/blog-03.jpg') }}" class="img-fluid" alt="">
 											</div>
 										</div>
-										<a class="pbmit-link" href="/blog-single-details"></a>
+										<a class="pbmit-link" href="/blog-detail"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -175,13 +175,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Role of Architecture in Disaster Relief and Resilience</a>
+										<a href="/blog-detail">Role of Architecture in Disaster Relief and Resilience</a>
 									</h3>
 									<div class="pbminfotech-box-desc">
 										When evaluating a single group or company, its dominant source of revenue is typically used&hellip; 
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="/blog-single-details">
+										<a class="pbmit-button-inner" href="/blog-detail">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
@@ -202,7 +202,7 @@
 												<img src="{{ asset('frontend/images/blog/blog-04.jpg') }}" class="img-fluid" alt="">
 											</div>
 										</div>
-										<a class="pbmit-link" href="/blog-single-details"></a>
+										<a class="pbmit-link" href="/blog-detail"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -226,13 +226,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Importance of Quality and Testing in Modern Factories</a>
+										<a href="/blog-detail">Importance of Quality and Testing in Modern Factories</a>
 									</h3>
 									<div class="pbminfotech-box-desc">
 										When evaluating a single group or company, its dominant source of revenue is typically used&hellip; 
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="/blog-single-details">
+										<a class="pbmit-button-inner" href="/blog-detail">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
@@ -253,7 +253,7 @@
 												<img src="{{ asset('frontend/images/blog/blog-05.jpg') }}" class="img-fluid" alt="">
 											</div>
 										</div>
-										<a class="pbmit-link" href="/blog-single-details"></a>
+										<a class="pbmit-link" href="/blog-detail"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -277,13 +277,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">The Role of Energy Storage in the Transition to Renewables</a>
+										<a href="/blog-detail">The Role of Energy Storage in the Transition to Renewables</a>
 									</h3>
 									<div class="pbminfotech-box-desc">
 										When evaluating a single group or company, its dominant source of revenue is typically used&hellip; 
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="/blog-single-details">
+										<a class="pbmit-button-inner" href="/blog-detail">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
@@ -304,7 +304,7 @@
 												<img src="{{ asset('frontend/images/blog/blog-06.jpg') }}" class="img-fluid" alt="">
 											</div>
 										</div>
-										<a class="pbmit-link" href="/blog-single-details"></a>
+										<a class="pbmit-link" href="/blog-detail"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -328,13 +328,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Automation & Human-Robot Collab: The New Workforce</a>
+										<a href="/blog-detail">Automation & Human-Robot Collab: The New Workforce</a>
 									</h3>
 									<div class="pbminfotech-box-desc">
 										When evaluating a single group or company, its dominant source of revenue is typically used&hellip; 
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="/blog-single-details">
+										<a class="pbmit-button-inner" href="/blog-detail">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
