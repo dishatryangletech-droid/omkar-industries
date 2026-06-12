@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 // Livewire Frontend Routes
 Route::get('/about-us', \App\Livewire\Frontend\AboutUs::class)->name('frontend.about-us');
 Route::get('/career', \App\Livewire\Frontend\Career::class)->name('frontend.career');
+Route::get('/exhibition', \App\Livewire\Frontend\Exhibition::class)->name('frontend.exhibition');
+Route::get('/exhibition-details', \App\Livewire\Frontend\ExhibitionDetails::class)->name('frontend.exhibition-details');
 Route::get('/certificates', \App\Livewire\Frontend\Certificates::class)->name('frontend.certificates');
 Route::get('/gallery', \App\Livewire\Frontend\Gallery::class)->name('frontend.gallery');
 Route::get('/blog-classic', \App\Livewire\Frontend\BlogClassic::class)->name('frontend.blog-classic');

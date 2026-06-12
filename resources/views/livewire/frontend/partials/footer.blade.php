@@ -41,8 +41,8 @@
 								<h2 class="widget-title">Our Company</h2>
 								<ul class="menu">
 									<li><a href="/about-us">About Us</a></li>
-									<li><a href="/faq">Testimonials</a></li>
-									<li><a href="/contact-us">Carriers</a></li>
+									<li><a href="#">Testimonials</a></li>
+									<li><a href="/career">Careers</a></li>
 								</ul>
 							</aside>
 						</div>
@@ -61,9 +61,9 @@
 							<aside class="widget">
 								<h2 class="widget-title">Media</h2>
 								<ul class="menu">
-									<li><a href="/blog-classic">News</a></li>
-									<li><a href="/portfolio-grid-col-3">Events</a></li>
-									<li><a href="/portfolio-grid-col-2">Image Gallery</a></li>
+									<li><a href="/blogs">News</a></li>
+									<li><a href="/exhibition">Exhibitions</a></li>
+									<li><a href="/gallery">Image Gallery</a></li>
 								</ul>
 							</aside>
 						</div>
