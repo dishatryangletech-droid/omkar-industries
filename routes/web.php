@@ -18,6 +18,7 @@ Route::get('/faq', \App\Livewire\Frontend\Faq::class)->name('frontend.faq');
 Route::get('/homepage-2', \App\Livewire\Frontend\Homepage2::class)->name('frontend.homepage-2');
 Route::get('/index-2', \App\Livewire\Frontend\Index2::class)->name('frontend.index-2');
 Route::get('/', \App\Livewire\Frontend\IndexPage::class)->name('frontend.index');
+Route::get('/home', \App\Livewire\Frontend\Index2::class)->name('frontend.home');
 Route::get('/our-history', \App\Livewire\Frontend\OurHistory::class)->name('frontend.our-history');
 Route::get('/our-team', \App\Livewire\Frontend\OurTeam::class)->name('frontend.our-team');
 Route::get('/portfolio-detail-style-01', \App\Livewire\Frontend\PortfolioDetailStyle01::class)->name('frontend.portfolio-detail-style-01');

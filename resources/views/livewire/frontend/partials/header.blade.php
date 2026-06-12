@@ -81,12 +81,8 @@
 										<nav class="main-navigation pbmit-navbar main-menu navbar-expand-xl navbar-light" id="site-navigation">
 											<div class="collapse navbar-collapse" id="pbmit-menu">
 												<ul class="navigation clearfix" id="pbmit-top-menu">
-													<li class="dropdown {{ request()->is('index-2') || request()->is('homepage-2') ? 'active' : '' }}">
-														<a href="#">Home</a>
-														<ul>
-															<li class="{{ request()->is('index-2') ? 'active' : '' }}"><a href="/index-2">Homepage 01</a></li>
-															<li class="{{ request()->is('homepage-2') ? 'active' : '' }}"><a href="/homepage-2">Homepage 02</a></li>
-														</ul>
+													<li class="{{ request()->is('home') || request()->is('/') ? 'active' : '' }}">
+														<a href="/home">Home</a>
 													</li>
 													<li class="dropdown {{ request()->is('about-us') || request()->is('our-history') || request()->is('our-team') || request()->is('team-member-detail') || request()->is('faq') ? 'active' : '' }}">
 														<a href="#">Pages</a>
