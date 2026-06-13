@@ -342,17 +342,17 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('admin.profile') }}">
                                             <i class="ti ti-user-check me-2 ti-sm"></i>
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
+                                    <!-- <li>
+                                        <a class="dropdown-item" href="{{ route('admin.change-password') }}">
                                             <i class="ti ti-key me-2 ti-sm"></i>
                                             <span class="align-middle">Change Password</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>

@@ -162,6 +162,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'goal' => $dummyObj,
         'homePage' => $dummyObj,
         'homePageAbout' => $dummyObj,
+        'user' => $dummyObj,
         'products' => [],
         'blogs' => [],
         'careers' => [],
@@ -200,6 +201,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('products', function() use ($defaults) { return view('backend.products.index', $defaults); })->name('products.index');
     Route::get('roles', function() use ($defaults) { return view('backend.roles.index', $defaults); })->name('roles.index');
     Route::get('users', function() use ($defaults) { return view('backend.users.index', $defaults); })->name('users.index');
+    Route::get('profile', function() use ($defaults) { return view('backend.pages-profile-user', $defaults); })->name('profile');
+    Route::get('change-password', function() use ($defaults) { return view('backend.change-password', $defaults); })->name('change-password');
 
     // Website Pages
     Route::prefix('website-pages')->name('website-pages.')->group(function () use ($defaults) {
