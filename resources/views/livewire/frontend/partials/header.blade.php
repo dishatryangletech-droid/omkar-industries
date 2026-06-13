@@ -88,8 +88,67 @@
 															<li class="{{ request()->is('certificates') ? 'active' : '' }}"><a href="/certificates">Certificates</a></li>
 														</ul>
 													</li>
-													<li class="{{ request()->is('products') || request()->is('product-details') ? 'active' : '' }}">
+													<li class="dropdown {{ request()->is('products') || request()->is('product-details') ? 'active' : '' }}">
 														<a href="/products">Products</a>
+														<ul style="width: 900px; padding: 25px; left: 0; right: auto; transform: none; box-sizing: border-box; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+															<li style="padding: 0; display: block;">
+																<div class="row">
+																	<!-- Left side: Links and Content -->
+																	<div class="col-md-8 border-end pe-4">
+																		<h5 class="mb-3 text-dark fw-bold border-bottom pb-2" style="font-size: 16px; text-transform: uppercase;">Our Core Products</h5>
+																		<div class="row g-3">
+																			<div class="col-md-4 text-center">
+																				<a href="/product-details" class="d-block" style="padding: 0; text-decoration: none;">
+																					<img src="{{ asset('frontend/images/portfolio/portfolio-img-01.jpg') }}" class="img-fluid rounded w-100" style="height: 150px; object-fit: cover;" alt="Chemical Process">
+																					<span class="d-block fw-bold mt-2" style="font-size: 14px; color: #333;">Chemical Process</span>
+																				</a>
+																			</div>
+																			<div class="col-md-4 text-center">
+																				<a href="/product-details" class="d-block" style="padding: 0; text-decoration: none;">
+																					<img src="{{ asset('frontend/images/portfolio/portfolio-img-02.jpg') }}" class="img-fluid rounded w-100" style="height: 150px; object-fit: cover;" alt="Heavy Machinery">
+																					<span class="d-block fw-bold mt-2" style="font-size: 14px; color: #333;">Heavy Machinery</span>
+																				</a>
+																			</div>
+																			<div class="col-md-4 text-center">
+																				<a href="/product-details" class="d-block" style="padding: 0; text-decoration: none;">
+																					<img src="{{ asset('frontend/images/portfolio/portfolio-img-03.jpg') }}" class="img-fluid rounded w-100" style="height: 150px; object-fit: cover;" alt="Construction">
+																					<span class="d-block fw-bold mt-2" style="font-size: 14px; color: #333;">Construction</span>
+																				</a>
+																			</div>
+																			<div class="col-md-4 text-center pt-2">
+																				<a href="/product-details" class="d-block" style="padding: 0; text-decoration: none;">
+																					<img src="{{ asset('frontend/images/portfolio/portfolio-img-04.jpg') }}" class="img-fluid rounded w-100" style="height: 150px; object-fit: cover;" alt="Automotive Parts">
+																					<span class="d-block fw-bold mt-2" style="font-size: 14px; color: #333;">Automotive Parts</span>
+																				</a>
+																			</div>
+																			<div class="col-md-4 text-center pt-2">
+																				<a href="/product-details" class="d-block" style="padding: 0; text-decoration: none;">
+																					<img src="{{ asset('frontend/images/portfolio/portfolio-img-05.jpg') }}" class="img-fluid rounded w-100" style="height: 150px; object-fit: cover;" alt="Power Energy">
+																					<span class="d-block fw-bold mt-2" style="font-size: 14px; color: #333;">Power Energy</span>
+																				</a>
+																			</div>
+																			<div class="col-md-4 text-center pt-2">
+																				<a href="/product-details" class="d-block" style="padding: 0; text-decoration: none;">
+																					<img src="{{ asset('frontend/images/portfolio/portfolio-img-06.jpg') }}" class="img-fluid rounded w-100" style="height: 150px; object-fit: cover;" alt="Metal Working">
+																					<span class="d-block fw-bold mt-2" style="font-size: 14px; color: #333;">Metal Working</span>
+																				</a>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- Right side: Image -->
+																	<div class="col-md-4 ps-4">
+																		<div class="position-relative h-100 rounded overflow-hidden shadow-sm">
+																			<img src="{{ asset('frontend/images/portfolio/portfolio-single-01.webp') }}" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 250px;" alt="Featured Product">
+																			<div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+																				<h6 class="text-white mb-1 fw-bold">New Technology</h6>
+																				<span class="text-white-50 d-block" style="font-size: 12px; line-height: 1.4;">Explore our latest industrial advancements</span>
+																				<a href="/products" class="btn btn-sm btn-primary mt-2 py-1 px-2" style="font-size: 11px;">View All</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
 													</li>
 													<li class="{{ request()->is('gallery') ? 'active' : '' }}">
 														<a href="/gallery">Gallery</a>
