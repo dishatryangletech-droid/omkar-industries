@@ -1,3 +1,4 @@
+<x-layouts.app>
 <div>
 	<!-- Page Wrapper -->
 	<div class="page-wrapper" id="page">
@@ -587,6 +588,23 @@
 								</div>
 							</div>
 						</article>
+						<div class="col-md-12 col-lg-4 col-xl-6 d-flex align-items-center">
+							<div class="team-btn-bg w-100" style="margin-left: 0;">
+								<p class="pbmit-text">Our Expert will be available Mon – Fri (9 am – 6 pm) <br> Book
+									an Appointment for Services.</p>
+								<a href="/our-team" class="pbmit-btn white">
+									<span class="pbmit-button-content-wrapper">
+										<span class="pbmit-button-icon">
+											<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+										</span>
+										<span class="pbmit-button-text">More the Teams</span>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- Second Row -->
+					<div class="row pbminfotech-gap-50px mt-4">
 						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
 							<div class="pbminfotech-post-item">
 								<div class="pbminfotech-box-content">
@@ -667,25 +685,6 @@
 								</div>
 							</div>
 						</article>
-					</div>
-					<div class="team-btn-bg-wrap">
-						<div class="row g-0">
-							<div class="col-md-6 full-width-1200"></div>
-							<div class="col-md-6 full-width-1200">
-								<div class="team-btn-bg">
-									<p class="pbmit-text">Our Expert will be available Mon – Fri (9 am – 6 pm) <br> Book
-										an Appointment for Services.</p>
-									<a href="/our-team" class="pbmit-btn white">
-										<span class="pbmit-button-content-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-											</span>
-											<span class="pbmit-button-text">More the Teams</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -953,3 +952,4 @@
 
 	<!-- Scripts JS -->
 </div>
+</x-layouts.app>

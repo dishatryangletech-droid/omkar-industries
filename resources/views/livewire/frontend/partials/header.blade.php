@@ -103,11 +103,7 @@
 											</div>
 										</nav>
 									</div>
-									<div class="pbmit-header-search-btn">
-										<a href="#" title="Search">
-											<i class="pbmit-base-icon-search-2"></i>
-										</a>
-									</div>
+									
 								</div>
 								<div class="pbmit-right-box d-flex align-items-center">
 									<div class="pbmit-header-social">

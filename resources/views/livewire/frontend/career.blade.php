@@ -1,5 +1,16 @@
+<style>
+    .career-tabs .nav-pills .nav-link.active, 
+    .career-tabs .nav-pills .show > .nav-link {
+        background-color: #ffb800 !important;
+        border-color: #ffb800 !important;
+        color: #000 !important;
+    }
+    .career-tabs .nav-pills .nav-link {
+        color: #333;
+    }
+</style>
 <div>
-    <div class="page-wrapper">
+    <div class="page-wrapper career-tabs">
 		<header class="site-header pbmit-header-style-1" id="masthead">
 			@include('livewire.frontend.partials.header')
 		</header>
