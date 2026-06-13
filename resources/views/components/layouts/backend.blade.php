@@ -76,7 +76,7 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item {{ Route::is('backend.dashboard') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
                         <a href="{{ route('admin.dashboard') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-smart-home"></i>
                             <div data-i18n="Dashboard">Dashboard</div>
@@ -89,7 +89,7 @@
                     </li>
 
                     <!-- Products -->
-                    <li class="menu-item {{ Route::is('backend.products.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.products.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.products.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-package"></i>
                             <div data-i18n="Products">Products</div>
@@ -97,7 +97,7 @@
                     </li>
 
                     <!-- Gallery -->
-                    <li class="menu-item {{ Route::is('backend.gallery.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.gallery.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.gallery.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-photo"></i>
                             <div data-i18n="Gallery">Gallery</div>
@@ -105,14 +105,14 @@
                     </li>
 
                     <!-- Blogs -->
-                    <li class="menu-item {{ Route::is('backend.blogs.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.blogs.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.blogs.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-article"></i>
                             <div data-i18n="Blogs">Blogs</div>
                         </a>
                     </li>
                     <!-- FAQ Management -->
-                    <li class="menu-item {{ Route::is('backend.faqs.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.faqs.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.faqs.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-help"></i>
                             <div data-i18n="FAQ Management">FAQ Management</div>
@@ -120,7 +120,7 @@
                     </li>
 
                     <!-- Client Management -->
-                    <li class="menu-item {{ Route::is('backend.clients.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.clients.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.clients.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-globe"></i>
                             <div data-i18n="Client Management">Client Management</div>
@@ -130,7 +130,7 @@
 
 
                     <!-- User Management -->
-                    <li class="menu-item {{ Route::is('backend.users.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.users.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.users.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-users"></i>
                             <div data-i18n="User Management">User Management</div>
@@ -142,7 +142,7 @@
                     </li>
 
                     <!-- Contacts -->
-                    <li class="menu-item {{ Route::is('backend.contacts.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.contacts.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.contacts.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-mail"></i>
                             <div data-i18n="Contact Inquiries">Contact Inquiries</div>
@@ -150,7 +150,7 @@
                     </li>
 
                     <!-- Careers -->
-                    <li class="menu-item {{ Route::is('backend.careers.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.careers.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.careers.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-briefcase"></i>
                             <div data-i18n="Job Openings">Job Openings</div>
@@ -158,7 +158,7 @@
                     </li>
 
                     <!-- Job Applications -->
-                    <li class="menu-item {{ Route::is('backend.job-applications.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.job-applications.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.job-applications.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-users"></i>
                             <div data-i18n="Job Applications">Job Applications</div>
@@ -166,7 +166,7 @@
                     </li>
 
                     <!-- Dealer Inquiries -->
-                    <li class="menu-item {{ Route::is('backend.dealers.*') ? 'active' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.dealers.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.dealers.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-truck"></i>
                             <div data-i18n="Dealer Inquiries">Dealer Inquiries</div>
@@ -178,28 +178,28 @@
                     </li>
 
                     <!-- Website Pages (Submenu) -->
-                    <li class="menu-item {{ Route::is('backend.website-pages.*') ? 'active open' : '' }}">
+                    <li class="menu-item {{ Route::is('admin.website-pages.*') ? 'active open' : '' }}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons ti ti-layout-navbar"></i>
                             <div data-i18n="Website Pages">Website Pages</div>
                         </a>
                         <ul class="menu-sub">
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.header-settings') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.header-settings') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.header-settings') }}" class="menu-link">
                                     <div data-i18n="Header Settings">Header Settings</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.footer-settings') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.footer-settings') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.footer-settings') }}" class="menu-link">
                                     <div data-i18n="Footer Settings">Footer Settings</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.default-image-settings') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.default-image-settings') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.default-image-settings') }}" class="menu-link">
                                     <div data-i18n="Default Image Settings">Default Image Settings</div>
@@ -207,77 +207,77 @@
                             </li>
 
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.general-settings') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.general-settings') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.general-settings') }}" class="menu-link">
                                     <div data-i18n="General Settings">General Settings (Contact)</div>
                                 </a>
                             </li>
 
-                            <li class="menu-item {{ Route::is('backend.website-pages.sliders.*') ? 'active' : '' }}">
+                            <li class="menu-item {{ Route::is('admin.website-pages.sliders.*') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.sliders.index') }}" class="menu-link">
                                     <div data-i18n="Sliders">Sliders</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.about-us.index') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.about-us.index') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.about-us.index') }}" class="menu-link">
                                     <div data-i18n="About Us">About Us</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.video-section.index') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.video-section.index') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.video-section.index') }}" class="menu-link">
                                     <div data-i18n="Video Section">Video Section</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.our-clients.index') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.our-clients.index') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.our-clients.index') }}" class="menu-link">
                                     <div data-i18n="Our Clients">Our Clients</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.product-section.index') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.product-section.index') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.product-section.index') }}" class="menu-link">
                                     <div data-i18n="Product Section">Product Section</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.page-banners.index') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.page-banners.index') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.page-banners.index') }}" class="menu-link">
                                     <div data-i18n="Page Banners">Page Banners</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.testimonials.*') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.testimonials.*') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.testimonials.index') }}" class="menu-link">
                                     <div data-i18n="Testimonials">Testimonials</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.exhibitions.*') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.exhibitions.*') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.exhibitions.index') }}" class="menu-link">
                                     <div data-i18n="Exhibitions">Exhibitions</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.team-partners.*') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.team-partners.*') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.team-partners.index') }}" class="menu-link">
                                     <div data-i18n="Team & Partners">Team & Partners</div>
                                 </a>
                             </li>
                             <li
-                                class="menu-item {{ Route::is('backend.website-pages.brochure-page.index') ? 'active' : '' }}">
+                                class="menu-item {{ Route::is('admin.website-pages.brochure-page.index') ? 'active' : '' }}">
                                 
                                 <a href="{{ route('admin.website-pages.brochure-page.index') }}" class="menu-link">
                                     <div data-i18n="Brochure Page">Brochure Page</div>

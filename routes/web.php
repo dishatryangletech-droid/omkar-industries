@@ -72,7 +72,7 @@ Route::get('/', function () {
     $faqSection = HomePage::where('section_type', 'faq_section')->first();
     $blogs = Blog::where('status', 'active')->orderBy('date', 'desc')->take(6)->get();
     return view('frontend.home', compact('sliders', 'videoSection', 'testimonials', 'clients', 'faqs', 'faqSection', 'blogs'));
-})->name('home');
+})->name('frontend.index');
 
 Route::get('/about-us', function () {
     $testimonials = Testimonial::where('status', 'Active')->get();
@@ -147,7 +147,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::view('profile', 'backend.pages-profile-user')->name('profile');
 
     $dummyObj = new class {
-        public function __get($name) { return ''; }
+        public function __get($name) { return null; }
     };
 
     $defaults = [
@@ -156,6 +156,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'totalCopies' => 0,
         'content' => $dummyObj,
         'settings' => $dummyObj,
+        'mainSection' => $dummyObj,
+        'mission' => $dummyObj,
+        'vision' => $dummyObj,
+        'goal' => $dummyObj,
+        'homePage' => $dummyObj,
+        'homePageAbout' => $dummyObj,
         'products' => [],
         'blogs' => [],
         'careers' => [],
@@ -169,6 +175,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'job_applications' => [],
         'applications' => [],
         'page_banners' => [],
+        'banners' => [],
+        'testimonials' => [],
+        'items' => [],
+        'sliders' => [],
+        'industries' => [],
+        'defaultQuickLinks' => [],
+        'exhibitions' => [],
+        'defaultSpecs' => [],
+        'parent_products' => [],
         'roles' => [],
         'users' => []
     ];

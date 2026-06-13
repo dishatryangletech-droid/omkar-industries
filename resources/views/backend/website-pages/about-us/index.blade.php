@@ -108,7 +108,7 @@
                             <div class="admin-sub-section">
                                 <div class="admin-sub-section-title"><i class="ti ti-link"></i> Extra Link</div>
                                 <label class="form-label small">Become Part of Team Link</label>
-                                <input type="text" class="form-control mb-2" name="btn_link2" value="{{ old('btn_link2', $mainSection->btn_link2 ?? route('our-team')) }}">
+                                <input type="text" class="form-control mb-2" name="btn_link2" value="{{ old('btn_link2', $mainSection->btn_link2 ?? route('frontend.our-team')) }}">
                             </div>
                         </div>
 
@@ -204,7 +204,7 @@
                                 </div>
                                 <div class="checkpoints-list" id="mission-checkpoints">
                                     <label class="form-label small fw-bold d-block mb-2">Checkpoints</label>
-                                    @php $missionCheckpoints = \App\Models\AboutUsPageCheckpoint::where('home_page_id', $mainSection->id)->where('type', 'mission')->get(); @endphp
+                                    @php $missionCheckpoints = $missionCheckpoints ?? []; @endphp
                                     @forelse($missionCheckpoints as $cp)
                                         <div class="input-group input-group-sm checkpoint-input-group">
                                             <input type="text" name="mission_checkpoints[]" class="form-control" value="{{ $cp->title }}">
@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="checkpoints-list" id="vision-checkpoints">
                                     <label class="form-label small fw-bold d-block mb-2">Checkpoints</label>
-                                    @php $visionCheckpoints = \App\Models\AboutUsPageCheckpoint::where('home_page_id', $mainSection->id)->where('type', 'vision')->get(); @endphp
+                                    @php $visionCheckpoints = $visionCheckpoints ?? []; @endphp
                                     @forelse($visionCheckpoints as $cp)
                                         <div class="input-group input-group-sm checkpoint-input-group">
                                             <input type="text" name="vision_checkpoints[]" class="form-control" value="{{ $cp->title }}">
@@ -270,7 +270,7 @@
                                 </div>
                                 <div class="checkpoints-list" id="goal-checkpoints">
                                     <label class="form-label small fw-bold d-block mb-2">Checkpoints</label>
-                                    @php $goalCheckpoints = \App\Models\AboutUsPageCheckpoint::where('home_page_id', $mainSection->id)->where('type', 'goal')->get(); @endphp
+                                    @php $goalCheckpoints = $goalCheckpoints ?? []; @endphp
                                     @forelse($goalCheckpoints as $cp)
                                         <div class="input-group input-group-sm checkpoint-input-group">
                                             <input type="text" name="goal_checkpoints[]" class="form-control" value="{{ $cp->title }}">
