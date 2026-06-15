@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HomePage extends Model
+class GeneralSetting extends Model
 {
+    protected $table = 'general_settings';
     protected $guarded = [];
-    protected $casts = [
-        'business_specs' => 'json',
-    ];
 }

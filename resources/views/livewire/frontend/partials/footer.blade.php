@@ -21,13 +21,17 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 col-lg-4 pbmit-footer-contact-box">
-								<span>2220 Prestonno R02, Hopkins, Hoofddorp(HD), UK</span>	
+								<span>{{ $generalSettings->contact_address ?? '2220 Prestonno R02, Hopkins, Hoofddorp(HD), UK' }}</span>	
 							</div>
 							<div class="col-md-12 col-lg-4 pbmit-footer-contact-box">
-								<span><a href="https://induyst-demo.pbminfotech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5e5253495c5e497d58455c504d5158135e5250">[email&#160;protected]</a></span>
+								@if(isset($generalSettings->contact_email) && $generalSettings->contact_email)
+									<span><a href="mailto:{{ $generalSettings->contact_email }}">{{ $generalSettings->contact_email }}</a></span>
+								@else
+									<span><a href="https://induyst-demo.pbminfotech.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5e5253495c5e497d58455c504d5158135e5250">[email&#160;protected]</a></span>
+								@endif
 							</div>
 							<div class="col-md-12 col-lg-4 pbmit-footer-contact-box">
-								<span>+012 34-567-8901</span>
+								<span>{{ $generalSettings->contact_phone ?? '+012 34-567-8901' }}</span>
 							</div>
 						</div>
 					</div>
@@ -153,7 +157,13 @@
 		<!-- Scroll To Top End -->
 
 		<!-- WhatsApp Floating Button -->
-		<a href="https://wa.me/910000000000" class="pbmit-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+		@php
+			$waNumber = '910000000000';
+			if(isset($generalSettings->contact_phone) && $generalSettings->contact_phone) {
+				$waNumber = preg_replace('/[^0-9]/', '', $generalSettings->contact_phone);
+			}
+		@endphp
+		<a href="https://wa.me/{{ $waNumber }}" class="pbmit-whatsapp-btn" target="_blank" rel="noopener noreferrer">
 			<i class="fa fa-whatsapp"></i>
 		</a>
 

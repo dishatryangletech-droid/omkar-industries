@@ -11,6 +11,7 @@ use App\Models\Blog;
 use App\Models\TeamPartner;
 use App\Models\AboutUs;
 use App\Models\Product;
+use App\Models\GeneralSetting;
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
@@ -155,7 +156,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'totalOriginal' => 0,
         'totalCopies' => 0,
         'content' => $dummyObj,
-        'settings' => $dummyObj,
+        'settings' => class_exists('App\Models\GeneralSetting') ? (\App\Models\GeneralSetting::first() ?: $dummyObj) : $dummyObj,
         'mainSection' => $dummyObj,
         'mission' => $dummyObj,
         'vision' => $dummyObj,
@@ -300,8 +301,63 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('footer-settings', function() use ($defaults) { return view('backend.website-pages.footer-settings', $defaults); })->name('footer-settings');
         Route::get('default-image-settings', function() use ($defaults) { return view('backend.website-pages.default-image-settings', $defaults); })->name('default-image-settings');
         Route::get('general-settings', function() use ($defaults) { return view('backend.website-pages.general-settings', $defaults); })->name('general-settings');
+        Route::post('general-settings', function(\Illuminate\Http\Request $request) {
+            $settings = \App\Models\GeneralSetting::first();
+            if (!$settings) {
+                $settings = new \App\Models\GeneralSetting();
+            }
+            $settings->fill($request->except(['_token', '_method']));
+            $settings->save();
+            return redirect()->route('admin.website-pages.general-settings')->with('success', 'General Settings updated successfully!');
+        });
         Route::get('sliders', function() use ($defaults) { return view('backend.website-pages.sliders.index', $defaults); })->name('sliders.index');
-        Route::get('about-us', function() use ($defaults) { return view('backend.website-pages.about-us.index', $defaults); })->name('about-us.index');
+        Route::get('about-us', function() use ($defaults) { 
+            $defaults['mainSection'] = \App\Models\HomePage::firstOrCreate(['section_type' => 'about_us'], ['title' => '']);
+            $defaults['mission'] = \App\Models\AboutUs::firstOrCreate(['id' => 1], ['sub_content_title' => 'Mission']);
+            $defaults['vision'] = \App\Models\AboutUs::firstOrCreate(['id' => 2], ['sub_content_title' => 'Vision']);
+            $defaults['goal'] = \App\Models\AboutUs::firstOrCreate(['id' => 3], ['sub_content_title' => 'Goal']);
+            $defaults['missionCheckpoints'] = json_decode($defaults['mission']->checkpoints ?? '[]');
+            $defaults['visionCheckpoints'] = json_decode($defaults['vision']->checkpoints ?? '[]');
+            $defaults['goalCheckpoints'] = json_decode($defaults['goal']->checkpoints ?? '[]');
+            return view('backend.website-pages.about-us.index', $defaults); 
+        })->name('about-us.index');
+        
+        Route::post('about-us', function(\Illuminate\Http\Request $request) {
+            $mainSection = \App\Models\HomePage::firstOrCreate(['section_type' => 'about_us']);
+            $mainData = $request->except(['_token', '_method', 'mission_title', 'mission_description', 'mission_checkpoints', 'vision_title', 'vision_description', 'vision_checkpoints', 'goal_title', 'goal_description', 'goal_checkpoints', 'photo', 'sub_title']);
+            $mainData['subtitle'] = $request->sub_title;
+            
+            if ($request->hasFile('photo')) {
+                $mainData['photo'] = $request->file('photo')->store('about_us', 'public');
+            }
+            $mainSection->update($mainData);
+            
+            // Update Mission
+            $missionCheckpoints = array_map(function($title) { return ['title' => $title]; }, array_filter($request->mission_checkpoints ?? []));
+            \App\Models\AboutUs::updateOrCreate(['id' => 1], [
+                'sub_content_title' => $request->mission_title,
+                'sub_content_description' => $request->mission_description,
+                'checkpoints' => json_encode($missionCheckpoints)
+            ]);
+            
+            // Update Vision
+            $visionCheckpoints = array_map(function($title) { return ['title' => $title]; }, array_filter($request->vision_checkpoints ?? []));
+            \App\Models\AboutUs::updateOrCreate(['id' => 2], [
+                'sub_content_title' => $request->vision_title,
+                'sub_content_description' => $request->vision_description,
+                'checkpoints' => json_encode($visionCheckpoints)
+            ]);
+            
+            // Update Goal
+            $goalCheckpoints = array_map(function($title) { return ['title' => $title]; }, array_filter($request->goal_checkpoints ?? []));
+            \App\Models\AboutUs::updateOrCreate(['id' => 3], [
+                'sub_content_title' => $request->goal_title,
+                'sub_content_description' => $request->goal_description,
+                'checkpoints' => json_encode($goalCheckpoints)
+            ]);
+            
+            return redirect()->route('admin.website-pages.about-us.index')->with('success', 'About Us updated successfully!');
+        });
         Route::get('video-section', function() use ($defaults) { return view('backend.website-pages.video-section.index', $defaults); })->name('video-section.index');
         Route::get('our-clients', function() use ($defaults) { return view('backend.website-pages.our-clients.index', $defaults); })->name('our-clients.index');
         Route::get('product-section', function() use ($defaults) { return view('backend.website-pages.product-section.index', $defaults); })->name('product-section.index');

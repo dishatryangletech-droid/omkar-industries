@@ -54,6 +54,16 @@
                                 @enderror
                             </div>
 
+                            <!-- Short Contact Address -->
+                            <div class="col-md-12 mb-4">
+                                <label class="form-label font-weight-bold" for="short_contact_address">Short Contact Address (For Header)</label>
+                                <input type="text" class="form-control @error('short_contact_address') is-invalid @enderror" id="short_contact_address" name="short_contact_address" value="{{ old('short_contact_address', $settings->short_contact_address) }}" placeholder="e.g. Plot No.2, Durga Estate">
+                                <small class="text-muted d-block mt-1">This will be shown in the top header where space is limited.</small>
+                                @error('short_contact_address')
+                                    <div class="invalid-feedback d-block mb-3">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <!-- Map Iframe -->
                             <div class="col-md-12 mb-4">
                                 <label class="form-label font-weight-bold" for="map_iframe">Google Maps Iframe URL</label>

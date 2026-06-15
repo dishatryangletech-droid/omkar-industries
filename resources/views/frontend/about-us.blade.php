@@ -47,40 +47,41 @@
 						<div class="col-md-12 col-xl-7 about-two-right-col">
 							<div class="about-two-content">
 								<div class="pbmit-heading-subheading">
-									<h4 class="pbmit-subtitle">Why Choose us</h4>
-									<h2 class="pbmit-title">We work for you since 1980 Industrial around the world.</h2>
+									<h4 class="pbmit-subtitle">{{ $aboutUs->subtitle ?? 'Why Choose us' }}</h4>
+									<h2 class="pbmit-title">{{ $aboutUs->title ?? 'We work for you since 1980 Industrial around the world.' }}</h2>
 								</div>
 								<div class="inner-box">
 									<div class="row">
 										<div class="col-md-7">
-											<p>Induyst is a full-service manufacturing company with 15 years of
-												experience serving industries such as automotive, Our mission is to
-												deliver products that meet the highest standards of quality and
-												performance.</p>
+											<p>{!! $aboutUs->description ?? 'Induyst is a full-service manufacturing company with 15 years of experience serving industries such as automotive, Our mission is to deliver products that meet the highest standards of quality and performance.' !!}</p>
 											<div class="list-group-wrap">
 												<ul class="list-group">
-													<li class="list-group-item">
-														<span class="pbmit-icon-list-icon">
-															<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
-														</span>
-														<span class="pbmit-icon-list-text">Reliable Guarantees You Can
-															Trust</span>
-													</li>
-													<li class="list-group-item">
-														<span class="pbmit-icon-list-icon">
-															<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
-														</span>
-														<span class="pbmit-icon-list-text">Commitment to Eco-Friendly
-															Materials</span>
-													</li>
+													@php
+														$checkmarks = [
+															$aboutUs->subtitle_text1 ?? 'Reliable Guarantees You Can Trust',
+															$aboutUs->subtitle_text2 ?? 'Commitment to Eco-Friendly Materials',
+															$aboutUs->subtitle_text3 ?? '',
+															$aboutUs->subtitle_text4 ?? ''
+														];
+													@endphp
+													@foreach($checkmarks as $checkmark)
+														@if(trim($checkmark) !== '')
+														<li class="list-group-item">
+															<span class="pbmit-icon-list-icon">
+																<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
+															</span>
+															<span class="pbmit-icon-list-text">{{ $checkmark }}</span>
+														</li>
+														@endif
+													@endforeach
 												</ul>
 											</div>
-											<a href="/about-us" class="pbmit-btn blackish">
+											<a href="{{ $aboutUs->btn_link ?? '/about-us' }}" class="pbmit-btn blackish">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 													</span>
-													<span class="pbmit-button-text">Discover More</span>
+													<span class="pbmit-button-text">{{ $aboutUs->btn_title ?? 'Discover More' }}</span>
 												</span>
 											</a>
 										</div>
@@ -125,11 +126,9 @@
 																</div>
 																<div class="pbmit-ihbox-contents">
 																	<h2 class="pbmit-element-title">
-																		Our Vision
+																		{{ $vision->sub_content_title ?? 'Our Vision' }}
 																	</h2>
-																	<div class="pbmit-heading-desc">Building long-term
-																		partnerships through responsiveness and
-																		reliability.</div>
+																	<div class="pbmit-heading-desc">{{ $vision->sub_content_description ?? 'Building long-term partnerships through responsiveness and reliability.' }}</div>
 																</div>
 															</div>
 														</div>
@@ -169,11 +168,9 @@
 																</div>
 																<div class="pbmit-ihbox-contents">
 																	<h2 class="pbmit-element-title">
-																		Our Solutions
+																		{{ $mission->sub_content_title ?? 'Our Solutions' }}
 																	</h2>
-																	<div class="pbmit-heading-desc">Extensive, flexible
-																		services that tailored to address changing
-																		industry .</div>
+																	<div class="pbmit-heading-desc">{{ $mission->sub_content_description ?? 'Extensive, flexible services that tailored to address changing industry.' }}</div>
 																</div>
 															</div>
 														</div>
@@ -213,11 +210,9 @@
 																</div>
 																<div class="pbmit-ihbox-contents">
 																	<h2 class="pbmit-element-title">
-																		Our Question
+																		{{ $goal->sub_content_title ?? 'Our Question' }}
 																	</h2>
-																	<div class="pbmit-heading-desc">What key challenges
-																		can we solve together to drive your business?
-																	</div>
+																	<div class="pbmit-heading-desc">{{ $goal->sub_content_description ?? 'What key challenges can we solve together to drive your business?' }}</div>
 																</div>
 															</div>
 														</div>
@@ -237,6 +232,19 @@
 			<!-- Fid Start -->
 			<section class="section-lg fade-section">
 				<div class="container">
+					@php
+						$stat1 = $aboutUs->subtitle_count1 ?? '92%';
+						$stat1Num = preg_replace('/[^0-9]/', '', $stat1);
+						$stat1Suffix = preg_replace('/[0-9]/', '', $stat1);
+
+						$stat2 = $aboutUs->subtitle_count2 ?? '85%';
+						$stat2Num = preg_replace('/[^0-9]/', '', $stat2);
+						$stat2Suffix = preg_replace('/[0-9]/', '', $stat2);
+
+						$stat3 = $aboutUs->subtitle_count3 ?? '90%';
+						$stat3Num = preg_replace('/[^0-9]/', '', $stat3);
+						$stat3Suffix = preg_replace('/[0-9]/', '', $stat3);
+					@endphp
 					<div class="row">
 						<div class="col-md-6 col-xl-4 pbmit-fid-style-2-progress-top">
 							<div class="pbminfotech-ele-fid pbminfotech-ele-fid-style-2">
@@ -245,14 +253,14 @@
 										<div class="pbmit-fid-inner">
 											<span class="pbmit-fid-before"></span>
 											<span class="pbmit-number-rotate numinate"
-												data-appear-animation="animateDigits" data-from="0" data-to="92"
+												data-appear-animation="animateDigits" data-from="0" data-to="{{ $stat1Num ?: '0' }}"
 												data-interval="5" data-before="" data-before-style="" data-after=""
-												data-after-style="">92</span>
-											<span class="pbmit-fid"><span>%</span></span>
+												data-after-style="">{{ $stat1Num ?: '0' }}</span>
+											<span class="pbmit-fid"><span>{{ $stat1Suffix }}</span></span>
 										</div>
 										<h2 class="pbmit-fid-title"></h2>
 										<div class="pbmit-heading-desc">
-											They are in a job related to their field of study
+											{{ $aboutUs->subtitle_dsc1 ?? 'They are in a job related to their field of study' }}
 										</div>
 									</div>
 								</div>
@@ -270,14 +278,14 @@
 										<div class="pbmit-fid-inner">
 											<span class="pbmit-fid-before"></span>
 											<span class="pbmit-number-rotate numinate"
-												data-appear-animation="animateDigits" data-from="0" data-to="85"
+												data-appear-animation="animateDigits" data-from="0" data-to="{{ $stat2Num ?: '0' }}"
 												data-interval="5" data-before="" data-before-style="" data-after=""
-												data-after-style="">85</span>
-											<span class="pbmit-fid"><span>%</span></span>
+												data-after-style="">{{ $stat2Num ?: '0' }}</span>
+											<span class="pbmit-fid"><span>{{ $stat2Suffix }}</span></span>
 										</div>
 										<h2 class="pbmit-fid-title"></h2>
 										<div class="pbmit-heading-desc">
-											Achieved career growth within their sector industry.
+											{{ $aboutUs->subtitle_dsc2 ?? 'Achieved career growth within their sector industry.' }}
 										</div>
 									</div>
 								</div>
@@ -295,14 +303,14 @@
 										<div class="pbmit-fid-inner">
 											<span class="pbmit-fid-before"></span>
 											<span class="pbmit-number-rotate numinate"
-												data-appear-animation="animateDigits" data-from="0" data-to="90"
+												data-appear-animation="animateDigits" data-from="0" data-to="{{ $stat3Num ?: '0' }}"
 												data-interval="5" data-before="" data-before-style="" data-after=""
-												data-after-style="">90</span>
-											<span class="pbmit-fid"><span>%</span></span>
+												data-after-style="">{{ $stat3Num ?: '0' }}</span>
+											<span class="pbmit-fid"><span>{{ $stat3Suffix }}</span></span>
 										</div>
 										<h2 class="pbmit-fid-title"></h2>
 										<div class="pbmit-heading-desc">
-											Gained experience through real-world project.
+											{{ $aboutUs->subtitle_dsc3 ?? 'Gained experience through real-world project.' }}
 										</div>
 									</div>
 								</div>
@@ -325,189 +333,59 @@
 						<h4 class="pbmit-subtitle">Business Information</h4>
 						<h2 class="pbmit-title">Business Specifications</h2>
 					</div>
+					@php
+						$iconMap = [
+							'Business Type' => 'fa-briefcase',
+							'No. of Employees' => 'fa-users',
+							'Year of Establishment' => 'fa-calendar',
+							'Annual Turnover' => 'fa-line-chart',
+							'Banker' => 'fa-university',
+							'OEM Facility' => 'fa-cogs',
+							'Capital in Dollars' => 'fa-usd',
+							'Export Percentage' => 'fa-percent',
+							'No. of Engineers' => 'fa-wrench',
+							'No. of Production Lines' => 'fa-building',
+							'Warehousing Facility' => 'fa-cubes',
+							'No. of Designers' => 'fa-paint-brush',
+							'No. of Production Units' => 'fa-building',
+							'Export Markets' => 'fa-globe',
+						];
+						$defaultSpecs = [
+							'Business Type' => 'Manufacturer, Supplier, Trader and Exporter',
+							'No. of Employees' => '05',
+							'Year of Establishment' => '1977',
+							'Annual Turnover' => 'INR 85 Lakhs',
+							'Banker' => 'Canara Bank',
+							'OEM Facility' => 'Yes',
+							'Warehousing Facility' => 'Yes',
+							'Capital in Dollars' => 'INR 85 Lakhs',
+							'Export Percentage' => '50%',
+							'No. of Engineers' => '02',
+							'No. of Designers' => '01',
+							'No. of Production Units' => '01',
+							'Export Markets' => 'US and Africa'
+						];
+						$specs = $aboutUs->business_specs ?? $defaultSpecs;
+						if (empty($specs)) $specs = $defaultSpecs;
+					@endphp
 					<div class="row mt-5 justify-content-center">
-						<!-- Card 1: Business Type -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-briefcase"></i>
+						@foreach($specs as $key => $val)
+							@if(!empty($val))
+							<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+								<div class="pbmit-spec-card">
+									<div class="pbmit-spec-icon-wrapper">
+										<div class="pbmit-spec-icon">
+											<i class="fa {{ $iconMap[$key] ?? 'fa-check-circle' }}"></i>
+										</div>
+									</div>
+									<div class="pbmit-spec-content">
+										<h4 class="pbmit-spec-title">{{ $key }}</h4>
+										<p class="pbmit-spec-value">{{ $val }}</p>
 									</div>
 								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Business Type</h4>
-									<p class="pbmit-spec-value">Manufacturer, Supplier, Trader and Exporter</p>
-								</div>
 							</div>
-						</div>
-						<!-- Card 2: Employees -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-users"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">No. of Employees</h4>
-									<p class="pbmit-spec-value">05</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 3: Year of Establishment -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-calendar"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Year of Establishment</h4>
-									<p class="pbmit-spec-value">1977</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 4: Turnover -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-line-chart"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Annual Turnover</h4>
-									<p class="pbmit-spec-value">INR 85 Lakhs</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 5: Banker -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-university"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Banker</h4>
-									<p class="pbmit-spec-value">Canara Bank</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 6: OEM Facility -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-cogs"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">OEM Facility</h4>
-									<p class="pbmit-spec-value">Yes</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 7: Warehousing -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-cubes"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Warehousing Facility</h4>
-									<p class="pbmit-spec-value">Yes</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 8: Capital -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-usd"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Capital in Dollars</h4>
-									<p class="pbmit-spec-value">INR 85 Lakhs</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 9: Export Percentage -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-percent"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Export Percentage</h4>
-									<p class="pbmit-spec-value">50%</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 10: Engineers -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-wrench"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">No. of Engineers</h4>
-									<p class="pbmit-spec-value">02</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 11: Designers -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-paint-brush"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">No. of Designers</h4>
-									<p class="pbmit-spec-value">01</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 12: Production Units -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-building"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">No. of Production Units</h4>
-									<p class="pbmit-spec-value">01</p>
-								</div>
-							</div>
-						</div>
-						<!-- Card 13: Export Markets -->
-						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-							<div class="pbmit-spec-card">
-								<div class="pbmit-spec-icon-wrapper">
-									<div class="pbmit-spec-icon">
-										<i class="fa fa-globe"></i>
-									</div>
-								</div>
-								<div class="pbmit-spec-content">
-									<h4 class="pbmit-spec-title">Export Markets</h4>
-									<p class="pbmit-spec-value">US and Africa</p>
-								</div>
-							</div>
-						</div>
+							@endif
+						@endforeach
 					</div>
 				</div>
 			</section>

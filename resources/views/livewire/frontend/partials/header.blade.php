@@ -26,7 +26,7 @@
 									</span>
 									<span class="pbmit-box-content">
 										<span class="pbmit-header-box-title">Need to talk</span>
-										<span class="pbmit-header-box-content">(000)123456789</span>
+										<span class="pbmit-header-box-content">{{ $generalSettings->contact_phone ?? '(000)123456789' }}</span>
 									</span>
 								</a>
 							</div>
@@ -37,7 +37,7 @@
 									</span>
 									<span class="pbmit-box-content">
 										<span class="pbmit-header-box-title">Main Location</span>
-										<span class="pbmit-header-box-content">Los Angeles Gournadi Bariasl</span>
+										<span class="pbmit-header-box-content">{{ $generalSettings->short_contact_address ?? ($generalSettings->contact_address ?? 'Los Angeles Gournadi Bariasl') }}</span>
 									</span>
 								</a>
 							</div>
@@ -49,8 +49,13 @@
 									</span>
 									<span class="pbmit-box-content">
 										<span class="pbmit-header-box-title">Email address</span>
-										<span class="pbmit-header-box-content"><span class="__cf_email__"
-												data-cfemail="dab4b5f7a8bfaab6a39abfa2bbb7aab6bff4b9b5b7">[email&#160;protected]</span></span>
+										<span class="pbmit-header-box-content">
+											@if(isset($generalSettings->contact_email) && $generalSettings->contact_email)
+												{{ $generalSettings->contact_email }}
+											@else
+												<span class="__cf_email__" data-cfemail="dab4b5f7a8bfaab6a39abfa2bbb7aab6bff4b9b5b7">[email&#160;protected]</span>
+											@endif
+										</span>
 									</span>
 								</a>
 							</div>
