@@ -1,4 +1,45 @@
 <div>
+	<style>
+		.pbmit-btn-sm {
+			padding: 8px 18px !important;
+			font-size: 13px !important;
+			border-radius: 6px !important;
+			min-height: auto !important;
+		}
+		.pbmit-btn-sm .pbmit-button-content-wrapper {
+			gap: 3px !important;
+		}
+		.pbmit-btn-sm .pbmit-button-content-wrapper:before {
+			width: 33px !important;
+			height: calc(100% - 6px) !important;
+			top: 3px !important;
+			left: 3px !important;
+			line-height: 25px !important;
+			font-size: 11px !important;
+			border-radius: 4px !important;
+		}
+		.pbmit-btn-sm .pbmit-button-icon {
+			left: -4px !important;
+		}
+		.pbmit-btn-sm .pbmit-button-icon i {
+			font-size: 11px !important;
+		}
+		.pbmit-btn-sm .pbmit-button-icon:after {
+			font-size: 11px !important;
+		}
+		.pbmit-btn-sm .pbmit-button-text {
+			font-size: 13px !important;
+			line-height: 18px !important;
+			margin-left: 4px !important;
+			text-shadow: 0 0 #16222d, 0 18px #16222d !important;
+		}
+		.pbmit-btn-sm:hover .pbmit-button-content-wrapper:before {
+			width: calc(100% - 6px) !important;
+		}
+		.pbmit-btn-sm:hover .pbmit-button-text {
+			text-shadow: 0 -18px #16222d, 0 0 #16222d !important;
+		}
+	</style>
 	<!-- Page Wrapper -->
 	<div class="page-wrapper">
 
@@ -57,52 +98,213 @@
 						</div>
 						<div class="pbmit-entry-content">
 							<div data-aos="fade-up" data-aos-duration="800">
-								<div class="row g-0">
-									<div class="col-md-7 full-width-1200">
-										<div class="pbmit-custom-heading">
-											<h3 class="pbmit-title">Project Summary :</h3>
-										</div>
-										<p class="pbmit-firstletter">Meeting with the company and their thesis advisor
-											to a identity the problem opportunity to pursue, weekly person <span
-												class="pbmit-blackish-color pbmit-medium">the project scope and expected
-											</span> deliverables a in forces can affect.</p>
-										<p>Industry the summer, starting in mid-May and going through mid-August
-											students work a company project full time. These projects done in groups of
-											three students per site form the basis of thesis portion the degree were
-											Students work on-site under the supervision of an faculty member typically
-											solving near-term problems for their company.</p>
+								<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+									<div class="pbmit-custom-heading mb-0">
+										<h3 class="pbmit-title mb-0" style="margin-bottom: 0;">Project Summary :</h3>
 									</div>
-									<div class="col-md-5 full-width-1200">
-										<div class="list-group-wrap">
-											<p>Company and their thesis advisor to identity the problem opportunity to
-												pursue, weekly person the project scope and expected deliverables a in
-												forces can affect.</p>
-											<ul class="list-group">
-												<li class="list-group-item">
-													<span class="pbmit-icon-list-icon">
-														<i class="pbmit-base-icon-checkbox"></i>
-													</span>
-													<span class="pbmit-icon-list-text">Industrial robots can perform a
-														variety of tasks.</span>
-												</li>
-												<li class="list-group-item">
-													<span class="pbmit-icon-list-icon">
-														<i class="pbmit-base-icon-checkbox"></i>
-													</span>
-													<span class="pbmit-icon-list-text">Automated systems improve
-														production speed.</span>
-												</li>
-												<li class="list-group-item">
-													<span class="pbmit-icon-list-icon">
-														<i class="pbmit-base-icon-checkbox"></i>
-													</span>
-													<span class="pbmit-icon-list-text">A process line is designed to
-														streamline operation.</span>
-												</li>
-											</ul>
+									<div class="d-flex align-items-center gap-3">
+										<!-- Video Play Button -->
+										<a href="https://www.youtube.com/watch?v=x36EQP2og-k" class="pbmit-btn pbmit-btn-sm pbmin-lightbox-video">
+											<span class="pbmit-button-content-wrapper">
+												<span class="pbmit-button-icon">
+													<i class="pbmit-base-icon-play-button"></i>
+												</span>
+												<span class="pbmit-button-text">Watch Video</span>
+											</span>
+										</a>
+										<!-- Download PDF Button -->
+										<a href="#" class="pbmit-btn pbmit-btn-sm" download>
+											<span class="pbmit-button-content-wrapper">
+												<span class="pbmit-button-icon">
+													<i class="pbmit-base-icon-download"></i>
+												</span>
+												<span class="pbmit-button-text">Download PDF</span>
+											</span>
+										</a>
+									</div>
+								</div>
+								<p class="pbmit-firstletter">Meeting with the company and their thesis advisor
+									to a identity the problem opportunity to pursue, weekly person <span
+										class="pbmit-blackish-color pbmit-medium">the project scope and expected
+									</span> deliverables a in forces can affect.</p>
+								<p>Industry the summer, starting in mid-May and going through mid-August
+									students work a company project full time. These projects done in groups of
+									three students per site form the basis of thesis portion the degree were
+									Students work on-site under the supervision of an faculty member typically
+									solving near-term problems for their company.</p>
+							</div>
+								<div class="pbmit-custom-heading mt-4">
+									<h3 class="pbmit-title">Project Advantages :</h3>
+								</div>
+								<p>Company and their thesis advisor to identity the problem opportunity to
+									pursue, weekly person the project scope and expected deliverables a in
+									forces can affect.</p>
+								<div class="list-group-wrap mb-4" style="padding-left: 0;">
+									<ul class="list-group">
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-base-icon-checkbox"></i>
+											</span>
+											<span class="pbmit-icon-list-text">Industrial robots can perform a
+												variety of tasks.</span>
+										</li>
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-base-icon-checkbox"></i>
+											</span>
+											<span class="pbmit-icon-list-text">Automated systems improve
+												production speed.</span>
+										</li>
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-base-icon-checkbox"></i>
+											</span>
+											<span class="pbmit-icon-list-text">A process line is designed to
+												streamline operation.</span>
+										</li>
+									</ul>
+								</div>
+								
+								<div class="pbmit-custom-heading mt-5">
+									<h3 class="pbmit-title">Machine Specifications :</h3>
+								</div>
+								<div class="table-responsive mb-5">
+									<table class="table table-bordered pbmit-specs-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
+										<thead>
+											<tr style="background-color: var(--pbmit-global-color); color: #ffffff;">
+												<th style="padding: 15px 20px; font-weight: 600; width: 20%; border-color: rgba(0,0,0,0.08); color: #ffffff;">Specification</th>
+												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Standard Model (OI-2000)</th>
+												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Advanced Model (OI-4500X)</th>
+												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Heavy Duty Model (OI-8000HD)</th>
+												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Custom/OEM Model (OI-9500XT)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Production Capacity</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">500 - 1200 kg/hr</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">1500 - 3000 kg/hr</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">4000 - 8000 kg/hr</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">10000 - 15000 kg/hr</td>
+											</tr>
+											<tr style="background-color: rgba(var(--pbmit-global-color-rgb), 0.06);">
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Power Consumption</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">7.5 kW</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">15 kW</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">30 kW</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">45 kW</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Material</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Stainless Steel 304</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Stainless Steel 304 / 316</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Stainless Steel 316 / Heavy Duty</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">SS 316L / Titanium</td>
+											</tr>
+											<tr style="background-color: rgba(var(--pbmit-global-color-rgb), 0.06);">
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Automation Level</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Semi-Automatic</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Fully Automated PLC</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">PLC / SCADA Integrated</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">AI-Powered PLC / SCADA</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Operating Pressure</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">4 - 6 Bar</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">6 - 8 Bar</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">8 - 12 Bar</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">12 - 16 Bar</td>
+											</tr>
+											<tr style="background-color: rgba(var(--pbmit-global-color-rgb), 0.06);">
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Dimensions (L x W x H)</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">1800 x 1000 x 1500 mm</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">2400 x 1200 x 1800 mm</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">3600 x 1600 x 2200 mm</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Customizable to site</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Net Weight</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">850 kg</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">1450 kg</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">2800 kg</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">4200+ kg</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<div class="pbmit-custom-heading mt-5">
+									<h3 class="pbmit-title">Designed Machine Parts :</h3>
+								</div>
+								<div class="row mt-4 mb-5">
+									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+										<div class="text-center">
+											<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
+												<img src="{{ asset('frontend/images/service/service-01.jpg') }}" alt="Control Panel & PLC" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+											</div>
+											<h4 style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">Control Panel & PLC</h4>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+										<div class="text-center">
+											<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
+												<img src="{{ asset('frontend/images/service/service-02.jpg') }}" alt="Hydraulic Power Pack" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+											</div>
+											<h4 style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">Hydraulic Power Pack</h4>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+										<div class="text-center">
+											<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
+												<img src="{{ asset('frontend/images/service/service-03.jpg') }}" alt="Conveyor System" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+											</div>
+											<h4 style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">Conveyor System</h4>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+										<div class="text-center">
+											<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
+												<img src="{{ asset('frontend/images/service/service-04.jpg') }}" alt="Pneumatic Cylinders" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+											</div>
+											<h4 style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">Pneumatic Cylinders</h4>
 										</div>
 									</div>
 								</div>
+
+								<div class="pbmit-custom-heading mt-5">
+									<h3 class="pbmit-title">Trade Information</h3>
+								</div>
+								<div class="table-responsive mb-5">
+									<table class="table table-bordered pbmit-trade-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
+										<tbody>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 600; width: 25%; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Payment Terms</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Western Union, Cash in Advance (CID), Cash Advance (CA), Cash on Delivery (COD), Cash Against Delivery (CAD)</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Delivery Time</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">15 Days</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Main Domestic Market</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">All India</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Supply Ability</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">5 Piece Per Week</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Main Export Market(s)</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Africa, Middle East, Western Europe, Eastern Europe, South America, North America, Central America, Australia, Asia</td>
+											</tr>
+											<tr>
+												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Sample Policy</td>
+												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Contact us for information regarding our sample policy</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
 								<div class="ihbox-style-area pbminfotech-gap-0px pbmit-column-four">
 									<div class="row g-0">
 										<article class="pbmit-miconheading-style-11 col-md-6 col-lg-4 col-xl-3">
@@ -206,86 +408,29 @@
 									</div>
 								</div>
 							</div>
-							<div data-aos="fade-up" data-aos-duration="800">
-								<div class="pbmit-custom-heading">
-									<h3 class="pbmit-title">Best Industrial Project Detailing</h3>
-								</div>
-								<p>Industry classification is valuable for economic analysis because it leads to largely
-									distinct categories with simple relationships. Through this classifications,
-									economists are able to compare companies within the same industry to evaluate the
-									attractiveness of industry. Companies within the same industry also have similar
-									movements in the unit value of their listed shares due to their similarity and
-									macroeconomic factors that affect all members of an industry.</p>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="pbmit-animation-style7 text-md-start text-center">
-											<img src="{{ asset('frontend/images/portfolio/portfolio-detail-01.jpg') }}"
-												class="pf-detail-img img-fluid" alt="">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="pbmit-animation-style7 text-md-start text-center mt-md-0 mt-5">
-											<img src="{{ asset('frontend/images/portfolio/portfolio-detail-02.jpg') }}"
-												class="pf-detail-img img-fluid" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
+						
 							<div class="py-5" data-aos="fade-up" data-aos-duration="800">
+								<div class="pbmit-custom-heading">
+									<h3 class="pbmit-title">Our Client Review About Project</h3>
+								</div>
+								<p class="mb-4">Our industrial machinery is actively deployed across multiple key client facilities, demonstrating robust operational reliability, enhanced production output, and high-efficiency automation in everyday workflows.</p>
+								
 								<div class="row">
 									<div class="col-md-6 full-width-1200">
-										<div class="pbmit-custom-heading">
-											<h3 class="pbmit-title">Meet Our Team Who Work On Project</h3>
-										</div>
-										<p>There are many industry classifications in the modern economy, which is
-											grouped into larger categories called economic sectors. Sectors are broader
-											than industry classifications. For example, the retail trade sector contains
-											industries such as clothing stores, shoe stores, and health and personal
-											care stores.</p>
-										<div class="pbmit-element-team-style-2">
-											<div class="row pbmit-element-posts-wrapper">
-												<article class="pbmit-team-style-2 col-md-6">
-													<div class="pbminfotech-post-item">
-														<div class="pbminfotech-box-content">
-															<div class="pbminfotech-box-content-inner">
-																<div class="pbmit-featured-wrapper pbmit-hover-img">
-																	<div class="pbmit-featured-img-wrapper">
-																		<div class="pbmit-featured-wrapper">
-																			<img src="{{ asset('frontend/images/homepage-2/team/team-img-01.jpg') }}"
-																				class="img-fluid" alt="">
-																		</div>
-																	</div>
-																</div>
-																<h3 class="pbmit-team-title">
-																	<a href="/team-member-detail">Roman Amata</a>
-																</h3>
-																<div class="pbminfotech-box-team-position">Technical
-																	Lead</div>
-															</div>
-														</div>
-													</div>
-												</article>
-												<article class="pbmit-team-style-2 col-md-6">
-													<div class="pbminfotech-post-item">
-														<div class="pbminfotech-box-content">
-															<div class="pbminfotech-box-content-inner">
-																<div class="pbmit-featured-wrapper pbmit-hover-img">
-																	<div class="pbmit-featured-img-wrapper">
-																		<div class="pbmit-featured-wrapper">
-																			<img src="{{ asset('frontend/images/homepage-2/team/team-img-02.jpg') }}"
-																				class="img-fluid" alt="">
-																		</div>
-																	</div>
-																</div>
-																<h3 class="pbmit-team-title">
-																	<a href="/team-member-detail">Monika Larson</a>
-																</h3>
-																<div class="pbminfotech-box-team-position">Industrial
-																	Engineer</div>
-															</div>
-														</div>
-													</div>
-												</article>
+										<div class="swiper-slider" data-columns="1" data-loop="true" data-autoplay="true" data-dots="true" data-arrows="false">
+											<div class="swiper-wrapper">
+												<div class="swiper-slide">
+													<img src="{{ asset('frontend/images/portfolio/portfolio-01.jpg') }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work 1">
+												</div>
+												<div class="swiper-slide">
+													<img src="{{ asset('frontend/images/portfolio/portfolio-02.jpg') }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work 2">
+												</div>
+												<div class="swiper-slide">
+													<img src="{{ asset('frontend/images/portfolio/portfolio-03.jpg') }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work 3">
+												</div>
+												<div class="swiper-slide">
+													<img src="{{ asset('frontend/images/portfolio/portfolio-04.jpg') }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work 4">
+												</div>
 											</div>
 										</div>
 									</div>
@@ -421,76 +566,7 @@
 									</div>
 								</div>
 							</div>
-							<div data-aos="fade-up" data-aos-duration="800">
-								<div class="pbmit-custom-heading">
-									<h3 class="pbmit-title">Our Client Review About Project</h3>
-								</div>
-								<p>Working with team was a seamless experience from start to finish. The project was
-									delivered on time, within budget and outstanding attention to detail. Communication
-									was clear throughout, and the final results exceeded expectations. We appreciate
-									your professionalism, technical expertise, dedication to quality, and your ability
-									to adapt quickly to project needs and challenges. Your team’s collaborative spirit,
-									innovative approach set you apart from others.</p>
-								<div class="pbmit-ihbox-style-6">
-									<div class="pbmit-ihbox-box">
-										<div class="pbmit-ihbox-icon">
-											<div class="pbmit-ihbox-icon-wrapper pbmit-icon-type-icon">
-												<svg version="1.1" id="pbmit_003" xmlns="http://www.w3.org/2000/svg"
-													xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-													viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;"
-													xml:space="preserve">
-													<g>
-														<g id="right_x5F_quote_x5F_alt">
-															<g>
-																<polygon style="fill:#030104;"
-																	points="0,4 0,28 12,16 12,4"></polygon>
-																<polygon style="fill:#030104;"
-																	points="20,4 20,28 32,16 32,4"></polygon>
-															</g>
-														</g>
-													</g>
-												</svg>
-											</div>
-										</div>
-										<div class="pbmit-ihbox-contents">
-											<div class="pbmit-heading-desc">“ I do not despise genius-indeed, I wish I
-												had a basketful of it. But yet, after a great deal of experience and
-												observation,
-												I have become convinced that industry is a better horse to ride than
-												genius. Carry any man as far as genius.”
-											</div>
-											<h2 class="pbmit-element-title">Ronald Benson</h2>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
-						<nav class="navigation post-navigation" aria-label="Posts">
-							<div class="nav-links">
-								<div class="nav-previous">
-									<a href="#" rel="prev">
-										<span class="pbmit-post-nav-icon">
-											<i class="pbmit-base-icon-arrow-left"></i>
-											<span class="pbmit-post-nav-head">Previous Post</span>
-										</span>
-										<span class="pbmit-post-nav-wrapper">
-											<span class="pbmit-post-nav nav-title">Industry Innovation</span>
-										</span>
-									</a>
-								</div>
-								<div class="nav-next">
-									<a href="#" rel="next">
-										<span class="pbmit-post-nav-icon">
-											<span class="pbmit-post-nav-head">Next Post</span>
-											<i class="pbmit-base-icon-arrow-right"></i>
-										</span>
-										<span class="pbmit-post-nav-wrapper">
-											<span class="pbmit-post-nav nav-title">Automated Industry</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</nav>
 					</article>
 				</div>
 			</section>

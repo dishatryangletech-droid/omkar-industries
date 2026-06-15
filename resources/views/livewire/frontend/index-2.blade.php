@@ -418,11 +418,7 @@
 														<span class="pbmit-button-text">Discover More</span>
 													</span>
 												</a>
-												<div class="ms-4">
-													<a class="pbmit-btn-style-text" href="/our-team">
-														<span class="pbmit-button-text">Become Part Of Our Team</span>
-													</a>
-												</div>
+												
 											</div>
 										</div>
 									</div>

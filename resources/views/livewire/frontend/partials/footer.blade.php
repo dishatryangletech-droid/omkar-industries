@@ -151,3 +151,40 @@
 			</div>
 		</div>
 		<!-- Scroll To Top End -->
+
+		<!-- WhatsApp Floating Button -->
+		<a href="https://wa.me/910000000000" class="pbmit-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+			<i class="fa fa-whatsapp"></i>
+		</a>
+
+		<style>
+			.pbmit-whatsapp-btn {
+				position: fixed;
+				bottom: 15px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #25d366;
+				color: #fff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 28px;
+				box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+				z-index: 9999999;
+				transition: all 0.3s ease-in-out;
+			}
+			.pbmit-whatsapp-btn:hover {
+				transform: scale(1.1);
+				box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+				color: #fff;
+			}
+			/* Shift back-to-top button above the WhatsApp button */
+			.pbmit-backtotop.active {
+				bottom: 75px !important;
+			}
+			.pbmit-backtotop:hover {
+				bottom: 80px !important;
+			}
+		</style>

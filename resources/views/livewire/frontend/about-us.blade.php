@@ -318,6 +318,257 @@
 			</section>
 			<!-- Fid End -->
 
+			<!-- Business Specifications Start -->
+			<section class="section-md" style="padding-bottom: 80px;">
+				<div class="container">
+					<div class="pbmit-heading-subheading text-center">
+						<h4 class="pbmit-subtitle">Business Information</h4>
+						<h2 class="pbmit-title">Business Specifications</h2>
+					</div>
+					<div class="row mt-5 justify-content-center">
+						<!-- Card 1: Business Type -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-briefcase"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Business Type</h4>
+									<p class="pbmit-spec-value">Manufacturer, Supplier, Trader and Exporter</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 2: Employees -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-users"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">No. of Employees</h4>
+									<p class="pbmit-spec-value">05</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 3: Year of Establishment -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-calendar"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Year of Establishment</h4>
+									<p class="pbmit-spec-value">1977</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 4: Turnover -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-line-chart"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Annual Turnover</h4>
+									<p class="pbmit-spec-value">INR 85 Lakhs</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 5: Banker -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-university"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Banker</h4>
+									<p class="pbmit-spec-value">Canara Bank</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 6: OEM Facility -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-cogs"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">OEM Facility</h4>
+									<p class="pbmit-spec-value">Yes</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 7: Warehousing -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-cubes"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Warehousing Facility</h4>
+									<p class="pbmit-spec-value">Yes</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 8: Capital -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-usd"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Capital in Dollars</h4>
+									<p class="pbmit-spec-value">INR 85 Lakhs</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 9: Export Percentage -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-percent"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Export Percentage</h4>
+									<p class="pbmit-spec-value">50%</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 10: Engineers -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-wrench"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">No. of Engineers</h4>
+									<p class="pbmit-spec-value">02</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 11: Designers -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-paint-brush"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">No. of Designers</h4>
+									<p class="pbmit-spec-value">01</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 12: Production Units -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-building"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">No. of Production Units</h4>
+									<p class="pbmit-spec-value">01</p>
+								</div>
+							</div>
+						</div>
+						<!-- Card 13: Export Markets -->
+						<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+							<div class="pbmit-spec-card">
+								<div class="pbmit-spec-icon-wrapper">
+									<div class="pbmit-spec-icon">
+										<i class="fa fa-globe"></i>
+									</div>
+								</div>
+								<div class="pbmit-spec-content">
+									<h4 class="pbmit-spec-title">Export Markets</h4>
+									<p class="pbmit-spec-value">US and Africa</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<style>
+				.pbmit-spec-card {
+					background: #fff;
+					border: 1px solid rgba(0, 0, 0, 0.05);
+					border-radius: 8px;
+					padding: 30px 25px;
+					height: 100%;
+					display: flex;
+					align-items: flex-start;
+					transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+					box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+				}
+				.pbmit-spec-card:hover {
+					transform: translateY(-5px);
+					border-color: var(--pbmit-global-color, #ffc34e);
+					box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+				}
+				.pbmit-spec-icon-wrapper {
+					margin-right: 20px;
+					flex-shrink: 0;
+				}
+				.pbmit-spec-icon {
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					background-color: rgba(255, 195, 78, 0.1);
+					color: var(--pbmit-global-color, #ffc34e);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: 20px;
+					transition: all 0.3s ease;
+				}
+				.pbmit-spec-card:hover .pbmit-spec-icon {
+					background-color: var(--pbmit-global-color, #ffc34e);
+					color: #fff;
+				}
+				.pbmit-spec-content {
+					flex-grow: 1;
+				}
+				.pbmit-spec-title {
+					font-size: 16px;
+					font-weight: 600;
+					margin-bottom: 8px;
+					color: var(--pbmit-blackish-color, #16222d);
+					text-transform: uppercase;
+					letter-spacing: 0.5px;
+				}
+				.pbmit-spec-value {
+					font-size: 14px;
+					color: #697687;
+					margin: 0;
+					line-height: 1.5;
+				}
+			</style>
+			<!-- Business Specifications End -->
+
 			<!-- Ihbox Start -->
 			<section class="section-md fade-section">
 				<div class="container">

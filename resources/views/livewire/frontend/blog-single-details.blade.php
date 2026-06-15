@@ -1,4 +1,31 @@
 <div>
+	<style>
+		.text-center .pbmit-firstletter::first-letter {
+			float: none !important;
+			display: inline-block !important;
+			margin-right: 2px !important;
+			padding: 0 !important;
+			background: none !important;
+			font-size: 32px !important;
+			font-weight: 700 !important;
+			color: var(--pbmit-blackish-color) !important;
+		}
+		.text-center .list-group {
+			text-align: left;
+			display: inline-block;
+			max-width: 100%;
+			margin-bottom: 30px !important;
+		}
+		.text-center blockquote {
+			text-align: center;
+			padding: 100px 30px 30px 30px !important;
+		}
+		.text-center blockquote:before {
+			top: 15px !important;
+			left: 50% !important;
+			transform: translateX(-50%) !important;
+		}
+	</style>
 <!-- Page Wrapper -->
    <div class="page-wrapper">
 
@@ -44,22 +71,23 @@
 		<section class="site-content blog-details">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-10 col-md-12 mx-auto blog-left-col">
-						<div class="row">
-							<div class="col-md-12">
-								<article>
-									<div class="post blog-classic"> 
-										<div class="pbmit-img-wrapper">
-											<div class="pbmit-featured-img-wrapper">
-												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid" alt="">
-												</div>
-											</div>  
-											<span class="pbmit-meta pbmit-meta-date">
-												<span class="pbmit-date">06</span>
-												<span class="pbmit-month">Feb</span>
-											</span>
+					<div class="col-lg-12">
+						<article>
+							<div class="post blog-classic"> 
+								<div class="pbmit-img-wrapper">
+									<div class="pbmit-featured-img-wrapper">
+										<div class="pbmit-featured-wrapper">
+											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="">
 										</div>
+									</div>  
+									<span class="pbmit-meta pbmit-meta-date">
+										<span class="pbmit-date">06</span>
+										<span class="pbmit-month">Feb</span>
+									</span>
+								</div>
+								
+								<div class="row">
+									<div class="col-lg-12 col-md-10 mx-auto">
 										<div class="pbmit-blog-classic-inner">
 											<div class="pbmit-blog-meta pbmit-blog-meta-top">
 												<span class="pbmit-meta pbmit-meta-author">by<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
@@ -86,12 +114,12 @@
 												</blockquote> 
 												<div class="pbmit-block-columns row">
 													<div class="pbmit-block-column col-md-12 col-xl-6 full-width-1200">
-										 				<figure>
+														<figure style="margin-bottom: 20px;">
 															<img src="{{ asset('frontend/images/blog/blog-single-img-01.webp') }}" class="img-fluid w-100" alt="">
 														</figure>
 													</div>
 													<div class="pbmit-block-column col-md-12 col-xl-6 full-width-1200">
-														<figure>
+														<figure style="margin-bottom: 20px;">
 															<img src="{{ asset('frontend/images/blog/blog-single-img-02.webp') }}" class="img-fluid w-100" alt="">
 														</figure>
 													</div>
@@ -128,13 +156,13 @@
 											</div>
 											<div class="pbmit-blog-meta-bottom">
 												<div class="pbmit-blog-meta-bottom-left">
-													<ul class="tagcloud">
+													<ul class="tagcloud" style="justify-content: center; display: flex;">
 														<li><a href="/blog-classic">Industry</a></li>
 														<li><a href="/blog-classic">Retail</a></li>
 														<li><a href="/blog-classic">Technology</a></li>
 													</ul>
 												</div>
-												<div class="pbmit-blog-meta-bottom-right">
+												<div class="pbmit-blog-meta-bottom-right mt-3 mt-md-0" style="justify-content: center; display: flex;">
 													<div class="pbmit-social-share">
 														<ul>
 															<li class="pbmit-social-li pbmit-social-li-facebook">
@@ -162,36 +190,37 @@
 												</div>
 											</div>
 										</div>   
-									</div> 
-									<nav class="navigation post-navigation" aria-label="Posts">
-										<div class="nav-links">
-											<div class="nav-previous">
-												<a href="/blog-single-details" rel="prev">
-													<span class="pbmit-post-nav-icon">
-														<i class="pbmit-base-icon-arrow-left"></i>
-														<span class="pbmit-post-nav-head">Previous Post</span>
-													</span>
-													<span class="pbmit-post-nav-wrapper">
-														<span class="pbmit-post-nav nav-title">The Role of Energy Storage in the Transition to Renewables</span> 
-													</span>
-												</a>
+										
+										<nav class="navigation post-navigation" aria-label="Posts">
+											<div class="nav-links">
+												<div class="nav-previous">
+													<a href="/blog-single-details" rel="prev">
+														<span class="pbmit-post-nav-icon">
+															<i class="pbmit-base-icon-arrow-left"></i>
+															<span class="pbmit-post-nav-head">Previous Post</span>
+														</span>
+														<span class="pbmit-post-nav-wrapper">
+															<span class="pbmit-post-nav nav-title">The Role of Energy Storage in the Transition to Renewables</span> 
+														</span>
+													</a>
+												</div>
+												<div class="nav-next">
+													<a href="#" rel="next">
+														<span class="pbmit-post-nav-icon">
+															<span class="pbmit-post-nav-head">Next Post</span>
+															<i class="pbmit-base-icon-arrow-right"></i>
+														</span>
+														<span class="pbmit-post-nav-wrapper">
+															<span class="pbmit-post-nav nav-title">Role of Architecture in Disaster Relief and Resilience</span> 
+														</span>
+													</a>
+												</div>
 											</div>
-											<div class="nav-next">
-												<a href="#" rel="next">
-													<span class="pbmit-post-nav-icon">
-														<span class="pbmit-post-nav-head">Next Post</span>
-														<i class="pbmit-base-icon-arrow-right"></i>
-													</span>
-													<span class="pbmit-post-nav-wrapper">
-														<span class="pbmit-post-nav nav-title">Role of Architecture in Disaster Relief and Resilience</span> 
-													</span>
-												</a>
-											</div>
-										</div>
-									</nav>
-								</article>
+										</nav>
+									</div>
+								</div>
 							</div> 
-						</div>
+						</article>
 					</div>
 				</div>
 			</div>
