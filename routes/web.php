@@ -162,7 +162,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'goal' => $dummyObj,
         'homePage' => $dummyObj,
         'homePageAbout' => $dummyObj,
-        'user' => $dummyObj,
+        'user' => class_exists('App\Models\User') ? \App\Models\User::first() : $dummyObj,
         'products' => class_exists('App\Models\Product') ? \App\Models\Product::orderBy('id', 'desc')->get() : [],
         'blogs' => class_exists('App\Models\Blog') ? \App\Models\Blog::orderBy('id', 'desc')->get() : [],
         'careers' => [],
@@ -195,13 +195,84 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('contacts', function() use ($defaults) { return view('backend.contacts.index', $defaults); })->name('contacts.index');
     Route::get('dealers', function() use ($defaults) { return view('backend.dealers.index', $defaults); })->name('dealers.index');
     Route::get('faqs', function() use ($defaults) { return view('backend.faqs.index', $defaults); })->name('faqs.index');
-    Route::get('gallery', function() use ($defaults) { return view('backend.gallery.index', $defaults); })->name('gallery.index');
+    Route::get('gallery', function() use ($defaults) { 
+        $defaults['galleries'] = \App\Models\Gallery::all();
+        return view('backend.gallery.index', $defaults); 
+    })->name('gallery.index');
+    Route::post('gallery', function(Illuminate\Http\Request $request) { 
+        \App\Models\Gallery::create([
+            'tab_name' => $request->tab_name,
+            'status' => $request->status ?? 'inactive',
+            'images' => []
+        ]);
+        return back()->with('success', 'Gallery tab created successfully!'); 
+    })->name('gallery.store');
+    Route::put('gallery/{id?}', function(Illuminate\Http\Request $request, $id) { 
+        \App\Models\Gallery::findOrFail($id)->update([
+            'tab_name' => $request->tab_name,
+            'status' => $request->status ?? 'inactive'
+        ]);
+        return back()->with('success', 'Gallery tab updated successfully!'); 
+    })->name('gallery.update');
+    Route::delete('gallery/{id?}', function($id) { 
+        \App\Models\Gallery::findOrFail($id)->delete();
+        return back()->with('success', 'Gallery tab deleted successfully!'); 
+    })->name('gallery.destroy');
+    Route::get('gallery/{id}', function($id) use ($defaults) { 
+        $defaults['gallery'] = \App\Models\Gallery::findOrFail($id);
+        return view('backend.gallery.show', $defaults); 
+    })->name('gallery.show');
+    Route::post('gallery/{id}/upload', function(Illuminate\Http\Request $request, $id) { 
+        $gallery = \App\Models\Gallery::findOrFail($id);
+        $images = $gallery->images ?? [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('gallery', 'public');
+                $images[] = $path;
+            }
+            $gallery->update(['images' => $images]);
+        }
+        return back()->with('success', 'Images uploaded successfully!');
+    })->name('gallery.upload');
+    Route::post('gallery/{id}/delete-image', function(Illuminate\Http\Request $request, $id) { 
+        $gallery = \App\Models\Gallery::findOrFail($id);
+        $images = $gallery->images ?? [];
+        $pathToRemove = $request->image_path;
+        $images = array_values(array_filter($images, function($img) use ($pathToRemove) {
+            return $img !== $pathToRemove;
+        }));
+        $gallery->update(['images' => $images]);
+        // Also delete from storage
+        \Illuminate\Support\Facades\Storage::disk('public')->delete($pathToRemove);
+        return back()->with('success', 'Image deleted successfully!');
+    })->name('gallery.delete_image');
     Route::get('job-applications', function() use ($defaults) { return view('backend.job-applications.index', $defaults); })->name('job-applications.index');
     Route::get('page-banners', function() use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
     Route::get('products', function() use ($defaults) { return view('backend.products.index', $defaults); })->name('products.index');
     Route::get('roles', function() use ($defaults) { return view('backend.roles.index', $defaults); })->name('roles.index');
     Route::get('users', function() use ($defaults) { return view('backend.users.index', $defaults); })->name('users.index');
     Route::get('profile', function() use ($defaults) { return view('backend.pages-profile-user', $defaults); })->name('profile');
+    Route::post('profile', function(Illuminate\Http\Request $request) {
+        $user = \App\Models\User::first();
+        if ($user) {
+            $data = $request->only(['name', 'email']);
+            if ($request->hasFile('profile_image')) {
+                $file = $request->file('profile_image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads/profile_images'), $filename);
+                $data['profile_image'] = 'uploads/profile_images/' . $filename;
+            }
+            $user->update($data);
+        }
+        return redirect()->route('admin.profile', ['tab' => 'profile'])->with('success', 'Profile updated successfully!');
+    })->name('profile.update');
+    Route::post('profile/password', function(Illuminate\Http\Request $request) {
+        $user = \App\Models\User::first();
+        if ($user && $request->filled('password')) {
+            $user->update(['password' => bcrypt($request->password)]);
+        }
+        return redirect()->route('admin.profile', ['tab' => 'password'])->with('success', 'Password changed successfully!');
+    })->name('profile.password');
     Route::get('change-password', function() use ($defaults) { return view('backend.change-password', $defaults); })->name('change-password');
 
     // Website Pages

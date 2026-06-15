@@ -32,10 +32,10 @@
                 </thead>
                 <tbody>
                     @foreach($galleries as $gallery)
-                        <tr class="clickable-row" data-url="#">
+                        <tr class="clickable-row" data-url="{{ route('admin.gallery.show', $gallery->id) }}">
                             <td>{{ $gallery->id }}</td>
                             <td>
-                                <a href="#" class="fw-medium">
+                                <a href="{{ route('admin.gallery.show', $gallery->id) }}" class="fw-medium">
                                     {{ $gallery->tab_name }}
                                 </a>
                             </td>
@@ -56,11 +56,11 @@
                                        data-id="{{ $gallery->id }}"
                                        data-name="{{ $gallery->tab_name }}"
                                        data-status="{{ $gallery->status }}"
-                                       data-url="#"
+                                       data-url="{{ route('admin.gallery.update', $gallery->id) }}"
                                        title="Edit Gallery Tab">
                                         <i class="ti ti-edit fs-4"></i>
                                     </button>
-                                    <form action="#" method="POST" id="delete-form-{{ $gallery->id }}" title="Delete Gallery Tab">
+                                    <form action="{{ route('admin.gallery.destroy', $gallery->id) }}" method="POST" id="delete-form-{{ $gallery->id }}" title="Delete Gallery Tab">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $gallery->id }}">
@@ -84,7 +84,7 @@
                     <h5 class="modal-title">Add New Gallery Tab</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route('admin.gallery.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
