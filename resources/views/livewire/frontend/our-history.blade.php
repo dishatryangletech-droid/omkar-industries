@@ -50,12 +50,10 @@
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2021 - 2022</h4>
-												<h3 class="pbmit-title">We Started Different Industries</h3>
+												<h4 class="pbmit-year">1997 - Present</h4>
+												<h3 class="pbmit-title">OMKAR INDUSTRIES</h3>
 												<div class="simple-text">
-													<p>Launched operations across multiple key sectors to establishing
-														strong foundation for industrial growth and innovation in
-														emerging markets.</p>
+													<p>Established in 1997, Omkar Industries has been strengthening wooden products makers with advanced technological machines. We stand among the leading manufacturers, suppliers, and exporters of Wood Processing Machinery, Vertical Bandsaw Machines, Plywood Making Machinery, and more.</p>
 												</div>
 											</div>
 										</div>
@@ -77,12 +75,10 @@
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2022 - 2023</h4>
-												<h3 class="pbmit-title">We have expert Team Member</h3>
+												<h4 class="pbmit-year">Ahmedabad (Gujarat)</h4>
+												<h3 class="pbmit-title">COMPANY PROFILE</h3>
 												<div class="simple-text">
-													<p>Built a skilled and experienced team of dedicated professional
-														committed to delivering reliable, high-quality, and specialized
-														industrial solution.</p>
+													<p>Based in Ahmedabad (Gujarat), Omkar Industries is a renowned manufacturer, supplier, and exporter of reliable machinery including DD Saw Machines, Plywood Glue Spreaders, and Vertical Bandsaw Machines. Engineered with top-grade materials, our machines are highly demanded for their robustness, speed, and minimal maintenance.</p>
 												</div>
 											</div>
 										</div>
@@ -104,12 +100,10 @@
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2023 - 2024</h4>
-												<h3 class="pbmit-title">Best Multiple Industries in USA</h3>
+												<h4 class="pbmit-year">100% Quality Range</h4>
+												<h3 class="pbmit-title">QUALITY ASSURANCE</h3>
 												<div class="simple-text">
-													<p>Expanded into a major U.S. markets, earning national recognition
-														for leadership, performance excellence &amp; innovation across
-														multiple industrial domains.</p>
+													<p>We are devoted to producing and serving superior quality machinery. Our experienced engineers develop products in tandem with national norms, and strict quality checkers examine all machinery prior to dispatch to ensure perfection in construction, performance, and durability.</p>
 												</div>
 											</div>
 										</div>
@@ -131,12 +125,16 @@
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2024 - 2025</h4>
-												<h3 class="pbmit-title">We Become an Leading Industrialist</h3>
+												<h4 class="pbmit-year">Our Catalog</h4>
+												<h3 class="pbmit-title">PRODUCTS WE OFFER</h3>
 												<div class="simple-text">
-													<p>Achieved industry-defining milestones, launched advanced
-														technologies &amp; established ourselves globally trusted leader
-														in industrial growth.</p>
+													<p>We specialize in a wide range of reliable and high-performance machines. Our top products include:</p>
+													<ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
+														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Plywood Glue Spreaders</li>
+														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Heavy Duty Glue Spreaders</li>
+														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Industrial Glue Spreaders</li>
+														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Glue Spreader Machines</li>
+													</ul>
 												</div>
 											</div>
 										</div>

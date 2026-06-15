@@ -9,11 +9,11 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Edit Exhibition Details</h5>
-                        <a href="#" class="btn btn-label-secondary waves-effect">
+                        <a href="{{ route('admin.website-pages.exhibitions.index') }}" class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.website-pages.exhibitions.update', $exhibition->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -93,7 +93,7 @@
 
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary me-2">Update Exhibition</button>
-                            <a href="#" class="btn btn-label-secondary">Cancel</a>
+                            <a href="{{ route('admin.website-pages.exhibitions.index') }}" class="btn btn-label-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

@@ -9,11 +9,11 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Exhibition Details</h5>
-                        <a href="#" class="btn btn-label-secondary waves-effect">
+                        <a href="{{ route('admin.website-pages.exhibitions.index') }}" class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.website-pages.exhibitions.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Title -->

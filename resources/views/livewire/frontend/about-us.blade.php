@@ -958,197 +958,35 @@
 									<div class="swiper-slider" data-autoplay="false" data-loop="false" data-dots="false"
 										data-arrows="true" data-columns="1" data-margin="30" data-effect="slide">
 										<div class="swiper-wrapper">
-											<!-- Slide1 -->
+											@foreach($testimonials as $index => $testimonial)
 											<article class="pbmit-testimonial-style-1 swiper-slide">
 												<div class="pbminfotech-post-item">
 													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
+														<p>{{ $testimonial->content }}</p>
 													</blockquote>
 													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
+														@for($i = 1; $i <= 5; $i++)
+															<i class="pbmit-base-icon-star {{ $i <= round($testimonial->rating ?? 5) ? 'pbmit-active' : '' }}"></i>
+														@endfor
 													</div>
 													<div class="pbminfotech-box-author">
 														<div class="pbmit-featured-img-wrapper">
 															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-01.jpg') }}"
-																	class="img-fluid" alt="">
+																@if($testimonial->image)
+																<img src="{{ asset('storage/' . $testimonial->image) }}" class="img-fluid" alt="{{ $testimonial->name }}">
+																@else
+																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-0' . (($index % 6) + 1) . '.jpg') }}" class="img-fluid" alt="{{ $testimonial->name }}">
+																@endif
 															</div>
 														</div>
 														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Stephen Welch</h3>
-															<div class="pbminfotech-testimonial-detail">Industrial
-																Engineer</div>
+															<h3 class="pbminfotech-box-title">{{ $testimonial->name }}</h3>
+															<div class="pbminfotech-testimonial-detail">{{ $testimonial->designation }}</div>
 														</div>
 													</div>
 												</div>
 											</article>
-											<!-- Slide2 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-02.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Anna Briggs</h3>
-															<div class="pbminfotech-testimonial-detail">Supervisor</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide3 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star"></i>
-														<i class="pbmit-base-icon-star"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-03.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Jonathan Adams</h3>
-															<div class="pbminfotech-testimonial-detail">General Manager
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide4 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-04.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Hazel Jenkins</h3>
-															<div class="pbminfotech-testimonial-detail">Satisfied Client
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide5 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-05.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Adeline Wood</h3>
-															<div class="pbminfotech-testimonial-detail">Ceo & Founder
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide6 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-06.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Naomi Violet</h3>
-															<div class="pbminfotech-testimonial-detail">Industrial
-																Engineer</div>
-														</div>
-													</div>
-												</div>
-											</article>
+											@endforeach
 										</div>
 									</div>
 								</div>

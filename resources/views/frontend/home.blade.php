@@ -1282,70 +1282,23 @@
 								</div>
 								<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="false" data-columns="3" data-margin="30" data-effect="slide">
 									<div class="swiper-wrapper">
-										<!-- Slide1 -->
+										@foreach($partners as $partner)
 										<article class="pbmit-client-style-1 swiper-slide">
 											<div class="pbmit-border-wrapper">
 												<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-													<h4 class="pbmit-hide">Client 08</h4>
+													<h4 class="pbmit-hide">Partner</h4>
 													<div class="pbmit-client-hover-img">
-														<img src="{{ asset('frontend/images/client/client-01-hover.png') }}" alt>
+														<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}" alt="Partner" style="max-height: 65px; width: auto; object-fit: contain;">
 													</div>
 													<div class="pbmit-featured-img-wrapper">
 														<div class="pbmit-featured-wrapper">
-															<img src="{{ asset('frontend/images/client/client-01.png') }}" class="img-fluid" alt="">
+															<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}" class="img-fluid" alt="Partner" style="max-height: 65px; width: auto; object-fit: contain;">
 														</div>
 													</div>
 												</div>
 											</div>
 										</article>
-										<!-- Slide2 -->
-										<article class="pbmit-client-style-1 swiper-slide">
-											<div class="pbmit-border-wrapper">
-												<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-													<h4 class="pbmit-hide">Client 08</h4>
-													<div class="pbmit-client-hover-img">
-														<img src="{{ asset('frontend/images/client/client-02-hover.png') }}" alt>
-													</div>
-													<div class="pbmit-featured-img-wrapper">
-														<div class="pbmit-featured-wrapper">
-															<img src="{{ asset('frontend/images/client/client-02.png') }}" class="img-fluid" alt="">
-														</div>
-													</div>
-												</div>
-											</div>
-										</article>
-										<!-- Slide3 -->
-										<article class="pbmit-client-style-1 swiper-slide">
-											<div class="pbmit-border-wrapper">
-												<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-													<h4 class="pbmit-hide">Client 08</h4>
-													<div class="pbmit-client-hover-img">
-														<img src="{{ asset('frontend/images/client/client-03-hover.png') }}" alt>
-													</div>
-													<div class="pbmit-featured-img-wrapper">
-														<div class="pbmit-featured-wrapper">
-															<img src="{{ asset('frontend/images/client/client-03.png') }}" class="img-fluid" alt="">
-														</div>
-													</div>
-												</div>
-											</div>
-										</article>
-										<!-- Slide4 -->
-										<article class="pbmit-client-style-1 swiper-slide">
-											<div class="pbmit-border-wrapper">
-												<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-													<h4 class="pbmit-hide">Client 08</h4>
-													<div class="pbmit-client-hover-img">
-														<img src="{{ asset('frontend/images/client/client-04-hover.png') }}" alt>
-													</div>
-													<div class="pbmit-featured-img-wrapper">
-														<div class="pbmit-featured-wrapper">
-															<img src="{{ asset('frontend/images/client/client-04.png') }}" class="img-fluid" alt="">
-														</div>
-													</div>
-												</div>
-											</div>
-										</article>
+										@endforeach
 									</div>
 								</div>
 							</div>

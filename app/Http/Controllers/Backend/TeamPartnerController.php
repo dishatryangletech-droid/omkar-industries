@@ -48,7 +48,7 @@ class TeamPartnerController extends Controller
             'status' => 'required|in:Active,Inactive',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['_token', '_method']);
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('team-partners', 'public');
@@ -56,7 +56,7 @@ class TeamPartnerController extends Controller
 
         TeamPartner::create($data);
 
-        return redirect()->route('backend.website-pages.team-partners.index', ['type' => $request->type])
+        return redirect()->route('admin.website-pages.team-partners.index', ['type' => $request->type])
             ->with('success', $request->type.' added successfully.');
     }
 
@@ -87,7 +87,7 @@ class TeamPartnerController extends Controller
             'status' => 'required|in:Active,Inactive',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['_token', '_method']);
 
         if ($request->hasFile('image')) {
             if ($teamPartner->image) {
@@ -98,7 +98,7 @@ class TeamPartnerController extends Controller
 
         $teamPartner->update($data);
 
-        return redirect()->route('backend.website-pages.team-partners.index', ['type' => $teamPartner->type])
+        return redirect()->route('admin.website-pages.team-partners.index', ['type' => $teamPartner->type])
             ->with('success', $teamPartner->type.' updated successfully.');
     }
 
@@ -114,7 +114,7 @@ class TeamPartnerController extends Controller
 
         $teamPartner->delete();
 
-        return redirect()->route('backend.website-pages.team-partners.index', ['type' => $type])
+        return redirect()->route('admin.website-pages.team-partners.index', ['type' => $type])
             ->with('success', $type.' deleted successfully.');
     }
 }

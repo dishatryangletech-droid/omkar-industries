@@ -39,92 +39,49 @@
 		<section class="section-md">
 			<div class="container">
 								<div class="row pbmit-element-posts-wrapper">
-					<!-- Card 1 -->
-					<article class="pbmit-blog-style-1 col-md-6 col-lg-4 mb-5">
-						<h4 style="text-align: center; color: #666; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-size: 18px;">CURRENT EXHIBITION</h4>
-						<div class="post-item" style="box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: #fff; border: 1px solid #eee;">
-							<div class="pbminfotech-box-content" style="padding-bottom: 30px;">
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-container-inner">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/blog/blog-01.jpg') }}" class="img-fluid" alt="" style="width: 100%;">
+					@forelse($exhibitions as $key => $exhibition)
+						@php
+							$headings = ['CURRENT EXHIBITION', 'UPCOMING EVENT', 'PAST EXHIBITION'];
+							$defaultImages = ['frontend/images/blog/blog-01.jpg', 'frontend/images/blog/blog-02.jpg', 'frontend/images/blog/blog-03.jpg'];
+							$heading = $headings[$key % 3] ?? 'EXHIBITION';
+							$defaultImage = $defaultImages[$key % 3];
+						@endphp
+						<article class="pbmit-blog-style-1 col-md-6 col-lg-4 mb-5">
+							
+							<div class="post-item" style="box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: #fff; border: 1px solid #eee; height: 100%; display: flex; flex-direction: column;">
+								<div class="pbminfotech-box-content" style="padding-bottom: 30px; display: flex; flex-direction: column; flex: 1;">
+									<div class="pbmit-featured-container">
+										<div class="pbmit-featured-container-inner">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper" style="position: relative;">
+													@php
+														$imagePath = $exhibition->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($exhibition->image) 
+															? asset('storage/' . $exhibition->image) 
+															: asset($defaultImage);
+													@endphp
+													<img src="{{ $imagePath }}" class="img-fluid" alt="{{ $exhibition->title }}" style="width: 100%; height: 260px; object-fit: cover;">
+													<span style="position: absolute; top: 15px; left: 15px; background: #ffbc13; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border-radius: 4px; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">{{ $heading }}</span>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="pbmit-content-wrapper" style="text-align: center; padding: 25px 20px;">
-									<h3 class="pbmit-post-title" style="margin-bottom: 15px; font-size: 22px; font-weight: bold;">
-										<a href="/exhibition-details" style="color: #222;">Global Manufacturing Expo 2026</a>
-									</h3>
-									<div class="pbminfotech-box-desc" style="color: #666; font-size: 15px; line-height: 1.6;">
-										A handpicked selection of the latest technological breakthroughs in the manufacturing industry. Discover the future of smart factories and resilient supply chains.
-									</div>
-									<div class="pbmit-blog-btn" style="margin-top: 25px;">
-										<a class="pbmit-btn" href="/exhibition-details" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Discover More</span></span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-
-					<!-- Card 2 -->
-					<article class="pbmit-blog-style-1 col-md-6 col-lg-4 mb-5">
-						<h4 style="text-align: center; color: #666; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-size: 18px;">UPCOMING EVENT</h4>
-						<div class="post-item" style="box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: #fff; border: 1px solid #eee;">
-							<div class="pbminfotech-box-content" style="padding-bottom: 30px;">
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-container-inner">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/blog/blog-02.jpg') }}" class="img-fluid" alt="" style="width: 100%;">
-											</div>
+									<div class="pbmit-content-wrapper" style="text-align: center; padding: 25px 20px; display: flex; flex-direction: column; flex: 1;">
+										<h3 class="pbmit-post-title" style="margin-bottom: 15px; font-size: 22px; font-weight: bold; min-height: 55px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+											<a href="{{ route('frontend.exhibition-details', $exhibition->id) }}" style="color: #222;">{{ $exhibition->title }}</a>
+										</h3>
+										<div class="pbminfotech-box-desc" style="color: #666; font-size: 15px; line-height: 1.6; min-height: 75px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+											{{ $exhibition->description }}
+										</div>
+										<div class="pbmit-blog-btn" style="margin-top: auto; padding-top: 25px;">
+											<a class="pbmit-btn" href="{{ route('frontend.exhibition-details', $exhibition->id) }}" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Discover More</span></span></a>
 										</div>
 									</div>
 								</div>
-								<div class="pbmit-content-wrapper" style="text-align: center; padding: 25px 20px;">
-									<h3 class="pbmit-post-title" style="margin-bottom: 15px; font-size: 22px; font-weight: bold;">
-										<a href="/exhibition-details" style="color: #222;">Industrial Automation Summit</a>
-									</h3>
-									<div class="pbminfotech-box-desc" style="color: #666; font-size: 15px; line-height: 1.6;">
-										Join us as we explore the seamless integration of robotics, IoT, and AI. This summit brings together the best minds in automation to share revolutionary insights.
-									</div>
-									<div class="pbmit-blog-btn" style="margin-top: 25px;">
-										<a class="pbmit-btn" href="/exhibition-details" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Discover More</span></span></a>
-									</div>
-								</div>
 							</div>
-						</div>
-					</article>
-
-					<!-- Card 3 -->
-					<article class="pbmit-blog-style-1 col-md-6 col-lg-4 mb-5">
-						<h4 style="text-align: center; color: #666; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-size: 18px;">PAST EXHIBITION</h4>
-						<div class="post-item" style="box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: #fff; border: 1px solid #eee;">
-							<div class="pbminfotech-box-content" style="padding-bottom: 30px;">
-								<div class="pbmit-featured-container">
-									<div class="pbmit-featured-container-inner">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/blog/blog-03.jpg') }}" class="img-fluid" alt="" style="width: 100%;">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="pbmit-content-wrapper" style="text-align: center; padding: 25px 20px;">
-									<h3 class="pbmit-post-title" style="margin-bottom: 15px; font-size: 22px; font-weight: bold;">
-										<a href="/exhibition-details" style="color: #222;">Green Energy Conference</a>
-									</h3>
-									<div class="pbminfotech-box-desc" style="color: #666; font-size: 15px; line-height: 1.6;">
-										A retrospective look at how energy storage and renewables are reshaping our world. Catch up on the keynotes and showcases that defined our green future.
-									</div>
-									<div class="pbmit-blog-btn" style="margin-top: 25px;">
-										<a class="pbmit-btn" href="/exhibition-details" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Discover More</span></span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
+						</article>
+					@empty
+						<p class="text-center w-100">No exhibitions available at the moment.</p>
+					@endforelse
 				</div>
 			</div>
 		</section>

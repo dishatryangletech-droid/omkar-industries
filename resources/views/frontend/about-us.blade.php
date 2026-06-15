@@ -562,108 +562,23 @@
 					<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false"
 						data-arrows="false" data-columns="6" data-margin="0" data-effect="slide">
 						<div class="swiper-wrapper">
-							<!-- Slide1 -->
+							@foreach($partners as $partner)
 							<article class="pbmit-client-style-1 swiper-slide">
 								<div class="pbmit-border-wrapper">
 									<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-										<h4 class="pbmit-hide">Client 08</h4>
+										<h4 class="pbmit-hide">Partner</h4>
 										<div class="pbmit-client-hover-img">
-											<img src="{{ asset('frontend/images/client/client-01-hover.png') }}" alt>
+											<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}" alt="Partner" style="max-height: 65px; width: auto; object-fit: contain;">
 										</div>
 										<div class="pbmit-featured-img-wrapper">
 											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/client/client-01.png') }}"
-													class="img-fluid" alt="">
+												<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}" class="img-fluid" alt="Partner" style="max-height: 65px; width: auto; object-fit: contain;">
 											</div>
 										</div>
 									</div>
 								</div>
 							</article>
-							<!-- Slide2 -->
-							<article class="pbmit-client-style-1 swiper-slide">
-								<div class="pbmit-border-wrapper">
-									<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-										<h4 class="pbmit-hide">Client 08</h4>
-										<div class="pbmit-client-hover-img">
-											<img src="{{ asset('frontend/images/client/client-02-hover.png') }}" alt>
-										</div>
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/client/client-02.png') }}"
-													class="img-fluid" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide3 -->
-							<article class="pbmit-client-style-1 swiper-slide">
-								<div class="pbmit-border-wrapper">
-									<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-										<h4 class="pbmit-hide">Client 08</h4>
-										<div class="pbmit-client-hover-img">
-											<img src="{{ asset('frontend/images/client/client-03-hover.png') }}" alt>
-										</div>
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/client/client-03.png') }}"
-													class="img-fluid" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide4 -->
-							<article class="pbmit-client-style-1 swiper-slide">
-								<div class="pbmit-border-wrapper">
-									<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-										<h4 class="pbmit-hide">Client 08</h4>
-										<div class="pbmit-client-hover-img">
-											<img src="{{ asset('frontend/images/client/client-04-hover.png') }}" alt>
-										</div>
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/client/client-04.png') }}"
-													class="img-fluid" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide5 -->
-							<article class="pbmit-client-style-1 swiper-slide">
-								<div class="pbmit-border-wrapper">
-									<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-										<h4 class="pbmit-hide">Client 08</h4>
-										<div class="pbmit-client-hover-img">
-											<img src="{{ asset('frontend/images/client/client-05-hover.png') }}" alt>
-										</div>
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/client/client-05.png') }}"
-													class="img-fluid" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide6 -->
-							<article class="pbmit-client-style-1 swiper-slide">
-								<div class="pbmit-border-wrapper">
-									<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-										<h4 class="pbmit-hide">Client 08</h4>
-										<div class="pbmit-client-hover-img">
-											<img src="{{ asset('frontend/images/client/client-06-hover.png') }}" alt>
-										</div>
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/client/client-06.png') }}"
-													class="img-fluid" alt="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -677,6 +592,7 @@
 						<h2 class="pbmit-title">Meet the team</h2>
 					</div>
 					<div class="row pbminfotech-gap-50px">
+						@foreach($teamMembers->take(2) as $index => $member)
 						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
 							<div class="pbminfotech-post-item">
 								<div class="pbminfotech-box-content">
@@ -684,39 +600,24 @@
 										<div class="pbmit-featured-wrapper pbmit-hover-img">
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/homepage-2/team/team-img-01.jpg') }}"
-														class="img-fluid" alt="">
+													@if($member->image)
+													<img src="{{ asset('storage/' . $member->image) }}" class="img-fluid" alt="{{ $member->name }}">
+													@else
+													<img src="{{ asset('frontend/images/homepage-2/team/team-img-0' . $loop->iteration . '.jpg') }}" class="img-fluid" alt="{{ $member->name }}">
+													@endif
 												</div>
 											</div>
 										</div>
 										<h3 class="pbmit-team-title">
-											<a href="/team-member-detail">Roman Amata</a>
+											<a href="/team-member-detail">{{ $member->name }}</a>
 										</h3>
-										<div class="pbminfotech-box-team-position">Technical Lead</div>
+										<div class="pbminfotech-box-team-position">{{ $member->designation_or_status }}</div>
 									</div>
 								</div>
 							</div>
 						</article>
-						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
-							<div class="pbminfotech-post-item">
-								<div class="pbminfotech-box-content">
-									<div class="pbminfotech-box-content-inner">
-										<div class="pbmit-featured-wrapper pbmit-hover-img">
-											<div class="pbmit-featured-img-wrapper">
-												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/homepage-2/team/team-img-02.jpg') }}"
-														class="img-fluid" alt="">
-												</div>
-											</div>
-										</div>
-										<h3 class="pbmit-team-title">
-											<a href="/team-member-detail">Monika Larson</a>
-										</h3>
-										<div class="pbminfotech-box-team-position">Industrial Engineer</div>
-									</div>
-								</div>
-							</div>
-						</article>
+						@endforeach
+						
 						<div class="col-md-12 col-lg-4 col-xl-6 d-flex align-items-center">
 							<div class="team-btn-bg w-100" style="margin-left: 0;">
 								<p class="pbmit-text">Our Expert will be available Mon – Fri (9 am – 6 pm) <br> Book
@@ -732,8 +633,11 @@
 							</div>
 						</div>
 					</div>
+
+					@if($teamMembers->count() > 2)
 					<!-- Second Row -->
 					<div class="row pbminfotech-gap-50px mt-4">
+						@foreach($teamMembers->skip(2)->take(4) as $index => $member)
 						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
 							<div class="pbminfotech-post-item">
 								<div class="pbminfotech-box-content">
@@ -741,80 +645,25 @@
 										<div class="pbmit-featured-wrapper pbmit-hover-img">
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/homepage-2/team/team-img-03.jpg') }}"
-														class="img-fluid" alt="">
+													@if($member->image)
+													<img src="{{ asset('storage/' . $member->image) }}" class="img-fluid" alt="{{ $member->name }}">
+													@else
+													<img src="{{ asset('frontend/images/homepage-2/team/team-img-0' . ($loop->iteration + 2) . '.jpg') }}" class="img-fluid" alt="{{ $member->name }}">
+													@endif
 												</div>
 											</div>
 										</div>
 										<h3 class="pbmit-team-title">
-											<a href="/team-member-detail">Natalie Jones</a>
+											<a href="/team-member-detail">{{ $member->name }}</a>
 										</h3>
-										<div class="pbminfotech-box-team-position">Team Leader</div>
+										<div class="pbminfotech-box-team-position">{{ $member->designation_or_status }}</div>
 									</div>
 								</div>
 							</div>
 						</article>
-						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
-							<div class="pbminfotech-post-item">
-								<div class="pbminfotech-box-content">
-									<div class="pbminfotech-box-content-inner">
-										<div class="pbmit-featured-wrapper pbmit-hover-img">
-											<div class="pbmit-featured-img-wrapper">
-												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/homepage-2/team/team-img-04.jpg') }}"
-														class="img-fluid" alt="">
-												</div>
-											</div>
-										</div>
-										<h3 class="pbmit-team-title">
-											<a href="/team-member-detail">David Green</a>
-										</h3>
-										<div class="pbminfotech-box-team-position">CEO of Induyst</div>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
-							<div class="pbminfotech-post-item">
-								<div class="pbminfotech-box-content">
-									<div class="pbminfotech-box-content-inner">
-										<div class="pbmit-featured-wrapper pbmit-hover-img">
-											<div class="pbmit-featured-img-wrapper">
-												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/homepage-2/team/team-img-05.jpg') }}"
-														class="img-fluid" alt="">
-												</div>
-											</div>
-										</div>
-										<h3 class="pbmit-team-title">
-											<a href="/team-member-detail">Micheal Wagou</a>
-										</h3>
-										<div class="pbminfotech-box-team-position">Project Manager</div>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-team-style-2 col-md-6 col-lg-4 col-xl-3">
-							<div class="pbminfotech-post-item">
-								<div class="pbminfotech-box-content">
-									<div class="pbminfotech-box-content-inner">
-										<div class="pbmit-featured-wrapper pbmit-hover-img">
-											<div class="pbmit-featured-img-wrapper">
-												<div class="pbmit-featured-wrapper">
-													<img src="{{ asset('frontend/images/homepage-2/team/team-img-06.jpg') }}"
-														class="img-fluid" alt="">
-												</div>
-											</div>
-										</div>
-										<h3 class="pbmit-team-title">
-											<a href="/team-member-detail">John Harris</a>
-										</h3>
-										<div class="pbminfotech-box-team-position">Quality In Charge</div>
-									</div>
-								</div>
-							</div>
-						</article>
+						@endforeach
 					</div>
+					@endif
 				</div>
 			</section>
 			<!-- Team End -->
@@ -836,197 +685,35 @@
 									<div class="swiper-slider" data-autoplay="false" data-loop="false" data-dots="false"
 										data-arrows="true" data-columns="1" data-margin="30" data-effect="slide">
 										<div class="swiper-wrapper">
-											<!-- Slide1 -->
+											@foreach($testimonials as $index => $testimonial)
 											<article class="pbmit-testimonial-style-1 swiper-slide">
 												<div class="pbminfotech-post-item">
 													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
+														<p>{{ $testimonial->content }}</p>
 													</blockquote>
 													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
+														@for($i = 1; $i <= 5; $i++)
+															<i class="pbmit-base-icon-star {{ $i <= round($testimonial->rating ?? 5) ? 'pbmit-active' : '' }}"></i>
+														@endfor
 													</div>
 													<div class="pbminfotech-box-author">
 														<div class="pbmit-featured-img-wrapper">
 															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-01.jpg') }}"
-																	class="img-fluid" alt="">
+																@if($testimonial->image)
+																<img src="{{ asset('storage/' . $testimonial->image) }}" class="img-fluid" alt="{{ $testimonial->name }}">
+																@else
+																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-0' . (($index % 6) + 1) . '.jpg') }}" class="img-fluid" alt="{{ $testimonial->name }}">
+																@endif
 															</div>
 														</div>
 														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Stephen Welch</h3>
-															<div class="pbminfotech-testimonial-detail">Industrial
-																Engineer</div>
+															<h3 class="pbminfotech-box-title">{{ $testimonial->name }}</h3>
+															<div class="pbminfotech-testimonial-detail">{{ $testimonial->designation }}</div>
 														</div>
 													</div>
 												</div>
 											</article>
-											<!-- Slide2 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-02.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Anna Briggs</h3>
-															<div class="pbminfotech-testimonial-detail">Supervisor</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide3 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star"></i>
-														<i class="pbmit-base-icon-star"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-03.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Jonathan Adams</h3>
-															<div class="pbminfotech-testimonial-detail">General Manager
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide4 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-04.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Hazel Jenkins</h3>
-															<div class="pbminfotech-testimonial-detail">Satisfied Client
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide5 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-05.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Adeline Wood</h3>
-															<div class="pbminfotech-testimonial-detail">Ceo & Founder
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<!-- Slide6 -->
-											<article class="pbmit-testimonial-style-1 swiper-slide">
-												<div class="pbminfotech-post-item">
-													<blockquote class="pbminfotech-testimonial-text">
-														<p>They are the best of the best, and expertly trained team
-															members who take the extra step and go the extra mile, all
-															to fulfill our dedicated promise to deliver innovative and
-															dynamic solutions to our customers to fit the needs of a
-															rapidly our needs!!</p>
-													</blockquote>
-													<div class="pbminfotech-box-star-ratings">
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-														<i class="pbmit-base-icon-star pbmit-active"></i>
-													</div>
-													<div class="pbminfotech-box-author">
-														<div class="pbmit-featured-img-wrapper">
-															<div class="pbmit-featured-wrapper">
-																<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-06.jpg') }}"
-																	class="img-fluid" alt="">
-															</div>
-														</div>
-														<div class="pbmit-auther-content">
-															<h3 class="pbminfotech-box-title">Naomi Violet</h3>
-															<div class="pbminfotech-testimonial-detail">Industrial
-																Engineer</div>
-														</div>
-													</div>
-												</div>
-											</article>
+											@endforeach
 										</div>
 									</div>
 								</div>

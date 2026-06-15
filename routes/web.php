@@ -26,7 +26,7 @@ Route::get('/clear-cache', function() {
 Route::get('/about-us', \App\Livewire\Frontend\AboutUs::class)->name('frontend.about-us');
 Route::get('/career', \App\Livewire\Frontend\Career::class)->name('frontend.career');
 Route::get('/exhibition', \App\Livewire\Frontend\Exhibition::class)->name('frontend.exhibition');
-Route::get('/exhibition-details', \App\Livewire\Frontend\ExhibitionDetails::class)->name('frontend.exhibition-details');
+Route::get('/exhibition-details/{id}', \App\Livewire\Frontend\ExhibitionDetails::class)->name('frontend.exhibition-details');
 Route::get('/certificates', \App\Livewire\Frontend\Certificates::class)->name('frontend.certificates');
 Route::get('/gallery', \App\Livewire\Frontend\Gallery::class)->name('frontend.gallery');
 Route::get('/blog-classic', \App\Livewire\Frontend\BlogClassic::class)->name('frontend.blog-classic');
@@ -72,12 +72,13 @@ Route::get('/', function () {
     $faqs = Faq::where('status', 'Active')->orderBy('sort_order', 'asc')->get();
     $faqSection = HomePage::where('section_type', 'faq_section')->first();
     $blogs = Blog::where('status', 'active')->orderBy('date', 'desc')->take(6)->get();
-    return view('frontend.home', compact('sliders', 'videoSection', 'testimonials', 'clients', 'faqs', 'faqSection', 'blogs'));
+    $partners = \Illuminate\Support\Facades\File::exists(public_path('frontend/images/partner_logos')) ? \Illuminate\Support\Facades\File::files(public_path('frontend/images/partner_logos')) : [];
+    return view('frontend.home', compact('sliders', 'videoSection', 'testimonials', 'clients', 'faqs', 'faqSection', 'blogs', 'partners'));
 })->name('frontend.index');
 
 Route::get('/about-us', function () {
     $testimonials = Testimonial::where('status', 'Active')->get();
-    $partners = TeamPartner::where('type', 'Partner')->where('status', 'Active')->get();
+    $partners = \Illuminate\Support\Facades\File::exists(public_path('frontend/images/partner_logos')) ? \Illuminate\Support\Facades\File::files(public_path('frontend/images/partner_logos')) : [];
     $teamMembers = TeamPartner::where('type', 'Member')->where('status', 'Active')->get();
     $pageBannerImage = asset('frontend/images/bg/titlebar-bg.jpg');
 
@@ -363,8 +364,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('product-section', function() use ($defaults) { return view('backend.website-pages.product-section.index', $defaults); })->name('product-section.index');
         Route::get('page-banners', function() use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
         Route::get('testimonials', function() use ($defaults) { return view('backend.website-pages.testimonials.index', $defaults); })->name('testimonials.index');
-        Route::get('exhibitions', function() use ($defaults) { return view('backend.website-pages.exhibitions.index', $defaults); })->name('exhibitions.index');
-        Route::get('team-partners', function() use ($defaults) { return view('backend.website-pages.team-partners.index', $defaults); })->name('team-partners.index');
+        Route::resource('exhibitions', \App\Http\Controllers\Backend\ExhibitionController::class);
+        Route::resource('team-partners', \App\Http\Controllers\Backend\TeamPartnerController::class);
         Route::get('brochure-page', function() use ($defaults) { return view('backend.website-pages.brochure-page', $defaults); })->name('brochure-page.index');
     });
 });

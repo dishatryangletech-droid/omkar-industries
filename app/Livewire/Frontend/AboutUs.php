@@ -8,7 +8,8 @@ class AboutUs extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.about-us')
+        $testimonials = \App\Models\Testimonial::where('status', 'Active')->get();
+        return view('livewire.frontend.about-us', compact('testimonials'))
             ->layout('components.layouts.app', ['title' => 'About Us – Induyst HTML Template']);
     }
 }

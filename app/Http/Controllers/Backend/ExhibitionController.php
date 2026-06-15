@@ -50,7 +50,7 @@ class ExhibitionController extends Controller
 
         Exhibition::create($data);
 
-        return redirect()->route('backend.website-pages.exhibitions.index')->with('success', 'Exhibition created successfully.');
+        return redirect()->route('admin.website-pages.exhibitions.index')->with('success', 'Exhibition created successfully.');
     }
 
     /**
@@ -87,7 +87,7 @@ class ExhibitionController extends Controller
 
         $exhibition->update($data);
 
-        return redirect()->route('backend.website-pages.exhibitions.index')->with('success', 'Exhibition updated successfully.');
+        return redirect()->route('admin.website-pages.exhibitions.index')->with('success', 'Exhibition updated successfully.');
     }
 
     /**
@@ -101,6 +101,6 @@ class ExhibitionController extends Controller
 
         $exhibition->delete();
 
-        return redirect()->route('backend.website-pages.exhibitions.index')->with('success', 'Exhibition deleted successfully.');
+        return redirect()->route('admin.website-pages.exhibitions.index')->with('success', 'Exhibition deleted successfully.');
     }
 }

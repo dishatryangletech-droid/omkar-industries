@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach($exhibitions as $exhibition)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.website-pages.exhibitions.edit', $exhibition->id) }}">
                             <td>
                                 <div class="d-flex align-items-center">
                                     @if($exhibition->image)
@@ -54,11 +54,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.website-pages.exhibitions.edit', $exhibition->id) }}" 
                                        class="text-warning waves-effect" title="Edit Exhibition">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $exhibition->id }}" title="Delete Exhibition">
+                                    <form action="{{ route('admin.website-pages.exhibitions.destroy', $exhibition->id) }}" method="POST" id="delete-form-{{ $exhibition->id }}" title="Delete Exhibition">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $exhibition->id }}">
@@ -89,7 +89,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add Exhibition</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.website-pages.exhibitions.create') }}';
                             }
                         }
                     ],

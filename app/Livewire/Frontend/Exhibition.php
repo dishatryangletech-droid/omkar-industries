@@ -8,6 +8,7 @@ class Exhibition extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.exhibition')->layout('layouts.app');
+        $exhibitions = \App\Models\Exhibition::where('status', 'Active')->latest()->get();
+        return view('livewire.frontend.exhibition', compact('exhibitions'))->layout('layouts.app');
     }
 }
