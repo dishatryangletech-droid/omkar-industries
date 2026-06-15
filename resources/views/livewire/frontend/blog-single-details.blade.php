@@ -42,20 +42,20 @@
 				<div class="pbmit-title-bar-content-inner">
 					<div class="pbmit-tbar">
 						<div class="pbmit-tbar-inner container">
-							<h1 class="pbmit-tbar-title"> Importance of Quality and Testing in Modern Factories</h1>
+							<h1 class="pbmit-tbar-title"> {{ $blog->title }}</h1>
 						</div>
 					</div>
 					<div class="pbmit-breadcrumb">
 						<div class="pbmit-breadcrumb-inner">
 							<span>
-								<a title="" href="#" class="home"><span>Induyst</span></a>
+								<a title="" href="/" class="home"><span>Induyst</span></a>
 							</span>
 							<span class="sep"></span>
 							<span>
-								<a title="" href="#"><span>Industrial</span></a>
+								<a title="" href="/blogs"><span>Blog</span></a>
 							</span>
 							<span class="sep"></span>
-							<span><span class="post-root post post-post current-item"> Importance of Quality and Testing in Modern Factories</span></span>
+							<span><span class="post-root post post-post current-item"> {{ $blog->title }}</span></span>
 						</div>
 					</div>
 				</div>
@@ -77,12 +77,16 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="">
+											@if($blog->image)
+											<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="{{ $blog->title }}">
+											@else
+											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="{{ $blog->title }}">
+											@endif
 										</div>
 									</div>  
 									<span class="pbmit-meta pbmit-meta-date">
-										<span class="pbmit-date">06</span>
-										<span class="pbmit-month">Feb</span>
+										<span class="pbmit-date">{{ $blog->date ? $blog->date->format('d') : '' }}</span>
+										<span class="pbmit-month">{{ $blog->date ? $blog->date->format('M') : '' }}</span>
 									</span>
 								</div>
 								
@@ -90,69 +94,22 @@
 									<div class="col-lg-12 col-md-10 mx-auto">
 										<div class="pbmit-blog-classic-inner">
 											<div class="pbmit-blog-meta pbmit-blog-meta-top">
-												<span class="pbmit-meta pbmit-meta-author">by<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
+												<span class="pbmit-meta pbmit-meta-author">by<a class="pbmit-author-link" href="#">Admin</a>
 												</span>	
 												<span class="pbmit-meta pbmit-meta-cat">
-													<a href="/blog-detail" rel="bookmark">Industrial</a>
+													<a href="/blogs" rel="bookmark">News</a>
 												</span>
 												<span class="pbmit-meta pbmit-meta-comments">
-													3 Comments
+													0 Comments
 												</span>
 											</div>
 											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">Importance of Quality and Testing in Modern Factories</a>
+												<a href="#">{{ $blog->title }}</a>
 											</h3>
 											<div class="pbmit-entry-content">
-												<p class="pbmit-firstletter">
-													When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the <span class="pbmit-blackish-color">International Standard Industrial</span>  Classification used directly through derived classifications for the official statistics of most countries worldwide classifies statistical units by the economic activity in which they mainly engage. industry then defined as set of statistical.
-												</p>
-												<p>
-													There are many industry classifications in the modern economy, which can be grouped into larger categories economic sectors. For example, the retail <u class="pbmit-global-color pbmit-underline-text">trade sector contains industries </u> such clothing stores, shoe stores, a health Companies are not limited to one sector or industry. Sector are broader than industry classifications.
-												</p>
-												<blockquote>
-													<p>“Teach self-denial and make its practice pleasure, and you can create the world a destiny more sublime that ever issued from brain of the wildest dreamer.” <cite>satisfied client</cite></p>
-												</blockquote> 
-												<div class="pbmit-block-columns row">
-													<div class="pbmit-block-column col-md-12 col-xl-6 full-width-1200">
-														<figure style="margin-bottom: 20px;">
-															<img src="{{ asset('frontend/images/blog/blog-single-img-01.webp') }}" class="img-fluid w-100" alt="">
-														</figure>
-													</div>
-													<div class="pbmit-block-column col-md-12 col-xl-6 full-width-1200">
-														<figure style="margin-bottom: 20px;">
-															<img src="{{ asset('frontend/images/blog/blog-single-img-02.webp') }}" class="img-fluid w-100" alt="">
-														</figure>
-													</div>
+												<div class="dynamic-content">
+													{!! $blog->description !!}
 												</div>
-												<h3 class="pbmit-custom-title">Industry Developments Work</h3>
-												<p>Industry classification is valuable for economic analysis because it leads largely distinct category simple relationships through these classifications, economists are able to compare companies within the same industry to evaluate.</p>
-												<ul class="list-group">
-													<li class="list-group-item">
-														<span class="pbmit-icon-list-icon">
-															<i class="pbmit-base-icon-checkbox"></i>						
-														</span>
-														<span class="pbmit-icon-list-text">Coating line a combined continuous galvanizing and color coating line can reduce stock levels.</span>
-													</li>
-													<li class="list-group-item">
-														<span class="pbmit-icon-list-icon">
-															<i class="pbmit-base-icon-checkbox"></i>					
-														</span>
-														<span class="pbmit-icon-list-text">Industrial robots can perform a variety of tasks that previously had to be performed by human.</span>
-													</li>
-													<li class="list-group-item">
-														<span class="pbmit-icon-list-icon">
-															<i class="pbmit-base-icon-checkbox"></i>						
-														</span>
-														<span class="pbmit-icon-list-text">A general term that refers to a product or a set of related products that serve a particular customer transaction.</span>
-													</li>
-													<li class="list-group-item">
-														<span class="pbmit-icon-list-icon">
-															<i class="pbmit-base-icon-checkbox"></i>					
-														</span>
-														<span class="pbmit-icon-list-text">A process line is an installation used for surface and/or thermal treatment of strips of steel, aluminum.</span>
-													</li>
-												</ul>
-												<p class="mt-4">Though associated with specific products, processes, and consumer markets, can evolve over time. Distinct industry example, barrel making may become limited to a tiny niche market and get mostly re-classified.</p>
 											</div>
 											<div class="pbmit-blog-meta-bottom">
 												<div class="pbmit-blog-meta-bottom-left">
@@ -193,28 +150,32 @@
 										
 										<nav class="navigation post-navigation" aria-label="Posts">
 											<div class="nav-links">
+												@if($previous)
 												<div class="nav-previous">
-													<a href="/blog-detail" rel="prev">
+													<a href="{{ route('frontend.blog-single-details', $previous->id) }}" rel="prev">
 														<span class="pbmit-post-nav-icon">
 															<i class="pbmit-base-icon-arrow-left"></i>
 															<span class="pbmit-post-nav-head">Previous Post</span>
 														</span>
 														<span class="pbmit-post-nav-wrapper">
-															<span class="pbmit-post-nav nav-title">The Role of Energy Storage in the Transition to Renewables</span> 
+															<span class="pbmit-post-nav nav-title">{{ $previous->title }}</span> 
 														</span>
 													</a>
 												</div>
+												@endif
+												@if($next)
 												<div class="nav-next">
-													<a href="#" rel="next">
+													<a href="{{ route('frontend.blog-single-details', $next->id) }}" rel="next">
 														<span class="pbmit-post-nav-icon">
 															<span class="pbmit-post-nav-head">Next Post</span>
 															<i class="pbmit-base-icon-arrow-right"></i>
 														</span>
 														<span class="pbmit-post-nav-wrapper">
-															<span class="pbmit-post-nav nav-title">Role of Architecture in Disaster Relief and Resilience</span> 
+															<span class="pbmit-post-nav nav-title">{{ $next->title }}</span> 
 														</span>
 													</a>
 												</div>
+												@endif
 											</div>
 										</nav>
 									</div>
@@ -269,4 +230,88 @@
 	<!-- Form Validator -->
 	
 	<!-- Scripts JS -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// Find all paragraphs in entry content
+			var paragraphs = document.querySelectorAll('.dynamic-content p');
+			var imgGroups = [];
+			var currentGroup = [];
+
+			paragraphs.forEach(function(p) {
+				// Check if paragraph contains ONLY an image (ignoring whitespace)
+				var html = p.innerHTML.trim();
+				var hasOnlyImg = html.startsWith('<img') && html.endsWith('>') && p.querySelectorAll('img').length === 1;
+				
+				if (hasOnlyImg) {
+					currentGroup.push(p);
+				} else {
+					if (currentGroup.length > 0) {
+						imgGroups.push(currentGroup);
+						currentGroup = [];
+					}
+				}
+			});
+
+			if (currentGroup.length > 0) {
+				imgGroups.push(currentGroup);
+			}
+
+			// For each group of consecutive images, format them into a row
+			imgGroups.forEach(function(group) {
+				if (group.length > 1) { // Only do this if there are 2 or more consecutive images
+					var row = document.createElement('div');
+					row.className = 'pbmit-block-columns row';
+					
+					var colClass = group.length === 2 ? 'col-xl-6' : 'col-xl-4'; // Handle 2 or 3 images
+					
+					group.forEach(function(p) {
+						var img = p.querySelector('img');
+						img.classList.add('img-fluid', 'w-100');
+						
+						var col = document.createElement('div');
+						col.className = 'pbmit-block-column col-md-12 ' + colClass + ' full-width-1200';
+						
+						var figure = document.createElement('figure');
+						figure.style.marginBottom = '20px';
+						
+						figure.appendChild(img);
+						col.appendChild(figure);
+						row.appendChild(col);
+					});
+					
+					// Insert the new row before the first <p>
+					group[0].parentNode.insertBefore(row, group[0]);
+					
+					// Remove the old <p>s
+					group.forEach(function(p) {
+						p.parentNode.removeChild(p);
+					});
+				}
+			});
+
+			// Format standard lists into theme's checklist style
+			var uls = document.querySelectorAll('.dynamic-content ul:not(.list-group)');
+			uls.forEach(function(ul) {
+				ul.classList.add('list-group');
+				var lis = ul.querySelectorAll('li');
+				lis.forEach(function(li) {
+					li.classList.add('list-group-item');
+					var text = li.innerHTML;
+					li.innerHTML = `
+						<span class="pbmit-icon-list-icon">
+							<i class="pbmit-base-icon-checkbox"></i>						
+						</span>
+						<span class="pbmit-icon-list-text">${text}</span>
+					`;
+				});
+			});
+
+			// Format blockquotes
+			var blockquotes = document.querySelectorAll('.dynamic-content blockquote');
+			blockquotes.forEach(function(bq) {
+				var text = bq.innerText || bq.textContent;
+				bq.innerHTML = '<p>“' + text.replace(/^"|"$/g, '').trim() + '”</p>';
+			});
+		});
+	</script>
 </div>

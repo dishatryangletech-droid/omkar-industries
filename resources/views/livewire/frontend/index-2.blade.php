@@ -1237,7 +1237,7 @@
 					<div class="swiper-slider" data-autoplay="false" data-loop="false" data-dots="false"
 						data-arrows="false" data-columns="3" data-margin="30" data-effect="slide">
 						<div class="swiper-wrapper">
-							<!-- Slide1 -->
+							@foreach($blogs as $blog)
 							<article class="pbmit-blog-style-1 swiper-slide">
 								<div class="post-item">
 									<div class="pbminfotech-box-content">
@@ -1245,44 +1245,44 @@
 											<div class="pbmit-featured-container-inner">
 												<div class="pbmit-featured-img-wrapper">
 													<div class="pbmit-featured-wrapper">
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-01.jpg') }}"
-															class="img-fluid" alt="">
+														@if($blog->image)
+														<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid" alt="{{ $blog->title }}">
+														@else
+														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-01.jpg') }}" class="img-fluid" alt="{{ $blog->title }}">
+														@endif
 													</div>
-												</div>
-												<a class="pbmit-link" href="/blog-detail"></a>
+																								<a class="pbmit-link" href="{{ route('frontend.blog-single-details', $blog->id) }}"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
-													<span class="pbmit-date">06</span>
-													<span class="pbmit-month">Feb</span>
+													<span class="pbmit-date">{{ $blog->date ? $blog->date->format('d') : '' }}</span>
+													<span class="pbmit-month">{{ $blog->date ? $blog->date->format('M') : '' }}</span>
 												</span>
 											</div>
-											<div class="pbmit-meta-wraper">
+											<div class= "pbmit-meta-wraper">
 												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Alex joy</span>
+													<span class="pbmit-post-author">Admin</span>
 												</div>
 												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
 													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">Logistics</a>
+														<a href="/blog-classic" rel="category tag">News</a>
 													</span>
 												</div>
 												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">3<span
+													<span class="pbmit-meta-comments">0<span
 															class="pbmit-comment-text">Comment</span></span>
 												</div>
 											</div>
 										</div>
 										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">The Future of Technology in Urban
-													Development</a>
+											<h3 class="pbmit-post-title" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 60px;">
+												<a href="{{ route('frontend.blog-single-details', $blog->id) }}">{{ $blog->title }}</a>
 											</h3>
-											<div class="pbminfotech-box-desc">
-												When evaluating a single group or company, its dominant source of
-												revenue is typically used&hellip;
+											<div class="pbminfotech-box-desc" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+												{!! Str::limit(strip_tags($blog->description), 100) !!}
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-detail">
+												<a class="pbmit-button-inner" href="{{ route('frontend.blog-single-details', $blog->id) }}">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>
@@ -1293,286 +1293,7 @@
 									</div>
 								</div>
 							</article>
-							<!-- Slide2 -->
-							<article class="pbmit-blog-style-1 swiper-slide">
-								<div class="post-item">
-									<div class="pbminfotech-box-content">
-										<div class="pbmit-featured-container">
-											<div class="pbmit-featured-container-inner">
-												<div class="pbmit-featured-img-wrapper">
-													<div class="pbmit-featured-wrapper">
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-02.jpg') }}"
-															class="img-fluid" alt="">
-													</div>
-												</div>
-												<a class="pbmit-link" href="/blog-detail"></a>
-											</div>
-											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
-												<span class="pbmit-post-date">
-													<span class="pbmit-date">06</span>
-													<span class="pbmit-month">Feb</span>
-												</span>
-											</div>
-											<div class="pbmit-meta-wraper">
-												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Alex joy</span>
-												</div>
-												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-category">
-														<a href="/blog-detail" rel="category tag">Engineering</a>
-													</span>
-												</div>
-												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">3<span
-															class="pbmit-comment-text">Comment</span></span>
-												</div>
-											</div>
-										</div>
-										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">U.S. fund managers trim bank stocks on
-													profit worries</a>
-											</h3>
-											<div class="pbminfotech-box-desc">
-												When evaluating a single group or company, its dominant source of
-												revenue is typically used&hellip;
-											</div>
-											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-detail">
-													<span class="pbmit-button-text">Read More</span>
-													<span class="pbmit-button-icon">
-														<i class="pbmit-base-icon-right-arrow"></i>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide3 -->
-							<article class="pbmit-blog-style-1 swiper-slide">
-								<div class="post-item">
-									<div class="pbminfotech-box-content">
-										<div class="pbmit-featured-container">
-											<div class="pbmit-featured-container-inner">
-												<div class="pbmit-featured-img-wrapper">
-													<div class="pbmit-featured-wrapper">
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-03.jpg') }}"
-															class="img-fluid" alt="">
-													</div>
-												</div>
-												<a class="pbmit-link" href="/blog-detail"></a>
-											</div>
-											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
-												<span class="pbmit-post-date">
-													<span class="pbmit-date">06</span>
-													<span class="pbmit-month">Feb</span>
-												</span>
-											</div>
-											<div class="pbmit-meta-wraper">
-												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Alex joy</span>
-												</div>
-												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">Construction</a>
-													</span>
-												</div>
-												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">3<span
-															class="pbmit-comment-text">Comment</span></span>
-												</div>
-											</div>
-										</div>
-										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">Role of Architecture in Disaster Relief
-													and Resilience</a>
-											</h3>
-											<div class="pbminfotech-box-desc">
-												When evaluating a single group or company, its dominant source of
-												revenue is typically used&hellip;
-											</div>
-											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-detail">
-													<span class="pbmit-button-text">Read More</span>
-													<span class="pbmit-button-icon">
-														<i class="pbmit-base-icon-right-arrow"></i>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide4 -->
-							<article class="pbmit-blog-style-1 swiper-slide">
-								<div class="post-item">
-									<div class="pbminfotech-box-content">
-										<div class="pbmit-featured-container">
-											<div class="pbmit-featured-container-inner">
-												<div class="pbmit-featured-img-wrapper">
-													<div class="pbmit-featured-wrapper">
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-04.jpg') }}"
-															class="img-fluid" alt="">
-													</div>
-												</div>
-												<a class="pbmit-link" href="/blog-detail"></a>
-											</div>
-											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
-												<span class="pbmit-post-date">
-													<span class="pbmit-date">06</span>
-													<span class="pbmit-month">Feb</span>
-												</span>
-											</div>
-											<div class="pbmit-meta-wraper">
-												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Alex joy</span>
-												</div>
-												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">Industrial</a>
-													</span>
-												</div>
-												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">3<span
-															class="pbmit-comment-text">Comment</span></span>
-												</div>
-											</div>
-										</div>
-										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">Importance of Quality and Testing in
-													Modern Factories</a>
-											</h3>
-											<div class="pbminfotech-box-desc">
-												When evaluating a single group or company, its dominant source of
-												revenue is typically used&hellip;
-											</div>
-											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-detail">
-													<span class="pbmit-button-text">Read More</span>
-													<span class="pbmit-button-icon">
-														<i class="pbmit-base-icon-right-arrow"></i>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide5 -->
-							<article class="pbmit-blog-style-1 swiper-slide">
-								<div class="post-item">
-									<div class="pbminfotech-box-content">
-										<div class="pbmit-featured-container">
-											<div class="pbmit-featured-container-inner">
-												<div class="pbmit-featured-img-wrapper">
-													<div class="pbmit-featured-wrapper">
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-05.jpg') }}"
-															class="img-fluid" alt="">
-													</div>
-												</div>
-												<a class="pbmit-link" href="/blog-detail"></a>
-											</div>
-											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
-												<span class="pbmit-post-date">
-													<span class="pbmit-date">06</span>
-													<span class="pbmit-month">Feb</span>
-												</span>
-											</div>
-											<div class="pbmit-meta-wraper">
-												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Alex joy</span>
-												</div>
-												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">Chemical</a>
-													</span>
-												</div>
-												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">3<span
-															class="pbmit-comment-text">Comment</span></span>
-												</div>
-											</div>
-										</div>
-										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">The Role of Energy Storage in the
-													Transition to Renewables</a>
-											</h3>
-											<div class="pbminfotech-box-desc">
-												When evaluating a single group or company, its dominant source of
-												revenue is typically used&hellip;
-											</div>
-											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-detail">
-													<span class="pbmit-button-text">Read More</span>
-													<span class="pbmit-button-icon">
-														<i class="pbmit-base-icon-right-arrow"></i>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!-- Slide6 -->
-							<article class="pbmit-blog-style-1 swiper-slide">
-								<div class="post-item">
-									<div class="pbminfotech-box-content">
-										<div class="pbmit-featured-container">
-											<div class="pbmit-featured-container-inner">
-												<div class="pbmit-featured-img-wrapper">
-													<div class="pbmit-featured-wrapper">
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-06.jpg') }}"
-															class="img-fluid" alt="">
-													</div>
-												</div>
-												<a class="pbmit-link" href="/blog-detail"></a>
-											</div>
-											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
-												<span class="pbmit-post-date">
-													<span class="pbmit-date">06</span>
-													<span class="pbmit-month">Feb</span>
-												</span>
-											</div>
-											<div class="pbmit-meta-wraper">
-												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Alex joy</span>
-												</div>
-												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">Engineering</a>
-													</span>
-												</div>
-												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">3<span
-															class="pbmit-comment-text">Comment</span></span>
-												</div>
-											</div>
-										</div>
-										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title">
-												<a href="/blog-detail">Automation & Human-Robot Collab: The New
-													Workforce</a>
-											</h3>
-											<div class="pbminfotech-box-desc">
-												When evaluating a single group or company, its dominant source of
-												revenue is typically used&hellip;
-											</div>
-											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-detail">
-													<span class="pbmit-button-text">Read More</span>
-													<span class="pbmit-button-icon">
-														<i class="pbmit-base-icon-right-arrow"></i>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
+							@endforeach
 						</div>
 					</div>
 				</div>

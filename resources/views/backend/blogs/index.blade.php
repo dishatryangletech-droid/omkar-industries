@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     @foreach($blogs as $blog)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.blogs.edit', $blog->id) }}">
                             <td>{{ $blog->id }}</td>
                             <td>
                                 @if($blog->image)
@@ -60,7 +60,7 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.blogs.edit', $blog->id) }}" 
                                        class="text-warning waves-effect" title="Edit Blog">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
@@ -95,7 +95,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New Blog</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.blogs.create') }}';
                             }
                         }
                     ],

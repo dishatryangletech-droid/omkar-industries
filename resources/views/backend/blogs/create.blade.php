@@ -50,7 +50,9 @@
                                 <label class="form-label" for="image">Featured Image</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
                                     name="image" accept="image/*">
-                                        <small class="text-primary d-block fw-medium mt-1" style="font-size: 0.75rem;"><i class="ti ti-info-circle me-1"></i>Allowed: JPG, JPEG, PNG, WEBP. Recommended size: 1024x1024px.</small>
+                                <small class="text-primary d-block fw-medium mt-1" style="font-size: 0.75rem;"><i
+                                        class="ti ti-info-circle me-1"></i>Allowed: JPG, JPEG, PNG, WEBP. Recommended size:
+                                    1024x1024px.</small>
                                 @error('image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -99,7 +101,7 @@
 
 
                             <!-- Description -->
-                            <div class="col-6 mb-4">
+                            <div class="col-12 mb-4">
                                 <label class="form-label" for="description">Blog Description</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror ckeditor"
                                     id="description" name="description" rows="5"
@@ -116,20 +118,27 @@
                                 <h6 class="fw-bold mb-3"><i class="ti ti-search me-1"></i> SEO Metadata</h6>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label" for="slug">Blog Slug <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" required placeholder="blog-url-slug">
+                                        <label class="form-label" for="slug">Blog Slug <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control @error('slug') is-invalid @enderror"
+                                            id="slug" name="slug" value="{{ old('slug') }}" required
+                                            placeholder="blog-url-slug">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label" for="meta_title">Meta Title</label>
-                                        <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ old('meta_title') }}" placeholder="Enter meta title">
+                                        <input type="text" class="form-control" id="meta_title" name="meta_title"
+                                            value="{{ old('meta_title') }}" placeholder="Enter meta title">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="meta_description">Meta Description</label>
-                                        <textarea class="form-control" id="meta_description" name="meta_description" rows="3" placeholder="Enter meta description">{{ old('meta_description') }}</textarea>
+                                        <textarea class="form-control" id="meta_description" name="meta_description"
+                                            rows="3"
+                                            placeholder="Enter meta description">{{ old('meta_description') }}</textarea>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label" for="meta_keywords">Meta Keywords</label>
-                                        <textarea class="form-control" id="meta_keywords" name="meta_keywords" rows="2" placeholder="Enter keywords separated by commas">{{ old('meta_keywords') }}</textarea>
+                                        <textarea class="form-control" id="meta_keywords" name="meta_keywords" rows="2"
+                                            placeholder="Enter keywords separated by commas">{{ old('meta_keywords') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +149,8 @@
                             <div class="col-md-3">
                                 <div class="form-check form-switch">
                                     <input type="hidden" name="status" value="Inactive">
-                                    <input type="checkbox" class="form-check-input" value="Active" id="status" name="status" required checked>
+                                    <input type="checkbox" class="form-check-input" value="Active" id="status" name="status"
+                                        required checked>
                                     <label class="form-check-label fw-medium" for="status">Active Status</label>
                                 </div>
                             </div>

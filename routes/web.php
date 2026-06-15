@@ -35,7 +35,7 @@ Route::get('/blog-m-grid-col-2', \App\Livewire\Frontend\BlogMGridCol2::class)->n
 Route::get('/blog-m-grid-col-3', \App\Livewire\Frontend\BlogMGridCol3::class)->name('frontend.blog-m-grid-col-3');
 Route::get('/blog-m-grid-col-4', \App\Livewire\Frontend\BlogMGridCol4::class)->name('frontend.blog-m-grid-col-4');
 Route::get('/blog-masonry-wide', \App\Livewire\Frontend\BlogMasonryWide::class)->name('frontend.blog-masonry-wide');
-Route::get('/blog-detail', \App\Livewire\Frontend\BlogSingleDetails::class)->name('frontend.blog-single-details');
+Route::get('/blog-detail/{id}', \App\Livewire\Frontend\BlogSingleDetails::class)->name('frontend.blog-single-details');
 Route::get('/blog-sortable-grid-view', \App\Livewire\Frontend\BlogSortableGridView::class)->name('frontend.blog-sortable-grid-view');
 Route::get('/contact-us', \App\Livewire\Frontend\ContactUs::class)->name('frontend.contact-us');
 Route::get('/faq', \App\Livewire\Frontend\Faq::class)->name('frontend.faq');
@@ -190,6 +190,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
     ];
 
     Route::get('blogs', function() use ($defaults) { return view('backend.blogs.index', $defaults); })->name('blogs.index');
+    Route::get('blogs/create', function() use ($defaults) { return view('backend.blogs.create', $defaults); })->name('blogs.create');
+    Route::get('blogs/{id}/edit', function($id) use ($defaults) { 
+        $defaults['blog'] = class_exists('App\Models\Blog') ? \App\Models\Blog::find($id) : null;
+        return view('backend.blogs.edit', $defaults); 
+    })->name('blogs.edit');
+    Route::put('blogs/{id}', function(Illuminate\Http\Request $request, $id) {
+        if (class_exists('App\Models\Blog')) {
+            $blog = \App\Models\Blog::find($id);
+            if ($blog) {
+                $data = $request->except(['_token', '_method', 'image']);
+                if ($request->hasFile('image')) {
+                    $path = $request->file('image')->store('blogs', 'public');
+                    $data['image'] = $path;
+                }
+                $blog->update($data);
+            }
+        }
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully!');
+    })->name('blogs.update');
     Route::get('careers', function() use ($defaults) { return view('backend.careers.index', $defaults); })->name('careers.index');
     Route::get('clients', function() use ($defaults) { return view('backend.clients.index', $defaults); })->name('clients.index');
     Route::get('contacts', function() use ($defaults) { return view('backend.contacts.index', $defaults); })->name('contacts.index');
