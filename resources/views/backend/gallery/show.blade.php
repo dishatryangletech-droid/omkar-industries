@@ -28,7 +28,7 @@
 @endpush
 
 @section('content')
-    <form action="#" method="POST" enctype="multipart/form-data" id="galleryUploadForm">
+    <form action="{{ route('admin.gallery.upload', $gallery->id) }}" method="POST" enctype="multipart/form-data" id="galleryUploadForm">
         @csrf
         
         <div class="d-flex align-items-center justify-content-between py-3 mb-4">
@@ -116,7 +116,7 @@
                                             <div class="delete-overlay">
                                                 <button type="button" class="btn btn-icon btn-sm btn-danger shadow-sm delete-img-btn" 
                                                         data-path="{{ $image }}" 
-                                                        data-url="#">
+                                                        data-url="{{ route('admin.gallery.delete_image', $gallery->id) }}">
                                                     <i class="ti ti-trash"></i>
                                                 </button>
                                             </div>
@@ -140,7 +140,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="ti ti-check me-1"></i> Save Changes
                             </button>
-                            <a href="#" class="btn btn-label-secondary">
+                            <a href="{{ route('admin.gallery.index') }}" class="btn btn-label-secondary">
                                 <i class="ti ti-x me-1"></i> Cancel
                             </a>
                         </div>

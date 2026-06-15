@@ -96,7 +96,7 @@
                             </div>
                         @endif
 
-                        <form id="formEditProfile" action="#" method="POST" enctype="multipart/form-data">
+                        <form id="formEditProfile" action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="mb-3 col-md-6">
@@ -140,7 +140,7 @@
                             </div>
                         @endif
 
-                        <form id="formChangePassword" action="#" method="POST">
+                        <form id="formChangePassword" action="{{ route('admin.profile.password') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="mb-3 col-md-12 form-password-toggle">

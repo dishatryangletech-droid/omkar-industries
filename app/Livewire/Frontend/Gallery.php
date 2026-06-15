@@ -8,7 +8,8 @@ class Gallery extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.gallery')
-            ->layout('components.layouts.app', ['title' => 'Gallery – Induyst HTML Template']);
+        $galleries = \App\Models\Gallery::where('status', 'active')->get();
+        return view('livewire.frontend.gallery', compact('galleries'))
+            ->layout('components.layouts.app', ['title' => 'Gallery – Omkar Industries']);
     }
 }

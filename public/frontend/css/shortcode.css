@@ -2951,6 +2951,7 @@ aside.widget.widget-tag-cloud a,
 .pbmit-slider-two .pbmit-slider-content{
 	position: relative;
 	padding-top: 120px;
+	padding-bottom: 0px;
 	overflow: hidden;
 }
 .pbmit-slider-two .pbmit-slider-title{

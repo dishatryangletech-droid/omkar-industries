@@ -311,7 +311,7 @@
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
                                         @php
-                                            $userProfileImg = auth()->user() ? auth()->user()->profile_image : null;
+                                            $userProfileImg = (isset($user) && $user) ? $user->profile_image : null;
                                             $headerImgPath = $userProfileImg 
                                                 ? (str_starts_with($userProfileImg, 'uploads/') ? asset($userProfileImg) : asset('storage/' . $userProfileImg))
                                                 : asset('assets/backend/img/avatars/1.png');
@@ -332,7 +332,7 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span
-                                                        class="fw-medium d-block">{{ auth()->user() ? auth()->user()->name : 'Admin' }}</span>
+                                                        class="fw-medium d-block">{{ (isset($user) && $user) ? $user->name : 'Admin' }}</span>
                                                     <small class="text-muted">Administrator</small>
                                                 </div>
                                             </div>
