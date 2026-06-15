@@ -3170,7 +3170,7 @@ aside.widget.widget-tag-cloud a,
 	letter-spacing: 0.2px;
 }
 .pbmit-sortable-list a.pbmit-selected {
-	background: var(--pbmit-blackish-color);
+	background: var(--pbmit-global-color);
 	color: var(--pbmit-white-color);
 }
 
