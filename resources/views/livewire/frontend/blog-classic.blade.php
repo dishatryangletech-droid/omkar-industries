@@ -44,7 +44,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-01b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -60,21 +60,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Logistics</a>
+											<a href="/blog-detail" rel="bookmark">Logistics</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">The Future of Technology in Urban Development</a>
+										<a href="/blog-detail">The Future of Technology in Urban Development</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -90,7 +90,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-02b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -106,21 +106,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Engineering</a>
+											<a href="/blog-detail" rel="bookmark">Engineering</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">U.S. fund managers trim bank stocks on profit worries</a>
+										<a href="/blog-detail">U.S. fund managers trim bank stocks on profit worries</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -136,7 +136,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-03b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -152,21 +152,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Construction</a>
+											<a href="/blog-detail" rel="bookmark">Construction</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Role of Architecture in Disaster Relief and Resilience</a>
+										<a href="/blog-detail">Role of Architecture in Disaster Relief and Resilience</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -182,7 +182,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -198,21 +198,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Industrial</a>
+											<a href="/blog-detail" rel="bookmark">Industrial</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Importance of Quality and Testing in Modern Factories</a>
+										<a href="/blog-detail">Importance of Quality and Testing in Modern Factories</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -228,7 +228,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-05b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -244,21 +244,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Chemical</a>
+											<a href="/blog-detail" rel="bookmark">Chemical</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">The Role of Energy Storage in the Transition to Renewables</a>
+										<a href="/blog-detail">The Role of Energy Storage in the Transition to Renewables</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -274,7 +274,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-06b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -290,21 +290,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Engineering</a>
+											<a href="/blog-detail" rel="bookmark">Engineering</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Automation & Human-Robot Collab: The New Workforce</a>
+										<a href="/blog-detail">Automation & Human-Robot Collab: The New Workforce</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -320,7 +320,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-07b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -336,21 +336,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Manufacturing</a>
+											<a href="/blog-detail" rel="bookmark">Manufacturing</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Importance of Quality Control & Testing in Modern Factories</a>
+										<a href="/blog-detail">Importance of Quality Control & Testing in Modern Factories</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -366,7 +366,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-08b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -382,21 +382,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Logistics</a>
+											<a href="/blog-detail" rel="bookmark">Logistics</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">How AI and Automation Are Transforming the Industry</a>
+										<a href="/blog-detail">How AI and Automation Are Transforming the Industry</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -412,7 +412,7 @@
 								<div class="pbmit-img-wrapper">
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
-											<a href="/blog-single-details">
+											<a href="/blog-detail">
 												<img src="{{ asset('frontend/images/blog/blog-09b.jpg') }}" class="img-fluid" alt="">
 											</a>
 										</div>
@@ -428,21 +428,21 @@
 											<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 										</span>	
 										<span class="pbmit-meta pbmit-meta-cat">
-											<a href="/blog-single-details" rel="bookmark">Construction</a>
+											<a href="/blog-detail" rel="bookmark">Construction</a>
 										</span>
 										<span class="pbmit-meta pbmit-meta-comments">
 											3 Comments
 										</span>
 									</div>
 									<h3 class="pbmit-post-title">
-										<a href="/blog-single-details">Resilient Infrastructure: Building for Climate Change</a>
+										<a href="/blog-detail">Resilient Infrastructure: Building for Climate Change</a>
 									</h3>
 									<div class="pbmit-entry-content">
 										<div class="pbmit-entry-content">
 											<p>When evaluating a single group or company, its dominant source of revenue is typically used by industry class to classify within a specific industry. For example the International Standard Industrial…</p>
 										</div>
 										<div class="pbmit-read-more-link">
-											<a href="/blog-single-details" class="pbmit-btn">
+											<a href="/blog-detail" class="pbmit-btn">
 												<span class="pbmit-button-content-wrapper">
 													<span class="pbmit-button-icon">
 														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -544,41 +544,41 @@
 								<h2 class="widget-title">Recent Post</h2>
 								<ul class="recent-post-list">
 									<li class="recent-post-list-li"> 
-										<a class="recent-post-thum" href="/blog-single-details">
+										<a class="recent-post-thum" href="/blog-detail">
 											<img src="{{ asset('frontend/images/recent-post/blog-img-01.webp') }}" class="img-fluid" alt="">
 										</a>
 										<div class="pbmit-rpw-content">
 											<span class="pbmit-rpw-title">
-												<a href="/blog-single-details">The Future of Technology in Urban Development</a>
+												<a href="/blog-detail">The Future of Technology in Urban Development</a>
 											</span>
 											<span class="pbmit-rpw-date">
-												<a href="/blog-single-details">06 Feb 2025</a>
+												<a href="/blog-detail">06 Feb 2025</a>
 											</span>
 										</div> 
 									</li>
 									<li class="recent-post-list-li"> 
-										<a class="recent-post-thum" href="/blog-single-details">
+										<a class="recent-post-thum" href="/blog-detail">
 											<img src="{{ asset('frontend/images/recent-post/blog-img-02.webp') }}" class="img-fluid" alt="">
 										</a>
 										<div class="pbmit-rpw-content">
 											<span class="pbmit-rpw-title">
-												<a href="/blog-single-details">U.S. fund managers trim bank stocks on profit worries</a>
+												<a href="/blog-detail">U.S. fund managers trim bank stocks on profit worries</a>
 											</span>
 											<span class="pbmit-rpw-date">
-												<a href="/blog-single-details">06 Feb 2025</a>
+												<a href="/blog-detail">06 Feb 2025</a>
 											</span>
 										</div> 
 									</li>
 									<li class="recent-post-list-li"> 
-										<a class="recent-post-thum" href="/blog-single-details">
+										<a class="recent-post-thum" href="/blog-detail">
 											<img src="{{ asset('frontend/images/recent-post/blog-img-03.webp') }}" class="img-fluid" alt="">
 										</a>
 										<div class="pbmit-rpw-content">
 											<span class="pbmit-rpw-title">
-												<a href="/blog-single-details">Role of Architecture in Disaster Relief and Resilience</a>
+												<a href="/blog-detail">Role of Architecture in Disaster Relief and Resilience</a>
 											</span>
 											<span class="pbmit-rpw-date">
-												<a href="/blog-single-details">06 Feb 2025</a>
+												<a href="/blog-detail">06 Feb 2025</a>
 											</span>
 										</div> 
 									</li>

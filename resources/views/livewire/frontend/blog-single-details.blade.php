@@ -93,14 +93,14 @@
 												<span class="pbmit-meta pbmit-meta-author">by<a class="pbmit-author-link" href="/blog-classic">Alex joy</a>
 												</span>	
 												<span class="pbmit-meta pbmit-meta-cat">
-													<a href="/blog-single-details" rel="bookmark">Industrial</a>
+													<a href="/blog-detail" rel="bookmark">Industrial</a>
 												</span>
 												<span class="pbmit-meta pbmit-meta-comments">
 													3 Comments
 												</span>
 											</div>
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">Importance of Quality and Testing in Modern Factories</a>
+												<a href="/blog-detail">Importance of Quality and Testing in Modern Factories</a>
 											</h3>
 											<div class="pbmit-entry-content">
 												<p class="pbmit-firstletter">
@@ -194,7 +194,7 @@
 										<nav class="navigation post-navigation" aria-label="Posts">
 											<div class="nav-links">
 												<div class="nav-previous">
-													<a href="/blog-single-details" rel="prev">
+													<a href="/blog-detail" rel="prev">
 														<span class="pbmit-post-nav-icon">
 															<i class="pbmit-base-icon-arrow-left"></i>
 															<span class="pbmit-post-nav-head">Previous Post</span>

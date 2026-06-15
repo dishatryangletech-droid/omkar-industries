@@ -409,17 +409,7 @@
 													experience serving industries such as automotive.
 												</div>
 											</div>
-											<div class="d-flex align-items-center pbmit-buttons">
-												<a href="/about-us" class="pbmit-btn">
-													<span class="pbmit-button-content-wrapper">
-														<span class="pbmit-button-icon">
-															<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-														</span>
-														<span class="pbmit-button-text">Discover More</span>
-													</span>
-												</a>
-												
-											</div>
+
 										</div>
 									</div>
 									<div class="col-md-6 right-col">
@@ -519,11 +509,16 @@
 											</span>
 											<span class="pbmit-icon-list-text">Guarantees to Count On</span>
 										</li>
+										
 										<li class="list-group-item">
-											<span class="pbmit-icon-list-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
-											</span>
-											<span class="pbmit-icon-list-text">Eco-Friendly Material</span>
+											<a href="/about-us" class="pbmit-btn pbmit-btn-sm" style="margin-top: 0;">
+												<span class="pbmit-button-content-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+													</span>
+													<span class="pbmit-button-text">Discover More</span>
+												</span>
+											</a>
 										</li>
 									</ul>
 								</div>
@@ -1254,7 +1249,7 @@
 															class="img-fluid" alt="">
 													</div>
 												</div>
-												<a class="pbmit-link" href="/blog-single-details"></a>
+												<a class="pbmit-link" href="/blog-detail"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
@@ -1279,7 +1274,7 @@
 										</div>
 										<div class="pbmit-content-wrapper">
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">The Future of Technology in Urban
+												<a href="/blog-detail">The Future of Technology in Urban
 													Development</a>
 											</h3>
 											<div class="pbminfotech-box-desc">
@@ -1287,7 +1282,7 @@
 												revenue is typically used&hellip;
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>
@@ -1310,7 +1305,7 @@
 															class="img-fluid" alt="">
 													</div>
 												</div>
-												<a class="pbmit-link" href="/blog-single-details"></a>
+												<a class="pbmit-link" href="/blog-detail"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
@@ -1324,7 +1319,7 @@
 												</div>
 												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
 													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">Engineering</a>
+														<a href="/blog-detail" rel="category tag">Engineering</a>
 													</span>
 												</div>
 												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
@@ -1335,7 +1330,7 @@
 										</div>
 										<div class="pbmit-content-wrapper">
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">U.S. fund managers trim bank stocks on
+												<a href="/blog-detail">U.S. fund managers trim bank stocks on
 													profit worries</a>
 											</h3>
 											<div class="pbminfotech-box-desc">
@@ -1343,7 +1338,7 @@
 												revenue is typically used&hellip;
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>
@@ -1366,7 +1361,7 @@
 															class="img-fluid" alt="">
 													</div>
 												</div>
-												<a class="pbmit-link" href="/blog-single-details"></a>
+												<a class="pbmit-link" href="/blog-detail"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
@@ -1391,7 +1386,7 @@
 										</div>
 										<div class="pbmit-content-wrapper">
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">Role of Architecture in Disaster Relief
+												<a href="/blog-detail">Role of Architecture in Disaster Relief
 													and Resilience</a>
 											</h3>
 											<div class="pbminfotech-box-desc">
@@ -1399,7 +1394,7 @@
 												revenue is typically used&hellip;
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>
@@ -1422,7 +1417,7 @@
 															class="img-fluid" alt="">
 													</div>
 												</div>
-												<a class="pbmit-link" href="/blog-single-details"></a>
+												<a class="pbmit-link" href="/blog-detail"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
@@ -1447,7 +1442,7 @@
 										</div>
 										<div class="pbmit-content-wrapper">
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">Importance of Quality and Testing in
+												<a href="/blog-detail">Importance of Quality and Testing in
 													Modern Factories</a>
 											</h3>
 											<div class="pbminfotech-box-desc">
@@ -1455,7 +1450,7 @@
 												revenue is typically used&hellip;
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>
@@ -1478,7 +1473,7 @@
 															class="img-fluid" alt="">
 													</div>
 												</div>
-												<a class="pbmit-link" href="/blog-single-details"></a>
+												<a class="pbmit-link" href="/blog-detail"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
@@ -1503,7 +1498,7 @@
 										</div>
 										<div class="pbmit-content-wrapper">
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">The Role of Energy Storage in the
+												<a href="/blog-detail">The Role of Energy Storage in the
 													Transition to Renewables</a>
 											</h3>
 											<div class="pbminfotech-box-desc">
@@ -1511,7 +1506,7 @@
 												revenue is typically used&hellip;
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>
@@ -1534,7 +1529,7 @@
 															class="img-fluid" alt="">
 													</div>
 												</div>
-												<a class="pbmit-link" href="/blog-single-details"></a>
+												<a class="pbmit-link" href="/blog-detail"></a>
 											</div>
 											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 												<span class="pbmit-post-date">
@@ -1559,7 +1554,7 @@
 										</div>
 										<div class="pbmit-content-wrapper">
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">Automation & Human-Robot Collab: The New
+												<a href="/blog-detail">Automation & Human-Robot Collab: The New
 													Workforce</a>
 											</h3>
 											<div class="pbminfotech-box-desc">
@@ -1567,7 +1562,7 @@
 												revenue is typically used&hellip;
 											</div>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<span class="pbmit-button-icon">
 														<i class="pbmit-base-icon-right-arrow"></i>

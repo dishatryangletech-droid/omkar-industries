@@ -375,21 +375,7 @@
 													Induyst a full-service manufacturing company with 15 years of experience serving industries such as automotive.
 												</div>
 											</div>
-											<div class="d-flex align-items-center pbmit-buttons">
-												<a href="/about-us" class="pbmit-btn">
-													<span class="pbmit-button-content-wrapper">
-														<span class="pbmit-button-icon">
-															<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-														</span>
-														<span class="pbmit-button-text">Discover More</span>
-													</span>
-												</a>
-												<div class="ms-4">
-													<a class="pbmit-btn-style-text" href="/our-team">
-														<span class="pbmit-button-text">Become Part Of Our Team</span>
-													</a>
-												</div>
-											</div>
+											
 										</div>
 									</div>
 									<div class="col-md-6 right-col">
@@ -453,27 +439,31 @@
 									<ul class="list-group">
 										<li class="list-group-item">
 											<span class="pbmit-icon-list-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>						
+												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
 											</span>
 											<span class="pbmit-icon-list-text">24/7 Support at Any Time</span>
 										</li>
 										<li class="list-group-item">
 											<span class="pbmit-icon-list-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>					
+												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
 											</span>
 											<span class="pbmit-icon-list-text">Cost-Effectiveness </span>
 										</li>
 										<li class="list-group-item">
 											<span class="pbmit-icon-list-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>					
+												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
 											</span>
 											<span class="pbmit-icon-list-text">Guarantees to Count On</span>
 										</li>
 										<li class="list-group-item">
-											<span class="pbmit-icon-list-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>					
-											</span>
-											<span class="pbmit-icon-list-text">Eco-Friendly Material</span>
+											<a href="/about-us" class="pbmit-btn pbmit-btn-sm" style="margin-top: 0;">
+												<span class="pbmit-button-content-wrapper">
+													<span class="pbmit-button-icon">
+														<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+													</span>
+													<span class="pbmit-button-text">Discover More</span>
+												</span>
+											</a>
 										</li>
 									</ul>
 								</div>
@@ -1628,7 +1618,7 @@
 													<img src="{{ asset('frontend/images/homepage-1/blog/blog-img-01.jpg') }}" class="img-fluid" alt="">
 												</div>
 											</div>
-											<a class="pbmit-link" href="/blog-single-details"></a>
+											<a class="pbmit-link" href="/blog-detail"></a>
 										</div>
 										<div class="pbmit-content-wrapper">
 											<div class= "pbmit-meta-wraper d-flex align-items-center">
@@ -1642,10 +1632,10 @@
 												</div>
 											</div>
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">The Future of Technology in Urban Development</a>
+												<a href="/blog-detail">The Future of Technology in Urban Development</a>
 											</h3>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<i class="pbmit-base-icon-right-arrow"></i>
 												</a>
@@ -1665,7 +1655,7 @@
 													<img src="{{ asset('frontend/images/homepage-1/blog/blog-img-01.jpg') }}" class="img-fluid" alt="">
 												</div>
 											</div>
-											<a class="pbmit-link" href="/blog-single-details"></a>
+											<a class="pbmit-link" href="/blog-detail"></a>
 										</div>
 										<div class="pbmit-content-wrapper">
 											<div class= "pbmit-meta-wraper d-flex align-items-center">
@@ -1679,10 +1669,10 @@
 												</div>
 											</div>
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">U.S. fund managers trim bank stocks on profit worries</a>
+												<a href="/blog-detail">U.S. fund managers trim bank stocks on profit worries</a>
 											</h3>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<i class="pbmit-base-icon-right-arrow"></i>
 												</a>
@@ -1700,7 +1690,7 @@
 													<img src="{{ asset('frontend/images/homepage-1/blog/blog-img-01.jpg') }}" class="img-fluid" alt="">
 												</div>
 											</div>
-											<a class="pbmit-link" href="/blog-single-details"></a>
+											<a class="pbmit-link" href="/blog-detail"></a>
 										</div>
 										<div class="pbmit-content-wrapper">
 											<div class= "pbmit-meta-wraper d-flex align-items-center">
@@ -1714,10 +1704,10 @@
 												</div>
 											</div>
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">Role of Architecture in Disaster Relief and Resilience</a>
+												<a href="/blog-detail">Role of Architecture in Disaster Relief and Resilience</a>
 											</h3>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<i class="pbmit-base-icon-right-arrow"></i>
 												</a>
@@ -1735,7 +1725,7 @@
 													<img src="{{ asset('frontend/images/homepage-1/blog/blog-img-01.jpg') }}" class="img-fluid" alt="">
 												</div>
 											</div>
-											<a class="pbmit-link" href="/blog-single-details"></a>
+											<a class="pbmit-link" href="/blog-detail"></a>
 										</div>
 										<div class="pbmit-content-wrapper">
 											<div class= "pbmit-meta-wraper d-flex align-items-center">
@@ -1749,10 +1739,10 @@
 												</div>
 											</div>
 											<h3 class="pbmit-post-title">
-												<a href="/blog-single-details">Importance of Quality and Testing in Modern Factories</a>
+												<a href="/blog-detail">Importance of Quality and Testing in Modern Factories</a>
 											</h3>
 											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="/blog-single-details">
+												<a class="pbmit-button-inner" href="/blog-detail">
 													<span class="pbmit-button-text">Read More</span>
 													<i class="pbmit-base-icon-right-arrow"></i>
 												</a>
