@@ -45,72 +45,41 @@
 						</div>
 					</div>
 					<div class="row mt-5">
+						@if (session()->has('success'))
+							<div class="col-12">
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
+									{{ session('success') }}
+									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								</div>
+							</div>
+						@endif
 						<div class="col-md-4 mb-4">
 							<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-								<button class="nav-link active" id="v-pills-job1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job1" type="button" role="tab" aria-controls="v-pills-job1" aria-selected="true" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">Senior Mechanical Engineer</button>
-								<button class="nav-link" id="v-pills-job2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job2" type="button" role="tab" aria-controls="v-pills-job2" aria-selected="false" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">Industrial Designer</button>
-								<button class="nav-link" id="v-pills-job3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job3" type="button" role="tab" aria-controls="v-pills-job3" aria-selected="false" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">Quality Assurance Inspector</button>
-								<button class="nav-link" id="v-pills-job4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job4" type="button" role="tab" aria-controls="v-pills-job4" aria-selected="false" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">Operations Manager</button>
-								<button class="nav-link" id="v-pills-job5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job5" type="button" role="tab" aria-controls="v-pills-job5" aria-selected="false" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">Automation Engineer</button>
-								<button class="nav-link" id="v-pills-job6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job6" type="button" role="tab" aria-controls="v-pills-job6" aria-selected="false" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">Supply Chain Coordinator</button>
+								@forelse($careers as $index => $career)
+								<button class="nav-link {{ $index === 0 ? 'active' : '' }}" id="v-pills-job{{ $career->id }}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job{{ $career->id }}" type="button" role="tab" aria-controls="v-pills-job{{ $career->id }}" aria-selected="{{ $index === 0 ? 'true' : 'false' }}" style="text-align: left; margin-bottom: 10px; padding: 15px 20px; font-weight: bold; border-radius: 5px; border: 1px solid #ddd; white-space: normal;">{{ $career->title }}</button>
+								@empty
+								<p>No job openings available at the moment.</p>
+								@endforelse
 							</div>
 						</div>
 						<div class="col-md-8">
 							<div class="tab-content" id="v-pills-tabContent" style="padding: 30px; background: #f9f9f9; border-radius: 8px;">
-								<div class="tab-pane fade show active" id="v-pills-job1" role="tabpanel" aria-labelledby="v-pills-job1-tab">
-									<h3 class="mb-3">Senior Mechanical Engineer</h3>
-									<p>We are seeking a highly skilled Senior Mechanical Engineer to lead design and development projects. You will be responsible for overseeing the entire lifecycle of mechanical systems, from initial concept to production and testing.</p>
-                                    <h5 class="mt-4 mb-2">Position Roles:</h5>
+								@foreach($careers as $index => $career)
+								<div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}" id="v-pills-job{{ $career->id }}" role="tabpanel" aria-labelledby="v-pills-job{{ $career->id }}-tab">
+									<h3 class="mb-1">{{ $career->title }}</h3>
+									<p class="fw-bold mb-3" style="color:#ffb800"><i class="ti ti-briefcase me-1"></i> Job Type: {{ $career->job_type }}</p>
+									<p>{!! nl2br(e($career->description)) !!}</p>
+                                    @if(is_array($career->requirements) && count($career->requirements) > 0)
+                                    <h5 class="mt-4 mb-2">Requirements / Position Roles:</h5>
                                     <ul class="list-group list-group-borderless mb-4" style="list-style: none; padding-left: 0;">
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Design, develop, and test advanced mechanical systems.</span></li>
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Perform detailed engineering calculations and stress analysis.</span></li>                                      </ul>
-									<a class="pbmit-btn" data-bs-toggle="modal" data-bs-target="#applyModal" href="javascript:void(0);" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></a> 
+                                        @foreach($career->requirements as $requirement)
+                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">{{ $requirement }}</span></li>
+                                        @endforeach
+                                    </ul>
+                                    @endif
+									<button class="pbmit-btn border-0" data-bs-toggle="modal" data-bs-target="#applyModal" wire:click="$set('career_id', {{ $career->id }})" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></button> 
 								</div>
-								<div class="tab-pane fade" id="v-pills-job2" role="tabpanel" aria-labelledby="v-pills-job2-tab">
-									<h3 class="mb-3">Industrial Designer</h3>
-									<p>We are looking for a creative Industrial Designer to craft user-centric product designs. You will work closely with engineering and marketing teams to create innovative and aesthetically pleasing products.</p>
-                                    <h5 class="mt-4 mb-2">Position Roles:</h5>
-                                    <ul class="list-group list-group-borderless mb-4" style="list-style: none; padding-left: 0;">
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Create detailed industrial product designs and prototypes.</span></li>
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Research materials, ergonomics, and production techniques.</span></li>                                      </ul>
-									<a class="pbmit-btn" data-bs-toggle="modal" data-bs-target="#applyModal" href="javascript:void(0);" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></a> 
-								</div>
-								<div class="tab-pane fade" id="v-pills-job3" role="tabpanel" aria-labelledby="v-pills-job3-tab">
-									<h3 class="mb-3">Quality Assurance Inspector</h3>
-									<p>Join our team as a Quality Assurance Inspector to ensure our manufacturing outputs meet the highest standards of quality and safety. You will conduct rigorous inspections and tests on all products.</p>
-                                    <h5 class="mt-4 mb-2">Position Roles:</h5>
-                                    <ul class="list-group list-group-borderless mb-4" style="list-style: none; padding-left: 0;">
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Inspect materials, components, and finished manufactured parts.</span></li>
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Ensure strict compliance with all safety and quality regulations.</span></li>                                      </ul>
-									<a class="pbmit-btn" data-bs-toggle="modal" data-bs-target="#applyModal" href="javascript:void(0);" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></a> 
-								</div>
-								<div class="tab-pane fade" id="v-pills-job4" role="tabpanel" aria-labelledby="v-pills-job4-tab">
-									<h3 class="mb-3">Operations Manager</h3>
-									<p>We need an experienced Operations Manager to oversee our daily factory operations. You will be tasked with optimizing production efficiency, managing staff, and ensuring smooth supply chain execution.</p>
-                                    <h5 class="mt-4 mb-2">Position Roles:</h5>
-                                    <ul class="list-group list-group-borderless mb-4" style="list-style: none; padding-left: 0;">
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Oversee daily factory operations and staff management.</span></li>
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Manage and optimize production schedules to meet deadlines.</span></li>                                      </ul>
-									<a class="pbmit-btn" data-bs-toggle="modal" data-bs-target="#applyModal" href="javascript:void(0);" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></a> 
-								</div>
-								<div class="tab-pane fade" id="v-pills-job5" role="tabpanel" aria-labelledby="v-pills-job5-tab">
-									<h3 class="mb-3">Automation Engineer</h3>
-									<p>We are searching for an Automation Engineer to design, program, and maintain automated machinery. You will play a crucial role in modernizing our production lines and improving efficiency.</p>
-                                    <h5 class="mt-4 mb-2">Position Roles:</h5>
-                                    <ul class="list-group list-group-borderless mb-4" style="list-style: none; padding-left: 0;">
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Design and implement automation control systems (PLC/HMI).</span></li>
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Troubleshoot and optimize existing automated machinery.</span></li>                                      </ul>
-									<a class="pbmit-btn" data-bs-toggle="modal" data-bs-target="#applyModal" href="javascript:void(0);" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></a> 
-								</div>
-								<div class="tab-pane fade" id="v-pills-job6" role="tabpanel" aria-labelledby="v-pills-job6-tab">
-									<h3 class="mb-3">Supply Chain Coordinator</h3>
-									<p>Join us as a Supply Chain Coordinator to ensure the seamless flow of materials and products. You will coordinate with vendors, track inventory, and optimize logistics.</p>
-                                    <h5 class="mt-4 mb-2">Position Roles:</h5>
-                                    <ul class="list-group list-group-borderless mb-4" style="list-style: none; padding-left: 0;">
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Coordinate logistics for incoming raw materials and outgoing products.</span></li>
-                                        <li class="list-group-item" style="border: none; padding: 0; margin-bottom: 5px; background: transparent; display: flex; align-items: flex-start;"><span style="color: #ffb800; margin-right: 10px;">&#10004;</span> <span class="pbmit-icon-list-text">Maintain accurate inventory records and forecast material needs.</span></li>                                      </ul>
-									<a class="pbmit-btn" data-bs-toggle="modal" data-bs-target="#applyModal" href="javascript:void(0);" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></a> 
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -126,24 +95,36 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form wire:submit.prevent="apply">
           <div class="mb-3">
-            <label for="name" class="form-label" style="color: black;">Full Name</label>
-            <input type="text" class="form-control" id="name" placeholder="John Doe">
+            <label for="name" class="form-label" style="color: black;">Full Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" wire:model="name" placeholder="John Doe">
+            @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label" style="color: black;">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            <label for="email" class="form-label" style="color: black;">Email address <span class="text-danger">*</span></label>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" wire:model="email" placeholder="name@example.com">
+            @error('email') <span class="text-danger small">{{ $message }}</span> @enderror
           </div>
           <div class="mb-3">
-            <label for="resume" class="form-label" style="color: black;">Upload Resume (PDF)</label>
-            <input class="form-control" type="file" id="resume">
+            <label for="phone" class="form-label" style="color: black;">Phone <span class="text-danger">*</span></label>
+            <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" wire:model="phone" placeholder="+1234567890">
+            @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
+          </div>
+          <div class="mb-3">
+            <label for="resume" class="form-label" style="color: black;">Upload Resume (PDF, DOC, DOCX) <span class="text-danger">*</span></label>
+            <input class="form-control @error('resume') is-invalid @enderror" type="file" id="resume" wire:model="resume">
+            <div wire:loading wire:target="resume" class="text-success small mt-1">Uploading...</div>
+            @error('resume') <span class="text-danger small">{{ $message }}</span> @enderror
+          </div>
+          <div class="modal-footer px-0 pb-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn" style="background-color: #ffb800; border: none; color: black; font-weight: bold;">
+                <span wire:loading.remove wire:target="apply">Submit Application</span>
+                <span wire:loading wire:target="apply">Submitting...</span>
+            </button>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #ffb800; border: none; color: black; font-weight: bold;">Submit Application</button>
       </div>
     </div>
   </div>
@@ -154,11 +135,13 @@
     @include('livewire.frontend.partials.footer')
 </div>
 
-
-
-
-
-
-
-
-
+<script>
+    document.addEventListener('livewire:init', () => {
+       Livewire.on('close-modal', (event) => {
+           let applyModal = bootstrap.Modal.getInstance(document.getElementById('applyModal'));
+           if (applyModal) {
+               applyModal.hide();
+           }
+       });
+    });
+</script>

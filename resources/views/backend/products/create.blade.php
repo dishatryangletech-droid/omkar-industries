@@ -161,7 +161,7 @@
 @endpush
 
 @section('content')
-    <form action="#" method="POST" enctype="multipart/form-data" id="productForm">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" id="productForm">
         @csrf
 
         <div class="row">
@@ -425,9 +425,9 @@
                                 <div class="col-md-6 text-end">
                                     <div class="d-flex justify-content-end gap-2">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="ti ti-check me-1"></i> Save Product
+                                            <i class="ti ti-plus me-1"></i> Save Product
                                         </button>
-                                        <a href="#" class="btn btn-label-secondary">
+                                        <a href="{{ route('admin.products.index') }}" class="btn btn-label-secondary">
                                             <i class="ti ti-x me-1"></i> Cancel
                                         </a>
                                     </div>

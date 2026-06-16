@@ -39,25 +39,25 @@
                 <tbody>
                     @foreach($clients as $client)
                         @php
-                            $logoUrl = asset('storage/' . $client->logo);
-                            if (!empty($client->logo)) {
-                                if (filter_var($client->logo, FILTER_VALIDATE_URL)) {
-                                    $logoUrl = $client->logo;
-                                } elseif (file_exists(public_path('storage/clients/' . $client->logo))) {
-                                    $logoUrl = asset('storage/clients/' . $client->logo);
-                                } elseif (file_exists(public_path('storage/' . $client->logo))) {
-                                    $logoUrl = asset('storage/' . $client->logo);
-                                } elseif (file_exists(public_path('uploads/clients/' . $client->logo))) {
-                                    $logoUrl = asset('uploads/clients/' . $client->logo);
-                                } elseif (file_exists(public_path('frontend/images/' . $client->logo))) {
-                                    $logoUrl = asset('frontend/images/' . $client->logo);
+                            $logoUrl = asset('storage/' . $client->icon);
+                            if (!empty($client->icon)) {
+                                if (filter_var($client->icon, FILTER_VALIDATE_URL)) {
+                                    $logoUrl = $client->icon;
+                                } elseif (file_exists(public_path('storage/clients/' . $client->icon))) {
+                                    $logoUrl = asset('storage/clients/' . $client->icon);
+                                } elseif (file_exists(public_path('storage/' . $client->icon))) {
+                                    $logoUrl = asset('storage/' . $client->icon);
+                                } elseif (file_exists(public_path('uploads/clients/' . $client->icon))) {
+                                    $logoUrl = asset('uploads/clients/' . $client->icon);
+                                } elseif (file_exists(public_path('frontend/images/' . $client->icon))) {
+                                    $logoUrl = asset('frontend/images/' . $client->icon);
                                 }
                             }
                         @endphp
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.clients.edit', $client->id) }}">
                             <td>{{ $client->id }}</td>
                             <td>
-                                @if($client->logo)
+                                @if($client->icon)
                                     <div class="avatar avatar-md border rounded p-1 bg-light d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
                                         <img src="{{ $logoUrl }}" alt="{{ $client->name }}" class="img-fluid rounded" style="max-height: 100%; object-fit: contain;">
                                     </div>
@@ -82,11 +82,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.clients.edit', $client->id) }}" 
                                        class="text-warning waves-effect" title="Edit Client">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $client->id }}" title="Delete Client" class="d-inline">
+                                    <form action="{{ route('admin.clients.destroy', $client->id) }}" method="POST" id="delete-form-{{ $client->id }}" title="Delete Client" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $client->id }}">
@@ -117,7 +117,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New Client</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = "{{ route('admin.clients.create') }}";
                             }
                         }
                     ],

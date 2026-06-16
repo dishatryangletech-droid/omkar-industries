@@ -219,8 +219,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         }
         return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully!');
     })->name('blogs.update');
-    Route::get('careers', function() use ($defaults) { return view('backend.careers.index', $defaults); })->name('careers.index');
-    Route::get('clients', function() use ($defaults) { return view('backend.clients.index', $defaults); })->name('clients.index');
+    Route::resource('careers', \App\Http\Controllers\Backend\CareerController::class);
+    Route::resource('clients', \App\Http\Controllers\Backend\ClientController::class);
     Route::get('contacts', function() use ($defaults) { return view('backend.contacts.index', $defaults); })->name('contacts.index');
     Route::get('dealers', function() use ($defaults) { return view('backend.dealers.index', $defaults); })->name('dealers.index');
     Route::get('faqs', function() use ($defaults) { return view('backend.faqs.index', $defaults); })->name('faqs.index');
@@ -275,9 +275,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         \Illuminate\Support\Facades\Storage::disk('public')->delete($pathToRemove);
         return back()->with('success', 'Image deleted successfully!');
     })->name('gallery.delete_image');
-    Route::get('job-applications', function() use ($defaults) { return view('backend.job-applications.index', $defaults); })->name('job-applications.index');
+    Route::resource('job-applications', \App\Http\Controllers\Backend\JobApplicationController::class)->only(['index', 'show', 'destroy']);
     Route::get('page-banners', function() use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
-    Route::get('products', function() use ($defaults) { return view('backend.products.index', $defaults); })->name('products.index');
+    
+    Route::resource('products', \App\Http\Controllers\ProductController::class);
+    Route::post('products/{product}/copy', [\App\Http\Controllers\ProductController::class, 'copy'])->name('products.copy');
+    
     Route::get('roles', function() use ($defaults) { return view('backend.roles.index', $defaults); })->name('roles.index');
     Route::get('users', function() use ($defaults) { return view('backend.users.index', $defaults); })->name('users.index');
     Route::get('profile', function() use ($defaults) { return view('backend.pages-profile-user', $defaults); })->name('profile');

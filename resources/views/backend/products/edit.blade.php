@@ -156,7 +156,7 @@
 @endpush
 
 @section('content')
-    <form action="#" method="POST" enctype="multipart/form-data"
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data"
         id="productForm">
         @csrf
         @method('PUT')
@@ -661,7 +661,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="ti ti-check me-1"></i> Update Product
                             </button>
-                            <a href="#" class="btn btn-label-secondary">
+                            <a href="{{ route('admin.products.index') }}" class="btn btn-label-secondary">
                                 <i class="ti ti-x me-1"></i> Cancel
                             </a>
                         </div>

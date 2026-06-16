@@ -43,7 +43,7 @@ class CareerController extends Controller
 
         Career::create($data);
 
-        return redirect()->route('backend.careers.index')->with('success', 'Job opening created successfully.');
+        return redirect()->route('admin.careers.index')->with('success', 'Job opening created successfully.');
     }
 
     /**
@@ -70,7 +70,7 @@ class CareerController extends Controller
 
         $career->update($data);
 
-        return redirect()->route('backend.careers.index')->with('success', 'Job opening updated successfully.');
+        return redirect()->route('admin.careers.index')->with('success', 'Job opening updated successfully.');
     }
 
     /**
@@ -80,6 +80,6 @@ class CareerController extends Controller
     {
         $career->delete();
 
-        return redirect()->route('backend.careers.index')->with('success', 'Job opening deleted successfully.');
+        return redirect()->route('admin.careers.index')->with('success', 'Job opening deleted successfully.');
     }
 }

@@ -9,12 +9,12 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Client Details</h5>
-                        <a href="#" class="btn btn-label-secondary waves-effect">
+                        <a href="{{ route('admin.clients.index') }}" class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
                     
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.clients.update', $client->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -29,27 +29,27 @@
 
                             <!-- Logo -->
                             <div class="col-md-6 mb-3">
-                                <label class="form-label text-heading" for="logo">Logo</label>
-                                <input type="file" class="form-control @error('logo') is-invalid @enderror" id="logo" name="logo">
+                                <label class="form-label text-heading" for="icon">Logo</label>
+                                <input type="file" class="form-control @error('icon') is-invalid @enderror" id="icon" name="icon">
                                 <small class="text-muted d-block mt-1">Allowed: JPG, JPEG, PNG, WEBP, SVG. Max: 2MB. Leave blank to keep current logo.</small>
-                                @error('logo')
+                                @error('icon')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
-                                @if($client->logo)
+                                @if($client->icon)
                                     @php
-                                        $logoUrl = asset('storage/' . $client->logo);
-                                        if (!empty($client->logo)) {
-                                            if (filter_var($client->logo, FILTER_VALIDATE_URL)) {
-                                                $logoUrl = $client->logo;
-                                            } elseif (file_exists(public_path('storage/clients/' . $client->logo))) {
-                                                $logoUrl = asset('storage/clients/' . $client->logo);
-                                            } elseif (file_exists(public_path('storage/' . $client->logo))) {
-                                                $logoUrl = asset('storage/' . $client->logo);
-                                            } elseif (file_exists(public_path('uploads/clients/' . $client->logo))) {
-                                                $logoUrl = asset('uploads/clients/' . $client->logo);
-                                            } elseif (file_exists(public_path('frontend/images/' . $client->logo))) {
-                                                $logoUrl = asset('frontend/images/' . $client->logo);
+                                        $logoUrl = asset('storage/' . $client->icon);
+                                        if (!empty($client->icon)) {
+                                            if (filter_var($client->icon, FILTER_VALIDATE_URL)) {
+                                                $logoUrl = $client->icon;
+                                            } elseif (file_exists(public_path('storage/clients/' . $client->icon))) {
+                                                $logoUrl = asset('storage/clients/' . $client->icon);
+                                            } elseif (file_exists(public_path('storage/' . $client->icon))) {
+                                                $logoUrl = asset('storage/' . $client->icon);
+                                            } elseif (file_exists(public_path('uploads/clients/' . $client->icon))) {
+                                                $logoUrl = asset('uploads/clients/' . $client->icon);
+                                            } elseif (file_exists(public_path('frontend/images/' . $client->icon))) {
+                                                $logoUrl = asset('frontend/images/' . $client->icon);
                                             }
                                         }
                                     @endphp
@@ -85,7 +85,7 @@
 
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary me-2">Update Client</button>
-                            <a href="#" class="btn btn-label-secondary">Cancel</a>
+                            <a href="{{ route('admin.clients.index') }}" class="btn btn-label-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

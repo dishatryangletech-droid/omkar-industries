@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach($careers as $career)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.careers.edit', $career->id) }}">
                             <td>{{ $career->id }}</td>
                             <td>{{ $career->title }}</td>
                             <td><span class="badge bg-label-info">{{ $career->job_type }}</span></td>
@@ -43,11 +43,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.careers.edit', $career->id) }}" 
                                        class="text-warning waves-effect" title="Edit Job Opening">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $career->id }}" title="Delete Job Opening">
+                                    <form action="{{ route('admin.careers.destroy', $career->id) }}" method="POST" id="delete-form-{{ $career->id }}" title="Delete Job Opening">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $career->id }}">
@@ -78,7 +78,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New Job</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.careers.create') }}';
                             }
                         }
                     ],

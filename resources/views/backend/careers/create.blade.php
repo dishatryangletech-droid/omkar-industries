@@ -9,11 +9,11 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Job Opening Details</h5>
-                        <a href="#" class="btn btn-label-secondary waves-effect">
+                        <a href="{{ route('admin.careers.index') }}" class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
-                    <form action="#" method="POST">
+                    <form action="{{ route('admin.careers.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <!-- Title -->
@@ -37,7 +37,7 @@
 
 
                             <!-- Description -->
-                            <div class="col-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label class="form-label" for="description">Job Description</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Enter brief job description">{{ old('description') }}</textarea>
                                 @error('description')
@@ -46,7 +46,7 @@
                             </div>
 
                             <!-- Requirements Repeater -->
-                            <div class="col-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label class="form-label">Key Requirements</label>
                                 <div id="requirements-container">
                                     <div class="input-group mb-2 requirement-item">
@@ -57,6 +57,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
                         <div class="row mt-2">
                             <!-- Status -->
                             <div class="col-md-4 mb-3">

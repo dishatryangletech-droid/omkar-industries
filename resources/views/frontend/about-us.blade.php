@@ -496,25 +496,45 @@
 								</div>
 							</div>
 						</div>
-						<div class="video-bottom-area">
+						<div class="video-bottom-area mt-4 mt-xl-0">
 							<div class="row">
-								<div class="col-md-12 col-xl-3">
-
+								<div class="col-md-12 col-xl-8 mb-5 mb-xl-0">
+									<div class="ps-xl-4">
+										<div class="pbmit-heading-subheading text-center text-xl-start">
+											<h4 class="pbmit-subtitle" style="text-transform: uppercase;">OUR SERVICE
+												PROVIDE IN AREA</h4>
+										</div>
+										<div
+											class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-xl-start mt-4">
+											@foreach(\App\Models\Client::where('status', 'Active')->orderBy('name', 'asc')->get() as $client)
+												<div class="text-center" style="width: 55px;">
+													<div style="height: 35px; display: flex; align-items: center; justify-content: center;"
+														class="mb-2">
+														@php
+															$iconUrl = asset('storage/' . $client->icon);
+															if (!empty($client->icon) && filter_var($client->icon, FILTER_VALIDATE_URL)) {
+																$iconUrl = $client->icon;
+															}
+														@endphp
+														<img src="{{ $iconUrl }}" class="img-fluid"
+															style="max-height: 100%; max-width: 100%; object-fit: contain; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));"
+															alt="{{ $client->name }}">
+													</div>
+													<div
+														style="font-size: 10px; line-height: 1.2; color: rgba(255, 255, 255, 0.8); font-weight: 500;">
+														{{ $client->name }}</div>
+												</div>
+											@endforeach
+										</div>
+									</div>
 								</div>
-								<div class="col-md-12 col-xl-9">
-									<div class="row">
-										<div class="col-md-12 col-xl-6">
-
-										</div>
-										<div class="col-md-12 col-xl-6">
-											<div class="pbmit-heading-subheading">
-												<h4 class="pbmit-subtitle">OUR LOCATIONS</h4>
-											</div>
-											<div class="map-img">
-												<img src="{{ asset('frontend/images/homepage-2/map.png') }}"
-													class="img-fluid" alt="">
-											</div>
-										</div>
+								<div class="col-md-12 col-xl-4">
+									<div class="pbmit-heading-subheading text-center text-xl-start">
+										<h4 class="pbmit-subtitle">OUR LOCATIONS</h4>
+									</div>
+									<div class="map-img text-center text-xl-start mt-4">
+										<img src="{{ asset('frontend/images/homepage-2/map.png') }}" class="img-fluid"
+											alt="">
 									</div>
 								</div>
 							</div>
@@ -697,7 +717,8 @@
 													<a href="/team-member-detail">{{ $member->name }}</a>
 												</h3>
 												<div class="pbminfotech-box-team-position">
-													{{ $member->designation_or_status }}</div>
+													{{ $member->designation_or_status }}
+												</div>
 											</div>
 										</div>
 									</div>
@@ -745,7 +766,8 @@
 														<a href="/team-member-detail">{{ $member->name }}</a>
 													</h3>
 													<div class="pbminfotech-box-team-position">
-														{{ $member->designation_or_status }}</div>
+														{{ $member->designation_or_status }}
+													</div>
 												</div>
 											</div>
 										</div>
@@ -803,9 +825,11 @@
 																</div>
 																<div class="pbmit-auther-content">
 																	<h3 class="pbminfotech-box-title">
-																		{{ $testimonial->name }}</h3>
+																		{{ $testimonial->name }}
+																	</h3>
 																	<div class="pbminfotech-testimonial-detail">
-																		{{ $testimonial->designation }}</div>
+																		{{ $testimonial->designation }}
+																	</div>
 																</div>
 															</div>
 														</div>

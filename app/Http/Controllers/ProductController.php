@@ -159,7 +159,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->route('backend.products.index')->with('success', 'Product created successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
     }
 
     public function edit(Product $product)
@@ -402,7 +402,7 @@ class ProductController extends Controller
             }
         }
         $type = $product->original_product_id ? 'copy' : 'original';
-        return redirect()->route('backend.products.index', ['type' => $type])->with('success', 'Product updated successfully!');
+        return redirect()->route('admin.products.index', ['type' => $type])->with('success', 'Product updated successfully!');
     }
 
     public function destroy(Product $product)
@@ -419,7 +419,7 @@ class ProductController extends Controller
         }
         $product->delete();
 
-        return redirect()->route('backend.products.index', ['type' => $type])->with('success', 'Product deleted successfully!');
+        return redirect()->route('admin.products.index', ['type' => $type])->with('success', 'Product deleted successfully!');
     }
 
     public function copy(Product $product)
@@ -451,6 +451,6 @@ class ProductController extends Controller
             $newSpec->save();
         }
 
-        return redirect()->route('backend.products.edit', $newProduct)->with('success', 'Product copied successfully! You are now editing the copy.');
+        return redirect()->route('admin.products.edit', $newProduct)->with('success', 'Product copied successfully! You are now editing the copy.');
     }
 }

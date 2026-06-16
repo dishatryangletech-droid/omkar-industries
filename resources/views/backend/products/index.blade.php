@@ -52,13 +52,13 @@
 
     <div class="mb-4 mt-4 d-flex justify-content-between align-items-center">
         <div class="btn-group" role="group">
-            <a href="#"
+            <a href="{{ route('admin.products.index', ['type' => 'original']) }}"
                 class="btn btn-{{ $type === 'original' ? 'label-primary' : 'label-secondary' }} waves-effect px-4">
                 <i class="ti ti-package me-2"></i> Original Products
                 <span
                     class="badge rounded-pill bg-{{ $type === 'original' ? 'primary' : 'secondary' }} ms-2">{{ $totalOriginal }}</span>
             </a>
-            <a href="#"
+            <a href="{{ route('admin.products.index', ['type' => 'copy']) }}"
                 class="btn btn-{{ $type === 'copy' ? 'label-primary' : 'label-secondary' }} waves-effect px-4">
                 <i class="ti ti-copy me-2"></i> Copy Products
                 <span
@@ -83,7 +83,7 @@
                 </thead>
                 <tbody>
                     @foreach($products as $product)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.products.edit', $product->id) }}">
                             <td>{{ $product->id }}</td>
                             <td>
                                 @php
@@ -121,8 +121,8 @@
                             <td>
                                 @if($product->is_parent)
                                     <span class="badge bg-label-primary">Parent Product</span>
-                                @elseif($product->parent)
-                                    <span class="badge bg-label-info">Child: {{ Str::limit($product->parent->title, 20) }}</span>
+                                @elseif($product->parent_id)
+                                    <span class="badge bg-label-info">Child Product</span>
                                 @else
                                     <span class="badge bg-label-secondary">Standalone</span>
                                 @endif
@@ -138,18 +138,18 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <form action="#" method="POST"
+                                    <form action="{{ route('admin.products.copy', $product->id) }}" method="POST"
                                         title="Copy Product">
                                         @csrf
                                         <button type="submit" class="btn p-0 border-0 bg-transparent text-success waves-effect">
                                             <i class="ti ti-copy fs-4"></i>
                                         </button>
                                     </form>
-                                    <a href="#" class="text-warning waves-effect"
+                                    <a href="{{ route('admin.products.edit', $product->id) }}" class="text-warning waves-effect"
                                         title="Edit Product">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST"
+                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
                                         id="delete-form-{{ $product->id }}" title="Delete Product">
                                         @csrf
                                         @method('DELETE')
@@ -184,7 +184,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New Product</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.products.create') }}';
                             }
                         }
                     ],

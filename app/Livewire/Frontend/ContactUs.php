@@ -8,7 +8,12 @@ class ContactUs extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.contact-us')
-            ->layout('components.layouts.app', ['title' => 'Contact Us – Induyst HTML Template']);
+        $generalSetting = \App\Models\GeneralSetting::first();
+        $footerSetting = \Illuminate\Support\Facades\DB::table('footer_settings')->first();
+
+        return view('livewire.frontend.contact-us', [
+            'generalSetting' => $generalSetting,
+            'footerSetting' => $footerSetting,
+        ])->layout('components.layouts.app', ['title' => 'Contact Us – Induyst HTML Template']);
     }
 }

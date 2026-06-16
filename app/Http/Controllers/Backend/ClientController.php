@@ -34,24 +34,24 @@ class ClientController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'is_headquarter' => 'required|in:yes,no',
             'status' => 'required|in:Active,Inactive',
         ]);
 
-        $logoPath = null;
-        if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('clients', 'public');
+        $iconPath = null;
+        if ($request->hasFile('icon')) {
+            $iconPath = $request->file('icon')->store('clients', 'public');
         }
 
         Client::create([
             'name' => $request->name,
-            'logo' => $logoPath,
+            'icon' => $iconPath,
             'is_headquarter' => $request->is_headquarter,
             'status' => $request->status,
         ]);
 
-        return redirect()->route('backend.clients.index')->with('success', 'Client created successfully.');
+        return redirect()->route('admin.clients.index')->with('success', 'Client created successfully.');
     }
 
     /**
@@ -69,27 +69,27 @@ class ClientController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'is_headquarter' => 'required|in:yes,no',
             'status' => 'required|in:Active,Inactive',
         ]);
 
-        $logoPath = $client->logo;
-        if ($request->hasFile('logo')) {
-            if ($client->logo && Storage::disk('public')->exists($client->logo)) {
-                Storage::disk('public')->delete($client->logo);
+        $iconPath = $client->icon;
+        if ($request->hasFile('icon')) {
+            if ($client->icon && Storage::disk('public')->exists($client->icon)) {
+                Storage::disk('public')->delete($client->icon);
             }
-            $logoPath = $request->file('logo')->store('clients', 'public');
+            $iconPath = $request->file('icon')->store('clients', 'public');
         }
 
         $client->update([
             'name' => $request->name,
-            'logo' => $logoPath,
+            'icon' => $iconPath,
             'is_headquarter' => $request->is_headquarter,
             'status' => $request->status,
         ]);
 
-        return redirect()->route('backend.clients.index')->with('success', 'Client updated successfully.');
+        return redirect()->route('admin.clients.index')->with('success', 'Client updated successfully.');
     }
 
     /**
@@ -97,12 +97,12 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        if ($client->logo && Storage::disk('public')->exists($client->logo)) {
-            Storage::disk('public')->delete($client->logo);
+        if ($client->icon && Storage::disk('public')->exists($client->icon)) {
+            Storage::disk('public')->delete($client->icon);
         }
 
         $client->delete();
 
-        return redirect()->route('backend.clients.index')->with('success', 'Client deleted successfully.');
+        return redirect()->route('admin.clients.index')->with('success', 'Client deleted successfully.');
     }
 }

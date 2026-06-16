@@ -9,12 +9,12 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Client Details</h5>
-                        <a href="#" class="btn btn-label-secondary waves-effect">
+                        <a href="{{ route('admin.clients.index') }}" class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
                     
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.clients.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Name -->
@@ -28,10 +28,10 @@
 
                             <!-- Logo -->
                             <div class="col-md-6 mb-3">
-                                <label class="form-label text-heading" for="logo">Logo <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control @error('logo') is-invalid @enderror" id="logo" name="logo" required>
+                                <label class="form-label text-heading" for="icon">Logo <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control @error('icon') is-invalid @enderror" id="icon" name="icon" required>
                                 <small class="text-muted d-block mt-1">Allowed: JPG, JPEG, PNG, WEBP, SVG. Max: 2MB.</small>
-                                @error('logo')
+                                @error('icon')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -59,7 +59,7 @@
 
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary me-2">Create Client</button>
-                            <a href="#" class="btn btn-label-secondary">Cancel</a>
+                            <a href="{{ route('admin.clients.index') }}" class="btn btn-label-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>
