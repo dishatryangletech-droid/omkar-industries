@@ -56,7 +56,7 @@
 										<div class="pbmit-image-wrap">
 											<div class="pbmit-featured-img-wrapper">
 												<div class="pbmit-featured-wrapper">
-												<img src="{{ ($product->image && file_exists(public_path('storage/' . $product->image))) ? asset('storage/' . $product->image) : asset('frontend/images/service/service-01.jpg') }}" class="img-fluid" alt="{{ $product->title }}">
+												<img src="{{ ($product->image && file_exists(public_path('storage/' . $product->image))) ? asset('storage/' . $product->image) : asset('frontend/images/service/service-01.jpg') }}" class="img-fluid w-100" style="aspect-ratio: 770/520; object-fit: contain; background-color: #ffffff;" alt="{{ $product->title }}">
 											</div>
 											</div>
 

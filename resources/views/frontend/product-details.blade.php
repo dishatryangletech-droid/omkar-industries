@@ -107,9 +107,6 @@
 										<!-- Video Play Button -->
 										@if(isset($product) && $product->video_link)
 										<a href="{{ $product->video_link }}" class="pbmit-btn pbmit-btn-sm pbmin-lightbox-video">
-										@else
-										<a href="https://www.youtube.com/watch?v=x36EQP2og-k" class="pbmit-btn pbmit-btn-sm pbmin-lightbox-video">
-										@endif
 											<span class="pbmit-button-content-wrapper">
 												<span class="pbmit-button-icon">
 													<i class="pbmit-base-icon-play-button"></i>
@@ -117,12 +114,10 @@
 												<span class="pbmit-button-text">Watch Video</span>
 											</span>
 										</a>
+										@endif
 										<!-- Download PDF Button -->
 										@if(isset($product) && $product->brochure)
 										<a href="{{ asset('storage/' . $product->brochure) }}" class="pbmit-btn pbmit-btn-sm" download>
-										@else
-										<a href="#" class="pbmit-btn pbmit-btn-sm" download>
-										@endif
 											<span class="pbmit-button-content-wrapper">
 												<span class="pbmit-button-icon">
 													<i class="pbmit-base-icon-download"></i>
@@ -130,8 +125,17 @@
 												<span class="pbmit-button-text">Download PDF</span>
 											</span>
 										</a>
+										@endif
 									</div>
 								</div>
+								@if(isset($product) && $product->content)
+									@php
+										$htmlContent = html_entity_decode($product->content);
+										$htmlContent = str_replace(['<p><p>', '</p></p>', '&lt;p&gt;', '&lt;/p&gt;'], ['<p>', '</p>', '', ''], $htmlContent);
+										$htmlContent = preg_replace('/<p>/i', '<p class="pbmit-firstletter">', trim($htmlContent), 1);
+									@endphp
+									{!! $htmlContent !!}
+								@else
 								<p class="pbmit-firstletter">Meeting with the company and their thesis advisor
 									to a identity the problem opportunity to pursue, weekly person <span
 										class="pbmit-blackish-color pbmit-medium">the project scope and expected
@@ -141,10 +145,25 @@
 									three students per site form the basis of thesis portion the degree were
 									Students work on-site under the supervision of an faculty member typically
 									solving near-term problems for their company.</p>
+								@endif
 							</div>
 								<div class="pbmit-custom-heading mt-4">
 									<h3 class="pbmit-title">Project Advantages :</h3>
 								</div>
+								@if(isset($product) && $product->advantages && is_array($product->advantages) && count($product->advantages) > 0)
+								<div class="list-group-wrap mb-4" style="padding-left: 0;">
+									<ul class="list-group">
+										@foreach($product->advantages as $advantage)
+										<li class="list-group-item">
+											<span class="pbmit-icon-list-icon">
+												<i class="pbmit-base-icon-checkbox"></i>
+											</span>
+											<span class="pbmit-icon-list-text">{{ $advantage }}</span>
+										</li>
+										@endforeach
+									</ul>
+								</div>
+								@else
 								<p>Company and their thesis advisor to identity the problem opportunity to
 									pursue, weekly person the project scope and expected deliverables a in
 									forces can affect.</p>
@@ -173,10 +192,43 @@
 										</li>
 									</ul>
 								</div>
+								@endif
 								
 								<div class="pbmit-custom-heading mt-5">
 									<h3 class="pbmit-title">Machine Specifications :</h3>
 								</div>
+								@if(isset($product) && $product->specifications && $product->specifications->count() > 0)
+									@foreach($product->specifications as $spec)
+									<div class="table-responsive mb-5">
+										<table class="table table-bordered pbmit-specs-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
+											@if(!empty($spec->table_headers) && is_array($spec->table_headers))
+											<thead>
+												<tr style="background-color: var(--pbmit-global-color); color: #ffffff;">
+													@foreach($spec->table_headers as $index => $header)
+													<th style="padding: 15px 20px; font-weight: 600; {{ $index == 0 ? 'width: 20%;' : '' }} border-color: rgba(0,0,0,0.08); color: #ffffff;">{{ $header }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											@endif
+											@if(!empty($spec->table_data) && is_array($spec->table_data))
+											<tbody>
+												@foreach($spec->table_data as $rowIndex => $row)
+												<tr style="{{ $rowIndex % 2 != 0 ? 'background-color: rgba(var(--pbmit-global-color-rgb), 0.06);' : '' }}">
+													@foreach($row as $cellIndex => $cell)
+														@if($cellIndex == 0)
+														<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">{{ $cell }}</td>
+														@else
+														<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">{{ $cell }}</td>
+														@endif
+													@endforeach
+												</tr>
+												@endforeach
+											</tbody>
+											@endif
+										</table>
+									</div>
+									@endforeach
+								@else
 								<div class="table-responsive mb-5">
 									<table class="table table-bordered pbmit-specs-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
 										<thead>
@@ -241,10 +293,25 @@
 										</tbody>
 									</table>
 								</div>
+								@endif
 
 								<div class="pbmit-custom-heading mt-5">
 									<h3 class="pbmit-title">Designed Machine Parts :</h3>
 								</div>
+								@if(isset($product) && $product->specially_designed_parts && is_array($product->specially_designed_parts) && count($product->specially_designed_parts) > 0)
+								<div class="row mt-4 mb-5">
+									@foreach($product->specially_designed_parts as $part)
+									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
+										<div class="text-center">
+											<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
+												<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : asset('frontend/images/service/service-01.jpg') }}" alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+											</div>
+											<h4 style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">{{ $part['name'] ?? 'Machine Part' }}</h4>
+										</div>
+									</div>
+									@endforeach
+								</div>
+								@else
 								<div class="row mt-4 mb-5">
 									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
 										<div class="text-center">
@@ -279,10 +346,24 @@
 										</div>
 									</div>
 								</div>
+								@endif
 
 								<div class="pbmit-custom-heading mt-5">
 									<h3 class="pbmit-title">Trade Information</h3>
 								</div>
+								@if(isset($product) && $product->trade_information)
+								<div class="table-responsive mb-5">
+									@php
+										$tradeInfo = html_entity_decode($product->trade_information);
+										$tradeInfo = strip_tags($tradeInfo, '<table><tbody><thead><tr><th><td>');
+										$tradeInfo = preg_replace('/<table[^>]*>/i', '<table class="table table-bordered pbmit-trade-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">', $tradeInfo);
+										$tradeInfo = preg_replace('/<td[^>]*>/i', '<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">', $tradeInfo);
+										$tradeInfo = preg_replace('/<th[^>]*>/i', '<td style="padding: 15px 20px; font-weight: 600; width: 25%; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">', $tradeInfo);
+										$tradeInfo = str_replace('</th>', '</td>', $tradeInfo);
+									@endphp
+									{!! $tradeInfo !!}
+								</div>
+								@else
 								<div class="table-responsive mb-5">
 									<table class="table table-bordered pbmit-trade-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
 										<tbody>
@@ -313,6 +394,7 @@
 										</tbody>
 									</table>
 								</div>
+								@endif
 
 								<div class="ihbox-style-area pbminfotech-gap-0px pbmit-column-four">
 									<div class="row g-0">
