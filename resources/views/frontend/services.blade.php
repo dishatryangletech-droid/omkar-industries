@@ -72,7 +72,7 @@
 											<div class="pbmit-service-btn-wrapper">
 												<div class="pbmit-service-btn">
 													<a class="pbmit-button-inner" href="{{ $productUrl }}">
-														<span class="pbmit-button-text">Read More</span>
+														<span class="pbmit-button-text">View More</span>
 														<i class="pbmit-base-icon-right-arrow"></i>
 													</a>
 												</div>

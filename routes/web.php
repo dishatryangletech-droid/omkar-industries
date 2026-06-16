@@ -13,7 +13,7 @@ use App\Models\AboutUs;
 use App\Models\Product;
 use App\Models\GeneralSetting;
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('route:clear');
     Artisan::call('config:clear');
@@ -21,6 +21,119 @@ Route::get('/clear-cache', function() {
     Artisan::call('optimize:clear');
     return "Cache is cleared successfully!";
 });
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+
+    return 'Storage linked successfully';
+});
+
+/*
+|--------------------------------------------------------------------------
+| Test Route for Storage Link
+|--------------------------------------------------------------------------
+*/
+Route::get('/test-storage-link', function () {
+    $storageDir = storage_path('app/public');
+    $publicLink = public_path('storage');
+
+    $output = [];
+
+    // Check storage directory exists
+    if (!file_exists($storageDir)) {
+        @mkdir($storageDir, 0755, true);
+        $output[] = "✓ Created storage/app/public directory";
+    } else {
+        $output[] = "✓ storage/app/public directory exists";
+    }
+
+    // Check if symlink already exists
+    if (is_link($publicLink)) {
+        // Remove broken symlink
+        @unlink($publicLink);
+        $output[] = "✓ Removed existing symlink";
+    }
+
+    // Remove if it's a regular directory
+    if (is_dir($publicLink) && !is_link($publicLink)) {
+        $output[] = "✗ Regular 'public/storage' directory exists (not a symlink). Remove it manually first.";
+    }
+
+    try {
+        // Try creating symlink
+        if (!is_link($publicLink)) {
+            if (PHP_OS_FAMILY === 'Windows') {
+                // Windows requires absolute paths or symlink('relative/path')
+                exec('mklink /D "' . $publicLink . '" "' . $storageDir . '"', $execOutput, $execReturn);
+                if ($execReturn === 0) {
+                    $output[] = "✓ Storage link created successfully (Windows)!";
+                } else {
+                    $output[] = "✗ Failed to create symlink on Windows. Check permissions.";
+                }
+            } else {
+                // Unix/Linux
+                symlink($storageDir, $publicLink);
+                $output[] = "✓ Storage link created successfully (Unix/Linux)!";
+            }
+        }
+
+        // Verify symlink
+        if (is_link($publicLink)) {
+            $target = readlink($publicLink);
+            $output[] = "✓ Symlink verified! Points to: " . $target;
+        }
+
+    } catch (\Exception $e) {
+        $output[] = "✗ Error: " . $e->getMessage();
+    }
+
+    return implode("<br>", $output);
+})->name('test-storage-link');
+
+/*
+|--------------------------------------------------------------------------
+| Fix Storage Link (Alternative Method for Server)
+|--------------------------------------------------------------------------
+*/
+Route::get('/fix-storage-link', function () {
+    $output = [];
+
+    try {
+        // Method 1: Try Artisan command
+        Artisan::call('storage:link');
+        $output[] = "✓ Artisan storage:link executed";
+    } catch (\Exception $e) {
+        $output[] = "✗ Artisan method failed: " . $e->getMessage();
+    }
+
+    // Verify or create manually
+    $storageDir = storage_path('app/public');
+    $publicLink = public_path('storage');
+
+    if (!is_link($publicLink) && !is_dir($publicLink)) {
+        try {
+            // Create storage directory if missing
+            if (!is_dir($storageDir)) {
+                @mkdir($storageDir, 0755, true);
+                @chmod($storageDir, 0755);
+            }
+
+            // Try Unix symlink
+            @symlink($storageDir, $publicLink);
+            $output[] = "✓ Manual symlink created";
+        } catch (\Exception $e) {
+            $output[] = "✗ Manual symlink failed: " . $e->getMessage();
+        }
+    }
+
+    if (is_link($publicLink)) {
+        $output[] = "✓ Storage link is active!";
+    } else {
+        $output[] = "✗ Storage link still not working";
+    }
+
+    return implode("<br>", $output);
+})->name('fix-storage-link');
 
 // Livewire Frontend Routes
 Route::get('/about-us', \App\Livewire\Frontend\AboutUs::class)->name('frontend.about-us');
@@ -140,10 +253,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::view('/', 'backend.dashboard')->name('dashboard');
     Route::view('dashboard', 'backend.dashboard')->name('dashboard');
     Route::view('login', 'backend.auth-login-basic')->name('login');
-    Route::post('login', function() {
+    Route::post('login', function () {
         return redirect()->route('admin.dashboard');
     })->name('login.post');
-    Route::get('logout', function() {
+    Route::get('logout', function () {
         if (auth()->check()) {
             auth()->logout();
         }
@@ -157,7 +270,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::view('profile', 'backend.pages-profile-user')->name('profile');
 
     $dummyObj = new class {
-        public function __get($name) { return null; }
+        public function __get($name)
+        {
+            return null;
+        }
     };
 
     $defaults = [
@@ -199,13 +315,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'users' => class_exists('App\Models\User') ? \App\Models\User::orderBy('id', 'desc')->get() : []
     ];
 
-    Route::get('blogs', function() use ($defaults) { return view('backend.blogs.index', $defaults); })->name('blogs.index');
-    Route::get('blogs/create', function() use ($defaults) { return view('backend.blogs.create', $defaults); })->name('blogs.create');
-    Route::get('blogs/{id}/edit', function($id) use ($defaults) { 
+    Route::get('blogs', function () use ($defaults) {
+        return view('backend.blogs.index', $defaults);
+    })->name('blogs.index');
+    Route::get('blogs/create', function () use ($defaults) {
+        return view('backend.blogs.create', $defaults);
+    })->name('blogs.create');
+    Route::get('blogs/{id}/edit', function ($id) use ($defaults) {
         $defaults['blog'] = class_exists('App\Models\Blog') ? \App\Models\Blog::find($id) : null;
-        return view('backend.blogs.edit', $defaults); 
+        return view('backend.blogs.edit', $defaults);
     })->name('blogs.edit');
-    Route::put('blogs/{id}', function(Illuminate\Http\Request $request, $id) {
+    Route::put('blogs/{id}', function (Illuminate\Http\Request $request, $id) {
         if (class_exists('App\Models\Blog')) {
             $blog = \App\Models\Blog::find($id);
             if ($blog) {
@@ -221,37 +341,43 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('blogs.update');
     Route::resource('careers', \App\Http\Controllers\Backend\CareerController::class);
     Route::resource('clients', \App\Http\Controllers\Backend\ClientController::class);
-    Route::get('contacts', function() use ($defaults) { return view('backend.contacts.index', $defaults); })->name('contacts.index');
-    Route::get('dealers', function() use ($defaults) { return view('backend.dealers.index', $defaults); })->name('dealers.index');
-    Route::get('faqs', function() use ($defaults) { return view('backend.faqs.index', $defaults); })->name('faqs.index');
-    Route::get('gallery', function() use ($defaults) { 
+    Route::get('contacts', function () use ($defaults) {
+        return view('backend.contacts.index', $defaults);
+    })->name('contacts.index');
+    Route::get('dealers', function () use ($defaults) {
+        return view('backend.dealers.index', $defaults);
+    })->name('dealers.index');
+    Route::get('faqs', function () use ($defaults) {
+        return view('backend.faqs.index', $defaults);
+    })->name('faqs.index');
+    Route::get('gallery', function () use ($defaults) {
         $defaults['galleries'] = \App\Models\Gallery::all();
-        return view('backend.gallery.index', $defaults); 
+        return view('backend.gallery.index', $defaults);
     })->name('gallery.index');
-    Route::post('gallery', function(Illuminate\Http\Request $request) { 
+    Route::post('gallery', function (Illuminate\Http\Request $request) {
         \App\Models\Gallery::create([
             'tab_name' => $request->tab_name,
             'status' => $request->status ?? 'inactive',
             'images' => []
         ]);
-        return back()->with('success', 'Gallery tab created successfully!'); 
+        return back()->with('success', 'Gallery tab created successfully!');
     })->name('gallery.store');
-    Route::put('gallery/{id?}', function(Illuminate\Http\Request $request, $id) { 
+    Route::put('gallery/{id?}', function (Illuminate\Http\Request $request, $id) {
         \App\Models\Gallery::findOrFail($id)->update([
             'tab_name' => $request->tab_name,
             'status' => $request->status ?? 'inactive'
         ]);
-        return back()->with('success', 'Gallery tab updated successfully!'); 
+        return back()->with('success', 'Gallery tab updated successfully!');
     })->name('gallery.update');
-    Route::delete('gallery/{id?}', function($id) { 
+    Route::delete('gallery/{id?}', function ($id) {
         \App\Models\Gallery::findOrFail($id)->delete();
-        return back()->with('success', 'Gallery tab deleted successfully!'); 
+        return back()->with('success', 'Gallery tab deleted successfully!');
     })->name('gallery.destroy');
-    Route::get('gallery/{id}', function($id) use ($defaults) { 
+    Route::get('gallery/{id}', function ($id) use ($defaults) {
         $defaults['gallery'] = \App\Models\Gallery::findOrFail($id);
-        return view('backend.gallery.show', $defaults); 
+        return view('backend.gallery.show', $defaults);
     })->name('gallery.show');
-    Route::post('gallery/{id}/upload', function(Illuminate\Http\Request $request, $id) { 
+    Route::post('gallery/{id}/upload', function (Illuminate\Http\Request $request, $id) {
         $gallery = \App\Models\Gallery::findOrFail($id);
         $images = $gallery->images ?? [];
         if ($request->hasFile('images')) {
@@ -263,11 +389,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         }
         return back()->with('success', 'Images uploaded successfully!');
     })->name('gallery.upload');
-    Route::post('gallery/{id}/delete-image', function(Illuminate\Http\Request $request, $id) { 
+    Route::post('gallery/{id}/delete-image', function (Illuminate\Http\Request $request, $id) {
         $gallery = \App\Models\Gallery::findOrFail($id);
         $images = $gallery->images ?? [];
         $pathToRemove = $request->image_path;
-        $images = array_values(array_filter($images, function($img) use ($pathToRemove) {
+        $images = array_values(array_filter($images, function ($img) use ($pathToRemove) {
             return $img !== $pathToRemove;
         }));
         $gallery->update(['images' => $images]);
@@ -276,15 +402,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return back()->with('success', 'Image deleted successfully!');
     })->name('gallery.delete_image');
     Route::resource('job-applications', \App\Http\Controllers\Backend\JobApplicationController::class)->only(['index', 'show', 'destroy']);
-    Route::get('page-banners', function() use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
-    
+    Route::get('page-banners', function () use ($defaults) {
+        return view('backend.page_banners.index', $defaults);
+    })->name('page-banners.index');
+
     Route::resource('products', \App\Http\Controllers\ProductController::class);
     Route::post('products/{product}/copy', [\App\Http\Controllers\ProductController::class, 'copy'])->name('products.copy');
-    
-    Route::get('roles', function() use ($defaults) { return view('backend.roles.index', $defaults); })->name('roles.index');
-    Route::get('users', function() use ($defaults) { return view('backend.users.index', $defaults); })->name('users.index');
-    Route::get('profile', function() use ($defaults) { return view('backend.pages-profile-user', $defaults); })->name('profile');
-    Route::post('profile', function(Illuminate\Http\Request $request) {
+
+    Route::get('roles', function () use ($defaults) {
+        return view('backend.roles.index', $defaults);
+    })->name('roles.index');
+    Route::get('users', function () use ($defaults) {
+        return view('backend.users.index', $defaults);
+    })->name('users.index');
+    Route::get('profile', function () use ($defaults) {
+        return view('backend.pages-profile-user', $defaults);
+    })->name('profile');
+    Route::post('profile', function (Illuminate\Http\Request $request) {
         $user = \App\Models\User::first();
         if ($user) {
             $data = $request->only(['name', 'email']);
@@ -298,22 +432,32 @@ Route::prefix('admin')->name('admin.')->group(function () {
         }
         return redirect()->route('admin.profile', ['tab' => 'profile'])->with('success', 'Profile updated successfully!');
     })->name('profile.update');
-    Route::post('profile/password', function(Illuminate\Http\Request $request) {
+    Route::post('profile/password', function (Illuminate\Http\Request $request) {
         $user = \App\Models\User::first();
         if ($user && $request->filled('password')) {
             $user->update(['password' => bcrypt($request->password)]);
         }
         return redirect()->route('admin.profile', ['tab' => 'password'])->with('success', 'Password changed successfully!');
     })->name('profile.password');
-    Route::get('change-password', function() use ($defaults) { return view('backend.change-password', $defaults); })->name('change-password');
+    Route::get('change-password', function () use ($defaults) {
+        return view('backend.change-password', $defaults);
+    })->name('change-password');
 
     // Website Pages
     Route::prefix('website-pages')->name('website-pages.')->group(function () use ($defaults) {
-        Route::get('header-settings', function() use ($defaults) { return view('backend.website-pages.header-settings', $defaults); })->name('header-settings');
-        Route::get('footer-settings', function() use ($defaults) { return view('backend.website-pages.footer-settings', $defaults); })->name('footer-settings');
-        Route::get('default-image-settings', function() use ($defaults) { return view('backend.website-pages.default-image-settings', $defaults); })->name('default-image-settings');
-        Route::get('general-settings', function() use ($defaults) { return view('backend.website-pages.general-settings', $defaults); })->name('general-settings');
-        Route::post('general-settings', function(\Illuminate\Http\Request $request) {
+        Route::get('header-settings', function () use ($defaults) {
+            return view('backend.website-pages.header-settings', $defaults);
+        })->name('header-settings');
+        Route::get('footer-settings', function () use ($defaults) {
+            return view('backend.website-pages.footer-settings', $defaults);
+        })->name('footer-settings');
+        Route::get('default-image-settings', function () use ($defaults) {
+            return view('backend.website-pages.default-image-settings', $defaults);
+        })->name('default-image-settings');
+        Route::get('general-settings', function () use ($defaults) {
+            return view('backend.website-pages.general-settings', $defaults);
+        })->name('general-settings');
+        Route::post('general-settings', function (\Illuminate\Http\Request $request) {
             $settings = \App\Models\GeneralSetting::first();
             if (!$settings) {
                 $settings = new \App\Models\GeneralSetting();
@@ -322,8 +466,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             $settings->save();
             return redirect()->route('admin.website-pages.general-settings')->with('success', 'General Settings updated successfully!');
         });
-        Route::get('sliders', function() use ($defaults) { return view('backend.website-pages.sliders.index', $defaults); })->name('sliders.index');
-        Route::get('about-us', function() use ($defaults) { 
+        Route::get('sliders', function () use ($defaults) {
+            return view('backend.website-pages.sliders.index', $defaults);
+        })->name('sliders.index');
+        Route::get('about-us', function () use ($defaults) {
             $defaults['mainSection'] = \App\Models\HomePage::firstOrCreate(['section_type' => 'about_us'], ['title' => '']);
             $defaults['mission'] = \App\Models\AboutUs::firstOrCreate(['id' => 1], ['sub_content_title' => 'Mission']);
             $defaults['vision'] = \App\Models\AboutUs::firstOrCreate(['id' => 2], ['sub_content_title' => 'Vision']);
@@ -331,52 +477,70 @@ Route::prefix('admin')->name('admin.')->group(function () {
             $defaults['missionCheckpoints'] = json_decode($defaults['mission']->checkpoints ?? '[]');
             $defaults['visionCheckpoints'] = json_decode($defaults['vision']->checkpoints ?? '[]');
             $defaults['goalCheckpoints'] = json_decode($defaults['goal']->checkpoints ?? '[]');
-            return view('backend.website-pages.about-us.index', $defaults); 
+            return view('backend.website-pages.about-us.index', $defaults);
         })->name('about-us.index');
-        
-        Route::post('about-us', function(\Illuminate\Http\Request $request) {
+
+        Route::post('about-us', function (\Illuminate\Http\Request $request) {
             $mainSection = \App\Models\HomePage::firstOrCreate(['section_type' => 'about_us']);
             $mainData = $request->except(['_token', '_method', 'mission_title', 'mission_description', 'mission_checkpoints', 'vision_title', 'vision_description', 'vision_checkpoints', 'goal_title', 'goal_description', 'goal_checkpoints', 'photo', 'sub_title']);
             $mainData['subtitle'] = $request->sub_title;
-            
+
             if ($request->hasFile('photo')) {
                 $mainData['photo'] = $request->file('photo')->store('about_us', 'public');
             }
             $mainSection->update($mainData);
-            
+
             // Update Mission
-            $missionCheckpoints = array_map(function($title) { return ['title' => $title]; }, array_filter($request->mission_checkpoints ?? []));
+            $missionCheckpoints = array_map(function ($title) {
+                return ['title' => $title];
+            }, array_filter($request->mission_checkpoints ?? []));
             \App\Models\AboutUs::updateOrCreate(['id' => 1], [
                 'sub_content_title' => $request->mission_title,
                 'sub_content_description' => $request->mission_description,
                 'checkpoints' => json_encode($missionCheckpoints)
             ]);
-            
+
             // Update Vision
-            $visionCheckpoints = array_map(function($title) { return ['title' => $title]; }, array_filter($request->vision_checkpoints ?? []));
+            $visionCheckpoints = array_map(function ($title) {
+                return ['title' => $title];
+            }, array_filter($request->vision_checkpoints ?? []));
             \App\Models\AboutUs::updateOrCreate(['id' => 2], [
                 'sub_content_title' => $request->vision_title,
                 'sub_content_description' => $request->vision_description,
                 'checkpoints' => json_encode($visionCheckpoints)
             ]);
-            
+
             // Update Goal
-            $goalCheckpoints = array_map(function($title) { return ['title' => $title]; }, array_filter($request->goal_checkpoints ?? []));
+            $goalCheckpoints = array_map(function ($title) {
+                return ['title' => $title];
+            }, array_filter($request->goal_checkpoints ?? []));
             \App\Models\AboutUs::updateOrCreate(['id' => 3], [
                 'sub_content_title' => $request->goal_title,
                 'sub_content_description' => $request->goal_description,
                 'checkpoints' => json_encode($goalCheckpoints)
             ]);
-            
+
             return redirect()->route('admin.website-pages.about-us.index')->with('success', 'About Us updated successfully!');
         });
-        Route::get('video-section', function() use ($defaults) { return view('backend.website-pages.video-section.index', $defaults); })->name('video-section.index');
-        Route::get('our-clients', function() use ($defaults) { return view('backend.website-pages.our-clients.index', $defaults); })->name('our-clients.index');
-        Route::get('product-section', function() use ($defaults) { return view('backend.website-pages.product-section.index', $defaults); })->name('product-section.index');
-        Route::get('page-banners', function() use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
-        Route::get('testimonials', function() use ($defaults) { return view('backend.website-pages.testimonials.index', $defaults); })->name('testimonials.index');
+        Route::get('video-section', function () use ($defaults) {
+            return view('backend.website-pages.video-section.index', $defaults);
+        })->name('video-section.index');
+        Route::get('our-clients', function () use ($defaults) {
+            return view('backend.website-pages.our-clients.index', $defaults);
+        })->name('our-clients.index');
+        Route::get('product-section', function () use ($defaults) {
+            return view('backend.website-pages.product-section.index', $defaults);
+        })->name('product-section.index');
+        Route::get('page-banners', function () use ($defaults) {
+            return view('backend.page_banners.index', $defaults);
+        })->name('page-banners.index');
+        Route::get('testimonials', function () use ($defaults) {
+            return view('backend.website-pages.testimonials.index', $defaults);
+        })->name('testimonials.index');
         Route::resource('exhibitions', \App\Http\Controllers\Backend\ExhibitionController::class);
         Route::resource('team-partners', \App\Http\Controllers\Backend\TeamPartnerController::class);
-        Route::get('brochure-page', function() use ($defaults) { return view('backend.website-pages.brochure-page', $defaults); })->name('brochure-page.index');
+        Route::get('brochure-page', function () use ($defaults) {
+            return view('backend.website-pages.brochure-page', $defaults);
+        })->name('brochure-page.index');
     });
 });

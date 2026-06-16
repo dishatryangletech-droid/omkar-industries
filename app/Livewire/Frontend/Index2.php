@@ -18,7 +18,11 @@ class Index2 extends Component
         $vision = \App\Models\AboutUs::find(2);
         $goal = \App\Models\AboutUs::find(3);
 
-        return view('livewire.frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal'))
+        $products = \App\Models\Product::where(function ($q) {
+            $q->whereNull('parent_id')->orWhere('parent_id', 0);
+        })->where('status', 'Active')->where('slug', '!=', 'other-product-page')->get();
+
+        return view('livewire.frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products'))
             ->layout('components.layouts.app', ['title' => 'Induyst – Industry & Factory HTML Template']);
     }
 }
