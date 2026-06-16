@@ -398,21 +398,22 @@
 						<div class="col-md-8">
 							<div class="about-one-right-box">
 								<div class="row align-items-center">
-									<div class="col-md-6 left-col">
+									<div class="col-md-8 left-col">
 										<div class="pe-3">
 											<div class="pbmit-heading-subheading">
-												<h4 class="pbmit-subtitle">Why Choose us</h4>
-												<h2 class="pbmit-title">We are leader In Industrial market since 1995
+												<h4 class="pbmit-subtitle">{{ $aboutUs->subtitle ?? 'Why Choose us' }}
+												</h4>
+												<h2 class="pbmit-title">
+													{{ $aboutUs->title ?? 'We are leader In Industrial market since 1995' }}
 												</h2>
 												<div class="pbmit-heading-desc">
-													Induyst a full-service manufacturing company with 15 years of
-													experience serving industries such as automotive.
+													{!! $aboutUs->description ?? 'Induyst a full-service manufacturing company with 15 years of experience serving industries such as automotive.' !!}
 												</div>
 											</div>
 
 										</div>
 									</div>
-									<div class="col-md-6 right-col">
+									<div class="col-md-4 right-col">
 										<div class="ihbox-style-area">
 											<div class="row pbminfotech-gap-40px g-0">
 												<article class="pbmit-miconheading-style-1 col-md-12">
@@ -431,7 +432,7 @@
 															</div>
 															<div class="pbmit-ihbox-contents">
 																<h2 class="pbmit-element-title">
-																	We are certified company
+																	{{ $mission->sub_content_title ?? 'We are certified company' }}
 																</h2>
 															</div>
 														</div>
@@ -454,7 +455,7 @@
 															</div>
 															<div class="pbmit-ihbox-contents">
 																<h2 class="pbmit-element-title">
-																	We are bring quality services
+																	{{ $vision->sub_content_title ?? 'We are bring quality services' }}
 																</h2>
 															</div>
 														</div>
@@ -479,7 +480,7 @@
 															</div>
 															<div class="pbmit-ihbox-contents">
 																<h2 class="pbmit-element-title">
-																	Engineering project study & solution
+																	{{ $goal->sub_content_title ?? 'Engineering project study & solution' }}
 																</h2>
 															</div>
 														</div>
@@ -800,21 +801,25 @@
 									data-arrows="false" data-columns="3" data-margin="30" data-effect="slide">
 									<div class="swiper-wrapper">
 										@foreach($partners as $partner)
-										<article class="pbmit-client-style-1 swiper-slide">
-											<div class="pbmit-border-wrapper">
-												<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
-													<h4 class="pbmit-hide">Partner</h4>
-													<div class="pbmit-client-hover-img">
-														<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}" alt="Partner" style="max-height: 65px; width: auto; object-fit: contain;">
-													</div>
-													<div class="pbmit-featured-img-wrapper">
-														<div class="pbmit-featured-wrapper">
-															<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}" class="img-fluid" alt="Partner" style="max-height: 65px; width: auto; object-fit: contain;">
+											<article class="pbmit-client-style-1 swiper-slide">
+												<div class="pbmit-border-wrapper">
+													<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+														<h4 class="pbmit-hide">Partner</h4>
+														<div class="pbmit-client-hover-img">
+															<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
+																alt="Partner"
+																style="max-height: 65px; width: auto; object-fit: contain;">
+														</div>
+														<div class="pbmit-featured-img-wrapper">
+															<div class="pbmit-featured-wrapper">
+																<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
+																	class="img-fluid" alt="Partner"
+																	style="max-height: 65px; width: auto; object-fit: contain;">
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</article>
+											</article>
 										@endforeach
 									</div>
 								</div>
@@ -848,28 +853,36 @@
 												data-effect="slide">
 												<div class="swiper-wrapper">
 													@foreach($testimonials as $index => $testimonial)
-													<article class="pbmit-testimonial-style-2 swiper-slide">
-														<div class="pbminfotech-post-item">
-															<blockquote class="pbminfotech-testimonial-text">
-																<p>{{ $testimonial->content }}</p>
-															</blockquote>
-															<div class="pbminfotech-box-author">
-																<div class="pbmit-featured-img-wrapper">
-																	<div class="pbmit-featured-wrapper">
-																		@if($testimonial->image)
-																		<img src="{{ asset('storage/' . $testimonial->image) }}" class="img-fluid" alt="{{ $testimonial->name }}">
-																		@else
-																		<img src="{{ asset('frontend/images/homepage-1/testimonial/testimonial-img-0' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid" alt="{{ $testimonial->name }}">
-																		@endif
+														<article class="pbmit-testimonial-style-2 swiper-slide">
+															<div class="pbminfotech-post-item">
+																<blockquote class="pbminfotech-testimonial-text">
+																	<p>{{ $testimonial->content }}</p>
+																</blockquote>
+																<div class="pbminfotech-box-author">
+																	<div class="pbmit-featured-img-wrapper">
+																		<div class="pbmit-featured-wrapper">
+																			@if($testimonial->image)
+																				<img src="{{ asset('storage/' . $testimonial->image) }}"
+																					class="img-fluid"
+																					alt="{{ $testimonial->name }}">
+																			@else
+																				<img src="{{ asset('frontend/images/homepage-1/testimonial/testimonial-img-0' . (($index % 3) + 1) . '.jpg') }}"
+																					class="img-fluid"
+																					alt="{{ $testimonial->name }}">
+																			@endif
+																		</div>
+																	</div>
+																	<div class="pbmit-auther-content">
+																		<h3 class="pbminfotech-box-title">
+																			{{ $testimonial->name }}
+																		</h3>
+																		<div class="pbminfotech-testimonial-detail">
+																			{{ $testimonial->designation }}
+																		</div>
 																	</div>
 																</div>
-																<div class="pbmit-auther-content">
-																	<h3 class="pbminfotech-box-title">{{ $testimonial->name }}</h3>
-																	<div class="pbminfotech-testimonial-detail">{{ $testimonial->designation }}</div>
-																</div>
 															</div>
-														</div>
-													</article>
+														</article>
 													@endforeach
 												</div>
 											</div>
@@ -951,45 +964,52 @@
 										</style>
 										<div class="accordion" id="accordionExample1">
 											@foreach($faqs as $index => $faq)
-											<div class="accordion-item {{ $index == 0 ? 'active' : '' }}" id="headingOne{{ $index }}">
-												<h2 class="accordion-header">
-													<button class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}" type="button"
-														data-bs-toggle="collapse" data-bs-target="#collapseOne{{ $index }}"
-														aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="collapseOne{{ $index }}">
-														<span class="pbmit-accordion-title" style="font-size: 16px;">
-															{{ sprintf('%02d', $index + 1) }}. {{ $faq->question }}
-														</span>
-														<span class="pbmit-accordion-icon">
-															<span class="pbmit-accordion-icon-opened">
-																<svg aria-hidden="true"
-																	class="e-font-icon-svg e-fas-minus"
-																	viewBox="0 0 448 512"
-																	xmlns="http://www.w3.org/2000/svg">
-																	<path
-																		d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-																	</path>
-																</svg>
+												<div class="accordion-item {{ $index == 0 ? 'active' : '' }}"
+													id="headingOne{{ $index }}">
+													<h2 class="accordion-header">
+														<button
+															class="accordion-button {{ $index == 0 ? '' : 'collapsed' }}"
+															type="button" data-bs-toggle="collapse"
+															data-bs-target="#collapseOne{{ $index }}"
+															aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
+															aria-controls="collapseOne{{ $index }}">
+															<span class="pbmit-accordion-title" style="font-size: 16px;">
+																{{ sprintf('%02d', $index + 1) }}. {{ $faq->question }}
 															</span>
-															<span class="pbmit-accordion-icon-closed">
-																<svg aria-hidden="true"
-																	class="e-font-icon-svg e-fas-plus"
-																	viewBox="0 0 448 512"
-																	xmlns="http://www.w3.org/2000/svg">
-																	<path
-																		d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
-																	</path>
-																</svg>
+															<span class="pbmit-accordion-icon">
+																<span class="pbmit-accordion-icon-opened">
+																	<svg aria-hidden="true"
+																		class="e-font-icon-svg e-fas-minus"
+																		viewBox="0 0 448 512"
+																		xmlns="http://www.w3.org/2000/svg">
+																		<path
+																			d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+																		</path>
+																	</svg>
+																</span>
+																<span class="pbmit-accordion-icon-closed">
+																	<svg aria-hidden="true"
+																		class="e-font-icon-svg e-fas-plus"
+																		viewBox="0 0 448 512"
+																		xmlns="http://www.w3.org/2000/svg">
+																		<path
+																			d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+																		</path>
+																	</svg>
+																</span>
 															</span>
-														</span>
-													</button>
-												</h2>
-												<div id="collapseOne{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
-													aria-labelledby="headingOne{{ $index }}" data-bs-parent="#accordionExample1">
-													<div class="accordion-body" style="font-size: 14px; line-height: 24px;">
-														{!! $faq->answer !!}
+														</button>
+													</h2>
+													<div id="collapseOne{{ $index }}"
+														class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+														aria-labelledby="headingOne{{ $index }}"
+														data-bs-parent="#accordionExample1">
+														<div class="accordion-body"
+															style="font-size: 14px; line-height: 24px;">
+															{!! $faq->answer !!}
+														</div>
 													</div>
 												</div>
-											</div>
 											@endforeach
 										</div>
 									</div>
@@ -1012,61 +1032,70 @@
 						data-arrows="false" data-columns="3" data-margin="30" data-effect="slide">
 						<div class="swiper-wrapper">
 							@foreach($blogs as $blog)
-							<article class="pbmit-blog-style-1 swiper-slide">
-								<div class="post-item">
-									<div class="pbminfotech-box-content">
-										<div class="pbmit-featured-container">
-											<div class="pbmit-featured-container-inner">
-												<div class="pbmit-featured-img-wrapper">
-													<div class="pbmit-featured-wrapper">
-														@if($blog->image)
-														<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid" alt="{{ $blog->title }}">
-														@else
-														<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-01.jpg') }}" class="img-fluid" alt="{{ $blog->title }}">
-														@endif
+								<article class="pbmit-blog-style-1 swiper-slide">
+									<div class="post-item">
+										<div class="pbminfotech-box-content">
+											<div class="pbmit-featured-container">
+												<div class="pbmit-featured-container-inner">
+													<div class="pbmit-featured-img-wrapper">
+														<div class="pbmit-featured-wrapper">
+															@if($blog->image)
+																<img src="{{ asset('storage/' . $blog->image) }}"
+																	class="img-fluid" alt="{{ $blog->title }}">
+															@else
+																<img src="{{ asset('frontend/images/homepage-2/blog/blog-img-01.jpg') }}"
+																	class="img-fluid" alt="{{ $blog->title }}">
+															@endif
+														</div>
+														<a class="pbmit-link"
+															href="{{ route('frontend.blog-single-details', $blog->id) }}"></a>
 													</div>
-																								<a class="pbmit-link" href="{{ route('frontend.blog-single-details', $blog->id) }}"></a>
-											</div>
-											<div class="pbmit-meta-date-wrapper pbmit-meta-line">
-												<span class="pbmit-post-date">
-													<span class="pbmit-date">{{ $blog->date ? $blog->date->format('d') : '' }}</span>
-													<span class="pbmit-month">{{ $blog->date ? $blog->date->format('M') : '' }}</span>
-												</span>
-											</div>
-											<div class= "pbmit-meta-wraper">
-												<div class="pbmit-meta-author pbmit-meta-line">
-													<span class="pbmit-post-author">Admin</span>
+													<div class="pbmit-meta-date-wrapper pbmit-meta-line">
+														<span class="pbmit-post-date">
+															<span
+																class="pbmit-date">{{ $blog->date ? $blog->date->format('d') : '' }}</span>
+															<span
+																class="pbmit-month">{{ $blog->date ? $blog->date->format('M') : '' }}</span>
+														</span>
+													</div>
+													<div class="pbmit-meta-wraper">
+														<div class="pbmit-meta-author pbmit-meta-line">
+															<span class="pbmit-post-author">Admin</span>
+														</div>
+														<div class="pbmit-meta-category-wrapper pbmit-meta-line">
+															<span class="pbmit-meta-category">
+																<a href="/blog-classic" rel="category tag">News</a>
+															</span>
+														</div>
+														<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
+															<span class="pbmit-meta-comments">0<span
+																	class="pbmit-comment-text">Comment</span></span>
+														</div>
+													</div>
 												</div>
-												<div class="pbmit-meta-category-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-category">
-														<a href="/blog-classic" rel="category tag">News</a>
-													</span>
-												</div>
-												<div class="pbmit-meta-comment-wrapper pbmit-meta-line">
-													<span class="pbmit-meta-comments">0<span
-															class="pbmit-comment-text">Comment</span></span>
+												<div class="pbmit-content-wrapper">
+													<h3 class="pbmit-post-title"
+														style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 60px;">
+														<a
+															href="{{ route('frontend.blog-single-details', $blog->id) }}">{{ $blog->title }}</a>
+													</h3>
+													<div class="pbminfotech-box-desc"
+														style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+														{!! Str::limit(strip_tags($blog->description), 100) !!}
+													</div>
+													<div class="pbmit-blog-btn">
+														<a class="pbmit-button-inner"
+															href="{{ route('frontend.blog-single-details', $blog->id) }}">
+															<span class="pbmit-button-text">Read More</span>
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-right-arrow"></i>
+															</span>
+														</a>
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="pbmit-content-wrapper">
-											<h3 class="pbmit-post-title" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 60px;">
-												<a href="{{ route('frontend.blog-single-details', $blog->id) }}">{{ $blog->title }}</a>
-											</h3>
-											<div class="pbminfotech-box-desc" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-												{!! Str::limit(strip_tags($blog->description), 100) !!}
-											</div>
-											<div class="pbmit-blog-btn">
-												<a class="pbmit-button-inner" href="{{ route('frontend.blog-single-details', $blog->id) }}">
-													<span class="pbmit-button-text">Read More</span>
-													<span class="pbmit-button-icon">
-														<i class="pbmit-base-icon-right-arrow"></i>
-													</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</article>
+								</article>
 							@endforeach
 						</div>
 					</div>

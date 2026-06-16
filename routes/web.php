@@ -143,6 +143,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('login', function() {
         return redirect()->route('admin.dashboard');
     })->name('login.post');
+    Route::get('logout', function() {
+        if (auth()->check()) {
+            auth()->logout();
+        }
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('admin.login');
+    })->name('logout');
     Route::view('forgot-password', 'backend.auth-forgot-password-basic')->name('forgot-password');
     Route::view('reset-password', 'backend.auth-reset-password-basic')->name('reset-password');
     Route::view('change-password', 'backend.change-password')->name('change-password');

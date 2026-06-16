@@ -7,9 +7,9 @@
 					<div class="site-branding">
 						<h1 class="site-title">
 							<a href="/index-2">
-								<img class="pbmit-main-logo" src="{{ asset('frontend/images/logo-white.svg') }}"
-									alt="Induyst">
-								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/logo.svg') }}"
+								<img class="pbmit-main-logo" src="{{ asset('frontend/images/omkar-logo.png') }}"
+									alt="Induyst" style="width: 68px;">
+								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/omkar-logo.png') }}"
 									alt="Induyst">
 							</a>
 						</h1>
@@ -26,7 +26,8 @@
 									</span>
 									<span class="pbmit-box-content">
 										<span class="pbmit-header-box-title">Need to talk</span>
-										<span class="pbmit-header-box-content">{{ $generalSettings->contact_phone ?? '(000)123456789' }}</span>
+										<span
+											class="pbmit-header-box-content">{{ $generalSettings->contact_phone ?? '(000)123456789' }}</span>
 									</span>
 								</a>
 							</div>
@@ -37,7 +38,8 @@
 									</span>
 									<span class="pbmit-box-content">
 										<span class="pbmit-header-box-title">Main Location</span>
-										<span class="pbmit-header-box-content">{{ $generalSettings->short_contact_address ?? ($generalSettings->contact_address ?? 'Los Angeles Gournadi Bariasl') }}</span>
+										<span
+											class="pbmit-header-box-content">{{ $generalSettings->short_contact_address ?? ($generalSettings->contact_address ?? 'Los Angeles Gournadi Bariasl') }}</span>
 									</span>
 								</a>
 							</div>
@@ -53,7 +55,8 @@
 											@if(isset($generalSettings->contact_email) && $generalSettings->contact_email)
 												{{ $generalSettings->contact_email }}
 											@else
-												<span class="__cf_email__" data-cfemail="dab4b5f7a8bfaab6a39abfa2bbb7aab6bff4b9b5b7">[email&#160;protected]</span>
+												<span class="__cf_email__"
+													data-cfemail="dab4b5f7a8bfaab6a39abfa2bbb7aab6bff4b9b5b7">[email&#160;protected]</span>
 											@endif
 										</span>
 									</span>
@@ -199,7 +202,8 @@
 																	alt="Featured Product">
 																<div class="position-absolute bottom-0 start-0 w-100 p-3"
 																	style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-																	<h6 class="text-white mb-1 fw-bold mb-2">Other Products
+																	<h6 class="text-white mb-1 fw-bold mb-2">Other
+																		Products
 																	</h6>
 																	<a href="/products"
 																		class="pbmit-btn pbmit-btn-white"

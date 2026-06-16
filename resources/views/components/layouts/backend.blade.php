@@ -19,7 +19,8 @@
         rel="stylesheet" />
 
     <!-- Icons -->
-    <link rel="preload" href="{{ asset('assets/backend/vendor/fonts/tabler/tabler-icons.woff2') }}" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="{{ asset('assets/backend/vendor/fonts/tabler/tabler-icons.woff2') }}" as="font"
+        type="font/woff2" crossorigin />
     <link rel="stylesheet" href="{{ asset('assets/backend') }}/vendor/fonts/fontawesome.css" />
     <link rel="stylesheet" href="{{ asset('assets/backend') }}/vendor/fonts/tabler-icons.css" />
     <link rel="stylesheet" href="{{ asset('assets/backend') }}/vendor/fonts/flag-icons.css" />
@@ -55,8 +56,7 @@
             <!-- Menu -->
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo" style="height: 75px !important; padding: 1rem 1.5rem;">
-                    <a href="#" class="app-brand-link"
-                        style="display: flex; align-items: center; gap: 10px;">
+                    <a href="#" class="app-brand-link" style="display: flex; align-items: center; gap: 10px;">
                         <img src="{{ asset('frontend/images/omkar-logo.png') }}" alt="Omkar Industries" style="height: 50px;
                             width: 50px;
                             object-fit: contain;
@@ -186,21 +186,21 @@
                         <ul class="menu-sub">
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.header-settings') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.header-settings') }}" class="menu-link">
                                     <div data-i18n="Header Settings">Header Settings</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.footer-settings') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.footer-settings') }}" class="menu-link">
                                     <div data-i18n="Footer Settings">Footer Settings</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.default-image-settings') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.default-image-settings') }}" class="menu-link">
                                     <div data-i18n="Default Image Settings">Default Image Settings</div>
                                 </a>
@@ -208,77 +208,74 @@
 
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.general-settings') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.general-settings') }}" class="menu-link">
                                     <div data-i18n="General Settings">General Settings (Contact)</div>
                                 </a>
                             </li>
 
                             <li class="menu-item {{ Route::is('admin.website-pages.sliders.*') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.sliders.index') }}" class="menu-link">
                                     <div data-i18n="Sliders">Sliders</div>
                                 </a>
                             </li>
-                            <li
-                                class="menu-item {{ Route::is('admin.website-pages.about-us.index') ? 'active' : '' }}">
-                                
+                            <li class="menu-item {{ Route::is('admin.website-pages.about-us.index') ? 'active' : '' }}">
+
                                 <a href="{{ route('admin.website-pages.about-us.index') }}" class="menu-link">
                                     <div data-i18n="About Us">About Us</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.video-section.index') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.video-section.index') }}" class="menu-link">
                                     <div data-i18n="Video Section">Video Section</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.our-clients.index') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.our-clients.index') }}" class="menu-link">
                                     <div data-i18n="Our Clients">Our Clients</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.product-section.index') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.product-section.index') }}" class="menu-link">
                                     <div data-i18n="Product Section">Product Section</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.page-banners.index') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.page-banners.index') }}" class="menu-link">
                                     <div data-i18n="Page Banners">Page Banners</div>
                                 </a>
                             </li>
-                            <li
-                                class="menu-item {{ Route::is('admin.website-pages.testimonials.*') ? 'active' : '' }}">
-                                
+                            <li class="menu-item {{ Route::is('admin.website-pages.testimonials.*') ? 'active' : '' }}">
+
                                 <a href="{{ route('admin.website-pages.testimonials.index') }}" class="menu-link">
                                     <div data-i18n="Testimonials">Testimonials</div>
                                 </a>
                             </li>
-                            <li
-                                class="menu-item {{ Route::is('admin.website-pages.exhibitions.*') ? 'active' : '' }}">
-                                
+                            <li class="menu-item {{ Route::is('admin.website-pages.exhibitions.*') ? 'active' : '' }}">
+
                                 <a href="{{ route('admin.website-pages.exhibitions.index') }}" class="menu-link">
                                     <div data-i18n="Exhibitions">Exhibitions</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.team-partners.*') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.team-partners.index') }}" class="menu-link">
                                     <div data-i18n="Team & Partners">Team & Partners</div>
                                 </a>
                             </li>
                             <li
                                 class="menu-item {{ Route::is('admin.website-pages.brochure-page.index') ? 'active' : '' }}">
-                                
+
                                 <a href="{{ route('admin.website-pages.brochure-page.index') }}" class="menu-link">
                                     <div data-i18n="Brochure Page">Brochure Page</div>
                                 </a>
@@ -286,7 +283,7 @@
                         </ul>
                     </li>
 
-                    
+
 
                 </ul>
             </aside>
@@ -312,12 +309,12 @@
                                     <div class="avatar avatar-online">
                                         @php
                                             $userProfileImg = (isset($user) && $user) ? $user->profile_image : null;
-                                            $headerImgPath = $userProfileImg 
+                                            $headerImgPath = $userProfileImg
                                                 ? (str_starts_with($userProfileImg, 'uploads/') ? asset($userProfileImg) : asset('storage/' . $userProfileImg))
                                                 : asset('assets/backend/img/avatars/1.png');
                                         @endphp
-                                        <img src="{{ $headerImgPath }}" alt
-                                            class="h-auto rounded-circle" style="aspect-ratio: 1/1; object-fit: cover;" />
+                                        <img src="{{ $headerImgPath }}" alt class="h-auto rounded-circle"
+                                            style="aspect-ratio: 1/1; object-fit: cover;" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -327,7 +324,8 @@
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
                                                         <img src="{{ $headerImgPath }}" alt
-                                                            class="h-auto rounded-circle" style="aspect-ratio: 1/1; object-fit: cover;" />
+                                                            class="h-auto rounded-circle"
+                                                            style="aspect-ratio: 1/1; object-fit: cover;" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -357,7 +355,7 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#" id="logout-btn">
+                                        <a class="dropdown-item" href="{{ route('admin.logout') }}" id="logout-btn">
                                             <i class="ti ti-logout me-2 ti-sm"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
@@ -452,5 +450,3 @@
 </body>
 
 </html>
-
-
