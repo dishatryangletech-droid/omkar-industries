@@ -430,7 +430,7 @@ INDEX:
 }
 .pbmit-btn.blackish{
 	color: var(--pbmit-white-color);
-	background-color: var(--pbmit-blackish-color);
+	background-color: #ffc34e;
 }
 .pbmit-btn.blackish .pbmit-button-text{
 	text-shadow: 0 0 var(--pbmit-white-color),0 22px var(--pbmit-blackish-color);

@@ -41,6 +41,10 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'slug' => $request->slug ?: \Illuminate\Support\Str::slug($request->title)
+        ]);
+
         $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:products,slug',
@@ -173,6 +177,10 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        $request->merge([
+            'slug' => $request->slug ?: \Illuminate\Support\Str::slug($request->title)
+        ]);
+
         $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:products,slug,' . $product->id,

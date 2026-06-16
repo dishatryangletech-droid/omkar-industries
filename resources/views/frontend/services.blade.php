@@ -39,296 +39,66 @@
 			<!-- Services Start --> 
 			<section class="section-sm">
 				<div class="container">
+					@php
+						$otherProduct = collect($products)->firstWhere('slug', 'other-product-page');
+						$filteredProducts = collect($products)->reject(function($p) {
+							return $p->slug === 'other-product-page';
+						});
+					@endphp
 					<div class="pbmit-element-posts-wrapper row">
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-01.jpg') }}" class="img-fluid" alt="">
+						@foreach($filteredProducts as $product)
+							@php
+								$productUrl = $product->is_parent ? url('products/'.$product->slug.'/children') : url('product-details/'.$product->slug);
+							@endphp
+							<article class="pbmit-service-style-1 col-md-6 col-lg-4">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-box-content-wrap">
+										<div class="pbmit-image-wrap">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+												<img src="{{ ($product->image && file_exists(public_path('storage/' . $product->image))) ? asset('storage/' . $product->image) : asset('frontend/images/service/service-01.jpg') }}" class="img-fluid" alt="{{ $product->title }}">
 											</div>
-										</div>
+											</div>
 
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Machine Analysis</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Data analysis technique that automates the creation of analytical models is machine</p>
+											<a class="pbmit-link" href="{{ $productUrl }}"></a>
 										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
+										<div class="pbmit-service-content-wrap">
+											<h3 class="pbmit-service-title">
+												<a href="{{ $productUrl }}">{{ $product->title }}</a>
+											</h3>
+											<div class="pbmit-service-description">
+												<p>{{ Str::limit(strip_tags($product->short_description ?? 'Discover our premium quality product designed for excellence and reliability.'), 85) }}</p>
 											</div>
+											<div class="pbmit-service-btn-wrapper">
+												<div class="pbmit-service-btn">
+													<a class="pbmit-button-inner" href="{{ $productUrl }}">
+														<span class="pbmit-button-text">Read More</span>
+														<i class="pbmit-base-icon-right-arrow"></i>
+													</a>
+												</div>
+											</div>
+											<a class="pbmit-link" href="{{ $productUrl }}"></a>
 										</div>
-										<a class="pbmit-link" href="/product-details"></a>
 									</div>
 								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-02.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Comprehensive Logits</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Our solutions offer door-to-door services for the import & export of consumer and industrial</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-03.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Plant Maintenance</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>High-end manufacturers are at the forefront of technological innovation, constantly developing and implementing</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-04.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Maintenance & Repairing</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Maintaining functioning is the goal of maintenance, whereas repairs seek to restore it</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-05.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Manufacturing Solutions</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Manufacturing decision-makers agree market conditions are accelerating digitalization priorities</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-06.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Automation Industry</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Robotics, machinery, & control systems operations that were formerly carried by known automation</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-07.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Industry logistic</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>To put it simply, there are three types of logistics: incoming, outbound, and reverse</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-08.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Design & Manufacture</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Method of creating parts, or components that are easy to manufacture with the objective of producing</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
-						<article class="pbmit-service-style-1 col-md-6 col-lg-4">
-							<div class="pbminfotech-post-item">
-								<div class="pbmit-box-content-wrap">
-									<div class="pbmit-image-wrap">
-										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												<img src="{{ asset('frontend/images/service/service-09.jpg') }}" class="img-fluid" alt="">
-											</div>
-										</div>
-
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-									<div class="pbmit-service-content-wrap">
-										<h3 class="pbmit-service-title">
-											<a href="/product-details">Innovations Metallurgy</a>
-										</h3>
-										<div class="pbmit-service-description">
-											<p>Extracting metals from their ores and preparing them for use is the art and science of metallurgy</p>
-										</div>
-										<div class="pbmit-service-btn-wrapper">
-											<div class="pbmit-service-btn">
-												<a class="pbmit-button-inner" href="/product-details">
-													<span class="pbmit-button-text">Read More</span>
-													<i class="pbmit-base-icon-right-arrow"></i>
-												</a>
-											</div>
-										</div>
-										<a class="pbmit-link" href="/product-details"></a>
-									</div>
-								</div>
-							</div>
-						</article>
+							</article>
+						@endforeach
 					</div>
+
+					@if($otherProduct)
+					<div class="row mt-5">
+						<div class="col-12 text-center mt-4 mb-4">
+							<a href="{{ url('products/'.$otherProduct->slug.'/children') }}" class="pbmit-btn blackish">
+								<span class="pbmit-button-content-wrapper">
+									<span class="pbmit-button-icon">
+										<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+									</span>
+									<span class="pbmit-button-text">View More Other Products</span>
+								</span>
+							</a>
+						</div>
+					</div>
+					@endif
 				</div>
 			</section>
 			<!-- Services end --> 

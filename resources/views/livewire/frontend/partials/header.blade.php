@@ -119,105 +119,85 @@
 																style="font-size: 16px; text-transform: uppercase;">Our
 																Core Products</h5>
 															<div class="row g-3">
-																<div class="col-md-4 text-center">
-																	<a href="/product-details" class="d-block"
-																		style="padding: 0; text-decoration: none;">
-																		<img src="{{ asset('frontend/images/portfolio/portfolio-img-01.jpg') }}"
-																			class="img-fluid rounded w-100"
-																			style="height: 150px; object-fit: cover;"
-																			alt="Chemical Process">
-																		<span class="d-block fw-bold mt-2"
-																			style="font-size: 14px; color: #333;">Chemical
-																			Process</span>
-																	</a>
-																</div>
-																<div class="col-md-4 text-center">
-																	<a href="/product-details" class="d-block"
-																		style="padding: 0; text-decoration: none;">
-																		<img src="{{ asset('frontend/images/portfolio/portfolio-img-02.jpg') }}"
-																			class="img-fluid rounded w-100"
-																			style="height: 150px; object-fit: cover;"
-																			alt="Heavy Machinery">
-																		<span class="d-block fw-bold mt-2"
-																			style="font-size: 14px; color: #333;">Heavy
-																			Machinery</span>
-																	</a>
-																</div>
-																<div class="col-md-4 text-center">
-																	<a href="/product-details" class="d-block"
-																		style="padding: 0; text-decoration: none;">
-																		<img src="{{ asset('frontend/images/portfolio/portfolio-img-03.jpg') }}"
-																			class="img-fluid rounded w-100"
-																			style="height: 150px; object-fit: cover;"
-																			alt="Construction">
-																		<span class="d-block fw-bold mt-2"
-																			style="font-size: 14px; color: #333;">Construction</span>
-																	</a>
-																</div>
-																<div class="col-md-4 text-center pt-2">
-																	<a href="/product-details" class="d-block"
-																		style="padding: 0; text-decoration: none;">
-																		<img src="{{ asset('frontend/images/portfolio/portfolio-img-04.jpg') }}"
-																			class="img-fluid rounded w-100"
-																			style="height: 150px; object-fit: cover;"
-																			alt="Automotive Parts">
-																		<span class="d-block fw-bold mt-2"
-																			style="font-size: 14px; color: #333;">Automotive
-																			Parts</span>
-																	</a>
-																</div>
-																<div class="col-md-4 text-center pt-2">
-																	<a href="/product-details" class="d-block"
-																		style="padding: 0; text-decoration: none;">
-																		<img src="{{ asset('frontend/images/portfolio/portfolio-img-05.jpg') }}"
-																			class="img-fluid rounded w-100"
-																			style="height: 150px; object-fit: cover;"
-																			alt="Power Energy">
-																		<span class="d-block fw-bold mt-2"
-																			style="font-size: 14px; color: #333;">Power
-																			Energy</span>
-																	</a>
-																</div>
-																<div class="col-md-4 text-center pt-2">
-																	<a href="/product-details" class="d-block"
-																		style="padding: 0; text-decoration: none;">
-																		<img src="{{ asset('frontend/images/portfolio/portfolio-img-06.jpg') }}"
-																			class="img-fluid rounded w-100"
-																			style="height: 150px; object-fit: cover;"
-																			alt="Metal Working">
-																		<span class="d-block fw-bold mt-2"
-																			style="font-size: 14px; color: #333;">Metal
-																			Working</span>
-																	</a>
-																</div>
+																@php
+																	$otherProduct = \App\Models\Product::where('slug', 'other-product-page')->first();
+																	$otherId = $otherProduct ? $otherProduct->id : 0;
+																	
+																	$standaloneNav = \App\Models\Product::where('status', 'Active')
+																		->where(function($q) {
+																			$q->whereNull('parent_id')->orWhere('parent_id', 0);
+																		})->where('is_parent', false)->where('id', '!=', $otherId)->take(4)->get();
+																	$parentNav = \App\Models\Product::where('status', 'Active')
+																		->where('is_parent', true)->where('id', '!=', $otherId)->take(3)->get();
+																	$navProducts = $standaloneNav->merge($parentNav);
+																@endphp
+																@foreach($navProducts as $navProduct)
+																	@php
+																		$navUrl = $navProduct->is_parent ? url('products/'.$navProduct->slug.'/children') : url('product-details/'.$navProduct->slug);
+																	@endphp
+																	<div class="col-md-4 text-center {{ $loop->iteration > 3 ? 'pt-2' : '' }}">
+																		<a href="{{ $navUrl }}" class="d-block"
+																			style="padding: 0; text-decoration: none;">
+																			<img src="{{ ($navProduct->image && file_exists(public_path('storage/' . $navProduct->image))) ? asset('storage/' . $navProduct->image) : asset('frontend/images/portfolio/portfolio-img-01.jpg') }}"
+																				class="img-fluid rounded w-100"
+																				style="height: 150px; object-fit: cover;"
+																				alt="{{ $navProduct->title }}">
+																			<span class="d-block fw-bold mt-2"
+																				style="font-size: 14px; color: #333;">{{ $navProduct->title }}</span>
+																		</a>
+																	</div>
+																@endforeach
 															</div>
 														</div>
 														<!-- Right side: Image -->
 														<div class="col-md-4 ps-4">
 															<div
 																class="position-relative h-100 rounded overflow-hidden shadow-sm">
-																<img src="{{ asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
-																	class="img-fluid w-100 h-100"
-																	style="object-fit: cover; min-height: 250px;"
-																	alt="Featured Product">
-																<div class="position-absolute bottom-0 start-0 w-100 p-3"
-																	style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-																	<h6 class="text-white mb-1 fw-bold mb-2">Other
-																		Products
-																	</h6>
-																	<a href="/products"
-																		class="pbmit-btn pbmit-btn-white"
-																		style="transform: scale(0.85); transform-origin: left top; margin-top: 15px;">
-																		<span class="pbmit-button-content-wrapper">
-																			<span class="pbmit-button-icon">
-																				<i
-																					class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																@if($otherProduct)
+																	<img src="{{ ($otherProduct->image && file_exists(public_path('storage/' . $otherProduct->image))) ? asset('storage/' . $otherProduct->image) : asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
+																		class="img-fluid w-100 h-100"
+																		style="object-fit: cover; min-height: 250px;"
+																		alt="{{ $otherProduct->title }}">
+																	<div class="position-absolute bottom-0 start-0 w-100 p-3"
+																		style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+																		<h6 class="text-white mb-1 fw-bold mb-2">{{ $otherProduct->title }}</h6>
+																		<a href="{{ url('products/'.$otherProduct->slug.'/children') }}"
+																			class="pbmit-btn pbmit-btn-white"
+																			style="transform: scale(0.85); transform-origin: left top; margin-top: 15px;">
+																			<span class="pbmit-button-content-wrapper">
+																				<span class="pbmit-button-icon">
+																					<i
+																						class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																				</span>
+																				<span class="pbmit-button-text">View
+																					All</span>
 																			</span>
-																			<span class="pbmit-button-text">View
-																				All</span>
-																		</span>
-																	</a>
-																</div>
+																		</a>
+																	</div>
+																@else
+																	<img src="{{ asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
+																		class="img-fluid w-100 h-100"
+																		style="object-fit: cover; min-height: 250px;"
+																		alt="Featured Product">
+																	<div class="position-absolute bottom-0 start-0 w-100 p-3"
+																		style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+																		<h6 class="text-white mb-1 fw-bold mb-2">Other
+																			Products
+																		</h6>
+																		<a href="/products"
+																			class="pbmit-btn pbmit-btn-white"
+																			style="transform: scale(0.85); transform-origin: left top; margin-top: 15px;">
+																			<span class="pbmit-button-content-wrapper">
+																				<span class="pbmit-button-icon">
+																					<i
+																						class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																				</span>
+																				<span class="pbmit-button-text">View
+																					All</span>
+																			</span>
+																		</a>
+																	</div>
+																@endif
 															</div>
 														</div>
 													</div>
