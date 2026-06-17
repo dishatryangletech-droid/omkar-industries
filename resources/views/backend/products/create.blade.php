@@ -378,6 +378,49 @@
                             </div>
 
 
+
+                            <hr class="my-4">
+                            <h6 class="fw-bold mb-3"><i class="ti ti-stairs me-1"></i> Process Steps</h6>
+                            <div class="row g-3">
+                                <div id="process-steps-container" class="col-12 row g-3">
+                                    {{-- Process steps will be added here --}}
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <button type="button" class="btn btn-sm btn-label-primary waves-effect" onclick="addProcessStep()">
+                                        <i class="ti ti-plus me-1"></i> Add Process Step
+                                    </button>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+                            <h6 class="fw-bold mb-3"><i class="ti ti-message-dots me-1"></i> Client Review About Project</h6>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <label class="form-label fw-medium">Title</label>
+                                    <input type="text" name="client_review_title" class="form-control" value="Our Client Review About Project" placeholder="e.g. Our Client Review About Project">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label fw-medium">Description</label>
+                                    <textarea name="client_review_description" class="form-control" rows="3" placeholder="Description..."></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label fw-medium text-uppercase small">Slider Images</label>
+                                    <input type="file" name="client_review_images[]" class="form-control" accept="image/*" multiple>
+                                    <small class="text-primary d-block fw-medium mt-1" style="font-size: 0.75rem;"><i class="ti ti-info-circle me-1"></i>Allowed: JPG, JPEG, PNG, WEBP.</small>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <h6 class="fw-bold mb-2">FAQs / Accordion</h6>
+                                    <div id="client-review-faqs-container" class="row g-3">
+                                        {{-- FAQs will be added here --}}
+                                    </div>
+                                    <div class="mt-2">
+                                        <button type="button" class="btn btn-sm btn-label-primary waves-effect" onclick="addClientReviewFAQ()">
+                                            <i class="ti ti-plus me-1"></i> Add FAQ
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr class="my-4">
                             <h6 class="fw-bold mb-3"><i class="ti ti-search me-1"></i> SEO Metadata</h6>
                             <div class="row g-3">
@@ -618,8 +661,32 @@
             const el = document.getElementById(`section-fieldset-${idx}`);
             if (el) el.remove();
             if (document.querySelectorAll('.section-container').length === 0) {
-                document.getElementById('sections-empty-msg').style.display = 'block';
+                const emptyMsg = document.getElementById('sections-empty-msg');
+                if (emptyMsg) emptyMsg.style.display = 'block';
             }
+        }
+
+        let processStepIndex = 0;
+
+        function addProcessStep() {
+            const idx = processStepIndex++;
+            const html = `
+                <div class="col-md-6 col-lg-3" id="process-step-${idx}">
+                    <div class="border rounded p-3 mb-3 position-relative bg-lighter">
+                        <button type="button" class="btn btn-sm btn-icon btn-label-danger position-absolute top-0 end-0 m-2" onclick="document.getElementById('process-step-${idx}').remove()">
+                            <i class="ti ti-x"></i>
+                        </button>
+                        <h6 class="fw-bold mb-3">Step #${idx + 1}</h6>
+                        <label class="form-label fw-medium small">Title</label>
+                        <input type="text" name="process_steps[${idx}][title]" class="form-control mb-2" placeholder="e.g. Preparation Of Materials">
+                        <label class="form-label fw-medium small">Description</label>
+                        <textarea name="process_steps[${idx}][description]" class="form-control mb-2" rows="2" placeholder="Description..."></textarea>
+                        <label class="form-label fw-medium small">Icon/Image</label>
+                        <input type="file" name="process_steps[${idx}][image]" class="form-control" accept="image/*">
+                    </div>
+                </div>
+            `;
+            document.getElementById('process-steps-container').insertAdjacentHTML('beforeend', html);
         }
 
 
@@ -796,6 +863,25 @@
         }
 
         let featureIndex = 0;
+        let clientReviewFaqIndex = 0;
+
+        function addClientReviewFAQ() {
+            const idx = clientReviewFaqIndex++;
+            const html = `
+                <div class="col-12" id="client-review-faq-${idx}">
+                    <div class="feature-item p-3 border rounded mb-2">
+                        <div class="d-flex justify-content-between mb-2">
+                            <label class="form-label mb-0 fw-bold">FAQ #${idx + 1}</label>
+                            <button type="button" class="btn btn-sm btn-icon btn-label-danger" onclick="document.getElementById('client-review-faq-${idx}').remove()">
+                                <i class="ti ti-x"></i>
+                            </button>
+                        </div>
+                        <input type="text" name="client_review_faqs[${idx}][question]" class="form-control mb-2" placeholder="Question">
+                        <textarea name="client_review_faqs[${idx}][answer]" class="form-control" rows="2" placeholder="Answer"></textarea>
+                    </div>
+                </div>`;
+            document.getElementById('client-review-faqs-container').insertAdjacentHTML('beforeend', html);
+        }
 
         let selectedSliderFiles = [];
 

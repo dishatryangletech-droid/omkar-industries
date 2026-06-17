@@ -396,8 +396,50 @@
 								</div>
 								@endif
 
+								<style>
+									.custom-process-grid {
+										justify-content: center;
+									}
+									.custom-process-grid .pbmit-miconheading-style-11:first-child .pbmit-ihbox-style-11 {
+										border-top-left-radius: 20px !important;
+										border-bottom-left-radius: 20px !important;
+										border-left-width: 1px !important;
+									}
+									.custom-process-grid .pbmit-miconheading-style-11:last-child .pbmit-ihbox-style-11 {
+										border-top-right-radius: 20px !important;
+										border-bottom-right-radius: 20px !important;
+										border-right-width: 1px !important;
+									}
+									.custom-process-grid .pbmit-miconheading-style-11:not(:first-child):not(:last-child) .pbmit-ihbox-style-11 {
+										border-radius: 0 !important;
+									}
+								</style>
 								<div class="ihbox-style-area pbminfotech-gap-0px pbmit-column-four">
-									<div class="row g-0">
+									<div class="row g-0 custom-process-grid">
+										@if(isset($product) && $product->process_steps && is_array($product->process_steps) && count($product->process_steps) > 0)
+											@foreach($product->process_steps as $idx => $step)
+											<article class="pbmit-miconheading-style-11 col-md-6 col-lg-4 col-xl-3">
+												<div class="pbmit-ihbox-style-11">
+													<div class="pbmit-ihbox-box">
+														<span class="pbmit-box-number">{{ str_pad($idx + 1, 2, '0', STR_PAD_LEFT) }}</span>
+														<div class="pbmit-ihbox-icon">
+															<div class="pbmit-ihbox-icon-wrapper pbmit-icon-type-icon">
+																@if(isset($step['image']) && $step['image'])
+																	<img src="{{ asset('storage/' . $step['image']) }}" alt="{{ $step['title'] ?? '' }}" style="width: 80px; height: 80px; object-fit: contain;">
+																@endif
+															</div>
+														</div>
+														<div class="pbmit-ihbox-contents">
+															<h2 class="pbmit-element-title">
+																{{ $step['title'] ?? '' }}
+															</h2>
+															<div class="pbmit-heading-desc">{{ $step['description'] ?? '' }}</div>
+														</div>
+													</div>
+												</div>
+											</article>
+											@endforeach
+										@else
 										<article class="pbmit-miconheading-style-11 col-md-6 col-lg-4 col-xl-3">
 											<div class="pbmit-ihbox-style-11">
 												<div class="pbmit-ihbox-box">
@@ -496,20 +538,28 @@
 												</div>
 											</div>
 										</article>
+										@endif
 									</div>
 								</div>
 							</div>
 						
 							<div class="py-5" data-aos="fade-up" data-aos-duration="800">
 								<div class="pbmit-custom-heading">
-									<h3 class="pbmit-title">Our Client Review About Project</h3>
+									<h3 class="pbmit-title">{{ isset($product) && $product->client_review_title ? $product->client_review_title : 'Our Client Review About Project' }}</h3>
 								</div>
-								<p class="mb-4">Our industrial machinery is actively deployed across multiple key client facilities, demonstrating robust operational reliability, enhanced production output, and high-efficiency automation in everyday workflows.</p>
+								<p class="mb-4">{{ isset($product) && $product->client_review_description ? $product->client_review_description : 'Our industrial machinery is actively deployed across multiple key client facilities, demonstrating robust operational reliability, enhanced production output, and high-efficiency automation in everyday workflows.' }}</p>
 								
 								<div class="row">
 									<div class="col-md-6 full-width-1200">
-										<div class="swiper-slider" data-columns="1" data-loop="true" data-autoplay="true" data-dots="true" data-arrows="false">
+										<div class="swiper-slider" data-columns="1" data-loop="true" data-autoplay="true" data-autoplayspeed="3000" data-dots="true" data-arrows="false">
 											<div class="swiper-wrapper">
+												@if(isset($product) && $product->client_review_images && is_array($product->client_review_images) && count($product->client_review_images) > 0)
+													@foreach($product->client_review_images as $img)
+													<div class="swiper-slide">
+														<img src="{{ asset('storage/' . $img) }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work">
+													</div>
+													@endforeach
+												@else
 												<div class="swiper-slide">
 													<img src="{{ asset('frontend/images/portfolio/portfolio-01.jpg') }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work 1">
 												</div>
@@ -522,11 +572,45 @@
 												<div class="swiper-slide">
 													<img src="{{ asset('frontend/images/portfolio/portfolio-04.jpg') }}" class="img-fluid" style="border-radius: 8px; height: 350px; object-fit: cover; width: 100%;" alt="Client Site Work 4">
 												</div>
+												@endif
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6 full-width-1200">
 										<div class="accordion" id="accordionExample1">
+											@if(isset($product) && $product->client_review_faqs && is_array($product->client_review_faqs) && count($product->client_review_faqs) > 0)
+												@foreach($product->client_review_faqs as $idx => $faq)
+												<div class="accordion-item {{ $idx == 0 ? 'active' : '' }}" id="headingOne{{ $idx }}">
+													<h2 class="accordion-header">
+														<button class="accordion-button {{ $idx == 0 ? '' : 'collapsed' }}" type="button"
+															data-bs-toggle="collapse" data-bs-target="#collapseOne{{ $idx }}"
+															aria-expanded="{{ $idx == 0 ? 'true' : 'false' }}" aria-controls="collapseOne{{ $idx }}">
+															<span class="pbmit-accordion-title">
+																{{ str_pad($idx + 1, 2, '0', STR_PAD_LEFT) }}. {{ $faq['question'] }}
+															</span>
+															<span class="pbmit-accordion-icon">
+																<span class="pbmit-accordion-icon-opened">
+																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+																		<path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+																	</svg>
+																</span>
+																<span class="pbmit-accordion-icon-closed">
+																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+																		<path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+																	</svg>
+																</span>
+															</span>
+														</button>
+													</h2>
+													<div id="collapseOne{{ $idx }}" class="accordion-collapse collapse {{ $idx == 0 ? 'show' : '' }}"
+														aria-labelledby="headingOne{{ $idx }}" data-bs-parent="#accordionExample1">
+														<div class="accordion-body">
+															{{ $faq['answer'] }}
+														</div>
+													</div>
+												</div>
+												@endforeach
+											@else
 											<div class="accordion-item active" id="headingOne1">
 												<h2 class="accordion-header">
 													<button class="accordion-button" type="button"
@@ -653,6 +737,7 @@
 													</div>
 												</div>
 											</div>
+											@endif
 										</div>
 									</div>
 								</div>

@@ -54,7 +54,7 @@ class ProductController extends Controller
             'meta_keywords' => 'nullable|string',
         ]);
 
-        $data = $request->only(['title', 'slug', 'sub_title', 'short_description', 'content', 'video_link', 'key_features', 'industries', 'meta_title', 'meta_description', 'meta_keywords', 'trade_information', 'advantages', 'related_products', 'parent_id']);
+        $data = $request->only(['title', 'slug', 'sub_title', 'short_description', 'content', 'video_link', 'key_features', 'industries', 'meta_title', 'meta_description', 'meta_keywords', 'trade_information', 'advantages', 'related_products', 'parent_id', 'client_review_title', 'client_review_description']);
         if (empty($data['parent_id'])) {
             $data['parent_id'] = 0;
         }
@@ -84,7 +84,46 @@ class ProductController extends Controller
             $data['slider_images'] = $sliders;
         }
 
+        // Handle Client Review Images
+        if ($request->hasFile('client_review_images')) {
+            $cr_images = [];
+            foreach ($request->file('client_review_images') as $file) {
+                $cr_images[] = $file->store('products/client_reviews', 'public');
+            }
+            $data['client_review_images'] = $cr_images;
+        }
 
+        // Handle Client Review FAQs
+        $client_review_faqs = [];
+        if ($request->has('client_review_faqs')) {
+            foreach ($request->client_review_faqs as $faq) {
+                if (!empty($faq['question']) && !empty($faq['answer'])) {
+                    $client_review_faqs[] = [
+                        'question' => $faq['question'],
+                        'answer' => $faq['answer'],
+                    ];
+                }
+            }
+        }
+        $data['client_review_faqs'] = empty($client_review_faqs) ? null : $client_review_faqs;
+
+
+
+        // Handle Process Steps
+        $process_steps = [];
+        if ($request->has('process_steps')) {
+            foreach ($request->process_steps as $step) {
+                $stepData = [
+                    'title' => $step['title'] ?? null,
+                    'description' => $step['description'] ?? null,
+                ];
+                if (isset($step['image']) && $step['image']->isValid()) {
+                    $stepData['image'] = $step['image']->store('products/process_steps', 'public');
+                }
+                $process_steps[] = $stepData;
+            }
+        }
+        $data['process_steps'] = empty($process_steps) ? null : $process_steps;
 
         // Handle Specially Designed Parts
         $specially_designed_parts = [];
@@ -190,7 +229,7 @@ class ProductController extends Controller
             'meta_keywords' => 'nullable|string',
         ]);
 
-        $data = $request->only(['title', 'slug', 'sub_title', 'short_description', 'content', 'video_link', 'key_features', 'industries', 'meta_title', 'meta_description', 'meta_keywords', 'trade_information', 'advantages', 'related_products', 'parent_id']);
+        $data = $request->only(['title', 'slug', 'sub_title', 'short_description', 'content', 'video_link', 'key_features', 'industries', 'meta_title', 'meta_description', 'meta_keywords', 'trade_information', 'advantages', 'related_products', 'parent_id', 'client_review_title', 'client_review_description']);
         if (empty($data['parent_id'])) {
             $data['parent_id'] = 0;
         }
@@ -250,6 +289,38 @@ class ProductController extends Controller
             }
         }
 
+        // Handle Client Review Images
+        $cr_images = $request->existing_client_review_images ?? [];
+        if ($request->hasFile('client_review_images')) {
+            foreach ($request->file('client_review_images') as $file) {
+                $cr_images[] = $file->store('products/client_reviews', 'public');
+            }
+        }
+        $data['client_review_images'] = $cr_images;
+
+        // Cleanup removed client review images from storage
+        if ($product->client_review_images) {
+            foreach ($product->client_review_images as $old) {
+                if (! in_array($old, $cr_images)) {
+                    Storage::disk('public')->delete($old);
+                }
+            }
+        }
+
+        // Handle Client Review FAQs
+        $client_review_faqs = [];
+        if ($request->has('client_review_faqs')) {
+            foreach ($request->client_review_faqs as $faq) {
+                if (!empty($faq['question']) && !empty($faq['answer'])) {
+                    $client_review_faqs[] = [
+                        'question' => $faq['question'],
+                        'answer' => $faq['answer'],
+                    ];
+                }
+            }
+        }
+        $data['client_review_faqs'] = empty($client_review_faqs) ? null : $client_review_faqs;
+
         // Core Applications (Simplified to title list)
         if ($product->core_applications && is_array($product->core_applications)) {
             foreach ($product->core_applications as $oldApp) {
@@ -259,6 +330,37 @@ class ProductController extends Controller
             }
         }
         $data['core_applications'] = $request->applications ?? null;
+
+        // Handle Process Steps
+        $process_steps = [];
+        $kept_process_images = [];
+        if ($request->has('process_steps')) {
+            foreach ($request->process_steps as $step) {
+                $stepData = [
+                    'title' => $step['title'] ?? null,
+                    'description' => $step['description'] ?? null,
+                ];
+                if (isset($step['image']) && $step['image']->isValid()) {
+                    $stepData['image'] = $step['image']->store('products/process_steps', 'public');
+                } else {
+                    $stepData['image'] = $step['existing_image'] ?? null;
+                }
+                if ($stepData['image']) {
+                    $kept_process_images[] = $stepData['image'];
+                }
+                $process_steps[] = $stepData;
+            }
+        }
+        $data['process_steps'] = empty($process_steps) ? null : $process_steps;
+
+        // Cleanup old process steps images
+        if ($product->process_steps) {
+            foreach ($product->process_steps as $oldStep) {
+                if (isset($oldStep['image']) && !in_array($oldStep['image'], $kept_process_images)) {
+                    Storage::disk('public')->delete($oldStep['image']);
+                }
+            }
+        }
 
         // Handle Specially Designed Parts
         $specially_designed_parts = [];
@@ -424,6 +526,18 @@ class ProductController extends Controller
         }
         if ($product->brochure) {
             Storage::disk('public')->delete($product->brochure);
+        }
+        if ($product->client_review_images) {
+            foreach ($product->client_review_images as $img) {
+                Storage::disk('public')->delete($img);
+            }
+        }
+        if ($product->process_steps) {
+            foreach ($product->process_steps as $step) {
+                if (isset($step['image'])) {
+                    Storage::disk('public')->delete($step['image']);
+                }
+            }
         }
         $product->delete();
 

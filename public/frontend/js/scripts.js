@@ -139,7 +139,8 @@
 					});
 				} else{       
 					if(autoplay2){
-						autoplay2 = { delay: 5000 };
+						var delaySpeed = autoplayspeed1 ? autoplayspeed1 : 3000;
+						autoplay2 = { delay: delaySpeed, disableOnInteraction: false, pauseOnMouseEnter: true };
 					}              
 				var swiper = new Swiper( '.pbmit-element-viewtype-carousel-' + x, { 
 					loop: loop, 

@@ -17,6 +17,9 @@ class Product extends Model
         'related_products' => 'array',
         'specially_designed_parts' => 'array',
         'image_parts' => 'array',
+        'client_review_images' => 'array',
+        'client_review_faqs' => 'array',
+        'process_steps' => 'array',
     ];
 
     public function specifications()

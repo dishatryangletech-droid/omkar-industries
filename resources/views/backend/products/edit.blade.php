@@ -616,6 +616,105 @@
 
 
 
+
+                <hr class="my-4">
+                <h6 class="fw-bold mb-3"><i class="ti ti-stairs me-1"></i> Process Steps</h6>
+                <div class="row g-3">
+                    <div id="process-steps-container" class="col-12 row g-3">
+                        @if($product->process_steps)
+                            @foreach($product->process_steps as $idx => $step)
+                                <div class="col-md-6 col-lg-3" id="process-step-exist-{{ $idx }}">
+                                    <div class="border rounded p-3 mb-3 position-relative bg-lighter">
+                                        <button type="button" class="btn btn-sm btn-icon btn-label-danger position-absolute top-0 end-0 m-2" onclick="document.getElementById('process-step-exist-{{ $idx }}').remove()">
+                                            <i class="ti ti-x"></i>
+                                        </button>
+                                        <h6 class="fw-bold mb-3">Step #{{ $idx + 1 }}</h6>
+                                        <label class="form-label fw-medium small">Title</label>
+                                        <input type="text" name="process_steps[{{ $idx }}][title]" class="form-control mb-2" value="{{ $step['title'] ?? '' }}" placeholder="e.g. Preparation Of Materials">
+                                        <label class="form-label fw-medium small">Description</label>
+                                        <textarea name="process_steps[{{ $idx }}][description]" class="form-control mb-2" rows="2" placeholder="Description...">{{ $step['description'] ?? '' }}</textarea>
+                                        <label class="form-label fw-medium small">Upload New Icon/Image</label>
+                                        <input type="file" name="process_steps[{{ $idx }}][image]" class="form-control" accept="image/*">
+                                        @if(isset($step['image']))
+                                            <div class="mt-2 text-center border rounded p-1 bg-white">
+                                                <img src="{{ asset('storage/' . $step['image']) }}" class="img-fluid" style="height: 60px; object-fit: contain;">
+                                                <input type="hidden" name="process_steps[{{ $idx }}][existing_image]" value="{{ $step['image'] }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button type="button" class="btn btn-sm btn-label-primary waves-effect" onclick="addProcessStep()">
+                            <i class="ti ti-plus me-1"></i> Add Process Step
+                        </button>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+                <h6 class="fw-bold mb-3"><i class="ti ti-message-dots me-1"></i> Client Review About Project</h6>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label fw-medium">Title</label>
+                        <input type="text" name="client_review_title" class="form-control" value="{{ old('client_review_title', $product->client_review_title ?? 'Our Client Review About Project') }}" placeholder="e.g. Our Client Review About Project">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label fw-medium">Description</label>
+                        <textarea name="client_review_description" class="form-control" rows="3" placeholder="Description...">{{ old('client_review_description', $product->client_review_description) }}</textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label fw-medium text-uppercase small">Upload New Slider Images</label>
+                        <input type="file" name="client_review_images[]" class="form-control" accept="image/*" multiple>
+                        <small class="text-primary d-block fw-medium mt-1" style="font-size: 0.75rem;"><i class="ti ti-info-circle me-1"></i>Allowed: JPG, JPEG, PNG, WEBP.</small>
+                    </div>
+
+                    @if($product->client_review_images)
+                        <div class="col-md-12 mt-3">
+                            <label class="form-label fw-bold text-uppercase small d-block mb-2">Existing Slider Images</label>
+                            <div class="d-flex flex-wrap gap-2">
+                                @foreach($product->client_review_images as $img)
+                                    <div class="position-relative border rounded p-1" style="width: 80px; height: 80px;">
+                                        <img src="{{ asset('storage/' . $img) }}" class="w-100 h-100 object-fit-cover rounded" alt="Slider">
+                                        <input type="hidden" name="existing_client_review_images[]" value="{{ $img }}">
+                                        <button type="button" class="btn btn-danger btn-xs position-absolute top-0 end-0 m-1 p-0 shadow-sm" style="width: 20px; height: 20px; line-height: 1; border-radius: 50%;" onclick="this.parentElement.remove()">
+                                            <i class="ti ti-x" style="font-size: 12px;"></i>
+                                        </button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    <div class="col-md-12 mt-4">
+                        <h6 class="fw-bold mb-2">FAQs / Accordion</h6>
+                        <div id="client-review-faqs-container" class="row g-3">
+                            @if($product->client_review_faqs)
+                                @foreach($product->client_review_faqs as $idx => $faq)
+                                    <div class="col-12" id="client-review-faq-exist-{{ $idx }}">
+                                        <div class="feature-item p-3 border rounded mb-2">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <label class="form-label mb-0 fw-bold">FAQ #{{ $idx + 1 }}</label>
+                                                <button type="button" class="btn btn-sm btn-icon btn-label-danger" onclick="document.getElementById('client-review-faq-exist-{{ $idx }}').remove()">
+                                                    <i class="ti ti-x"></i>
+                                                </button>
+                                            </div>
+                                            <input type="text" name="client_review_faqs[{{ $idx }}][question]" class="form-control mb-2" value="{{ $faq['question'] }}" placeholder="Question">
+                                            <textarea name="client_review_faqs[{{ $idx }}][answer]" class="form-control" rows="2" placeholder="Answer">{{ $faq['answer'] }}</textarea>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="mt-2">
+                            <button type="button" class="btn btn-sm btn-label-primary waves-effect" onclick="addClientReviewFAQ()">
+                                <i class="ti ti-plus me-1"></i> Add FAQ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <hr class="my-4">
                 <h6 class="fw-bold mb-3"><i class="ti ti-search me-1"></i> SEO Metadata</h6>
                 <div class="row g-3">
@@ -696,7 +795,48 @@
 
         let featureIndex = {{ $product->key_features ? count($product->key_features) : 0 }};
         let specTableIndex = {{ $product->specifications ? count($product->specifications) : 0 }};
+        let clientReviewFaqIndex = {{ $product->client_review_faqs ? count($product->client_review_faqs) : 0 }};
+        let processStepIndex = {{ $product->process_steps ? count($product->process_steps) : 0 }};
         let sectionIndex = 0;
+
+        function addProcessStep() {
+            const idx = processStepIndex++;
+            const html = `
+                <div class="col-md-6 col-lg-3" id="process-step-${idx}">
+                    <div class="border rounded p-3 mb-3 position-relative bg-lighter">
+                        <button type="button" class="btn btn-sm btn-icon btn-label-danger position-absolute top-0 end-0 m-2" onclick="document.getElementById('process-step-${idx}').remove()">
+                            <i class="ti ti-x"></i>
+                        </button>
+                        <h6 class="fw-bold mb-3">Step #${idx + 1}</h6>
+                        <label class="form-label fw-medium small">Title</label>
+                        <input type="text" name="process_steps[${idx}][title]" class="form-control mb-2" placeholder="e.g. Preparation Of Materials">
+                        <label class="form-label fw-medium small">Description</label>
+                        <textarea name="process_steps[${idx}][description]" class="form-control mb-2" rows="2" placeholder="Description..."></textarea>
+                        <label class="form-label fw-medium small">Icon/Image</label>
+                        <input type="file" name="process_steps[${idx}][image]" class="form-control" accept="image/*">
+                    </div>
+                </div>
+            `;
+            document.getElementById('process-steps-container').insertAdjacentHTML('beforeend', html);
+        }
+
+        function addClientReviewFAQ() {
+            const idx = clientReviewFaqIndex++;
+            const html = `
+                <div class="col-12" id="client-review-faq-${idx}">
+                    <div class="feature-item p-3 border rounded mb-2">
+                        <div class="d-flex justify-content-between mb-2">
+                            <label class="form-label mb-0 fw-bold">FAQ #${idx + 1}</label>
+                            <button type="button" class="btn btn-sm btn-icon btn-label-danger" onclick="document.getElementById('client-review-faq-${idx}').remove()">
+                                <i class="ti ti-x"></i>
+                            </button>
+                        </div>
+                        <input type="text" name="client_review_faqs[${idx}][question]" class="form-control mb-2" placeholder="Question">
+                        <textarea name="client_review_faqs[${idx}][answer]" class="form-control" rows="2" placeholder="Answer"></textarea>
+                    </div>
+                </div>`;
+            document.getElementById('client-review-faqs-container').insertAdjacentHTML('beforeend', html);
+        }
 
         function previewMultipleSliders(input) {
             const container = document.getElementById('slider-previews-container');
