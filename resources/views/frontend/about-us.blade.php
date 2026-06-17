@@ -812,19 +812,7 @@
 																@endfor
 															</div>
 															<div class="pbminfotech-box-author">
-																<div class="pbmit-featured-img-wrapper">
-																	<div class="pbmit-featured-wrapper">
-																		@if($testimonial->image)
-																			<img src="{{ asset('storage/' . $testimonial->image) }}"
-																				class="img-fluid"
-																				alt="{{ $testimonial->name }}">
-																		@else
-																			<img src="{{ asset('frontend/images/homepage-2/testimonial/testimonial-img-0' . (($index % 6) + 1) . '.jpg') }}"
-																				class="img-fluid"
-																				alt="{{ $testimonial->name }}">
-																		@endif
-																	</div>
-																</div>
+
 																<div class="pbmit-auther-content">
 																	<h3 class="pbminfotech-box-title">
 																		{{ $testimonial->name }}
