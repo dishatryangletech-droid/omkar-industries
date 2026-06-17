@@ -205,7 +205,7 @@
 											<thead>
 												<tr style="background-color: var(--pbmit-global-color); color: #ffffff;">
 													@foreach($spec->table_headers as $index => $header)
-													<th style="padding: 15px 20px; font-weight: 600; {{ $index == 0 ? 'width: 20%;' : '' }} border-color: rgba(0,0,0,0.08); color: #ffffff;">{{ $header }}</th>
+													<th style="padding: 8px 12px; font-weight: 600; {{ $index == 0 ? 'width: 20%;' : '' }} border-color: rgba(0,0,0,0.08); color: #ffffff;">{{ $header }}</th>
 													@endforeach
 												</tr>
 											</thead>
@@ -216,9 +216,9 @@
 												<tr style="{{ $rowIndex % 2 != 0 ? 'background-color: rgba(var(--pbmit-global-color-rgb), 0.06);' : '' }}">
 													@foreach($row as $cellIndex => $cell)
 														@if($cellIndex == 0)
-														<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">{{ $cell }}</td>
+														<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">{{ $cell }}</td>
 														@else
-														<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">{{ $cell }}</td>
+														<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">{{ $cell }}</td>
 														@endif
 													@endforeach
 												</tr>
@@ -233,62 +233,62 @@
 									<table class="table table-bordered pbmit-specs-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
 										<thead>
 											<tr style="background-color: var(--pbmit-global-color); color: #ffffff;">
-												<th style="padding: 15px 20px; font-weight: 600; width: 20%; border-color: rgba(0,0,0,0.08); color: #ffffff;">Specification</th>
-												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Standard Model (OI-2000)</th>
-												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Advanced Model (OI-4500X)</th>
-												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Heavy Duty Model (OI-8000HD)</th>
-												<th style="padding: 15px 20px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Custom/OEM Model (OI-9500XT)</th>
+												<th style="padding: 8px 12px; font-weight: 600; width: 20%; border-color: rgba(0,0,0,0.08); color: #ffffff;">Specification</th>
+												<th style="padding: 8px 12px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Standard Model (OI-2000)</th>
+												<th style="padding: 8px 12px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Advanced Model (OI-4500X)</th>
+												<th style="padding: 8px 12px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Heavy Duty Model (OI-8000HD)</th>
+												<th style="padding: 8px 12px; font-weight: 600; border-color: rgba(0,0,0,0.08); color: #ffffff;">Custom/OEM Model (OI-9500XT)</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Production Capacity</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">500 - 1200 kg/hr</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">1500 - 3000 kg/hr</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">4000 - 8000 kg/hr</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">10000 - 15000 kg/hr</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Production Capacity</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">500 - 1200 kg/hr</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">1500 - 3000 kg/hr</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">4000 - 8000 kg/hr</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">10000 - 15000 kg/hr</td>
 											</tr>
 											<tr style="background-color: rgba(var(--pbmit-global-color-rgb), 0.06);">
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Power Consumption</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">7.5 kW</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">15 kW</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">30 kW</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">45 kW</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Power Consumption</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">7.5 kW</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">15 kW</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">30 kW</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">45 kW</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Material</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Stainless Steel 304</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Stainless Steel 304 / 316</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Stainless Steel 316 / Heavy Duty</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">SS 316L / Titanium</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Material</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">Stainless Steel 304</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">Stainless Steel 304 / 316</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">Stainless Steel 316 / Heavy Duty</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">SS 316L / Titanium</td>
 											</tr>
 											<tr style="background-color: rgba(var(--pbmit-global-color-rgb), 0.06);">
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Automation Level</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Semi-Automatic</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Fully Automated PLC</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">PLC / SCADA Integrated</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">AI-Powered PLC / SCADA</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Automation Level</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">Semi-Automatic</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">Fully Automated PLC</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">PLC / SCADA Integrated</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">AI-Powered PLC / SCADA</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Operating Pressure</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">4 - 6 Bar</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">6 - 8 Bar</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">8 - 12 Bar</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">12 - 16 Bar</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Operating Pressure</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">4 - 6 Bar</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">6 - 8 Bar</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">8 - 12 Bar</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">12 - 16 Bar</td>
 											</tr>
 											<tr style="background-color: rgba(var(--pbmit-global-color-rgb), 0.06);">
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Dimensions (L x W x H)</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">1800 x 1000 x 1500 mm</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">2400 x 1200 x 1800 mm</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">3600 x 1600 x 2200 mm</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">Customizable to site</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Dimensions (L x W x H)</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">1800 x 1000 x 1500 mm</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">2400 x 1200 x 1800 mm</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">3600 x 1600 x 2200 mm</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">Customizable to site</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Net Weight</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">850 kg</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">1450 kg</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">2800 kg</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08);">4200+ kg</td>
+												<td style="padding: 8px 12px; font-weight: 500; color: var(--pbmit-blackish-color); border-color: rgba(0,0,0,0.08);">Net Weight</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">850 kg</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">1450 kg</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">2800 kg</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08);">4200+ kg</td>
 											</tr>
 										</tbody>
 									</table>
@@ -357,8 +357,8 @@
 										$tradeInfo = html_entity_decode($product->trade_information);
 										$tradeInfo = strip_tags($tradeInfo, '<table><tbody><thead><tr><th><td>');
 										$tradeInfo = preg_replace('/<table[^>]*>/i', '<table class="table table-bordered pbmit-trade-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">', $tradeInfo);
-										$tradeInfo = preg_replace('/<td[^>]*>/i', '<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">', $tradeInfo);
-										$tradeInfo = preg_replace('/<th[^>]*>/i', '<td style="padding: 15px 20px; font-weight: 600; width: 25%; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">', $tradeInfo);
+										$tradeInfo = preg_replace('/<td[^>]*>/i', '<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">', $tradeInfo);
+										$tradeInfo = preg_replace('/<th[^>]*>/i', '<td style="padding: 8px 12px; font-weight: 600; width: 25%; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">', $tradeInfo);
 										$tradeInfo = str_replace('</th>', '</td>', $tradeInfo);
 									@endphp
 									{!! $tradeInfo !!}
@@ -368,28 +368,28 @@
 									<table class="table table-bordered pbmit-trade-table" style="border-color: rgba(0,0,0,0.08); font-size: 16px; width: 100%;">
 										<tbody>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 600; width: 25%; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Payment Terms</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Western Union, Cash in Advance (CID), Cash Advance (CA), Cash on Delivery (COD), Cash Against Delivery (CAD)</td>
+												<td style="padding: 8px 12px; font-weight: 600; width: 25%; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Payment Terms</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Western Union, Cash in Advance (CID), Cash Advance (CA), Cash on Delivery (COD), Cash Against Delivery (CAD)</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Delivery Time</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">15 Days</td>
+												<td style="padding: 8px 12px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Delivery Time</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">15 Days</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Main Domestic Market</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">All India</td>
+												<td style="padding: 8px 12px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Main Domestic Market</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">All India</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Supply Ability</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">5 Piece Per Week</td>
+												<td style="padding: 8px 12px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Supply Ability</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">5 Piece Per Week</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Main Export Market(s)</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Africa, Middle East, Western Europe, Eastern Europe, South America, North America, Central America, Australia, Asia</td>
+												<td style="padding: 8px 12px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Main Export Market(s)</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Africa, Middle East, Western Europe, Eastern Europe, South America, North America, Central America, Australia, Asia</td>
 											</tr>
 											<tr>
-												<td style="padding: 15px 20px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Sample Policy</td>
-												<td style="padding: 15px 20px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Contact us for information regarding our sample policy</td>
+												<td style="padding: 8px 12px; font-weight: 600; color: var(--pbmit-blackish-color); background-color: #f9f9f9; border-color: rgba(0,0,0,0.08); border-left: 3px solid var(--pbmit-global-color);">Sample Policy</td>
+												<td style="padding: 8px 12px; border-color: rgba(0,0,0,0.08); color: var(--pbmit-blackish-color);">Contact us for information regarding our sample policy</td>
 											</tr>
 										</tbody>
 									</table>
