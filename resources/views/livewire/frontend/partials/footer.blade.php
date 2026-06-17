@@ -48,19 +48,54 @@
 						<h2 class="widget-title">Our Company</h2>
 						<ul class="menu">
 							<li><a href="/about-us">About Us</a></li>
-							<li><a href="#">Testimonials</a></li>
 							<li><a href="/career">Careers</a></li>
 						</ul>
 					</aside>
 				</div>
 				<div class="col-md-6 col-lg-3 pbmit-footer-widget">
 					<aside class="widget">
-						<h2 class="widget-title">Our Servcices</h2>
+						<h2 class="widget-title">Our Products</h2>
 						<ul class="menu">
-							<li><a href="/service-details">Machine Analysis</a></li>
-							<li><a href="/service-details">Comprehensive Logits</a></li>
-							<li><a href="/service-details">Plant Maintenance</a></li>
-							<li><a href="/service-details">Maintenance & Repairing</a></li>
+							@php
+								$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
+								$quickLinks = [];
+								if($footerSettings && $footerSettings->quick_links) {
+									$quickLinks = is_string($footerSettings->quick_links) ? json_decode($footerSettings->quick_links, true) : $footerSettings->quick_links;
+								}
+							@endphp
+							@if(!empty($quickLinks))
+								@foreach($quickLinks as $link)
+									<li><a href="{{ $link['url'] ?? '#' }}">{{ $link['title'] ?? '' }}</a></li>
+								@endforeach
+							@else
+								<li><a href="/service-details">Machine Analysis</a></li>
+								<li><a href="/service-details">Comprehensive Logits</a></li>
+								<li><a href="/service-details">Plant Maintenance</a></li>
+								<li><a href="/service-details">Maintenance & Repairing</a></li>
+							@endif
+						</ul>
+					</aside>
+				</div>
+				<div class="col-md-6 col-lg-3 pbmit-footer-widget">
+					<aside class="widget">
+						<h2 class="widget-title">Other Products</h2>
+						<ul class="menu">
+							@php
+								$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
+								$otherLinks = [];
+								if($footerSettings && $footerSettings->other_links) {
+									$otherLinks = is_string($footerSettings->other_links) ? json_decode($footerSettings->other_links, true) : $footerSettings->other_links;
+								}
+							@endphp
+							@if(!empty($otherLinks))
+								@foreach($otherLinks as $link)
+									<li><a href="{{ $link['url'] ?? '#' }}">{{ $link['title'] ?? '' }}</a></li>
+								@endforeach
+							@else
+								<li><a href="#">Band Saw Blade</a></li>
+								<li><a href="#">Board Edger</a></li>
+								<li><a href="#">Square Timber Multi Blade Saw</a></li>
+							@endif
 						</ul>
 					</aside>
 				</div>
@@ -71,16 +106,6 @@
 							<li><a href="/blogs">News</a></li>
 							<li><a href="/exhibition">Exhibitions</a></li>
 							<li><a href="/gallery">Image Gallery</a></li>
-						</ul>
-					</aside>
-				</div>
-				<div class="col-md-6 col-lg-3 pbmit-footer-widget">
-					<aside class="widget">
-						<h2 class="widget-title">Quick Link</h2>
-						<ul class="menu">
-							<li><a href="/faq">Privacy Policy</a></li>
-							<li><a href="/faq">Team</a></li>
-							<li><a href="/faq">Terms of use</a></li>
 						</ul>
 					</aside>
 				</div>
@@ -100,22 +125,34 @@
 						<div class=" pbmit-footer-social-area">
 							<ul class="pbmit-social-links">
 								<li class="pbmit-social-li pbmit-social-facebook">
-									<a title="Facebook" href="#" target="_blank">
+									@php 
+										$fbLink = $footerSettings->facebook_link ?? '#'; 
+									@endphp
+									<a title="Facebook" href="{{ $fbLink }}" target="_blank">
 										<span><i class="pbmit-base-icon-facebook-f"></i></span>
 									</a>
 								</li>
 								<li class="pbmit-social-li pbmit-social-twitter">
-									<a title="Twitter" href="#" target="_blank">
+									@php 
+										$twLink = $footerSettings->twitter_link ?? '#'; 
+									@endphp
+									<a title="Twitter" href="{{ $twLink }}" target="_blank">
 										<span><i class="pbmit-base-icon-twitter-2"></i></span>
 									</a>
 								</li>
-								<li class="pbmit-social-li pbmit-social-youtube">
-									<a title="Youtube" href="#" target="_blank">
-										<span><i class="pbmit-base-icon-youtube-play"></i></span>
+								<li class="pbmit-social-li pbmit-social-linkedin">
+									@php 
+										$liLink = $footerSettings->linkedin_link ?? '#'; 
+									@endphp
+									<a title="LinkedIn" href="{{ $liLink }}" target="_blank">
+										<span><i class="pbmit-base-icon-linkedin-in"></i></span>
 									</a>
 								</li>
 								<li class="pbmit-social-li pbmit-social-instagram">
-									<a title="Instagram" href="#" target="_blank">
+									@php 
+										$igLink = $footerSettings->instagram_link ?? '#'; 
+									@endphp
+									<a title="Instagram" href="{{ $igLink }}" target="_blank">
 										<span><i class="pbmit-base-icon-instagram"></i></span>
 									</a>
 								</li>

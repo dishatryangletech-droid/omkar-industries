@@ -504,8 +504,8 @@
 											<h4 class="pbmit-subtitle" style="text-transform: uppercase;">OUR SERVICE
 												PROVIDE IN AREA</h4>
 										</div>
-										<div
-											class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-xl-start mt-4">
+										<div class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-xl-start mt-4"
+											style="width:980px;">
 											@foreach(\App\Models\Client::where('status', 'Active')->orderBy('name', 'asc')->get() as $client)
 												<div class="text-center" style="width: 55px;">
 													<div style="height: 35px; display: flex; align-items: center; justify-content: center;"
@@ -522,7 +522,8 @@
 													</div>
 													<div
 														style="font-size: 10px; line-height: 1.2; color: rgba(255, 255, 255, 0.8); font-weight: 500;">
-														{{ $client->name }}</div>
+														{{ $client->name }}
+													</div>
 												</div>
 											@endforeach
 										</div>
@@ -726,9 +727,9 @@
 							@endforeach
 
 							<div class="col-md-12 col-lg-4 col-xl-6 d-flex align-items-center">
-								<div class="team-btn-bg w-100" style="margin-left: 0;">
-									<p class="pbmit-text">Our Expert will be available Mon – Fri (9 am – 6 pm) <br> Book
-										an Appointment for Services.</p>
+								<div class="team-btn-bg w-100" style="margin-left: 0;margin-top: -80px;">
+									<p class="pbmit-text"> Skilled experts driving quality and innovation.<br>Together,
+										we build quality and trust.</p>
 									<a href="/our-team" class="pbmit-btn white">
 										<span class="pbmit-button-content-wrapper">
 											<span class="pbmit-button-icon">
@@ -740,6 +741,7 @@
 								</div>
 							</div>
 						</div>
+						<hr style="margin-top: -23px; padding: 10px;" />
 
 						@if($teamMembers->count() > 2)
 							<!-- Second Row -->

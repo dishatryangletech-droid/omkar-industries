@@ -34,7 +34,12 @@
                             <div class="col-lg-6 mt-4">
                                 <h6 class="text-primary border-bottom pb-2 mb-3"><i class="ti ti-link me-2"></i>Quick Links</h6>
                                 <div id="quick-links-container">
-                                    @php $quickLinks = $settings->quick_links ?? []; @endphp
+                                    @php 
+                                        $quickLinks = $settings->quick_links ?? [];
+                                        if (is_string($quickLinks)) {
+                                            $quickLinks = json_decode($quickLinks, true) ?? [];
+                                        }
+                                    @endphp
                                     @forelse($quickLinks as $link)
                                         <div class="link-row d-flex gap-2 align-items-center mb-3">
                                             <input type="text" name="quick_links[title][]" class="form-control" value="{{ $link['title'] ?? '' }}" placeholder="Title (e.g. Home)">
@@ -76,7 +81,12 @@
                             <div class="col-lg-6 mt-4">
                                 <h6 class="text-primary border-bottom pb-2 mb-3"><i class="ti ti-link me-2"></i>Other Links</h6>
                                 <div id="other-links-container">
-                                    @php $otherLinks = $settings->other_links ?? []; @endphp
+                                    @php 
+                                        $otherLinks = $settings->other_links ?? [];
+                                        if (is_string($otherLinks)) {
+                                            $otherLinks = json_decode($otherLinks, true) ?? [];
+                                        }
+                                    @endphp
                                     @forelse($otherLinks as $link)
                                         <div class="link-row d-flex gap-2 align-items-center mb-3">
                                             <input type="text" name="other_links[title][]" class="form-control" value="{{ $link['title'] ?? '' }}" placeholder="Title (e.g. Blog)">

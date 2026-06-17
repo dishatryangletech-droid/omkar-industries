@@ -309,6 +309,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         'totalCopies' => 0,
         'content' => $dummyObj,
         'settings' => class_exists('App\Models\GeneralSetting') ? (GeneralSetting::first() ?: $dummyObj) : $dummyObj,
+        'footer_settings' => class_exists('App\Models\FooterSetting') ? (App\Models\FooterSetting::first() ?: $dummyObj) : $dummyObj,
         'mainSection' => $dummyObj,
         'mission' => $dummyObj,
         'vision' => $dummyObj,
@@ -486,7 +487,56 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // ==========================================
     Route::prefix('website-pages')->name('website-pages.')->group(function () use ($defaults) {
         Route::get('header-settings', function () use ($defaults) { return view('backend.website-pages.header-settings', $defaults); })->name('header-settings');
-        Route::get('footer-settings', function () use ($defaults) { return view('backend.website-pages.footer-settings', $defaults); })->name('footer-settings');
+        
+        Route::get('footer-settings', function () use ($defaults) { 
+            // Use FooterSetting for this view
+            $defaults['settings'] = class_exists('App\Models\FooterSetting') ? (\App\Models\FooterSetting::first() ?: clone $defaults['settings']) : clone $defaults['settings'];
+            return view('backend.website-pages.footer-settings', $defaults); 
+        })->name('footer-settings');
+        Route::post('footer-settings', function (Illuminate\Http\Request $request) {
+            $settings = \App\Models\FooterSetting::first();
+            if (!$settings) {
+                $settings = new \App\Models\FooterSetting();
+            }
+            $data = $request->except(['_token', '_method']);
+            
+            // Transform quick_links
+            if (isset($data['quick_links']) && is_array($data['quick_links'])) {
+                $formattedQuickLinks = [];
+                if (isset($data['quick_links']['title']) && is_array($data['quick_links']['title'])) {
+                    foreach ($data['quick_links']['title'] as $key => $title) {
+                        if (!empty($title)) {
+                            $formattedQuickLinks[] = [
+                                'title' => $title,
+                                'url' => $data['quick_links']['url'][$key] ?? '#'
+                            ];
+                        }
+                    }
+                }
+                $data['quick_links'] = json_encode($formattedQuickLinks);
+            }
+            
+            // Transform other_links
+            if (isset($data['other_links']) && is_array($data['other_links'])) {
+                $formattedOtherLinks = [];
+                if (isset($data['other_links']['title']) && is_array($data['other_links']['title'])) {
+                    foreach ($data['other_links']['title'] as $key => $title) {
+                        if (!empty($title)) {
+                            $formattedOtherLinks[] = [
+                                'title' => $title,
+                                'url' => $data['other_links']['url'][$key] ?? '#'
+                            ];
+                        }
+                    }
+                }
+                $data['other_links'] = json_encode($formattedOtherLinks);
+            }
+
+            $settings->fill($data);
+            $settings->save();
+            return redirect()->route('admin.website-pages.footer-settings')->with('success', 'Footer Settings updated successfully!');
+        })->name('footer-settings.post');
+
         Route::get('default-image-settings', function () use ($defaults) { return view('backend.website-pages.default-image-settings', $defaults); })->name('default-image-settings');
         
         Route::get('general-settings', function () use ($defaults) { return view('backend.website-pages.general-settings', $defaults); })->name('general-settings');
