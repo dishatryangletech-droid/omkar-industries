@@ -1400,16 +1400,16 @@
 				<div class="container-fluid p-0">
 					<div class="row g-0">
 						<div class="col-md-4 first-col">
-							<div class="accordion-img"></div>
+							<div class="accordion-img" {!! isset($faqSection) && $faqSection->photo ? 'style="background-image: url('.asset('storage/'.$faqSection->photo).')"' : '' !!}></div>
 						</div>
 						<div class="col-md-8 second-col">
 							<div class="accordion-one-right-box">
 								<div class="row">
 									<div class="col-md-12 col-xl-6 left-col">
 										<div class="pbmit-heading-subheading">
-											<h4 class="pbmit-subtitle">To know more about us</h4>
-											<h2 class="pbmit-title">What would you like to know?</h2>
-											<div class="pbmit-heading-desc">Didn’t find the answer you were looking for? Please ask to our customer service department.</div>
+											<h4 class="pbmit-subtitle">{{ $faqSection->subtitle ?? 'To know more about us' }}</h4>
+											<h2 class="pbmit-title">{{ $faqSection->title ?? 'What would you like to know?' }}</h2>
+											<div class="pbmit-heading-desc">{{ $faqSection->description ?? 'Didn’t find the answer you were looking for? Please ask to our customer service department.' }}</div>
 										</div>
 										<div class="pbmit-ihbox-style-3">
 											<div class="pbmit-ihbox-box">
@@ -1426,17 +1426,17 @@
 												<div class="pbmit-ihbox-contents">
 													<div class="pbmit-heading-desc">Ask Questions</div>
 													<h2 class="pbmit-element-title">
-														<a class="pbmit-button-inner" href="tel:+1-234-567-89">
+														<a class="pbmit-button-inner" href="tel:{{ $faqSection->btn_title ?? '+1-234-567-89' }}">
 															<span class="pbmit-button-content-wrapper">
-																<span class="pbmit-button-text">+1-234-567-89</span>
+																<span class="pbmit-button-text">{{ $faqSection->btn_title ?? '+1-234-567-89' }}</span>
 															</span>
 														</a>
 													</h2>
 													<h4 class="pbmit-element-subtitle">
-														<a class="pbmit-button-inner" href="https://induyst-demo.pbminfotech.com/cdn-cgi/l/email-protection#83f0f6f3f3ecf1f7c3e6fbe2eef3efe6ade0ecee">
+														<a class="pbmit-button-inner" href="mailto:{{ $faqSection->btn_link ?? 'info@omkarindustries.com' }}">
 															<span class="pbmit-button-content-wrapper">
 																<span class="pbmit-button-text">
-																	<span class="__cf_email__" data-cfemail="2b585e5b5b44595f6b4e534a465b474e05484446">[email&#160;protected]</span>
+																	{{ $faqSection->btn_link ?? 'info@omkarindustries.com' }}
 																</span>
 															</span>
 														</a>
@@ -1447,12 +1447,13 @@
 									</div>
 									<div class="col-md-12 col-xl-6">
 										<div class="accordion" id="accordionExample1">
-											<div class="accordion-item active" id="headingOne1">
+											@foreach($faqs as $key => $faq)
+											<div class="accordion-item {{ $key == 0 ? 'active' : '' }}" id="heading{{ $key }}">
 												<h2 class="accordion-header">
-													<button class="accordion-button" type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+													<button class="accordion-button {{ $key == 0 ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse"
+														data-bs-target="#collapse{{ $key }}" aria-expanded="{{ $key == 0 ? 'true' : 'false' }}" aria-controls="collapse{{ $key }}">
 															<span class="pbmit-accordion-title">
-																01. How do you ensure product quality? 
+																{{ sprintf('%02d', $key + 1) }}. {{ $faq->question }} 
 															</span>
 															<span class="pbmit-accordion-icon">
 																<span class="pbmit-accordion-icon-opened">
@@ -1464,85 +1465,14 @@
 															</span>
 													</button>
 												</h2>
-												<div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1"
+												<div id="collapse{{ $key }}" class="accordion-collapse collapse {{ $key == 0 ? 'show' : '' }}" aria-labelledby="heading{{ $key }}"
 													data-bs-parent="#accordionExample1">
 													<div class="accordion-body">
-														We maintain strict quality control at every stage of the process, carefully sourcing raw materials, components through to thorough final inspection.
+														{!! $faq->answer !!}
 													</div>
 												</div>
 											</div>
-											<div class="accordion-item">
-												<h2 class="accordion-header" id="headingTwo1">
-													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
-															<span class="pbmit-accordion-title">
-																02. Do you offer customized solutions? 
-															</span>
-															<span class="pbmit-accordion-icon">
-																<span class="pbmit-accordion-icon-opened">
-																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-																</span>
-																<span class="pbmit-accordion-icon-closed">
-																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-																</span>
-															</span>
-													</button>
-												</h2>
-												<div id="collapseTwo1" class="accordion-collapse collapse" aria-labelledby="headingTwo1"
-													data-bs-parent="#accordionExample1">
-													<div class="accordion-body">
-														We maintain strict quality control at every stage of the process, carefully sourcing raw materials, components through to thorough final inspection.
-													</div>
-												</div>
-											</div>
-											<div class="accordion-item">
-												<h2 class="accordion-header" id="headingThree1">
-													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
-															<span class="pbmit-accordion-title">
-																03. What sustainability practices do you follow? 
-															</span>
-															<span class="pbmit-accordion-icon">
-																<span class="pbmit-accordion-icon-opened">
-																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-																</span>
-																<span class="pbmit-accordion-icon-closed">
-																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-																</span>
-															</span>
-													</button>
-												</h2>
-												<div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1"
-													data-bs-parent="#accordionExample1">
-													<div class="accordion-body">
-														We maintain strict quality control at every stage of the process, carefully sourcing raw materials, components through to thorough final inspection.
-													</div>
-												</div>
-											</div>
-											<div class="accordion-item">
-												<h2 class="accordion-header" id="headingFour1">
-													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-														data-bs-target="#collapseFour1" aria-expanded="false" aria-controls="collapseFour1">
-															<span class="pbmit-accordion-title">
-																04. How do you handle safety in the workplace? 
-															</span>
-															<span class="pbmit-accordion-icon">
-																<span class="pbmit-accordion-icon-opened">
-																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-																</span>
-																<span class="pbmit-accordion-icon-closed">
-																	<svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-																</span>
-															</span>
-													</button>
-												</h2>
-												<div id="collapseFour1" class="accordion-collapse collapse" aria-labelledby="headingFour1"
-													data-bs-parent="#accordionExample1">
-													<div class="accordion-body">
-														We maintain strict quality control at every stage of the process, carefully sourcing raw materials, components through to thorough final inspection.
-													</div>
-												</div>
-											</div>
+											@endforeach
 										</div>
 									</div>
 								</div>

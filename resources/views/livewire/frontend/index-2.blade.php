@@ -77,14 +77,6 @@
 															</span>
 														</a>
 													</div>
-													<div class="ms-4 transform-delay-5">
-														<div class="second-btn">
-															<a class="pbmit-btn-style-text white" href="/our-history">
-																<span class="pbmit-button-text">Become Part Of Our
-																	Team</span>
-															</a>
-														</div>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -122,12 +114,6 @@
 																</span>
 																<span class="pbmit-button-text">Discover More</span>
 															</span>
-														</a>
-													</div>
-													<div class="ms-4 second-btn transform-delay-5">
-														<a class="pbmit-btn-style-text white" href="/our-team">
-															<span class="pbmit-button-text">Become Part Of Our
-																Team</span>
 														</a>
 													</div>
 												</div>
@@ -730,10 +716,13 @@
 								<div class="row">
 									<div class="col-md-12 col-xl-6 left-col">
 										<div class="pbmit-heading-subheading">
-											<h4 class="pbmit-subtitle">To know more about us</h4>
-											<h2 class="pbmit-title">What would you like to know?</h2>
-											<div class="pbmit-heading-desc">Didn’t find the answer you were looking for?
-												Please ask to our customer service department.</div>
+											<h4 class="pbmit-subtitle">
+												{{ $faqSection->subtitle ?? 'To know more about us' }}</h4>
+											<h2 class="pbmit-title">
+												{{ $faqSection->title ?? 'What would you like to know?' }}</h2>
+											<div class="pbmit-heading-desc">
+												{!! $faqSection->description ?? 'Didn’t find the answer you were looking for? Please ask to our customer service department.' !!}
+											</div>
 										</div>
 										<div class="pbmit-ihbox-style-3">
 											<div class="pbmit-ihbox-box">
@@ -755,19 +744,20 @@
 												<div class="pbmit-ihbox-contents">
 													<div class="pbmit-heading-desc">Ask Questions</div>
 													<h2 class="pbmit-element-title">
-														<a class="pbmit-button-inner" href="tel:+1-234-567-89">
+														<a class="pbmit-button-inner"
+															href="tel:{{ $faqSection->btn_title ?? '+1-234-567-89' }}">
 															<span class="pbmit-button-content-wrapper">
-																<span class="pbmit-button-text">+1-234-567-89</span>
+																<span
+																	class="pbmit-button-text">{{ $faqSection->btn_title ?? '+1-234-567-89' }}</span>
 															</span>
 														</a>
 													</h2>
 													<h4 class="pbmit-element-subtitle">
 														<a class="pbmit-button-inner"
-															href="https://induyst-demo.pbminfotech.com/cdn-cgi/l/email-protection#760503060619040236130e171b061a135815191b">
+															href="mailto:{{ $faqSection->btn_link ?? 'info@example.com' }}">
 															<span class="pbmit-button-content-wrapper">
 																<span class="pbmit-button-text">
-																	<span class="__cf_email__"
-																		data-cfemail="f98a8c8989968b8db99c81989489959cd79a9694">[email&#160;protected]</span>
+																	{{ $faqSection->btn_link ?? 'info@example.com' }}
 																</span>
 															</span>
 														</a>

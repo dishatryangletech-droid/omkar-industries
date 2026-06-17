@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     @foreach($users as $user)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.users.edit', $user->id) }}">
                             <td>{{ $user->id }}</td>
                             <td>
                                 @if($user->profile_image)
@@ -69,11 +69,10 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" class="text-warning waves-effect"
-                                        title="Edit User">
+                                    <a href="{{ route('admin.users.edit', $user->id) }}" class="text-warning waves-effect" title="Edit User">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST"
+                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
                                         id="delete-form-{{ $user->id }}" title="Delete User" class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -107,7 +106,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New User</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.users.create') }}';
                             }
                         }
                     ],

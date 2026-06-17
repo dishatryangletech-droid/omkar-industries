@@ -37,7 +37,7 @@
                     <h5 class="mb-0">FAQ Section Settings</h5>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.faqs.update-section') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="mb-3">
@@ -124,7 +124,7 @@
                         </thead>
                         <tbody>
                             @foreach($faqs as $faq)
-                                <tr class="cursor-pointer" data-url="#">
+                                <tr class="cursor-pointer" data-url="{{ route('admin.faqs.edit', $faq->id) }}">
                                     <td>{{ $faq->id }}</td>
                                     <td class="fw-medium text-heading">{{ $faq->question }}</td>
                                     <td class="faq-answer-cell text-muted">{{ strip_tags($faq->answer) }}</td>
@@ -138,11 +138,11 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-3">
-                                            <a href="#" 
+                                            <a href="{{ route('admin.faqs.edit', $faq->id) }}" 
                                                class="text-warning waves-effect" title="Edit FAQ">
                                                 <i class="ti ti-edit fs-4"></i>
                                             </a>
-                                            <form action="#" method="POST" id="delete-form-{{ $faq->id }}" title="Delete FAQ" class="d-inline">
+                                            <form action="{{ route('admin.faqs.destroy', $faq->id) }}" method="POST" id="delete-form-{{ $faq->id }}" title="Delete FAQ" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $faq->id }}">
@@ -175,7 +175,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New FAQ</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.faqs.create') }}';
                             }
                         }
                     ],

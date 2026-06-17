@@ -48,7 +48,7 @@ class FaqController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('backend.faqs.index')->with('success', 'FAQ created successfully.');
+        return redirect()->route('admin.faqs.index')->with('success', 'FAQ created successfully.');
     }
 
     /**
@@ -78,7 +78,7 @@ class FaqController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('backend.faqs.index')->with('success', 'FAQ updated successfully.');
+        return redirect()->route('admin.faqs.index')->with('success', 'FAQ updated successfully.');
     }
 
     /**
@@ -88,7 +88,7 @@ class FaqController extends Controller
     {
         $faq->delete();
 
-        return redirect()->route('backend.faqs.index')->with('success', 'FAQ deleted successfully.');
+        return redirect()->route('admin.faqs.index')->with('success', 'FAQ deleted successfully.');
     }
 
     /**

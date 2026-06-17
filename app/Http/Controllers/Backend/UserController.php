@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserModel::latest()->get();
+        $users = User::latest()->get();
         return view('backend.users.index', compact('users'));
     }
 
@@ -24,8 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = \Spatie\Permission\Models\Role::all();
-        return view('backend.users.create', compact('roles'));
+        return view('backend.users.create');
     }
 
     /**
@@ -46,18 +45,18 @@ class UserController extends Controller
 
         if ($request->hasFile('profile_image')) {
             $file = $request->file('profile_image');
-            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('uploads/profile_images'), $filename);
-            $data['profile_image'] = 'uploads/profile_images/'.$filename;
+            $data['profile_image'] = 'uploads/profile_images/' . $filename;
         }
 
-        $user = UserModel::create($data);
+        $user = User::create($data);
 
         if ($request->has('roles')) {
             $user->assignRole($request->roles);
         }
 
-        return redirect()->route('backend.users.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }
 
     /**
@@ -73,9 +72,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = UserModel::findOrFail($id);
-        $roles = \Spatie\Permission\Models\Role::all();
-        return view('backend.users.edit', compact('user', 'roles'));
+        $user = User::findOrFail($id);
+        return view('backend.users.edit', compact('user'));
     }
 
     /**
@@ -83,7 +81,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = UserModel::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -93,7 +91,7 @@ class UserController extends Controller
         ]);
 
         $data = $request->except(['password', 'password_confirmation', 'profile_image']);
-        
+
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         }
@@ -105,14 +103,14 @@ class UserController extends Controller
                 \Storage::disk('public')->delete($user->profile_image);
             }
             $file = $request->file('profile_image');
-            $filename = time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('uploads/profile_images'), $filename);
-            $data['profile_image'] = 'uploads/profile_images/'.$filename;
+            $data['profile_image'] = 'uploads/profile_images/' . $filename;
         }
 
         $user->update($data);
 
-        return redirect()->route('backend.users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
     }
 
     /**
@@ -120,8 +118,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = UserModel::findOrFail($id);
-        
+        $user = User::findOrFail($id);
+
         if ($user->profile_image) {
             if (file_exists(public_path($user->profile_image))) {
                 @unlink(public_path($user->profile_image));
@@ -129,9 +127,9 @@ class UserController extends Controller
                 \Storage::disk('public')->delete($user->profile_image);
             }
         }
-        
+
         $user->delete();
 
-        return redirect()->route('backend.users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
 }

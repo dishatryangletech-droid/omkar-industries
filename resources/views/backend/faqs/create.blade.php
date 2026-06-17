@@ -9,12 +9,12 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">FAQ Details</h5>
-                        <a href="#" class="btn btn-label-secondary waves-effect">
+                        <a href="{{ route('admin.faqs.index') }}" class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
                     
-                    <form action="#" method="POST">
+                    <form action="{{ route('admin.faqs.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <!-- Question -->
@@ -58,7 +58,7 @@
 
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary me-2">Create FAQ</button>
-                            <a href="#" class="btn btn-label-secondary">Cancel</a>
+                            <a href="{{ route('admin.faqs.index') }}" class="btn btn-label-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

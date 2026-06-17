@@ -22,7 +22,9 @@ class Index2 extends Component
             $q->whereNull('parent_id')->orWhere('parent_id', 0);
         })->where('status', 'Active')->where('slug', '!=', 'other-product-page')->get();
 
-        return view('livewire.frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products'))
+        $faqSection = \App\Models\HomePage::where('section_type', 'faq_section')->first();
+
+        return view('livewire.frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection'))
             ->layout('components.layouts.app', ['title' => 'Induyst – Industry & Factory HTML Template']);
     }
 }

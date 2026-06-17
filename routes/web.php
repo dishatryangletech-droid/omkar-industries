@@ -472,10 +472,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     Route::get('contacts', function () use ($defaults) { return view('backend.contacts.index', $defaults); })->name('contacts.index');
     Route::get('dealers', function () use ($defaults) { return view('backend.dealers.index', $defaults); })->name('dealers.index');
-    Route::get('faqs', function () use ($defaults) { return view('backend.faqs.index', $defaults); })->name('faqs.index');
+    Route::post('faqs/update-section', [\App\Http\Controllers\Backend\FaqController::class, 'updateSection'])->name('faqs.update-section');
+    Route::resource('faqs', \App\Http\Controllers\Backend\FaqController::class);
     Route::get('page-banners', function () use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
     Route::get('roles', function () use ($defaults) { return view('backend.roles.index', $defaults); })->name('roles.index');
-    Route::get('users', function () use ($defaults) { return view('backend.users.index', $defaults); })->name('users.index');
+    Route::resource('users', \App\Http\Controllers\Backend\UserController::class);
 
     Route::resource('products', ProductController::class);
     Route::post('products/{product}/copy', [ProductController::class, 'copy'])->name('products.copy');
