@@ -94,7 +94,7 @@
 						<div class="pbmit-single-project-details-wrapper">
 							<div class="pbmit-featured-img-wrapper">
 								<img src="{{ isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)) ? asset('storage/' . $product->image) : asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
-									class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="{{ $product->title ?? 'Product Image' }}">
+									class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $product->title ?? 'Product Image' }}">
 							</div>
 						</div>
 						<div class="pbmit-entry-content">

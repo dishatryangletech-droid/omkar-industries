@@ -140,7 +140,7 @@
 																			style="padding: 0; text-decoration: none;">
 																			<img src="{{ ($navProduct->image && file_exists(public_path('storage/' . $navProduct->image))) ? asset('storage/' . $navProduct->image) : asset('frontend/images/portfolio/portfolio-img-01.jpg') }}"
 																				class="img-fluid rounded w-100"
-																				style="height: 150px; object-fit: cover;"
+																				style="height: 100px; object-fit: contain;"
 																				alt="{{ $navProduct->title }}">
 																			<span class="d-block fw-bold mt-2"
 																				style="font-size: 14px; color: #333;">{{ $navProduct->title }}</span>

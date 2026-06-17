@@ -1,6 +1,20 @@
 <x-layouts.app>
 @push('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <style>
+        .pbmit-sortable-list-ul li a.pbmit-sortable-link {
+            border: 1px solid #b7b3b37a;
+            transition: all 0.3s ease;
+        }
+        .pbmit-sortable-list-ul li a.pbmit-sortable-link:hover {
+            border-color: var(--pbmit-global-color);
+            color: var(--pbmit-global-color);
+        }
+        .pbmit-sortable-list-ul li a.pbmit-sortable-link.pbmit-selected {
+            border-color: var(--pbmit-global-color);
+            color: var(--pbmit-white-color);
+        }
+    </style>
 @endpush
 	<div>
 		<!-- Page Wrapper -->
@@ -70,7 +84,7 @@
 																	style="height: 300px; width: 100%; object-fit: contain;">
 															</div>
 														</div>
-														<a class="pbmit-link" style="border:1px solid #ffc34e; border-radius: 10px;"
+														<a class="pbmit-link" style="border:1px solid #b7b3b37a; border-radius: 10px;"
 															href="{{ asset('storage/' . $image) }}" data-fancybox="gallery" data-caption="{{ $gallery->tab_name }}"></a>
 													</div>
 												</div>
