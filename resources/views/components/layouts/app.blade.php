@@ -24,6 +24,7 @@
     @livewireStyles
     <link rel="stylesheet" href="{{ asset('frontend/css/custom-slider.css?v=1781266836.64119') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/slide1-fix.css') }}?v=1781247852">
+    @stack('page-css')
 </head>
 <body>
 
@@ -72,5 +73,6 @@
     <script src="{{ asset('frontend/js/scripts.js') }}"></script>
 
     @livewireScripts
+    @stack('page-js')
 </body>
 </html>

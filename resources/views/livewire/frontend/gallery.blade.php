@@ -1,4 +1,7 @@
 <x-layouts.app>
+@push('page-css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+@endpush
 	<div>
 		<!-- Page Wrapper -->
 		<div class="page-wrapper" id="page">
@@ -68,7 +71,7 @@
 															</div>
 														</div>
 														<a class="pbmit-link" style="border:1px solid #ffc34e; border-radius: 10px;"
-															href="{{ asset('storage/' . $image) }}"></a>
+															href="{{ asset('storage/' . $image) }}" data-fancybox="gallery" data-caption="{{ $gallery->tab_name }}"></a>
 													</div>
 												</div>
 											</article>
@@ -96,4 +99,28 @@
 		</div>
 		<!-- Page Wrapper End -->
 	</div>
+@push('page-js')
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Fancybox.bind('[data-fancybox="gallery"]', {
+                Toolbar: {
+                    display: {
+                        left: ["infobar"],
+                        middle: [
+                            "zoomIn",
+                            "zoomOut",
+                            "toggle1:1",
+                            "rotateCCW",
+                            "rotateCW",
+                            "flipX",
+                            "flipY",
+                        ],
+                        right: ["slideshow", "thumbs", "close"],
+                    },
+                },
+            });
+        });
+    </script>
+@endpush
 </x-layouts.app>
