@@ -146,7 +146,7 @@ Route::get('/exhibition-details/{id}', [\App\Http\Controllers\Frontend\PageContr
 Route::get('/certificates', [\App\Http\Controllers\Frontend\PageController::class, 'certificates'])->name('frontend.certificates');
 Route::get('/gallery', [\App\Http\Controllers\Frontend\PageController::class, 'gallery'])->name('frontend.gallery');
 Route::get('/blogs', [\App\Http\Controllers\Frontend\PageController::class, 'blogs'])->name('frontend.blog-grid-col-3');
-Route::get('/blog-detail/{id}', [\App\Http\Controllers\Frontend\PageController::class, 'blogDetail'])->name('frontend.blog-single-details');
+Route::get('/blog/{slug}', [\App\Http\Controllers\Frontend\PageController::class, 'blogDetail'])->name('frontend.blog-single-details');
 Route::get('/contact-us', [\App\Http\Controllers\Frontend\PageController::class, 'contactUs'])->name('frontend.contact-us');
 Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home');
 Route::get('/index-2', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.index-2');
@@ -194,14 +194,7 @@ Route::get('/products', function () {
     return view('frontend.services', compact('products'));
 })->name('products');
 
-Route::get('/products/{slug}/children', function ($slug) {
-    $parent = Product::where('slug', $slug)->firstOrFail();
-    $products = Product::where('parent_id', $parent->id)->where('status', 'Active')->get();
-    
-    return view('frontend.services', compact('products', 'parent'));
-})->name('products.children');
-
-Route::get('/product-details/{slug?}', function ($slug = null) {
+Route::get('/our-product/{slug?}', function ($slug = null) {
     if ($slug) {
         $product = Product::where('slug', $slug)->firstOrFail();
     } else {
@@ -210,8 +203,22 @@ Route::get('/product-details/{slug?}', function ($slug = null) {
             abort(404, 'No products found.');
         }
     }
+
+    // If the product is a category (parent), show its children
+    if ($product->is_parent || Product::where('parent_id', $product->id)->exists()) {
+        $parent = $product;
+        $products = Product::where('parent_id', $parent->id)->where('status', 'Active')->get();
+        return view('frontend.services', compact('products', 'parent'));
+    }
+
+    // Otherwise, show the single product details
     return view('frontend.product-details', compact('product'));
 })->name('product-details');
+
+// Keep the name alias for backward compatibility in blade files if any missed
+Route::get('/our-product/{slug}/category', function ($slug) {
+    return redirect()->route('product-details', ['slug' => $slug]);
+})->name('products.children');
 
 
 /*

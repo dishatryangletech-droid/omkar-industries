@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Exhibition Details - Induyst">
 <div>
 <!-- Page Wrapper -->
     <div class="page-wrapper">
@@ -185,3 +185,4 @@
 	<!-- Scripts JS -->
 </div>
 </x-layouts.app>
+

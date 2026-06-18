@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Certificates - Induyst">
 <div>
 <!-- Page Wrapper -->
 	<div class="page-wrapper">
@@ -133,3 +133,4 @@
    
 </div>
 </x-layouts.app>
+

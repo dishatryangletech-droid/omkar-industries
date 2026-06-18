@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Home - Induyst">
 <div>
 <!-- page wrapper -->
 	<div class="page-wrapper" id="page">
@@ -22,7 +22,7 @@
 											Manufacturing <br>Your Vision
 										</h2>
 										<div class="d-lg-flex align-items-center justify-content-end">
-											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether it’s small-scale custom work or large-scale<br> production we build with purpose, power & precision.</div>
+											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether itâ€™s small-scale custom work or large-scale<br> production we build with purpose, power & precision.</div>
 											<div class="pbmit-button ms-xl-5 ms-lg-3">
 												<div class="transform-bottom transform-delay-4">
 													<a href="/about-us" class="pbmit-btn white">
@@ -53,7 +53,7 @@
 											Manufacturing <br>Your Vision
 										</h2>
 										<div class="d-lg-flex align-items-center justify-content-end">
-											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether it’s small-scale custom work or large-scale<br> production we build with purpose, power & precision.</div>
+											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether itâ€™s small-scale custom work or large-scale<br> production we build with purpose, power & precision.</div>
 											<div class="pbmit-button ms-xl-5 ms-lg-3">
 												<div class="transform-bottom transform-delay-4">
 													<a href="/about-us" class="pbmit-btn white">
@@ -84,7 +84,7 @@
 											Manufacturing <br>Your Vision
 										</h2>
 										<div class="d-lg-flex align-items-center justify-content-end">
-											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether it’s small-scale custom work or large-scale<br> production we build with purpose, power & precision.</div>
+											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether itâ€™s small-scale custom work or large-scale<br> production we build with purpose, power & precision.</div>
 											<div class="pbmit-button ms-xl-5 ms-lg-3">
 												<div class="transform-bottom transform-delay-4">
 													<a href="/about-us" class="pbmit-btn white">
@@ -642,7 +642,7 @@
 							<div class="pbmit-heading-subheading">
 								<h4 class="pbmit-subtitle">Pricing table</h4>
 								<h2 class="pbmit-title">The best pricing plans for client</h2>
-								<div class="pbmit-heading-desc pt-3">There are many variations of passages of Lorem Ipsum don’t look even slightly believable.</div>
+								<div class="pbmit-heading-desc pt-3">There are many variations of passages of Lorem Ipsum donâ€™t look even slightly believable.</div>
 							</div>
 							<div class="pricing-toggle">
 								<span class="pricing-toggler" id="filt-yearly">Yearly</span>
@@ -1409,7 +1409,7 @@
 										<div class="pbmit-heading-subheading">
 											<h4 class="pbmit-subtitle">{{ $faqSection->subtitle ?? 'To know more about us' }}</h4>
 											<h2 class="pbmit-title">{{ $faqSection->title ?? 'What would you like to know?' }}</h2>
-											<div class="pbmit-heading-desc">{{ $faqSection->description ?? 'Didn’t find the answer you were looking for? Please ask to our customer service department.' }}</div>
+											<div class="pbmit-heading-desc">{{ $faqSection->description ?? 'Didnâ€™t find the answer you were looking for? Please ask to our customer service department.' }}</div>
 										</div>
 										<div class="pbmit-ihbox-style-3">
 											<div class="pbmit-ihbox-box">
@@ -1682,3 +1682,4 @@
 	<!-- Scripts JS -->
 </div>
 </x-layouts.app>
+

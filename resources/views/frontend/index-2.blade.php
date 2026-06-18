@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Home - Induyst">
 <div>
 	<!-- page wrapper -->
 	<div class="page-wrapper" id="page">
@@ -26,7 +26,7 @@
 										</h2>
 										<div class="d-lg-flex align-items-center justify-content-end">
 											<div class="pbmit-slider-desc transform-center transform-delay-3">Whether
-												it’s small-scale custom work or large-scale<br> production we build with
+												itâ€™s small-scale custom work or large-scale<br> production we build with
 												purpose, power & precision.</div>
 											<div class="pbmit-button ms-xl-5 ms-lg-3">
 												<div class="transform-bottom transform-delay-4">
@@ -63,7 +63,7 @@
 													<span class="first">Engineering</span> <span class="second">the
 														<span class="pbmit-global-color">Future</span></span>
 												</h2>
-												<p class="pbmit-slider-desc"><span>Whether it’s small-scale custom work
+												<p class="pbmit-slider-desc"><span>Whether itâ€™s small-scale custom work
 														or large scale production <br> we build with purpose, power and
 														precision.</span></p>
 												<div class="pbmit-button d-flex align-items-center">
@@ -102,7 +102,7 @@
 													<span class="first">Constructing </span> <span class="second">the
 														<span class="pbmit-global-color">Industry</span></span>
 												</h2>
-												<p class="pbmit-slider-desc"><span>Whether it’s tailored fabrication or
+												<p class="pbmit-slider-desc"><span>Whether itâ€™s tailored fabrication or
 														high-volume production <br> we build with purpose, power and
 														precision.</span></p>
 												<div class="pbmit-button d-flex align-items-center">
@@ -148,7 +148,7 @@
 						@foreach($products as $product)
 							@php
 								$isParent = \App\Models\Product::where('parent_id', $product->id)->exists();
-								$productUrl = $isParent ? route('products.children', $product->slug) : url('/product-details/' . $product->slug);
+								$productUrl = route('product-details', ['slug' => $product->slug]);
 							@endphp
 							<div class="col-md-4 mb-5">
 								<article class="pbmit-service-style-1">
@@ -191,7 +191,7 @@
 					</div>
 					<div class="pbmit-bottom-text text-center mt-5 pt-md-2">
 						Latest solutions, and decades of experience. &nbsp; <a
-							href="{{ url('products/other-product-page/children') }}"><u>Explore Other Products</u></a>
+							href="{{ url('our-product') }}"><u>Explore Other Products</u></a>
 					</div>
 				</div>
 			</section>
@@ -722,7 +722,7 @@
 											<h2 class="pbmit-title">
 												{{ $faqSection->title ?? 'What would you like to know?' }}</h2>
 											<div class="pbmit-heading-desc">
-												{!! $faqSection->description ?? 'Didn’t find the answer you were looking for? Please ask to our customer service department.' !!}
+												{!! $faqSection->description ?? 'Didnâ€™t find the answer you were looking for? Please ask to our customer service department.' !!}
 											</div>
 										</div>
 										<div class="pbmit-ihbox-style-3">
@@ -861,7 +861,7 @@
 															@endif
 														</div>
 														<a class="pbmit-link"
-															href="{{ route('frontend.blog-single-details', $blog->id) }}"></a>
+															href="{{ route('frontend.blog-single-details', ['slug' => $blog->slug]) }}"></a>
 													</div>
 													<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 														<span class="pbmit-post-date">
@@ -890,7 +890,7 @@
 													<h3 class="pbmit-post-title"
 														style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 60px;">
 														<a
-															href="{{ route('frontend.blog-single-details', $blog->id) }}">{{ $blog->title }}</a>
+															href="{{ route('frontend.blog-single-details', ['slug' => $blog->slug]) }}">{{ $blog->title }}</a>
 													</h3>
 													<div class="pbminfotech-box-desc"
 														style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
@@ -898,7 +898,7 @@
 													</div>
 													<div class="pbmit-blog-btn">
 														<a class="pbmit-button-inner"
-															href="{{ route('frontend.blog-single-details', $blog->id) }}">
+															href="{{ route('frontend.blog-single-details', ['slug' => $blog->slug]) }}">
 															<span class="pbmit-button-text">Read More</span>
 															<span class="pbmit-button-icon">
 																<i class="pbmit-base-icon-right-arrow"></i>
@@ -958,3 +958,6 @@
 		<!-- Scripts JS -->
 	</div>
 </x-layouts.app>
+
+
+

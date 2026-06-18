@@ -49,9 +49,9 @@ class PageController extends Controller
         return view('frontend.blogs', compact('blogs'));
     }
 
-    public function blogDetail($id)
+    public function blogDetail($slug)
     {
-        $blog     = \App\Models\Blog::findOrFail($id);
+        $blog     = \App\Models\Blog::where('slug', $slug)->firstOrFail();
         $previous = \App\Models\Blog::where('id', '<', $blog->id)->where('status', 'Active')->orderBy('id', 'desc')->first();
         $next     = \App\Models\Blog::where('id', '>', $blog->id)->where('status', 'Active')->orderBy('id', 'asc')->first();
         return view('frontend.blog-detail', compact('blog', 'previous', 'next'));

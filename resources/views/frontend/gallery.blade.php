@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Gallery - Induyst">
 @push('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <style>
@@ -138,3 +138,4 @@
     </script>
 @endpush
 </x-layouts.app>
+

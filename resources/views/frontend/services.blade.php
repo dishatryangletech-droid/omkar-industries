@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Products - Induyst">
 <div>
 <!-- Page Wrapper -->
 	<div class="page-wrapper">
@@ -48,7 +48,7 @@
 					<div class="pbmit-element-posts-wrapper row">
 						@foreach($filteredProducts as $product)
 							@php
-								$productUrl = $product->is_parent ? url('products/'.$product->slug.'/children') : url('product-details/'.$product->slug);
+								$productUrl = route('product-details', ['slug' => $product->slug]);
 							@endphp
 							<article class="pbmit-service-style-1 col-md-6 col-lg-4">
 								<div class="pbminfotech-post-item">
@@ -88,7 +88,7 @@
 					@if($otherProduct)
 					<div class="row mt-5">
 						<div class="col-12 text-center mt-4 mb-4">
-							<a href="{{ url('products/'.$otherProduct->slug.'/children') }}" class="pbmit-btn blackish">
+							<a href="{{ route('product-details', ['slug' => $otherProduct->slug]) }}" class="pbmit-btn blackish">
 								<span class="pbmit-button-content-wrapper">
 									<span class="pbmit-button-icon">
 										<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
@@ -149,3 +149,5 @@
 </div>
 
 </x-layouts.app>
+
+

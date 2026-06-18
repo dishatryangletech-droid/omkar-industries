@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Blogs - Induyst">
 <div>
 <!-- Page Wrapper -->
 	<div class="page-wrapper">
@@ -55,7 +55,7 @@
 												@endif
 											</div>
 										</div>
-										<a class="pbmit-link" href="{{ route('frontend.blog-single-details', $blog->id) }}"></a>
+										<a class="pbmit-link" href="{{ route('frontend.blog-single-details', ['slug' => $blog->slug]) }}"></a>
 									</div>
 									<div class="pbmit-meta-date-wrapper pbmit-meta-line">
 										<span class="pbmit-post-date">
@@ -79,13 +79,13 @@
 								</div>
 								<div class="pbmit-content-wrapper">
 									<h3 class="pbmit-post-title" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 60px;">
-										<a href="{{ route('frontend.blog-single-details', $blog->id) }}">{{ $blog->title }}</a>
+										<a href="{{ route('frontend.blog-single-details', ['slug' => $blog->slug]) }}">{{ $blog->title }}</a>
 									</h3>
 									<div class="pbminfotech-box-desc" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
 										{!! Str::limit(strip_tags($blog->description), 100) !!}
 									</div>
 									<div class="pbmit-blog-btn">
-										<a class="pbmit-button-inner" href="{{ route('frontend.blog-single-details', $blog->id) }}">
+										<a class="pbmit-button-inner" href="{{ route('frontend.blog-single-details', ['slug' => $blog->slug]) }}">
 											<span class="pbmit-button-text">Read More</span>
 											<span class="pbmit-button-icon">
 												<i class="pbmit-base-icon-right-arrow"></i>
@@ -147,3 +147,5 @@
 	<!-- Scripts JS -->
 </div>
 </x-layouts.app>
+
+

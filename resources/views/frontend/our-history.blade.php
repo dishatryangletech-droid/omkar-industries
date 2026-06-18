@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Our History - Induyst">
 <div>
 	<!-- Page Wrapper -->
 	<div class="page-wrapper">
@@ -200,3 +200,4 @@
 		<!-- Scripts JS -->
 	</div>
 </x-layouts.app>
+

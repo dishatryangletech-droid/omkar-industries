@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="About Us - Induyst">
 	<div>
 		<!-- Page Wrapper -->
 		<div class="page-wrapper" id="page">
@@ -477,7 +477,7 @@
 							<div class="row align-items-center">
 								<div class="col-md-6 left-col">
 									<div class="pbmit-custom-heading">
-										<h2 class="pbmit-title">Serving with expertise in industries as one of World’s
+										<h2 class="pbmit-title">Serving with expertise in industries as one of Worldâ€™s
 											leading Corporation!</h2>
 									</div>
 								</div>
@@ -880,3 +880,4 @@
 		<!-- Scripts JS -->
 	</div>
 </x-layouts.app>
+

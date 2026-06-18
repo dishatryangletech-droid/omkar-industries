@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="{{ $product->title ?? 'Product Detail' }} - Induyst">
 	<div>
 	<style>
 		.pbmit-btn-sm {
@@ -790,3 +790,4 @@
 		<!-- Scripts JS -->
 	</div>
 </x-layouts.app>
+

@@ -1,4 +1,4 @@
-<div class="pbmit-sticky-header pbmit-header-sticky-yes pbmit-bg-color-white pbmit-sticky-header-mobile-yes"></div>
+﻿<div class="pbmit-sticky-header pbmit-header-sticky-yes pbmit-bg-color-white pbmit-sticky-header-mobile-yes"></div>
 <div class="pbmit-header-overlay">
 	<div class="pbmit-main-header-area pbmit-infostack-header pbmit-bg-color-blackish">
 		<div class="pbmit-top-area">
@@ -133,7 +133,7 @@
 																@endphp
 																@foreach($navProducts as $navProduct)
 																	@php
-																		$navUrl = $navProduct->is_parent ? url('products/'.$navProduct->slug.'/children') : url('product-details/'.$navProduct->slug);
+																		$navUrl = route('product-details', ['slug' => $navProduct->slug]);
 																	@endphp
 																	<div class="col-md-4 text-center {{ $loop->iteration > 3 ? 'pt-2' : '' }}">
 																		<a href="{{ $navUrl }}" class="d-block"
@@ -161,7 +161,7 @@
 																	<div class="position-absolute bottom-0 start-0 w-100 p-3"
 																		style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
 																		<h6 class="text-white mb-1 fw-bold mb-2">{{ $otherProduct->title }}</h6>
-																		<a href="{{ url('products/'.$otherProduct->slug.'/children') }}"
+																		<a href="{{ route('product-details', ['slug' => $otherProduct->slug]) }}"
 																			class="pbmit-btn pbmit-btn-white"
 																			style="transform: scale(0.85); transform-origin: left top; margin-top: 15px;">
 																			<span class="pbmit-button-content-wrapper">

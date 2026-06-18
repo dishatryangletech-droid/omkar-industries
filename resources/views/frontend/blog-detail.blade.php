@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="{{ $blog->title ?? 'Blog Detail' }} - Induyst">
 <div>
 	<style>
 		.text-center .pbmit-firstletter::first-letter {
@@ -153,7 +153,7 @@
 											<div class="nav-links">
 												@if($previous)
 												<div class="nav-previous">
-													<a href="{{ route('frontend.blog-single-details', $previous->id) }}" rel="prev">
+													<a href="{{ route('frontend.blog-single-details', ['slug' => $previous->slug]) }}" rel="prev">
 														<span class="pbmit-post-nav-icon">
 															<i class="pbmit-base-icon-arrow-left"></i>
 															<span class="pbmit-post-nav-head">Previous Post</span>
@@ -166,7 +166,7 @@
 												@endif
 												@if($next)
 												<div class="nav-next">
-													<a href="{{ route('frontend.blog-single-details', $next->id) }}" rel="next">
+													<a href="{{ route('frontend.blog-single-details', ['slug' => $next->slug]) }}" rel="next">
 														<span class="pbmit-post-nav-icon">
 															<span class="pbmit-post-nav-head">Next Post</span>
 															<i class="pbmit-base-icon-arrow-right"></i>
@@ -311,9 +311,11 @@
 			var blockquotes = document.querySelectorAll('.dynamic-content blockquote');
 			blockquotes.forEach(function(bq) {
 				var text = bq.innerText || bq.textContent;
-				bq.innerHTML = '<p>“' + text.replace(/^"|"$/g, '').trim() + '”</p>';
+				bq.innerHTML = '<p>â€œ' + text.replace(/^"|"$/g, '').trim() + 'â€</p>';
 			});
 		});
 	</script>
 </div>
 </x-layouts.app>
+
+

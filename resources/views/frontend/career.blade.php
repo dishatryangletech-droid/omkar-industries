@@ -1,4 +1,4 @@
-<x-layouts.app>
+﻿<x-layouts.app title="Career - Induyst">
 <style>
     .career-tabs .nav-pills .nav-link.active, 
     .career-tabs .nav-pills .show > .nav-link {
@@ -147,3 +147,4 @@
     });
 </script>
 </x-layouts.app>
+
