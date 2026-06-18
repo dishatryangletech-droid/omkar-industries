@@ -2675,6 +2675,63 @@ form .form-check-input[type=checkbox]{
 	color: var(--pbmit-blackish-color);
 }
 
+/* Keep partner/client logo carousels compact even when Swiper calculates a tall slide. */
+.client-section-two .swiper-slider,
+.client-section-two .swiper-wrapper,
+.client-section-two .swiper-slide,
+.client-section-two .pbmit-border-wrapper,
+.client-section-two .pbmit-client-wrapper {
+	height: 95px !important;
+}
+.client-section-two .swiper-slide,
+.client-section-two .pbmit-border-wrapper,
+.client-section-two .pbmit-client-wrapper,
+.client-section-two .pbmit-featured-wrapper,
+.client-section-two .pbmit-client-hover-img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.client-section-two .pbmit-client-hover-img {
+	width: 100%;
+}
+.client-section-two img {
+	max-height: 65px;
+	max-width: 160px;
+	width: auto;
+	object-fit: contain;
+}
 
+/* Keep working-process cards from stretching into tall blank columns. */
+.ihbox-style-10-slider,
+.ihbox-style-10-slider .swiper-wrapper,
+.ihbox-style-10-slider .swiper-slide {
+	height: auto !important;
+}
+.ihbox-style-10-slider .swiper-slide {
+	align-self: stretch;
+}
+.ihbox-style-10-slider .pbmit-ihbox-style-10 {
+	min-height: 360px;
+	height: 100%;
+}
+.ihbox-style-10-slider .pbmit-ihbox-box {
+	height: 100%;
+	justify-content: center;
+}
 
+/* Progress bars should render as thin tracks, not tall blocks. */
+.pbminfotech-ele-fid .pbmit-progressbar,
+.pbminfotech-ele-fid .pbmit-progress-wrapper {
+	height: 2px !important;
+	min-height: 2px;
+	overflow: hidden;
+}
+.pbminfotech-ele-fid .pbmit-progressbar {
+	margin-top: 0;
+}
+.pbminfotech-ele-fid .pbmit-progress-bar {
+	height: 2px !important;
+	line-height: 2px;
+}
 

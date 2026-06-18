@@ -1,4 +1,15 @@
 ﻿<x-layouts.app title="Home - Induyst">
+@php
+	ob_start(function ($buffer) {
+		$badApostrophe = "\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2";
+
+		return str_replace(
+			["it{$badApostrophe}s", "Didn{$badApostrophe}t"],
+			['it is', 'Did not'],
+			$buffer
+		);
+	});
+@endphp
 <div>
 <!-- page wrapper -->
 	<div class="page-wrapper" id="page">
@@ -1680,6 +1691,9 @@
 	<!-- GSAP Animation -->
 	
 	<!-- Scripts JS -->
+	@php
+		ob_end_flush();
+	@endphp
 </div>
 </x-layouts.app>
 
