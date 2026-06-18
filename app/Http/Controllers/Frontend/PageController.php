@@ -36,4 +36,53 @@ class PageController extends Controller
     {
         return view('frontend.certificates');
     }
+
+    public function gallery()
+    {
+        $galleries = \App\Models\Gallery::where('status', 'active')->get();
+        return view('frontend.gallery', compact('galleries'));
+    }
+
+    public function blogs()
+    {
+        $blogs = \App\Models\Blog::where('status', 'Active')->orderBy('date', 'desc')->get();
+        return view('frontend.blogs', compact('blogs'));
+    }
+
+    public function blogDetail($id)
+    {
+        $blog     = \App\Models\Blog::findOrFail($id);
+        $previous = \App\Models\Blog::where('id', '<', $blog->id)->where('status', 'Active')->orderBy('id', 'desc')->first();
+        $next     = \App\Models\Blog::where('id', '>', $blog->id)->where('status', 'Active')->orderBy('id', 'asc')->first();
+        return view('frontend.blog-detail', compact('blog', 'previous', 'next'));
+    }
+
+    public function contactUs()
+    {
+        $generalSetting = \App\Models\GeneralSetting::first();
+        $footerSetting = \Illuminate\Support\Facades\DB::table('footer_settings')->first();
+
+        return view('frontend.contact-us', [
+            'generalSetting' => $generalSetting,
+            'footerSetting' => $footerSetting,
+        ]);
+    }
+
+    public function career()
+    {
+        $careers = \App\Models\Career::where('status', 'Active')->latest()->get();
+        return view('frontend.career', compact('careers'));
+    }
+
+    public function exhibition()
+    {
+        $exhibitions = \App\Models\Exhibition::where('status', 'Active')->latest()->get();
+        return view('frontend.exhibition', compact('exhibitions'));
+    }
+
+    public function exhibitionDetails($id)
+    {
+        $exhibition = \App\Models\Exhibition::findOrFail($id);
+        return view('frontend.exhibition-details', compact('exhibition'));
+    }
 }
