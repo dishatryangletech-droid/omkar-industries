@@ -22,7 +22,7 @@
 
 			<!-- Header Main Area -->
 			<header class="site-header pbmit-header-style-1" id="masthead">
-				@include('livewire.frontend.partials.header')
+				@include('frontend.partials.header')
 			</header>
 			<!-- Header Main Area End Here -->
 
@@ -106,7 +106,7 @@
 
 			<!-- Footer -->
 			<footer class="site-footer pbmit-bg-color-blackish">
-				@include('livewire.frontend.partials.footer')
+				@include('frontend.partials.footer')
 			</footer>
 			<!-- Footer End -->
 

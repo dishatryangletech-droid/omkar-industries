@@ -1,4 +1,4 @@
-﻿<x-layouts.app>
+<x-layouts.app>
 <div>
 	<style>
 		.text-center .pbmit-firstletter::first-letter {
@@ -32,7 +32,7 @@
 
 	<!-- Header Main Area -->
 	<header class="site-header pbmit-header-style-1" id="masthead">
-		@include('livewire.frontend.partials.header')
+		@include('frontend.partials.header')
 		</header>
 	<!-- Header Main Area End Here -->
 
@@ -192,7 +192,7 @@
 	</div>
 	<!-- Page Content End -->
 
-	@include('livewire.frontend.partials.footer')
+	@include('frontend.partials.footer')
 	
     <!-- JS
         ============================================ -->
@@ -311,7 +311,7 @@
 			var blockquotes = document.querySelectorAll('.dynamic-content blockquote');
 			blockquotes.forEach(function(bq) {
 				var text = bq.innerText || bq.textContent;
-				bq.innerHTML = '<p>â€œ' + text.replace(/^"|"$/g, '').trim() + 'â€</p>';
+				bq.innerHTML = '<p>“' + text.replace(/^"|"$/g, '').trim() + '”</p>';
 			});
 		});
 	</script>

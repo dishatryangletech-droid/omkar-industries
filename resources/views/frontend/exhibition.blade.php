@@ -1,11 +1,11 @@
-﻿<x-layouts.app>
+<x-layouts.app>
 <div>
 <!-- Page Wrapper -->
 	<div class="page-wrapper">
 
 		<!-- Header Main Area -->
 		<header class="site-header pbmit-header-style-1" id="masthead">
-			@include('livewire.frontend.partials.header')
+			@include('frontend.partials.header')
 		</header>
 		<!-- Header Main Area End Here -->
 
@@ -90,7 +90,7 @@
 
 		</div>
          
-		@include('livewire.frontend.partials.footer')
+		@include('frontend.partials.footer')
    
 	<!-- JS
 		============================================ -->

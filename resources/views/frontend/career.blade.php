@@ -1,4 +1,4 @@
-﻿<x-layouts.app>
+<x-layouts.app>
 <style>
     .career-tabs .nav-pills .nav-link.active, 
     .career-tabs .nav-pills .show > .nav-link {
@@ -13,7 +13,7 @@
 <div>
     <div class="page-wrapper career-tabs">
 		<header class="site-header pbmit-header-style-1" id="masthead">
-			@include('livewire.frontend.partials.header')
+			@include('frontend.partials.header')
 		</header>
 		<div class="pbmit-title-bar-wrapper">
 			<div class="container p-0">
@@ -133,7 +133,7 @@
 <!-- Apply Modal End -->
 
         </div>
-    @include('livewire.frontend.partials.footer')
+    @include('frontend.partials.footer')
 </div>
 
 <script>

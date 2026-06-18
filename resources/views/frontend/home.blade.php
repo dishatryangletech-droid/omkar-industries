@@ -5,7 +5,7 @@
 
 		<!-- Header Main Area -->
 		<header class="site-header pbmit-header-style-1" id="masthead">
-			@include('livewire.frontend.partials.header')
+			@include('frontend.partials.header')
 		<div class="pbmit-slider-area pbmit-slider-one">
 				<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false" data-arrows="true" data-columns="1" data-margin="0" data-effect="fade">
 					<div class="swiper-wrapper">
@@ -1643,7 +1643,7 @@
 		</div>
 		<!-- page content End -->
 
-		@include('livewire.frontend.partials.footer')
+		@include('frontend.partials.footer')
 	
 	<!-- JS
 		============================================ -->

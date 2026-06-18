@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -54,20 +54,20 @@ Route::get('/test-storage-link', function () {
     // Check storage directory exists
     if (!file_exists($storageDir)) {
         @mkdir($storageDir, 0755, true);
-        $output[] = "✓ Created storage/app/public directory";
+        $output[] = "âœ“ Created storage/app/public directory";
     } else {
-        $output[] = "✓ storage/app/public directory exists";
+        $output[] = "âœ“ storage/app/public directory exists";
     }
 
     // Check if symlink already exists
     if (is_link($publicLink)) {
         @unlink($publicLink);
-        $output[] = "✓ Removed existing symlink";
+        $output[] = "âœ“ Removed existing symlink";
     }
 
     // Remove if it's a regular directory
     if (is_dir($publicLink) && !is_link($publicLink)) {
-        $output[] = "✗ Regular 'public/storage' directory exists (not a symlink). Remove it manually first.";
+        $output[] = "âœ— Regular 'public/storage' directory exists (not a symlink). Remove it manually first.";
     }
 
     try {
@@ -75,22 +75,22 @@ Route::get('/test-storage-link', function () {
             if (PHP_OS_FAMILY === 'Windows') {
                 exec('mklink /D "' . $publicLink . '" "' . $storageDir . '"', $execOutput, $execReturn);
                 if ($execReturn === 0) {
-                    $output[] = "✓ Storage link created successfully (Windows)!";
+                    $output[] = "âœ“ Storage link created successfully (Windows)!";
                 } else {
-                    $output[] = "✗ Failed to create symlink on Windows. Check permissions.";
+                    $output[] = "âœ— Failed to create symlink on Windows. Check permissions.";
                 }
             } else {
                 symlink($storageDir, $publicLink);
-                $output[] = "✓ Storage link created successfully (Unix/Linux)!";
+                $output[] = "âœ“ Storage link created successfully (Unix/Linux)!";
             }
         }
 
         if (is_link($publicLink)) {
             $target = readlink($publicLink);
-            $output[] = "✓ Symlink verified! Points to: " . $target;
+            $output[] = "âœ“ Symlink verified! Points to: " . $target;
         }
     } catch (\Exception $e) {
-        $output[] = "✗ Error: " . $e->getMessage();
+        $output[] = "âœ— Error: " . $e->getMessage();
     }
 
     return implode("<br>", $output);
@@ -101,9 +101,9 @@ Route::get('/fix-storage-link', function () {
 
     try {
         Artisan::call('storage:link');
-        $output[] = "✓ Artisan storage:link executed";
+        $output[] = "âœ“ Artisan storage:link executed";
     } catch (\Exception $e) {
-        $output[] = "✗ Artisan method failed: " . $e->getMessage();
+        $output[] = "âœ— Artisan method failed: " . $e->getMessage();
     }
 
     $storageDir = storage_path('app/public');
@@ -116,16 +116,16 @@ Route::get('/fix-storage-link', function () {
                 @chmod($storageDir, 0755);
             }
             @symlink($storageDir, $publicLink);
-            $output[] = "✓ Manual symlink created";
+            $output[] = "âœ“ Manual symlink created";
         } catch (\Exception $e) {
-            $output[] = "✗ Manual symlink failed: " . $e->getMessage();
+            $output[] = "âœ— Manual symlink failed: " . $e->getMessage();
         }
     }
 
     if (is_link($publicLink)) {
-        $output[] = "✓ Storage link is active!";
+        $output[] = "âœ“ Storage link is active!";
     } else {
-        $output[] = "✗ Storage link still not working";
+        $output[] = "âœ— Storage link still not working";
     }
 
     return implode("<br>", $output);
@@ -145,41 +145,12 @@ Route::get('/exhibition', [\App\Http\Controllers\Frontend\PageController::class,
 Route::get('/exhibition-details/{id}', [\App\Http\Controllers\Frontend\PageController::class, 'exhibitionDetails'])->name('frontend.exhibition-details');
 Route::get('/certificates', [\App\Http\Controllers\Frontend\PageController::class, 'certificates'])->name('frontend.certificates');
 Route::get('/gallery', [\App\Http\Controllers\Frontend\PageController::class, 'gallery'])->name('frontend.gallery');
-Route::get('/blog-classic', \App\Livewire\Frontend\BlogClassic::class)->name('frontend.blog-classic');
 Route::get('/blogs', [\App\Http\Controllers\Frontend\PageController::class, 'blogs'])->name('frontend.blog-grid-col-3');
-Route::get('/blog-grid-col-4', \App\Livewire\Frontend\BlogGridCol4::class)->name('frontend.blog-grid-col-4');
-Route::get('/blog-m-grid-col-2', \App\Livewire\Frontend\BlogMGridCol2::class)->name('frontend.blog-m-grid-col-2');
-Route::get('/blog-m-grid-col-3', \App\Livewire\Frontend\BlogMGridCol3::class)->name('frontend.blog-m-grid-col-3');
-Route::get('/blog-m-grid-col-4', \App\Livewire\Frontend\BlogMGridCol4::class)->name('frontend.blog-m-grid-col-4');
-Route::get('/blog-masonry-wide', \App\Livewire\Frontend\BlogMasonryWide::class)->name('frontend.blog-masonry-wide');
 Route::get('/blog-detail/{id}', [\App\Http\Controllers\Frontend\PageController::class, 'blogDetail'])->name('frontend.blog-single-details');
-Route::get('/blog-sortable-grid-view', \App\Livewire\Frontend\BlogSortableGridView::class)->name('frontend.blog-sortable-grid-view');
 Route::get('/contact-us', [\App\Http\Controllers\Frontend\PageController::class, 'contactUs'])->name('frontend.contact-us');
-Route::get('/faq', \App\Livewire\Frontend\Faq::class)->name('frontend.faq');
-Route::get('/homepage-2', \App\Livewire\Frontend\Homepage2::class)->name('frontend.homepage-2');
-// Route::get('/index-2', \App\Livewire\Frontend\Index2::class)->name('frontend.index-2');
-// Route::get('/', \App\Livewire\Frontend\IndexPage::class)->name('frontend.index');
-// Route::get('/home', \App\Livewire\Frontend\Index2::class)->name('frontend.home');
 Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home');
 Route::get('/index-2', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.index-2');
 Route::get('/our-history', [\App\Http\Controllers\Frontend\PageController::class, 'ourHistory'])->name('frontend.our-history');
-Route::get('/our-team', \App\Livewire\Frontend\OurTeam::class)->name('frontend.our-team');
-Route::get('/portfolio-detail-style-01', \App\Livewire\Frontend\PortfolioDetailStyle01::class)->name('frontend.portfolio-detail-style-01');
-Route::get('/portfolio-detail-style-02', \App\Livewire\Frontend\PortfolioDetailStyle02::class)->name('frontend.portfolio-detail-style-02');
-Route::get('/portfolio-grid-col-2', \App\Livewire\Frontend\PortfolioGridCol2::class)->name('frontend.portfolio-grid-col-2');
-Route::get('/portfolio-grid-col-3', \App\Livewire\Frontend\PortfolioGridCol3::class)->name('frontend.portfolio-grid-col-3');
-Route::get('/portfolio-grid-col-4', \App\Livewire\Frontend\PortfolioGridCol4::class)->name('frontend.portfolio-grid-col-4');
-Route::get('/portfolio-grid-no-gap', \App\Livewire\Frontend\PortfolioGridNoGap::class)->name('frontend.portfolio-grid-no-gap');
-Route::get('/portfolio-m-grid-col-2', \App\Livewire\Frontend\PortfolioMGridCol2::class)->name('frontend.portfolio-m-grid-col-2');
-Route::get('/portfolio-m-grid-col-3', \App\Livewire\Frontend\PortfolioMGridCol3::class)->name('frontend.portfolio-m-grid-col-3');
-Route::get('/portfolio-m-grid-col-4', \App\Livewire\Frontend\PortfolioMGridCol4::class)->name('frontend.portfolio-m-grid-col-4');
-Route::get('/portfolio-m-grid-wide', \App\Livewire\Frontend\PortfolioMGridWide::class)->name('frontend.portfolio-m-grid-wide');
-Route::get('/portfolio-sortable-grid-col-2', \App\Livewire\Frontend\PortfolioSortableGridCol2::class)->name('frontend.portfolio-sortable-grid-col-2');
-Route::get('/portfolio-sortable-grid-col-3', \App\Livewire\Frontend\PortfolioSortableGridCol3::class)->name('frontend.portfolio-sortable-grid-col-3');
-Route::get('/portfolio-sortable-grid-col-4', \App\Livewire\Frontend\PortfolioSortableGridCol4::class)->name('frontend.portfolio-sortable-grid-col-4');
-Route::get('/product-details', \App\Livewire\Frontend\ServiceDetails::class)->name('frontend.service-details');
-Route::get('/products', \App\Livewire\Frontend\Services::class)->name('frontend.services');
-Route::get('/team-member-detail', \App\Livewire\Frontend\TeamMemberDetail::class)->name('frontend.team-member-detail');
 
 
 /*
