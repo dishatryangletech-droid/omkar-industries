@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -225,8 +225,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // ==========================================
     // Auth & Dashboard
     // ==========================================
-    Route::view('/', 'backend.dashboard')->name('dashboard');
-    Route::view('dashboard', 'backend.dashboard')->name('dashboard');
+    Route::get('/', [\App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [\App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard.alt');
     
     Route::view('login', 'backend.auth-login-basic')->name('login');
     Route::post('login', function () {

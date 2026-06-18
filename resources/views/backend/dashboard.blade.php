@@ -6,7 +6,7 @@
 <div class="row">
     <!-- Product Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.products.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
@@ -57,7 +57,7 @@
 
     <!-- Gallery Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.gallery.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
@@ -74,7 +74,7 @@
 
     <!-- Blog Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.blogs.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
@@ -91,7 +91,7 @@
 
     <!-- Contact Inquiries Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.contacts.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
@@ -108,7 +108,7 @@
 
     <!-- Career Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.careers.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
@@ -125,7 +125,7 @@
 
     <!-- Job Applications Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.job-applications.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
@@ -142,7 +142,7 @@
 
     <!-- Dealer Inquiries Stat -->
     <div class="col-lg-3 col-sm-6 mb-4">
-        <a href="#" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <a href="{{ route('admin.dealers.index') }}" class="card h-100 text-decoration-none text-body" style="transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <div class="avatar me-2">
