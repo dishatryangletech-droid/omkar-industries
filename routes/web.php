@@ -139,11 +139,11 @@ Route::get('/fix-storage-link', function () {
 | Note: Some of these routes might be overridden by Standard Frontend Routes below.
 */
 
-Route::get('/about-us', \App\Livewire\Frontend\AboutUs::class)->name('frontend.about-us');
+Route::get('/about-us', [\App\Http\Controllers\Frontend\PageController::class, 'aboutUs'])->name('frontend.about-us');
 Route::get('/career', \App\Livewire\Frontend\Career::class)->name('frontend.career');
 Route::get('/exhibition', \App\Livewire\Frontend\Exhibition::class)->name('frontend.exhibition');
 Route::get('/exhibition-details/{id}', \App\Livewire\Frontend\ExhibitionDetails::class)->name('frontend.exhibition-details');
-Route::get('/certificates', \App\Livewire\Frontend\Certificates::class)->name('frontend.certificates');
+Route::get('/certificates', [\App\Http\Controllers\Frontend\PageController::class, 'certificates'])->name('frontend.certificates');
 Route::get('/gallery', \App\Livewire\Frontend\Gallery::class)->name('frontend.gallery');
 Route::get('/blog-classic', \App\Livewire\Frontend\BlogClassic::class)->name('frontend.blog-classic');
 Route::get('/blogs', \App\Livewire\Frontend\BlogGridCol3::class)->name('frontend.blog-grid-col-3');
@@ -160,7 +160,9 @@ Route::get('/homepage-2', \App\Livewire\Frontend\Homepage2::class)->name('fronte
 // Route::get('/index-2', \App\Livewire\Frontend\Index2::class)->name('frontend.index-2');
 // Route::get('/', \App\Livewire\Frontend\IndexPage::class)->name('frontend.index');
 // Route::get('/home', \App\Livewire\Frontend\Index2::class)->name('frontend.home');
-Route::get('/our-history', \App\Livewire\Frontend\OurHistory::class)->name('frontend.our-history');
+Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home');
+Route::get('/index-2', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.index-2');
+Route::get('/our-history', [\App\Http\Controllers\Frontend\PageController::class, 'ourHistory'])->name('frontend.our-history');
 Route::get('/our-team', \App\Livewire\Frontend\OurTeam::class)->name('frontend.our-team');
 Route::get('/portfolio-detail-style-01', \App\Livewire\Frontend\PortfolioDetailStyle01::class)->name('frontend.portfolio-detail-style-01');
 Route::get('/portfolio-detail-style-02', \App\Livewire\Frontend\PortfolioDetailStyle02::class)->name('frontend.portfolio-detail-style-02');
@@ -188,19 +190,7 @@ Route::get('/team-member-detail', \App\Livewire\Frontend\TeamMemberDetail::class
 
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.index');
 
-Route::get('/about-us', function () {
-    $testimonials = Testimonial::where('status', 'Active')->get();
-    $partners = File::exists(public_path('frontend/images/partner_logos')) ? File::files(public_path('frontend/images/partner_logos')) : [];
-    $teamMembers = TeamPartner::where('type', 'Member')->where('status', 'Active')->get();
-    $pageBannerImage = asset('frontend/images/bg/titlebar-bg.jpg');
-
-    $aboutUs = HomePage::where('section_type', 'about_us')->first();
-    $mission = AboutUs::find(1);
-    $vision = AboutUs::find(2);
-    $goal = AboutUs::find(3);
-
-    return view('frontend.about-us', compact('testimonials', 'partners', 'teamMembers', 'pageBannerImage', 'aboutUs', 'mission', 'vision', 'goal'));
-})->name('about-us');
+// about-us is now handled by frontend.about-us route above (PageController)
 
 Route::get('/company-profile', function () {
     $mainSection = HomePage::where('section_type', 'about_us')->first();
