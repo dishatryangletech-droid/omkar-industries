@@ -796,10 +796,10 @@
 											<h2 class="pbmit-title">What Our Customers Say?</h2>
 										</div>
 										<div class="swiper-slider" data-autoplay="false" data-loop="false"
-											data-dots="false" data-arrows="true" data-columns="1" data-margin="30"
-											data-effect="slide">
+											data-dots="false" data-arrows="true" data-arrows-class="about-testimonial-arrow"
+											data-columns="1" data-margin="30" data-effect="slide">
 											<div class="swiper-wrapper">
-												@foreach($testimonials as $index => $testimonial)
+												@forelse($testimonials as $index => $testimonial)
 													<article class="pbmit-testimonial-style-1 swiper-slide">
 														<div class="pbminfotech-post-item">
 															<blockquote class="pbminfotech-testimonial-text">
@@ -824,9 +824,29 @@
 															</div>
 														</div>
 													</article>
-												@endforeach
+												@empty
+													<article class="pbmit-testimonial-style-1 swiper-slide">
+														<div class="pbminfotech-post-item">
+															<blockquote class="pbminfotech-testimonial-text">
+																<p>They are the best of the best, and expertly trained team members who take the extra step and go the extra mile.</p>
+															</blockquote>
+															<div class="pbminfotech-box-star-ratings">
+																@for($i = 1; $i <= 5; $i++)
+																	<i class="pbmit-base-icon-star pbmit-active"></i>
+																@endfor
+															</div>
+															<div class="pbminfotech-box-author">
+																<div class="pbmit-auther-content">
+																	<h3 class="pbminfotech-box-title">Customer</h3>
+																	<div class="pbminfotech-testimonial-detail">Wood Industries</div>
+																</div>
+															</div>
+														</div>
+													</article>
+												@endforelse
 											</div>
 										</div>
+										<div class="about-testimonial-arrow"></div>
 									</div>
 								</div>
 							</div>

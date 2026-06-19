@@ -696,7 +696,7 @@
 																	<div class="pbminfotech-box-author">
 																		<div class="pbmit-featured-img-wrapper">
 																			<div class="pbmit-featured-wrapper">
-																				@if($testimonial->image)
+																				@if($testimonial->image && file_exists(public_path('storage/' . $testimonial->image)))
 																					<img src="{{ asset('storage/' . $testimonial->image) }}"
 																						class="img-fluid"
 																						alt="{{ $testimonial->name }}">
@@ -882,7 +882,7 @@
 													<div class="pbmit-featured-container-inner">
 														<div class="pbmit-featured-img-wrapper">
 															<div class="pbmit-featured-wrapper">
-																@if($blog->image)
+																@if($blog->image && file_exists(public_path('storage/' . $blog->image)))
 																	<img src="{{ asset('storage/' . $blog->image) }}"
 																		class="img-fluid" alt="{{ $blog->title }}">
 																@else
@@ -938,6 +938,7 @@
 													</div>
 												</div>
 											</div>
+										</div>
 									</article>
 								@endforeach
 							</div>

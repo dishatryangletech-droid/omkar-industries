@@ -1,4 +1,28 @@
 <!-- footer -->
+@php
+	$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
+	$footerLinkUrl = function ($path) {
+		$path = trim((string) $path);
+
+		if ($path === '') {
+			return '#';
+		}
+
+		if (
+			\Illuminate\Support\Str::startsWith($path, [
+				'http://',
+				'https://',
+				'mailto:',
+				'tel:',
+				'#',
+			])
+		) {
+			return $path;
+		}
+
+		return url('/' . ltrim($path, '/'));
+	};
+@endphp
 <footer class="site-footer pbmit-footer-style-1 pbmit-bg-color-blackish">
 	<div class="pbmit-footer-big-area-wrapper">
 		<div class="pbmit-footer-big-area">
@@ -57,7 +81,6 @@
 						<h2 class="widget-title">Our Products</h2>
 						<ul class="menu">
 							@php
-								$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
 								$quickLinks = [];
 								if($footerSettings && $footerSettings->quick_links) {
 									$quickLinks = is_string($footerSettings->quick_links) ? json_decode($footerSettings->quick_links, true) : $footerSettings->quick_links;
@@ -65,7 +88,7 @@
 							@endphp
 							@if(!empty($quickLinks))
 								@foreach($quickLinks as $link)
-									<li><a href="{{ $link['url'] ?? '#' }}">{{ $link['title'] ?? '' }}</a></li>
+									<li><a href="{{ $footerLinkUrl($link['url'] ?? '#') }}">{{ $link['title'] ?? '' }}</a></li>
 								@endforeach
 							@else
 								<li><a href="/service-details">Machine Analysis</a></li>
@@ -81,7 +104,6 @@
 						<h2 class="widget-title">Other Products</h2>
 						<ul class="menu">
 							@php
-								$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
 								$otherLinks = [];
 								if($footerSettings && $footerSettings->other_links) {
 									$otherLinks = is_string($footerSettings->other_links) ? json_decode($footerSettings->other_links, true) : $footerSettings->other_links;
@@ -89,7 +111,7 @@
 							@endphp
 							@if(!empty($otherLinks))
 								@foreach($otherLinks as $link)
-									<li><a href="{{ $link['url'] ?? '#' }}">{{ $link['title'] ?? '' }}</a></li>
+									<li><a href="{{ $footerLinkUrl($link['url'] ?? '#') }}">{{ $link['title'] ?? '' }}</a></li>
 								@endforeach
 							@else
 								<li><a href="#">Band Saw Blade</a></li>
