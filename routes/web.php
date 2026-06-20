@@ -572,7 +572,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('our-clients', function () use ($defaults) { return view('backend.website-pages.our-clients.index', $defaults); })->name('our-clients.index');
         Route::get('product-section', function () use ($defaults) { return view('backend.website-pages.product-section.index', $defaults); })->name('product-section.index');
         Route::get('page-banners', function () use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
-        Route::get('testimonials', function () use ($defaults) { return view('backend.website-pages.testimonials.index', $defaults); })->name('testimonials.index');
+        Route::resource('testimonials', \App\Http\Controllers\Backend\TestimonialController::class)->except('show');
         Route::resource('exhibitions', ExhibitionController::class);
         Route::resource('team-partners', TeamPartnerController::class);
         Route::get('brochure-page', function () use ($defaults) { return view('backend.website-pages.brochure-page', $defaults); })->name('brochure-page.index');

@@ -55,7 +55,7 @@
 									<div class="inner-box">
 										<div class="row">
 											<div class="col-md-7">
-												<p>{!! $aboutUs->description ?? 'Induyst is a full-service manufacturing company with 15 years of experience serving industries such as automotive, Our mission is to deliver products that meet the highest standards of quality and performance.' !!}
+												<p>{!! Str::limit(strip_tags($aboutUs->description), 350) ?? 'Induyst is a full-service manufacturing company with 15 years of experience serving industries such as automotive, Our mission is to deliver products that meet the highest standards of quality and performance.' !!}
 												</p>
 												<div class="list-group-wrap">
 													<ul class="list-group">

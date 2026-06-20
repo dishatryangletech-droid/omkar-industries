@@ -47,11 +47,11 @@
 								<div class="pbmit-featured-container">
 									<div class="pbmit-featured-container-inner">
 										<div class="pbmit-featured-img-wrapper">
-											<div class="pbmit-featured-wrapper">
-												@if($blog->image)
-												<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid" alt="{{ $blog->title }}">
-												@else
-												<img src="{{ asset('frontend/images/blog/blog-01.jpg') }}" class="img-fluid" alt="{{ $blog->title }}">
+										<div class="pbmit-featured-wrapper" style="height: 322px; background: #fff;">
+											@if($blog->image)
+											<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid w-100 h-100" style="object-fit: contain;" alt="{{ $blog->title }}">
+											@else
+											<img src="{{ asset('frontend/images/blog/blog-01.jpg') }}" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="{{ $blog->title }}">
 												@endif
 											</div>
 										</div>

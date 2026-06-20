@@ -79,9 +79,9 @@
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
 											@if($blog->image)
-											<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="{{ $blog->title }}">
+											<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $blog->title }}">
 											@else
-											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100" style="height: 600px; object-fit: cover;" alt="{{ $blog->title }}">
+											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $blog->title }}">
 											@endif
 										</div>
 									</div>  
@@ -109,7 +109,7 @@
 											</h3>
 											<div class="pbmit-entry-content">
 												<div class="dynamic-content">
-													{!! $blog->description !!}
+											{!! html_entity_decode($blog->description, ENT_QUOTES | ENT_HTML5, 'UTF-8') !!}
 												</div>
 											</div>
 											<div class="pbmit-blog-meta-bottom">

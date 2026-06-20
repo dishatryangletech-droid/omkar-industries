@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     @foreach($testimonials as $testimonial)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.website-pages.testimonials.edit', $testimonial) }}">
                             <td>{{ $testimonial->id }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
@@ -73,11 +73,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.website-pages.testimonials.edit', $testimonial) }}" 
                                        class="text-warning waves-effect" title="Edit Testimonial">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $testimonial->id }}" title="Delete Testimonial">
+                                    <form action="{{ route('admin.website-pages.testimonials.destroy', $testimonial) }}" method="POST" id="delete-form-{{ $testimonial->id }}" title="Delete Testimonial">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $testimonial->id }}">
@@ -108,7 +108,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add Testimonial</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.website-pages.testimonials.create') }}';
                             }
                         }
                     ],

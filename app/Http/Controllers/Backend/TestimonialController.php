@@ -49,7 +49,7 @@ class TestimonialController extends Controller
 
         Testimonial::create($data);
 
-        return redirect()->route('backend.website-pages.testimonials.index')->with('success', 'Testimonial created successfully.');
+        return redirect()->route('admin.website-pages.testimonials.index')->with('success', 'Testimonial created successfully.');
     }
 
     /**
@@ -85,7 +85,7 @@ class TestimonialController extends Controller
 
         $testimonial->update($data);
 
-        return redirect()->route('backend.website-pages.testimonials.index')->with('success', 'Testimonial updated successfully.');
+        return redirect()->route('admin.website-pages.testimonials.index')->with('success', 'Testimonial updated successfully.');
     }
 
     /**
@@ -99,6 +99,6 @@ class TestimonialController extends Controller
 
         $testimonial->delete();
 
-        return redirect()->route('backend.website-pages.testimonials.index')->with('success', 'Testimonial deleted successfully.');
+        return redirect()->route('admin.website-pages.testimonials.index')->with('success', 'Testimonial deleted successfully.');
     }
 }
