@@ -1,6 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// Serve public-disk uploads when public/storage is a real directory instead
+// of Laravel's symbolic link (common on local Windows/WAMP installations).
+Route::get('uploaded-media/{path}', function (string $path) {
+    $storageRoot = realpath(storage_path('app/public'));
+    $file = realpath(storage_path('app/public/' . $path));
+
+    abort_unless(
+        $storageRoot && $file && str_starts_with($file, $storageRoot . DIRECTORY_SEPARATOR) && is_file($file),
+        404
+    );
+
+    return response()->file($file);
+})->where('path', '.*')->name('uploads.public');
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -507,7 +521,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('admin.website-pages.general-settings')->with('success', 'General Settings updated successfully!');
         });
         
-        Route::get('sliders', function () use ($defaults) { return view('backend.website-pages.sliders.index', $defaults); })->name('sliders.index');
+        Route::resource('sliders', \App\Http\Controllers\Backend\SliderController::class)->except('show');
         
         Route::get('about-us', function () use ($defaults) {
             $defaults['mainSection'] = HomePage::firstOrCreate(['section_type' => 'about_us'], ['title' => '']);

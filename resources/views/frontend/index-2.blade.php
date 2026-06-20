@@ -25,31 +25,32 @@
 							<div class="swiper-slide" id="slide-1">
 								<div class="pbmit-slider-item">
 									<div class="pbmit-slider-bg"
-										style="background-image: url({{ asset('frontend/images/banner-slider-img/slider1-01.jpg') }});">
+										style="background-image: url({{ $slider?->background_photo ? route('uploads.public', ['path' => $slider->background_photo]) : asset('frontend/images/banner-slider-img/slider1-01.jpg') }});">
 									</div>
 									<div class="container">
 										<div class="pbmit-slider-content">
-											<h5 class="pbmit-slider-subtitle transform-right transform-delay-1">
-												Forging the Future
+											<h5 class="pbmit-slider-subtitle transform-right transform-delay-1"
+												style="{{ $slider?->sub_title_color ? 'color: ' . $slider->sub_title_color . ';' : '' }}">
+												{{ $slider?->subtitle ?: 'Forging the Future' }}
 											</h5>
-											<h2 class="pbmit-slider-title transform-right transform-delay-2">
-												Manufacturing <br>Your Vision
+											<h2 class="pbmit-slider-title transform-right transform-delay-2"
+												style="{{ $slider?->main_title_color ? 'color: ' . $slider->main_title_color . ';' : '' }}">
+												{!! $slider?->title ? nl2br(e($slider->title)) : 'Manufacturing <br>Your Vision' !!}
 											</h2>
 											<div class="d-lg-flex align-items-center justify-content-end">
-												<div class="pbmit-slider-desc transform-center transform-delay-3">
-													Whether
-													itâ€™s small-scale custom work or large-scale<br> production we
-													build with
-													purpose, power & precision.</div>
+												<div class="pbmit-slider-desc transform-center transform-delay-3"
+													style="{{ $slider?->description_color ? 'color: ' . $slider->description_color . ';' : '' }}">
+													{!! $slider?->description ? nl2br(e($slider->description)) : 'Whether it is small-scale custom work or large-scale<br> production we build with purpose, power & precision.' !!}
+												</div>
 												<div class="pbmit-button ms-xl-5 ms-lg-3">
 													<div class="transform-bottom transform-delay-4">
-														<a href="/about-us" class="pbmit-btn white mb-5">
+														<a href="{{ $slider?->btn_link ?: '/about-us' }}" class="pbmit-btn white mb-5">
 															<span class="pbmit-button-content-wrapper">
 																<span class="pbmit-button-icon">
 																	<i
 																		class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																</span>
-																<span class="pbmit-button-text">Discover More</span>
+																<span class="pbmit-button-text">{{ $slider?->btn_title ?: 'Discover More' }}</span>
 															</span>
 														</a>
 													</div>
@@ -60,37 +61,44 @@
 								</div>
 							</div>
 							<!-- Slide2 -->
+							@php
+								$slideTwoWords = preg_split('/\s+/', trim($sliderTwo?->title ?: 'Engineering the Future'));
+								$slideTwoFirstWord = array_shift($slideTwoWords) ?: 'Engineering';
+								$slideTwoLastWord = count($slideTwoWords) ? array_pop($slideTwoWords) : '';
+								$slideTwoMiddleWords = implode(' ', $slideTwoWords);
+							@endphp
 							<div class="swiper-slide">
 								<div class="pbmit-slider-item">
 									<div class="pbmit-slider-bg"
-										style="background-image: url({{ asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
+										style="background-image: url({{ $sliderTwo?->background_photo ? route('uploads.public', ['path' => $sliderTwo->background_photo]) : asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
 									</div>
 									<div class="container">
 										<div class="row">
 											<div class="col-md-8 col-1">
 												<div class="pbmit-slider-content">
-													<h5
-														class="pbmit-slider-subtitle transform-right-1 transform-delay-1">
-														<span>Forging the Future</span>
-													</h5>
-													<h2 class="pbmit-slider-title transform-left transform-delay-2">
-														<span class="first">Engineering</span> <span class="second">the
-															<span class="pbmit-global-color">Future</span></span>
-													</h2>
-													<p class="pbmit-slider-desc"><span>Whether itâ€™s small-scale custom
-															work
-															or large scale production <br> we build with purpose, power
-															and
-															precision.</span></p>
+											<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+												style="{{ $sliderTwo?->sub_title_color ? 'color: ' . $sliderTwo->sub_title_color . ';' : '' }}">
+												<span>{{ $sliderTwo?->subtitle ?: 'Forging the Future' }}</span>
+											</h5>
+											<h2 class="pbmit-slider-title transform-left transform-delay-2"
+												style="{{ $sliderTwo?->main_title_color ? 'color: ' . $sliderTwo->main_title_color . ';' : '' }}">
+												<span class="first">{{ $slideTwoFirstWord }}</span>
+												<span class="second">{{ $slideTwoMiddleWords }}
+													<span class="pbmit-global-color">{{ $slideTwoLastWord }}</span></span>
+											</h2>
+											<p class="pbmit-slider-desc"
+												style="{{ $sliderTwo?->description_color ? 'color: ' . $sliderTwo->description_color . ';' : '' }}">
+												<span>{!! $sliderTwo?->description ? nl2br(e($sliderTwo->description)) : 'Whether it is small-scale custom work or large scale production <br> we build with purpose, power and precision.' !!}</span>
+											</p>
 													<div class="pbmit-button d-flex align-items-center">
 														<div class="transform-bottom transform-delay-4">
-															<a href="/about-us" class="pbmit-btn white">
+													<a href="{{ $sliderTwo?->btn_link ?: '/about-us' }}" class="pbmit-btn white">
 																<span class="pbmit-button-content-wrapper">
 																	<span class="pbmit-button-icon">
 																		<i
 																			class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																	</span>
-																	<span class="pbmit-button-text">Discover More</span>
+															<span class="pbmit-button-text">{{ $sliderTwo?->btn_title ?: 'Discover More' }}</span>
 																</span>
 															</a>
 														</div>
@@ -102,37 +110,50 @@
 								</div>
 							</div>
 							<!-- Slide3 -->
+							@php
+								$slideThreeWords = preg_split('/\s+/', trim($sliderThree?->title ?: 'Constructing the Industry'));
+								$slideThreeFirstWord = array_shift($slideThreeWords) ?: 'Constructing';
+								$slideThreeLastWord = count($slideThreeWords) ? array_pop($slideThreeWords) : '';
+								$slideThreeMiddleWords = implode(' ', $slideThreeWords);
+							@endphp
 							<div class="swiper-slide">
 								<div class="pbmit-slider-item">
 									<div class="pbmit-slider-bg"
-										style="background-image: url({{ asset('frontend/images/banner-slider-img/slider2-03.jpg') }});">
+										style="background-image: url({{ $sliderThree?->background_photo ? route('uploads.public', ['path' => $sliderThree->background_photo]) : asset('frontend/images/banner-slider-img/slider2-03.jpg') }});">
 									</div>
-									<div class="container">
+									@if($sliderThree?->photo)
+										<img src="{{ route('uploads.public', ['path' => $sliderThree->photo]) }}"
+											alt="{{ $sliderThree->title ?: 'Slider image' }}"
+											class="d-none d-lg-block position-absolute"
+											style="right: 3%; top: 50%; transform: translateY(-50%); width: 32%; height: 68%; object-fit: contain; object-position: center; background: transparent; z-index: 1; pointer-events: none;">
+									@endif
+									<div class="container position-relative" style="z-index: 2;">
 										<div class="row">
 											<div class="col-md-9 col-lg-8 col-1">
 												<div class="pbmit-slider-content">
-													<h5
-														class="pbmit-slider-subtitle transform-right-1 transform-delay-1">
-														<span>Built for the Future</span>
-													</h5>
-													<h2 class="pbmit-slider-title transform-left transform-delay-2">
-														<span class="first">Constructing </span> <span
-															class="second">the
-															<span class="pbmit-global-color">Industry</span></span>
-													</h2>
-													<p class="pbmit-slider-desc"><span>Whether itâ€™s tailored
-															fabrication or
-															high-volume production <br> we build with purpose, power and
-															precision.</span></p>
+											<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+												style="{{ $sliderThree?->sub_title_color ? 'color: ' . $sliderThree->sub_title_color . ';' : '' }}">
+												<span>{{ $sliderThree?->subtitle ?: 'Built for the Future' }}</span>
+											</h5>
+											<h2 class="pbmit-slider-title transform-left transform-delay-2"
+												style="{{ $sliderThree?->main_title_color ? 'color: ' . $sliderThree->main_title_color . ';' : '' }}">
+												<span class="first">{{ $slideThreeFirstWord }}</span>
+												<span class="second">{{ $slideThreeMiddleWords }}
+													<span class="pbmit-global-color">{{ $slideThreeLastWord }}</span></span>
+											</h2>
+											<p class="pbmit-slider-desc"
+												style="{{ $sliderThree?->description_color ? 'color: ' . $sliderThree->description_color . ';' : '' }}">
+												<span>{!! $sliderThree?->description ? nl2br(e($sliderThree->description)) : 'Whether it is tailored fabrication or high-volume production <br> we build with purpose, power and precision.' !!}</span>
+											</p>
 													<div class="pbmit-button d-flex align-items-center">
 														<div class="transform-bottom transform-delay-4">
-															<a href="/about-us" class="pbmit-btn white">
+													<a href="{{ $sliderThree?->btn_link ?: '/about-us' }}" class="pbmit-btn white">
 																<span class="pbmit-button-content-wrapper">
 																	<span class="pbmit-button-icon">
 																		<i
 																			class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																	</span>
-																	<span class="pbmit-button-text">Discover More</span>
+															<span class="pbmit-button-text">{{ $sliderThree?->btn_title ?: 'Discover More' }}</span>
 																</span>
 															</a>
 														</div>

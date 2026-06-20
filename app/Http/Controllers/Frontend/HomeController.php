@@ -24,7 +24,11 @@ class HomeController extends Controller
         })->where('status', 'Active')->where('slug', '!=', 'other-product-page')->get();
 
         $faqSection = \App\Models\HomePage::where('section_type', 'faq_section')->first();
+        $homeSliders = \App\Models\Slider::where('status', 'Active')->orderBy('id')->take(3)->get();
+        $slider = $homeSliders->get(0);
+        $sliderTwo = $homeSliders->get(1);
+        $sliderThree = $homeSliders->get(2);
 
-        return view('frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection'));
+        return view('frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection', 'slider', 'sliderTwo', 'sliderThree'));
     }
 }

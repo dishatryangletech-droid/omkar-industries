@@ -41,12 +41,12 @@
                 </thead>
                 <tbody>
                     @foreach($sliders as $slider)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.website-pages.sliders.edit', $slider) }}">
                             <td>{{ $slider->id }}</td>
                             <td>
                                 @if($slider->photo)
                                     <div class="avatar avatar-md">
-                                        <img src="{{ asset('storage/' . $slider->photo) }}" alt="Slider" class="rounded border">
+                                        <img src="{{ route('uploads.public', ['path' => $slider->photo]) }}" alt="Slider" class="rounded border">
                                     </div>
                                 @else
                                     <span class="badge bg-label-secondary">N/A</span>
@@ -66,11 +66,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.website-pages.sliders.edit', $slider) }}" 
                                        class="text-warning waves-effect" title="Edit Slider">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $slider->id }}" title="Delete Slider">
+                                    <form action="{{ route('admin.website-pages.sliders.destroy', $slider) }}" method="POST" id="delete-form-{{ $slider->id }}" title="Delete Slider">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $slider->id }}">
@@ -101,7 +101,7 @@
                             text: '<i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New Slider</span>',
                             className: 'add-new btn btn-primary',
                             action: function (e, dt, node, config) {
-                                window.location.href = '#';
+                                window.location.href = '{{ route('admin.website-pages.sliders.create') }}';
                             }
                         }
                     ],
@@ -168,6 +168,4 @@
         });
     </script>
 @endpush
-
-
 

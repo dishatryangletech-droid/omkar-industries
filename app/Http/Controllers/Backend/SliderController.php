@@ -63,7 +63,7 @@ class SliderController extends Controller
 
         Slider::create($data);
 
-        return redirect()->route('backend.website-pages.sliders.index')->with('success', 'Slider created successfully.');
+        return redirect()->route('admin.website-pages.sliders.index')->with('success', 'Slider created successfully.');
     }
 
     public function edit(Slider $slider)
@@ -129,7 +129,7 @@ class SliderController extends Controller
 
         $slider->update($data);
 
-        return redirect()->route('backend.website-pages.sliders.index')->with('success', 'Slider updated successfully.');
+        return redirect()->route('admin.website-pages.sliders.index')->with('success', 'Slider updated successfully.');
     }
 
     public function destroy(Slider $slider)
@@ -142,6 +142,6 @@ class SliderController extends Controller
         }
         $slider->delete();
 
-        return redirect()->route('backend.website-pages.sliders.index')->with('success', 'Slider deleted successfully.');
+        return redirect()->route('admin.website-pages.sliders.index')->with('success', 'Slider deleted successfully.');
     }
 }

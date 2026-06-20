@@ -9,12 +9,12 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Edit Slider Details</h5>
-                        <a href="#"
+                        <a href="{{ route('admin.website-pages.sliders.index') }}"
                             class="btn btn-label-secondary waves-effect">
                             <i class="ti ti-arrow-left me-1"></i> Back
                         </a>
                     </div>
-                    <form action="#" method="POST"
+                    <form action="{{ route('admin.website-pages.sliders.update', $slider) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -88,7 +88,7 @@
                                 @if($slider->photo)
                                     <div class="mt-2 position-relative d-inline-block" id="photo-container"
                                         style="width: 100px; height: 100px;">
-                                        <img src="{{ asset('storage/' . $slider->photo) }}" alt="Slider" id="photo-preview"
+                                        <img src="{{ route('uploads.public', ['path' => $slider->photo]) }}" alt="Slider" id="photo-preview"
                                             class="rounded border"
                                             style="height: 100px; width:100px; object-fit: cover; transition: all 0.3s ease;">
                                         <button type="button"
@@ -154,7 +154,7 @@
                                 @if($slider->background_photo)
                                     <div class="mt-2 position-relative d-inline-block" id="bg-photo-container"
                                         style="width: 100px; height: 100px;">
-                                        <img src="{{ asset('storage/' . $slider->background_photo) }}" alt="Background"
+                                        <img src="{{ route('uploads.public', ['path' => $slider->background_photo]) }}" alt="Background"
                                             id="bg-photo-preview" class="rounded border"
                                             style="height: 100px; width:100px; object-fit: cover; transition: all 0.3s ease;">
                                         <button type="button"
