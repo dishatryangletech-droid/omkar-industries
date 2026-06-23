@@ -90,6 +90,29 @@ class PageController extends Controller
         return redirect()->back()->with('success', 'Thank you for filling the form. Our team will contact you soon !!!');
     }
 
+    public function jobApplicationSubmit(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'career_id' => 'required|exists:careers,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'resume' => 'required|file|mimes:pdf,doc,docx|max:2048',
+        ]);
+
+        $data = $request->except('resume');
+        
+        if ($request->hasFile('resume')) {
+            $data['resume'] = $request->file('resume')->store('resumes', 'public');
+        }
+        
+        $data['status'] = 'New';
+        
+        \App\Models\JobApplication::create($data);
+
+        return redirect()->back()->with('success', 'Your application has been submitted successfully.');
+    }
+
     public function career()
     {
         $careers = \App\Models\Career::where('status', 'Active')->latest()->get();

@@ -155,6 +155,7 @@ Route::get('/fix-storage-link', function () {
 
 Route::get('/about-us', [\App\Http\Controllers\Frontend\PageController::class, 'aboutUs'])->name('frontend.about-us');
 Route::get('/career', [\App\Http\Controllers\Frontend\PageController::class, 'career'])->name('frontend.career');
+Route::post('/career/apply', [\App\Http\Controllers\Frontend\PageController::class, 'jobApplicationSubmit'])->name('frontend.career.submit');
 Route::get('/exhibition', [\App\Http\Controllers\Frontend\PageController::class, 'exhibition'])->name('frontend.exhibition');
 Route::get('/exhibition-details/{id}', [\App\Http\Controllers\Frontend\PageController::class, 'exhibitionDetails'])->name('frontend.exhibition-details');
 Route::get('/certificates', [\App\Http\Controllers\Frontend\PageController::class, 'certificates'])->name('frontend.certificates');

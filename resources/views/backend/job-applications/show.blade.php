@@ -8,7 +8,7 @@
             <div class="card shadow-none border">
                 <div class="card-header border-bottom d-flex justify-content-between align-items-center py-3">
                     <h5 class="mb-0">Application for: <span class="text-primary">{{ $jobApplication->career->title ?? 'N/A' }}</span></h5>
-                    <a href="#" class="btn btn-sm btn-label-secondary">
+                    <a href="{{ route('admin.job-applications.index') }}" class="btn btn-sm btn-label-secondary">
                         <i class="ti ti-chevron-left me-1"></i> Back
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="card-footer border-top bg-light p-3">
                     <div class="d-flex justify-content-end gap-2">
-                        <form action="#" method="POST" id="delete-form-{{ $jobApplication->id }}">
+                        <form action="{{ route('admin.job-applications.destroy', $jobApplication->id) }}" method="POST" id="delete-form-{{ $jobApplication->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-label-danger btn-sm delete-btn" data-id="{{ $jobApplication->id }}">

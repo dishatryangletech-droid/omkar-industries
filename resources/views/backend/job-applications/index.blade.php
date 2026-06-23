@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     @foreach($applications as $app)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.job-applications.show', $app->id) }}">
                             <td>
                                 <span class="fw-medium d-block">{{ $app->name }}</span>
                                 <small class="text-muted">{{ $app->email }}</small>
@@ -48,11 +48,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.job-applications.show', $app->id) }}" 
                                        class="text-info waves-effect" title="View Job Application">
                                         <i class="ti ti-eye fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $app->id }}" title="Delete Job Application">
+                                    <form action="{{ route('admin.job-applications.destroy', $app->id) }}" method="POST" id="delete-form-{{ $app->id }}" title="Delete Job Application">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $app->id }}">

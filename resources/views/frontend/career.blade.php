@@ -78,7 +78,7 @@
                                         @endforeach
                                     </ul>
                                     @endif
-									<button class="pbmit-btn border-0" data-bs-toggle="modal" data-bs-target="#applyModal" wire:click="$set('career_id', {{ $career->id }})" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></button> 
+									<button class="pbmit-btn border-0" data-bs-toggle="modal" data-bs-target="#applyModal" onclick="document.getElementById('career_id_input').value = {{ $career->id }};" style="cursor: pointer;"><span class="pbmit-button-content-wrapper"><span class="pbmit-button-icon"><i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i></span><span class="pbmit-button-text">Apply Now</span></span></button>
 								</div>
 								@endforeach
 							</div>
@@ -96,33 +96,33 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form wire:submit.prevent="apply">
+        <form action="{{ route('frontend.career.submit') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <input type="hidden" name="career_id" id="career_id_input" value="{{ old('career_id') }}">
           <div class="mb-3">
             <label for="name" class="form-label" style="color: black;">Full Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" wire:model="name" placeholder="John Doe">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="John Doe">
             @error('name') <span class="text-danger small">{{ $message }}</span> @enderror
           </div>
           <div class="mb-3">
             <label for="email" class="form-label" style="color: black;">Email address <span class="text-danger">*</span></label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" wire:model="email" placeholder="name@example.com">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="name@example.com">
             @error('email') <span class="text-danger small">{{ $message }}</span> @enderror
           </div>
           <div class="mb-3">
             <label for="phone" class="form-label" style="color: black;">Phone <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" wire:model="phone" placeholder="+1234567890">
+            <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="+1234567890">
             @error('phone') <span class="text-danger small">{{ $message }}</span> @enderror
           </div>
           <div class="mb-3">
             <label for="resume" class="form-label" style="color: black;">Upload Resume (PDF, DOC, DOCX) <span class="text-danger">*</span></label>
-            <input class="form-control @error('resume') is-invalid @enderror" type="file" id="resume" wire:model="resume">
-            <div wire:loading wire:target="resume" class="text-success small mt-1">Uploading...</div>
+            <input class="form-control @error('resume') is-invalid @enderror" type="file" id="resume" name="resume">
             @error('resume') <span class="text-danger small">{{ $message }}</span> @enderror
           </div>
           <div class="modal-footer px-0 pb-0">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn" style="background-color: #ffb800; border: none; color: black; font-weight: bold;">
-                <span wire:loading.remove wire:target="apply">Submit Application</span>
-                <span wire:loading wire:target="apply">Submitting...</span>
+                Submit Application
             </button>
           </div>
         </form>
@@ -137,13 +137,11 @@
 </div>
 
 <script>
-    document.addEventListener('livewire:init', () => {
-       Livewire.on('close-modal', (event) => {
-           let applyModal = bootstrap.Modal.getInstance(document.getElementById('applyModal'));
-           if (applyModal) {
-               applyModal.hide();
-           }
-       });
+    document.addEventListener('DOMContentLoaded', function() {
+        @if($errors->any())
+            var applyModal = new bootstrap.Modal(document.getElementById('applyModal'));
+            applyModal.show();
+        @endif
     });
 </script>
 </x-layouts.app>
