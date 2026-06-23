@@ -64,7 +64,7 @@
                                        class="text-warning waves-effect" title="Edit Blog">
                                         <i class="ti ti-edit fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $blog->id }}" title="Delete Blog">
+                                    <form action="{{ route('admin.blogs.destroy', $blog->id) }}" method="POST" id="delete-form-{{ $blog->id }}" title="Delete Blog">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $blog->id }}">

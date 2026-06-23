@@ -377,6 +377,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         }
         return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully!');
     })->name('blogs.update');
+    
+    Route::delete('blogs/{id}', function ($id) {
+        if (class_exists('App\Models\Blog')) {
+            $blog = \App\Models\Blog::find($id);
+            if ($blog) {
+                if ($blog->image) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($blog->image);
+                }
+                $blog->delete();
+            }
+        }
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog deleted successfully!');
+    })->name('blogs.destroy');
 
     // ==========================================
     // Gallery Management
