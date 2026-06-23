@@ -26,12 +26,18 @@ class PageBannerController extends Controller
         $submittedIds = [];
 
         if ($request->has('banners')) {
+            $pageNames = [];
             foreach ($request->banners as $idx => $bannerData) {
                 if (empty($bannerData['page_name'])) continue;
 
+                if (in_array(strtolower($bannerData['page_name']), $pageNames)) {
+                    return redirect()->back()->with('error', "Duplicate page name '{$bannerData['page_name']}' found in your submission.");
+                }
+                $pageNames[] = strtolower($bannerData['page_name']);
+
                 $banner = isset($bannerData['id']) && !empty($bannerData['id'])
                     ? PageBanner::find($bannerData['id'])
-                    : new PageBanner();
+                    : PageBanner::where('page_name', $bannerData['page_name'])->first();
 
                 if (!$banner) {
                     $banner = new PageBanner();

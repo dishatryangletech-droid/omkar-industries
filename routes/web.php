@@ -446,7 +446,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('dealers', function () use ($defaults) { return view('backend.dealers.index', $defaults); })->name('dealers.index');
     Route::post('faqs/update-section', [\App\Http\Controllers\Backend\FaqController::class, 'updateSection'])->name('faqs.update-section');
     Route::resource('faqs', \App\Http\Controllers\Backend\FaqController::class);
-    Route::get('page-banners', function () use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
+    // Route::get('page-banners', function () use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
     Route::get('roles', function () use ($defaults) { return view('backend.roles.index', $defaults); })->name('roles.index');
     Route::resource('users', \App\Http\Controllers\Backend\UserController::class);
 
@@ -571,7 +571,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('video-section', function () use ($defaults) { return view('backend.website-pages.video-section.index', $defaults); })->name('video-section.index');
         Route::get('our-clients', function () use ($defaults) { return view('backend.website-pages.our-clients.index', $defaults); })->name('our-clients.index');
         Route::get('product-section', function () use ($defaults) { return view('backend.website-pages.product-section.index', $defaults); })->name('product-section.index');
-        Route::get('page-banners', function () use ($defaults) { return view('backend.page_banners.index', $defaults); })->name('page-banners.index');
+        Route::get('page-banners', [\App\Http\Controllers\PageBannerController::class, 'index'])->name('page-banners.index');
+        Route::post('page-banners', [\App\Http\Controllers\PageBannerController::class, 'update'])->name('page-banners.update');
         Route::resource('testimonials', \App\Http\Controllers\Backend\TestimonialController::class)->except('show');
         Route::resource('exhibitions', ExhibitionController::class);
         Route::resource('team-partners', TeamPartnerController::class);

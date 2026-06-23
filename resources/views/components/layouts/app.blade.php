@@ -33,6 +33,28 @@
     <link rel="stylesheet" href="{{ $frontendAsset('frontend/css/custom-slider.css') }}">
     <link rel="stylesheet" href="{{ $frontendAsset('frontend/css/slide1-fix.css') }}">
     @stack('page-css')
+
+    @php
+        $pageNamePart = trim(explode('-', $title ?? '')[0]);
+        $pageBanner = \App\Models\PageBanner::where('page_name', 'like', '%' . $pageNamePart . '%')->first();
+    @endphp
+    @if($pageBanner && $pageBanner->image)
+        <style>
+            .pbmit-title-bar-wrapper {
+                background-image: url('{{ route('uploads.public', ['path' => $pageBanner->image]) }}') !important;
+            }
+        </style>
+    @endif
+    @if($pageBanner && $pageBanner->title)
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var titleEl = document.querySelector('.pbmit-tbar-title');
+                if (titleEl) {
+                    titleEl.textContent = "{{ $pageBanner->title }}";
+                }
+            });
+        </script>
+    @endif
 </head>
 <body>
 

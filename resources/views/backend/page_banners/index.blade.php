@@ -20,8 +20,14 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
 
-                    <form action="#" method="POST"
+                    <form action="{{ route('admin.website-pages.page-banners.update') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
 
@@ -46,7 +52,7 @@
                                                 accept="image/*">
                                       
                                             @if($banner->image)
-                                                <img src="{{ asset('storage/' . $banner->image) }}" class="rounded border"
+                                                <img src="{{ route('uploads.public', ['path' => $banner->image]) }}" class="rounded border"
                                                     style="height: 38px; width: 50px; object-fit: cover; flex-shrink: 0;">
                                             @endif
                                         </div>
