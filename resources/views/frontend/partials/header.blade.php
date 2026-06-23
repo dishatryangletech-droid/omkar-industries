@@ -95,7 +95,7 @@
 										</li>
 										<li
 											class="dropdown {{ request()->is('about-us') || request()->is('our-history') || request()->is('our-team') || request()->is('certificates') ? 'active' : '' }}">
-											<a href="#">About Us</a>
+											<a href="/about-us">About Us</a>
 											<ul>
 												<li class="{{ request()->is('about-us') ? 'active' : '' }}"><a
 														href="/about-us">About Our Company</a></li>

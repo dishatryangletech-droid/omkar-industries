@@ -38,7 +38,7 @@
         $pageNamePart = trim(explode('-', $title ?? '')[0]);
         $pageBanner = \App\Models\PageBanner::where('page_name', 'like', '%' . $pageNamePart . '%')->first();
     @endphp
-    @if($pageBanner && $pageBanner->image)
+    @if($pageBanner && $pageBanner->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($pageBanner->image))
         <style>
             .pbmit-title-bar-wrapper {
                 background-image: url('{{ route('uploads.public', ['path' => $pageBanner->image]) }}') !important;

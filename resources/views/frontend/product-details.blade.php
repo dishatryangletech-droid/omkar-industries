@@ -54,6 +54,13 @@
 		<div class="pbmit-title-bar-wrapper"
              @if(isset($product) && $product->banner_image && file_exists(public_path('storage/' . $product->banner_image)))
                  style="background-image: url('{{ asset('storage/' . $product->banner_image) }}');"
+             @elseif(isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)))
+                 style="background-image: url('{{ asset('storage/' . $product->image) }}');"
+             @else
+                 @php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+                 @if($defaultSettings && $defaultSettings->default_product_image)
+                     style="background-image: url('{{ asset('storage/' . $defaultSettings->default_product_image) }}');"
+                 @endif
              @endif
         >
 			<div class="container">
