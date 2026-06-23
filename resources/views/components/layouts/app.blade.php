@@ -1,4 +1,4 @@
-﻿@props(['title' => 'Induyst – Industry & Factory HTML Template'])
+@props(['title' => 'Omkar – Industry & Factory HTML Template'])
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -11,10 +11,10 @@
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $title ?? 'Induyst - Industry & Factory HTML Template' }}</title>
+    <title>{{ $title ?? 'Omkar - Industry & Factory HTML Template' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/fevicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/omkar-logo.png') }}">
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ $frontendAsset('frontend/css/bootstrap.min.css') }}">

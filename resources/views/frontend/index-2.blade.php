@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Home - Induyst">
+﻿<x-layouts.app title="Home - Omkar">
 	@php
 		ob_start(function ($buffer) {
 			$badApostrophe = "\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2";
@@ -44,13 +44,15 @@
 												</div>
 												<div class="pbmit-button ms-xl-5 ms-lg-3">
 													<div class="transform-bottom transform-delay-4">
-														<a href="{{ $slider?->btn_link ?: '/about-us' }}" class="pbmit-btn white mb-5">
+														<a href="{{ $slider?->btn_link ?: '/about-us' }}"
+															class="pbmit-btn white mb-5">
 															<span class="pbmit-button-content-wrapper">
 																<span class="pbmit-button-icon">
 																	<i
 																		class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																</span>
-																<span class="pbmit-button-text">{{ $slider?->btn_title ?: 'Discover More' }}</span>
+																<span
+																	class="pbmit-button-text">{{ $slider?->btn_title ?: 'Discover More' }}</span>
 															</span>
 														</a>
 													</div>
@@ -76,29 +78,32 @@
 										<div class="row">
 											<div class="col-md-8 col-1">
 												<div class="pbmit-slider-content">
-											<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
-												style="{{ $sliderTwo?->sub_title_color ? 'color: ' . $sliderTwo->sub_title_color . ';' : '' }}">
-												<span>{{ $sliderTwo?->subtitle ?: 'Forging the Future' }}</span>
-											</h5>
-											<h2 class="pbmit-slider-title transform-left transform-delay-2"
-												style="{{ $sliderTwo?->main_title_color ? 'color: ' . $sliderTwo->main_title_color . ';' : '' }}">
-												<span class="first">{{ $slideTwoFirstWord }}</span>
-												<span class="second">{{ $slideTwoMiddleWords }}
-													<span class="pbmit-global-color">{{ $slideTwoLastWord }}</span></span>
-											</h2>
-											<p class="pbmit-slider-desc"
-												style="{{ $sliderTwo?->description_color ? 'color: ' . $sliderTwo->description_color . ';' : '' }}">
-												<span>{!! $sliderTwo?->description ? nl2br(e($sliderTwo->description)) : 'Whether it is small-scale custom work or large scale production <br> we build with purpose, power and precision.' !!}</span>
-											</p>
+													<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+														style="{{ $sliderTwo?->sub_title_color ? 'color: ' . $sliderTwo->sub_title_color . ';' : '' }}">
+														<span>{{ $sliderTwo?->subtitle ?: 'Forging the Future' }}</span>
+													</h5>
+													<h2 class="pbmit-slider-title transform-left transform-delay-2"
+														style="{{ $sliderTwo?->main_title_color ? 'color: ' . $sliderTwo->main_title_color . ';' : '' }}">
+														<span class="first">{{ $slideTwoFirstWord }}</span>
+														<span class="second">{{ $slideTwoMiddleWords }}
+															<span
+																class="pbmit-global-color">{{ $slideTwoLastWord }}</span></span>
+													</h2>
+													<p class="pbmit-slider-desc"
+														style="{{ $sliderTwo?->description_color ? 'color: ' . $sliderTwo->description_color . ';' : '' }}">
+														<span>{!! $sliderTwo?->description ? nl2br(e($sliderTwo->description)) : 'Whether it is small-scale custom work or large scale production <br> we build with purpose, power and precision.' !!}</span>
+													</p>
 													<div class="pbmit-button d-flex align-items-center">
 														<div class="transform-bottom transform-delay-4">
-													<a href="{{ $sliderTwo?->btn_link ?: '/about-us' }}" class="pbmit-btn white">
+															<a href="{{ $sliderTwo?->btn_link ?: '/about-us' }}"
+																class="pbmit-btn white">
 																<span class="pbmit-button-content-wrapper">
 																	<span class="pbmit-button-icon">
 																		<i
 																			class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																	</span>
-															<span class="pbmit-button-text">{{ $sliderTwo?->btn_title ?: 'Discover More' }}</span>
+																	<span
+																		class="pbmit-button-text">{{ $sliderTwo?->btn_title ?: 'Discover More' }}</span>
 																</span>
 															</a>
 														</div>
@@ -131,29 +136,32 @@
 										<div class="row">
 											<div class="col-md-9 col-lg-8 col-1">
 												<div class="pbmit-slider-content">
-											<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
-												style="{{ $sliderThree?->sub_title_color ? 'color: ' . $sliderThree->sub_title_color . ';' : '' }}">
-												<span>{{ $sliderThree?->subtitle ?: 'Built for the Future' }}</span>
-											</h5>
-											<h2 class="pbmit-slider-title transform-left transform-delay-2"
-												style="{{ $sliderThree?->main_title_color ? 'color: ' . $sliderThree->main_title_color . ';' : '' }}">
-												<span class="first">{{ $slideThreeFirstWord }}</span>
-												<span class="second">{{ $slideThreeMiddleWords }}
-													<span class="pbmit-global-color">{{ $slideThreeLastWord }}</span></span>
-											</h2>
-											<p class="pbmit-slider-desc"
-												style="{{ $sliderThree?->description_color ? 'color: ' . $sliderThree->description_color . ';' : '' }}">
-												<span>{!! $sliderThree?->description ? nl2br(e($sliderThree->description)) : 'Whether it is tailored fabrication or high-volume production <br> we build with purpose, power and precision.' !!}</span>
-											</p>
+													<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+														style="{{ $sliderThree?->sub_title_color ? 'color: ' . $sliderThree->sub_title_color . ';' : '' }}">
+														<span>{{ $sliderThree?->subtitle ?: 'Built for the Future' }}</span>
+													</h5>
+													<h2 class="pbmit-slider-title transform-left transform-delay-2"
+														style="{{ $sliderThree?->main_title_color ? 'color: ' . $sliderThree->main_title_color . ';' : '' }}">
+														<span class="first">{{ $slideThreeFirstWord }}</span>
+														<span class="second">{{ $slideThreeMiddleWords }}
+															<span
+																class="pbmit-global-color">{{ $slideThreeLastWord }}</span></span>
+													</h2>
+													<p class="pbmit-slider-desc"
+														style="{{ $sliderThree?->description_color ? 'color: ' . $sliderThree->description_color . ';' : '' }}">
+														<span>{!! $sliderThree?->description ? nl2br(e($sliderThree->description)) : 'Whether it is tailored fabrication or high-volume production <br> we build with purpose, power and precision.' !!}</span>
+													</p>
 													<div class="pbmit-button d-flex align-items-center">
 														<div class="transform-bottom transform-delay-4">
-													<a href="{{ $sliderThree?->btn_link ?: '/about-us' }}" class="pbmit-btn white">
+															<a href="{{ $sliderThree?->btn_link ?: '/about-us' }}"
+																class="pbmit-btn white">
 																<span class="pbmit-button-content-wrapper">
 																	<span class="pbmit-button-icon">
 																		<i
 																			class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																	</span>
-															<span class="pbmit-button-text">{{ $sliderThree?->btn_title ?: 'Discover More' }}</span>
+																	<span
+																		class="pbmit-button-text">{{ $sliderThree?->btn_title ?: 'Discover More' }}</span>
 																</span>
 															</a>
 														</div>
@@ -1009,7 +1017,7 @@
 
 			<!-- Scripts JS -->
 		</div>
-	@php
-		ob_end_flush();
-	@endphp
+		@php
+			ob_end_flush();
+		@endphp
 </x-layouts.app>

@@ -1,4 +1,4 @@
-<x-layouts.app title="{{ $product->title ?? 'Product Detail' }} - Induyst">
+<x-layouts.app title="{{ $product->title ?? 'Product Detail' }} - Omkar">
 	<div>
 	<style>
 		.pbmit-btn-sm {
@@ -64,16 +64,18 @@
 						<div class="pbmit-breadcrumb">
 							<div class="pbmit-breadcrumb-inner">
 								<span>
-									<a title="" href="#" class="home"><span>Induyst</span></a>
+									<a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a>
 								</span>
 								<span class="sep"></span>
 								<span>
-									<a title="" href="#"><span>Products</span></a>
+									<a title="" href="{{ route('products') }}"><span>Products</span></a>
 								</span>
+								@if(isset($product) && $product->parent)
 								<span class="sep"></span>
 								<span>
-									<a title="" href="#"><span>Chemical</span></a>
+									<a title="" href="{{ route('product-details', ['slug' => $product->parent->slug]) }}"><span>{{ $product->parent->title }}</span></a>
 								</span>
+								@endif
 								<span class="sep"></span>
 								<span><span class="post-root post post-post current-item"> {{ $product->title ?? 'Product Detail' }}</span></span>
 							</div>

@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="{{ $blog->title ?? 'Blog Detail' }} - Induyst">
+<x-layouts.app title="{{ $blog->title ?? 'Blog Detail' }} - Omkar">
 <div>
 	<style>
 		.text-center .pbmit-firstletter::first-letter {
@@ -49,7 +49,7 @@
 					<div class="pbmit-breadcrumb">
 						<div class="pbmit-breadcrumb-inner">
 							<span>
-								<a title="" href="/" class="home"><span>Induyst</span></a>
+								<a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a>
 							</span>
 							<span class="sep"></span>
 							<span>

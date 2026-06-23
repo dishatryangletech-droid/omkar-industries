@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Exhibition Details - Induyst">
+<x-layouts.app title="Exhibition Details - Omkar">
 <div>
 <!-- Page Wrapper -->
     <div class="page-wrapper">
@@ -23,7 +23,7 @@
 						<div class="pbmit-breadcrumb">
 							<div class="pbmit-breadcrumb-inner">
 								<span>
-									<a title="" href="#" class="home"><span>Induyst</span></a>
+									<a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a>
 								</span>
 								<span class="sep"></span>
 								<span>

@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Career - Induyst">
+<x-layouts.app title="Career - Omkar">
 <style>
     .career-tabs .nav-pills .nav-link.active, 
     .career-tabs .nav-pills .show > .nav-link {
@@ -26,7 +26,7 @@
 						</div>
 						<div class="pbmit-breadcrumb">
 							<div class="pbmit-breadcrumb-inner">
-								<span><a title="" href="#" class="home"><span>Induyst</span></a></span>
+								<span><a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a></span>
 								<span class="sep"></span>
 								<span><span class="post-root post post-post current-item"> Career</span></span>
 							</div>

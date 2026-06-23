@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Contact Us - Induyst">
+<x-layouts.app title="Contact Us - Omkar">
 <div>
 	<!-- Page Wrapper -->
 	<div class="page-wrapper">
@@ -22,7 +22,7 @@
 						<div class="pbmit-breadcrumb">
 							<div class="pbmit-breadcrumb-inner">
 								<span>
-									<a title="" href="#" class="home"><span>Induyst</span></a>
+									<a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a>
 								</span>
 								<span class="sep"></span>
 								<span><span class="post-root post post-post current-item"> Contact Us</span></span>

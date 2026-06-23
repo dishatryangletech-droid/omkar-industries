@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Gallery - Induyst">
+<x-layouts.app title="Gallery - Omkar">
 @push('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <style>
@@ -39,7 +39,7 @@
 							<div class="pbmit-breadcrumb">
 								<div class="pbmit-breadcrumb-inner">
 									<span>
-										<a title="" href="/" class="home"><span>Induyst</span></a>
+										<a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a>
 									</span>
 									<span class="sep"></span>
 									<span><span class="post-root post post-post current-item"> Gallery</span></span>

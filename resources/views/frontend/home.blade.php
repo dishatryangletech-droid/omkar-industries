@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Home - Induyst">
+<x-layouts.app title="Home - Omkar">
 @php
 	ob_start(function ($buffer) {
 		$badApostrophe = "\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2";
