@@ -1,4 +1,4 @@
-﻿<div class="pbmit-sticky-header pbmit-header-sticky-yes pbmit-bg-color-white pbmit-sticky-header-mobile-yes"></div>
+<div class="pbmit-sticky-header pbmit-header-sticky-yes pbmit-bg-color-white pbmit-sticky-header-mobile-yes"></div>
 <div class="pbmit-header-overlay">
 	<div class="pbmit-main-header-area pbmit-infostack-header pbmit-bg-color-blackish">
 		<div class="pbmit-top-area">
