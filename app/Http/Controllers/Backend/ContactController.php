@@ -38,6 +38,6 @@ class ContactController extends Controller
     {
         $contact->delete();
 
-        return redirect()->route('backend.contacts.index')->with('success', 'Contact inquiry deleted successfully.');
+        return redirect()->route('admin.contacts.index')->with('success', 'Contact inquiry deleted successfully.');
     }
 }

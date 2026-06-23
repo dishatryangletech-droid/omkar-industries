@@ -62,7 +62,7 @@
                             <small class="text-muted">Inquiry ID: #{{ $contact->id }}</small>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-sm btn-label-secondary">
+                    <a href="{{ route('admin.contacts.index') }}" class="btn btn-sm btn-label-secondary">
                         <i class="ti ti-chevron-left me-1"></i> Back
                     </a>
                 </div>
@@ -70,19 +70,25 @@
                 <div class="card-body p-4">
                     <!-- Meta Grid -->
                     <div class="row g-3 mb-4">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="inquiry-meta-item">
                                 <div class="meta-label"><i class="ti ti-mail ti-xs me-1"></i> Email</div>
                                 <div class="meta-value"><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <div class="inquiry-meta-item">
+                                <div class="meta-label"><i class="ti ti-phone ti-xs me-1"></i> Phone</div>
+                                <div class="meta-value"><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="inquiry-meta-item">
                                 <div class="meta-label"><i class="ti ti-calendar ti-xs me-1"></i> Received Date</div>
                                 <div class="meta-value">{{ $contact->created_at->format('d M, Y h:i A') }}</div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="inquiry-meta-item">
                                 <div class="meta-label"><i class="ti ti-flag ti-xs me-1"></i> Status</div>
                                 <div class="meta-value">
@@ -112,7 +118,7 @@
                            
                         </div>
                         
-                        <form action="#" method="POST" id="delete-form-{{ $contact->id }}">
+                        <form action="{{ route('admin.contacts.destroy', $contact) }}" method="POST" id="delete-form-{{ $contact->id }}">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-label-danger btn-sm delete-btn" data-id="{{ $contact->id }}">

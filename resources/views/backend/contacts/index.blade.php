@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     @foreach($contacts as $contact)
-                        <tr class="cursor-pointer" data-url="#">
+                        <tr class="cursor-pointer" data-url="{{ route('admin.contacts.show', $contact) }}">
                             <td>{{ $contact->id }}</td>
                             <td>
                                 <span class="fw-medium d-block">{{ $contact->name }}</span>
@@ -50,11 +50,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" 
+                                    <a href="{{ route('admin.contacts.show', $contact) }}" 
                                        class="text-info waves-effect" title="View Inquiry">
                                         <i class="ti ti-eye fs-4"></i>
                                     </a>
-                                    <form action="#" method="POST" id="delete-form-{{ $contact->id }}" title="Delete Inquiry">
+                                    <form action="{{ route('admin.contacts.destroy', $contact) }}" method="POST" id="delete-form-{{ $contact->id }}" title="Delete Inquiry">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn p-0 border-0 bg-transparent text-danger waves-effect delete-btn" data-id="{{ $contact->id }}">

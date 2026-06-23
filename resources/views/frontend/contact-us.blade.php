@@ -104,8 +104,15 @@
 					</div>
 					<div class="row pt-3">
 						<div class="col-md-6 full-width-1200">
+							@if(session('success'))
+								<div class="alert alert-success alert-dismissible fade show" role="alert">
+									{{ session('success') }}
+									<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								</div>
+							@endif
 							<form class="contact-form left-box" method="post" id="contact-form"
-								action="https://induyst-demo.pbminfotech.com/html-demo/send-dummy.php">
+								action="{{ route('frontend.contact-us.submit') }}">
+								@csrf
 								<div class="row">
 									<div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Full Name *" name="name"

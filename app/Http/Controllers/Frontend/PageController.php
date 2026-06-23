@@ -68,6 +68,28 @@ class PageController extends Controller
         ]);
     }
 
+    public function contactSubmit(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        \App\Models\Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'status' => 'New',
+        ]);
+
+        return redirect()->back()->with('success', 'Thank you for filling the form. Our team will contact you soon !!!');
+    }
+
     public function career()
     {
         $careers = \App\Models\Career::where('status', 'Active')->latest()->get();

@@ -161,7 +161,9 @@ Route::get('/certificates', [\App\Http\Controllers\Frontend\PageController::clas
 Route::get('/gallery', [\App\Http\Controllers\Frontend\PageController::class, 'gallery'])->name('frontend.gallery');
 Route::get('/blogs', [\App\Http\Controllers\Frontend\PageController::class, 'blogs'])->name('frontend.blog-grid-col-3');
 Route::get('/blog/{slug}', [\App\Http\Controllers\Frontend\PageController::class, 'blogDetail'])->name('frontend.blog-single-details');
-Route::get('/contact-us', [\App\Http\Controllers\Frontend\PageController::class, 'contactUs'])->name('frontend.contact-us');
+    // Contact Us Page
+    Route::get('/contact-us', [\App\Http\Controllers\Frontend\PageController::class, 'contactUs'])->name('frontend.contact-us');
+    Route::post('/contact-us', [\App\Http\Controllers\Frontend\PageController::class, 'contactSubmit'])->name('frontend.contact-us.submit');
 Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.home');
 Route::get('/index-2', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('frontend.index-2');
 Route::get('/our-history', [\App\Http\Controllers\Frontend\PageController::class, 'ourHistory'])->name('frontend.our-history');
@@ -442,7 +444,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('clients', ClientController::class);
     Route::resource('job-applications', JobApplicationController::class)->only(['index', 'show', 'destroy']);
     
-    Route::get('contacts', function () use ($defaults) { return view('backend.contacts.index', $defaults); })->name('contacts.index');
+    Route::resource('contacts', \App\Http\Controllers\Backend\ContactController::class)->only(['index', 'show', 'destroy']);
     Route::get('dealers', function () use ($defaults) { return view('backend.dealers.index', $defaults); })->name('dealers.index');
     Route::post('faqs/update-section', [\App\Http\Controllers\Backend\FaqController::class, 'updateSection'])->name('faqs.update-section');
     Route::resource('faqs', \App\Http\Controllers\Backend\FaqController::class);

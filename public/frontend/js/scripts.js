@@ -445,6 +445,7 @@
 	Send email via Ajax
 	Make sure you configure send.php file 
 	-------------------------------------*/
+	/*
 	$("#contact-form").submit(function(){
 	
 		if( $("#contact-form .doing-via-ajax").length == 0 ){
@@ -475,6 +476,7 @@
 	return false;
  
    });
+   */
 
    	/*-------------------------------------
     Masonry
