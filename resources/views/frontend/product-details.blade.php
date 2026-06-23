@@ -51,7 +51,11 @@
 		<!-- Header Main Area End Here -->
 
 		<!-- Title Bar -->
-		<div class="pbmit-title-bar-wrapper">
+		<div class="pbmit-title-bar-wrapper"
+             @if(isset($product) && $product->banner_image && file_exists(public_path('storage/' . $product->banner_image)))
+                 style="background-image: url('{{ asset('storage/' . $product->banner_image) }}');"
+             @endif
+        >
 			<div class="container">
 				<div class="pbmit-title-bar-content">
 					<div class="pbmit-title-bar-content-inner">
