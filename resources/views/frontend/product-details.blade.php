@@ -95,7 +95,8 @@
 					<article class="pbmit-portfolio-single">
 						<div class="pbmit-single-project-details-wrapper">
 							<div class="pbmit-featured-img-wrapper">
-								<img src="{{ isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)) ? asset('storage/' . $product->image) : asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
+								@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+								<img src="{{ isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)) ? asset('storage/' . $product->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/portfolio/portfolio-single-01.webp')) }}"
 									class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $product->title ?? 'Product Image' }}">
 							</div>
 						</div>
@@ -205,7 +206,8 @@
 									<div class="col-lg-3 col-md-6 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
 										<div class="text-center">
 											<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
-												<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : asset('frontend/images/service/service-01.jpg') }}" alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
+                                                @php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+												<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/service/service-01.jpg')) }}" alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100" style="height: 180px; object-fit: cover;">
 											</div>
 											<h4 style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">{{ $part['name'] ?? 'Machine Part' }}</h4>
 										</div>
@@ -261,7 +263,12 @@
 															<div class="pbmit-ihbox-icon-wrapper pbmit-icon-type-icon">
 																@if(isset($step['image']) && $step['image'])
 																	<img src="{{ asset('storage/' . $step['image']) }}" alt="{{ $step['title'] ?? '' }}" style="width: 80px; height: 80px; object-fit: contain;">
-																@endif
+																@else
+                                                                    @php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+                                                                    @if($defaultSettings && $defaultSettings->default_icon_image)
+  																	    <img src="{{ asset('storage/' . $defaultSettings->default_icon_image) }}" alt="{{ $step['title'] ?? '' }}" style="width: 80px; height: 80px; object-fit: contain;">
+                                                                    @endif
+                                                                @endif
 															</div>
 														</div>
 														<div class="pbmit-ihbox-contents">

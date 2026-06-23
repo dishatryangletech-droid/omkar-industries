@@ -342,6 +342,8 @@ class ProductController extends Controller
                 ];
                 if (isset($step['image']) && $step['image']->isValid()) {
                     $stepData['image'] = $step['image']->store('products/process_steps', 'public');
+                } elseif (isset($step['remove_image']) && $step['remove_image'] == '1') {
+                    $stepData['image'] = null;
                 } else {
                     $stepData['image'] = $step['existing_image'] ?? null;
                 }
@@ -370,6 +372,8 @@ class ProductController extends Controller
                 $partData = ['name' => $part['name'] ?? null];
                 if (isset($part['image']) && $part['image']->isValid()) {
                     $partData['image'] = $part['image']->store('products/parts', 'public');
+                } elseif (isset($part['remove_image']) && $part['remove_image'] == '1') {
+                    $partData['image'] = null;
                 } else {
                     $partData['image'] = $part['existing_image'] ?? null;
                 }
@@ -398,6 +402,8 @@ class ProductController extends Controller
                 $partData = ['name' => $part['name'] ?? null];
                 if (isset($part['image']) && $part['image']->isValid()) {
                     $partData['image'] = $part['image']->store('products/image_parts', 'public');
+                } elseif (isset($part['remove_image']) && $part['remove_image'] == '1') {
+                    $partData['image'] = null;
                 } else {
                     $partData['image'] = $part['existing_image'] ?? null;
                 }

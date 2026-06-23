@@ -15,7 +15,13 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="mb-4">Default Image Settings (Fallback Images)</h5>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    <form action="{{ route('admin.website-pages.default-image-settings.post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Default Banner Image -->
@@ -34,7 +40,7 @@
                                         <img src="{{ asset('storage/' . $settings->default_banner_image) }}" alt="Default Banner" class="img-fluid rounded border shadow-sm" style="max-height: 120px;">
                                     </div>
                                 @endif
-                            </div>
+                             </div>
 
                             <!-- Default Product Image -->
                             <div class="col-md-6 mb-4">
@@ -52,9 +58,25 @@
                                         <img src="{{ asset('storage/' . $settings->default_product_image) }}" alt="Default Product" class="img-fluid rounded border shadow-sm" style="max-height: 120px;">
                                     </div>
                                 @endif
-                            </div>
+                             </div>
 
-                          
+                            <!-- Default Icon Image -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label font-weight-bold" for="default_icon_image">Default Icon Image</label>
+                                <div class="input-group mb-2">
+                                    <input type="file" class="form-control @error('default_icon_image') is-invalid @enderror" id="default_icon_image" name="default_icon_image" accept="image/*">
+                                </div>
+                                <small class="text-muted d-block mb-3">Allowed: JPG, JPEG, PNG, WEBP, SVG. Used as a fallback icon.</small>
+                                @error('default_icon_image')
+                                    <div class="invalid-feedback d-block mb-3">{{ $message }}</div>
+                                @enderror
+                                @if($settings->default_icon_image)
+                                    <div class="mt-2">
+                                        <p class="mb-1 text-muted small">Current default icon image:</p>
+                                        <img src="{{ asset('storage/' . $settings->default_icon_image) }}" alt="Default Icon" class="img-fluid rounded border shadow-sm" style="max-height: 120px;">
+                                    </div>
+                                @endif
+                             </div>
                         </div>
 
                         <div class="mt-4 text-end">

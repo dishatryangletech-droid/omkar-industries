@@ -166,12 +166,12 @@
                     </li>
 
                     <!-- Dealer Inquiries -->
-                    <li class="menu-item {{ Route::is('admin.dealers.*') ? 'active' : '' }}">
+                    <!-- <li class="menu-item {{ Route::is('admin.dealers.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.dealers.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-truck"></i>
                             <div data-i18n="Dealer Inquiries">Dealer Inquiries</div>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Website Sections</span>

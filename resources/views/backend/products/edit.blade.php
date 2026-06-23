@@ -502,8 +502,12 @@
                                         <input type="file" name="specially_designed_parts[{{ $idx }}][image]" class="form-control mb-2" accept="image/*" style="background: #fff !important; border: 1px solid #dbdade !important; padding: 0.4375rem 0.875rem !important;">
                                         @if(isset($part['image']))
                                             <input type="hidden" name="specially_designed_parts[{{ $idx }}][existing_image]" value="{{ $part['image'] }}">
-                                            <div class="mt-2">
+                                            <div class="mt-2 text-center border rounded p-1 bg-white">
                                                 <img src="{{ asset('storage/' . $part['image']) }}" alt="Part Image" class="img-thumbnail" style="max-height: 80px;">
+                                                <div class="form-check form-check-danger text-start ms-1 mt-1">
+                                                    <input class="form-check-input" type="checkbox" name="specially_designed_parts[{{ $idx }}][remove_image]" id="remove_special_part_image_{{ $idx }}" value="1">
+                                                    <label class="form-check-label text-danger small" for="remove_special_part_image_{{ $idx }}" style="font-size: 0.75rem;">Remove Image</label>
+                                                </div>
                                             </div>
                                         @endif
                                     </div>
@@ -534,8 +538,12 @@
                                         <input type="file" name="image_parts[{{ $idx }}][image]" class="form-control mb-2" accept="image/*" style="background: #fff !important; border: 1px solid #dbdade !important; padding: 0.4375rem 0.875rem !important;">
                                         @if(isset($part['image']))
                                             <input type="hidden" name="image_parts[{{ $idx }}][existing_image]" value="{{ $part['image'] }}">
-                                            <div class="mt-2">
+                                            <div class="mt-2 text-center border rounded p-1 bg-white">
                                                 <img src="{{ asset('storage/' . $part['image']) }}" alt="Part Image" class="img-thumbnail" style="max-height: 80px;">
+                                                <div class="form-check form-check-danger text-start ms-1 mt-1">
+                                                    <input class="form-check-input" type="checkbox" name="image_parts[{{ $idx }}][remove_image]" id="remove_image_part_{{ $idx }}" value="1">
+                                                    <label class="form-check-label text-danger small" for="remove_image_part_{{ $idx }}" style="font-size: 0.75rem;">Remove Image</label>
+                                                </div>
                                             </div>
                                         @endif
                                     </div>
@@ -639,6 +647,10 @@
                                             <div class="mt-2 text-center border rounded p-1 bg-white">
                                                 <img src="{{ asset('storage/' . $step['image']) }}" class="img-fluid" style="height: 60px; object-fit: contain;">
                                                 <input type="hidden" name="process_steps[{{ $idx }}][existing_image]" value="{{ $step['image'] }}">
+                                                <div class="form-check form-check-danger text-start ms-1 mt-1">
+                                                    <input class="form-check-input" type="checkbox" name="process_steps[{{ $idx }}][remove_image]" id="remove_step_image_{{ $idx }}" value="1">
+                                                    <label class="form-check-label text-danger small" for="remove_step_image_{{ $idx }}" style="font-size: 0.75rem;">Remove Image</label>
+                                                </div>
                                             </div>
                                         @endif
                                     </div>

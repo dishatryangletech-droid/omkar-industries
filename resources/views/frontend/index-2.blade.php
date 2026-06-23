@@ -1,4 +1,4 @@
-﻿<x-layouts.app title="Home - Omkar">
+<x-layouts.app title="Home - Omkar">
 	@php
 		ob_start(function ($buffer) {
 			$badApostrophe = "\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2";
@@ -205,7 +205,8 @@
 												<div class="pbmit-image-wrap">
 													<div class="pbmit-featured-img-wrapper">
 														<div class="pbmit-featured-wrapper">
-															<img src="{{ ($product->image && file_exists(public_path('storage/' . $product->image))) ? asset('storage/' . $product->image) : asset('frontend/images/service/service-01.jpg') }}"
+                                                            @php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+															<img src="{{ ($product->image && file_exists(public_path('storage/' . $product->image))) ? asset('storage/' . $product->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/service/service-01.jpg')) }}"
 																class="img-fluid w-100"
 																style="aspect-ratio: 770/520; object-fit: contain; background-color: #ffffff;"
 																alt="{{ $product->title }}">

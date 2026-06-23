@@ -512,6 +512,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('footer-settings.post');
 
         Route::get('default-image-settings', function () use ($defaults) { return view('backend.website-pages.default-image-settings', $defaults); })->name('default-image-settings');
+        Route::post('default-image-settings', function (\Illuminate\Http\Request $request) {
+            $settings = \App\Models\GeneralSetting::first() ?? new \App\Models\GeneralSetting();
+            $fields = ['default_banner_image', 'default_product_image', 'default_application_image', 'default_industry_image', 'default_icon_image'];
+            foreach ($fields as $field) {
+                if ($request->hasFile($field)) {
+                    if ($settings->$field) \Illuminate\Support\Facades\Storage::disk('public')->delete($settings->$field);
+                    $settings->$field = $request->file($field)->store('defaults', 'public');
+                }
+            }
+            $settings->save();
+            return redirect()->route('admin.website-pages.default-image-settings')->with('success', 'Default Images updated successfully!');
+        })->name('default-image-settings.post');
         
         Route::get('general-settings', function () use ($defaults) { return view('backend.website-pages.general-settings', $defaults); })->name('general-settings');
         Route::post('general-settings', function (Request $request) {
