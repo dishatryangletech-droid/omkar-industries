@@ -69,7 +69,7 @@
 								$slideTwoLastWord = count($slideTwoWords) ? array_pop($slideTwoWords) : '';
 								$slideTwoMiddleWords = implode(' ', $slideTwoWords);
 							@endphp
-							<div class="swiper-slide">
+							<div class="swiper-slide" id="slide-2">
 								<div class="pbmit-slider-item">
 									<div class="pbmit-slider-bg"
 										style="background-image: url({{ $sliderTwo?->background_photo ? route('uploads.public', ['path' => $sliderTwo->background_photo]) : asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
@@ -121,7 +121,7 @@
 								$slideThreeLastWord = count($slideThreeWords) ? array_pop($slideThreeWords) : '';
 								$slideThreeMiddleWords = implode(' ', $slideThreeWords);
 							@endphp
-							<div class="swiper-slide">
+							<div class="swiper-slide" id="slide-3">
 								<div class="pbmit-slider-item">
 									<div class="pbmit-slider-bg"
 										style="background-image: url({{ $sliderThree?->background_photo ? route('uploads.public', ['path' => $sliderThree->background_photo]) : asset('frontend/images/banner-slider-img/slider2-03.jpg') }});">

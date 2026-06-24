@@ -2909,17 +2909,20 @@ aside.widget.widget-tag-cloud a,
 	line-height: 16px;
 	font-weight: 600;
 	letter-spacing: 2.4px;
-	margin-bottom: 20px;
 	text-transform: uppercase;
 }
 .pbmit-slider-one .pbmit-slider-title{
 	font-size: 120px;
-	line-height: 120px;
+	line-height: 90px;
 	font-weight: 800;
 	padding-bottom: 20px;
 	margin-bottom: 30px;
 	text-transform: uppercase;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.pbmit-slider-area .swiper-slide:not(#slide-1) .pbmit-slider-title {
+	border-bottom: none;
+	padding-bottom: 0;
 }
 .pbmit-slider-area .pbmit-slider-desc{
 	font-size: 18px;
