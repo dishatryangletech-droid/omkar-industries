@@ -228,8 +228,18 @@ Route::get('/our-product/{slug?}', function ($slug = null) {
         return view('frontend.services', compact('products', 'parent'));
     }
 
+    // Fetch related products (siblings with same parent)
+    $relatedProducts = collect();
+    if ($product->parent_id) {
+        $relatedProducts = \App\Models\Product::where('parent_id', $product->parent_id)
+                                  ->where('id', '!=', $product->id)
+                                  ->where('status', 'Active')
+                                  ->take(3)
+                                  ->get();
+    }
+
     // Otherwise, show the single product details
-    return view('frontend.product-details', compact('product'));
+    return view('frontend.product-details', compact('product', 'relatedProducts'));
 })->name('product-details');
 
 // Keep the name alias for backward compatibility in blade files if any missed

@@ -189,7 +189,7 @@
 														<tr style="background-color: var(--pbmit-global-color); color: #ffffff;">
 															@foreach($spec->table_headers as $index => $header)
 																<th
-																	style="padding: 8px 12px; font-weight: 600; {{ $index == 0 ? 'width: 20%;' : '' }} border-color: rgba(0,0,0,0.08); color: #ffffff;">
+																	style="padding: 8px 12px; font-weight: 600; {{ $index == 0 ? 'width: 35%;' : '' }} border-color: rgba(0,0,0,0.08); color: #ffffff;">
 																	{{ $header }}</th>
 															@endforeach
 														</tr>
@@ -269,7 +269,7 @@
 
 								@if(isset($product) && $product->trade_information)
 									<div class="pbmit-custom-heading mt-5">
-										<h3 class="pbmit-title">Trade Information</h3>
+										<h3 class="pbmit-title">Trade Information :</h3>
 									</div>
 									<div class="table-responsive mb-5">
 										@php
@@ -356,7 +356,7 @@
 								<div class="py-5" data-aos="fade-up" data-aos-duration="800">
 									<div class="pbmit-custom-heading">
 										@if(filled($product->client_review_title) && trim($product->client_review_title) !== '1')
-											<h3 class="pbmit-title">{{ $product->client_review_title }}</h3>
+											<h3 class="pbmit-title mb-4">{{ $product->client_review_title }} :</h3>
 										@endif
 									</div>
 									@if(filled($product->client_review_description))
@@ -442,6 +442,60 @@
 			</div>
 			</section>
 			<!-- Single Detail Style 1 End -->
+
+			@if(isset($relatedProducts) && $relatedProducts->count() > 0)
+			<section class="section-sm pt-0">
+				<div class="container">
+					<hr style="border-top: 1px solid rgba(0,0,0,0.1);">
+					<div class="pbmit-custom-heading mb-4">
+						<h3 class="pbmit-title">Related Products :</h3>
+					</div>
+					<div class="pbmit-element-posts-wrapper row">
+						@foreach($relatedProducts as $relProduct)
+							@php
+								$productUrl = route('product-details', ['slug' => $relProduct->slug]);
+							@endphp
+							<article class="pbmit-service-style-1 col-md-6 col-lg-4">
+								<div class="pbminfotech-post-item">
+									<div class="pbmit-box-content-wrap">
+										<div class="pbmit-image-wrap">
+											<div class="pbmit-featured-img-wrapper">
+												<div class="pbmit-featured-wrapper">
+													@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+													<img src="{{ ($relProduct->image && file_exists(public_path('storage/' . $relProduct->image))) ? asset('storage/' . $relProduct->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/service/service-01.jpg')) }}"
+														class="img-fluid w-100"
+														style="aspect-ratio: 770/520; object-fit: contain; background-color: #ffffff;"
+														alt="{{ $relProduct->title }}">
+												</div>
+											</div>
+											<a class="pbmit-link" href="{{ $productUrl }}"></a>
+										</div>
+										<div class="pbmit-service-content-wrap">
+											<h3 class="pbmit-service-title">
+												<a href="{{ $productUrl }}">{{ $relProduct->title }}</a>
+											</h3>
+											<div class="pbmit-service-description">
+												<p>{!! \Illuminate\Support\Str::limit(strip_tags(html_entity_decode($relProduct->short_description ?? $relProduct->content ?? 'Discover our premium quality product designed for excellence and reliability.')), 85) !!}
+												</p>
+											</div>
+											<div class="pbmit-service-btn-wrapper">
+												<div class="pbmit-service-btn">
+													<a class="pbmit-button-inner" href="{{ $productUrl }}">
+														<span class="pbmit-button-text">View More</span>
+														<i class="pbmit-base-icon-right-arrow"></i>
+													</a>
+												</div>
+											</div>
+											<a class="pbmit-link" href="{{ $productUrl }}"></a>
+										</div>
+									</div>
+								</div>
+							</article>
+						@endforeach
+					</div>
+				</div>
+			</section>
+			@endif
 
 		</div>
 		<!-- Page Content End -->
