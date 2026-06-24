@@ -205,7 +205,7 @@
 												<div class="pbmit-image-wrap">
 													<div class="pbmit-featured-img-wrapper">
 														<div class="pbmit-featured-wrapper">
-                                                            @php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
+															@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
 															<img src="{{ ($product->image && file_exists(public_path('storage/' . $product->image))) ? asset('storage/' . $product->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/service/service-01.jpg')) }}"
 																class="img-fluid w-100"
 																style="aspect-ratio: 770/520; object-fit: contain; background-color: #ffffff;"
@@ -256,7 +256,7 @@
 							<div class="col-md-8">
 								<div class="about-one-right-box">
 									<div class="row align-items-center">
-										<div class="col-md-8 left-col">
+										<div class="col-md-7 left-col">
 											<div class="pe-3">
 												<div class="pbmit-heading-subheading">
 													<h4 class="pbmit-subtitle">
@@ -272,7 +272,7 @@
 
 											</div>
 										</div>
-										<div class="col-md-4 right-col">
+										<div class="col-md-5 right-col">
 											<div class="ihbox-style-area">
 												<div class="row pbminfotech-gap-40px g-0">
 													<article class="pbmit-miconheading-style-1 col-md-12">
@@ -291,7 +291,7 @@
 																</div>
 																<div class="pbmit-ihbox-contents">
 																	<h2 class="pbmit-element-title">
-																		{{ $mission->sub_content_title ?? 'We are certified company' }}
+																		We are certified company
 																	</h2>
 																</div>
 															</div>
@@ -314,7 +314,7 @@
 																</div>
 																<div class="pbmit-ihbox-contents">
 																	<h2 class="pbmit-element-title">
-																		{{ $vision->sub_content_title ?? 'We are bring quality services' }}
+																		We are bring quality services
 																	</h2>
 																</div>
 															</div>
@@ -339,7 +339,7 @@
 																</div>
 																<div class="pbmit-ihbox-contents">
 																	<h2 class="pbmit-element-title">
-																		{{ $goal->sub_content_title ?? 'Engineering project study & solution' }}
+																		Engineering project study & solution
 																	</h2>
 																</div>
 															</div>

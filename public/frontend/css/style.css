@@ -53,7 +53,7 @@
 	padding: 80px 80px 80px 80px;
 }
 .about-one-right-box .ihbox-style-area{
-	padding-right: 140px;
+	padding-right: 85px;
 }
 
 .about-one-right-box .list-group-wrap{
@@ -2755,7 +2755,8 @@ form .form-check-input[type=checkbox]{
 .blog-section-two .pbmit-blog-style-1 .pbmit-featured-wrapper img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
+	background-color: #ffffff;
 }
 .blog-section-two .pbmit-blog-style-1 .pbmit-content-wrapper {
 	display: flex;
