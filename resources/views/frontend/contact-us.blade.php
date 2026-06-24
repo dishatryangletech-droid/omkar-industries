@@ -410,11 +410,13 @@
 						{!! $generalSetting->map_iframe !!}
 					@else
 						@php
-							$mapAddress = strip_tags($generalSetting->contact_address ?? 'Omkar Industries');
-							$mapQuery = urlencode($mapAddress);
+							$rawAddress = strip_tags($generalSetting->contact_address ?? '');
+							// Clean up newlines for the map query
+							$cleanAddress = trim(preg_replace('/\s+/', ' ', $rawAddress));
+							$mapQuery = urlencode('Omkar Industries, ' . $cleanAddress);
 						@endphp
 						<iframe
-							src="https://maps.google.com/maps?q={{ $mapQuery }}&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near"
+							src="https://maps.google.com/maps?q={{ $mapQuery }}&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc=near"
 							title="Location Map"
 							aria-label="Location Map"
 							width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
