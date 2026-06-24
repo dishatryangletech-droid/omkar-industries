@@ -235,7 +235,7 @@
 												<div class="text-center">
 													<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
 														@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
-														<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/service/service-01.jpg')) }}"
+														<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : asset('frontend/images/no-image.png') }}"
 															alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100"
 															style="height: 180px; object-fit: cover;">
 													</div>
@@ -250,7 +250,7 @@
 
 								@if(isset($product) && $product->image_parts && is_array($product->image_parts) && count($product->image_parts) > 0)
 									<div class="pbmit-custom-heading mt-5">
-										<h3 class="pbmit-title">Designed Machine Parts :</h3>
+										<h3 class="pbmit-title">Image Parts :</h3>
 									</div>
 									<div class="row mt-4 mb-5">
 										@foreach($product->image_parts as $part)
@@ -259,7 +259,7 @@
 												<div class="text-center">
 													<div style="border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
 														@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
-														<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/service/service-01.jpg')) }}"
+														<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : asset('frontend/images/no-image.png') }}"
 															alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100"
 															style="height: 180px; object-fit: cover;">
 													</div>

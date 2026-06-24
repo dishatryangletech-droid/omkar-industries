@@ -230,6 +230,9 @@ class ProductController extends Controller
         ]);
 
         $data = $request->only(['title', 'slug', 'sub_title', 'short_description', 'content', 'video_link', 'key_features', 'industries', 'meta_title', 'meta_description', 'meta_keywords', 'trade_information', 'advantages', 'related_products', 'parent_id', 'client_review_title', 'client_review_description']);
+        $data['advantages'] = $request->input('advantages', []);
+        $data['key_features'] = $request->input('key_features', []);
+        $data['related_products'] = $request->input('related_products', []);
         if (empty($data['parent_id'])) {
             $data['parent_id'] = 0;
         }
