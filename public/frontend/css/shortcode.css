@@ -1622,6 +1622,8 @@ aside.widget.widget-tag-cloud a,
 	font-size: 30px;
 	line-height: 30px;
 }
+.pbmit-service-style-1:hover .pbmit-service-title a,
+.pbmit-service-style-1:hover .pbmit-button-inner,
 .pbmit-service-style-1 .pbmit-service-title a:hover,
 .pbmit-service-style-1 .pbmit-button-inner:hover{
 	color: var(--pbmit-link-color-hover);

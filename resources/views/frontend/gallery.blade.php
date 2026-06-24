@@ -56,6 +56,13 @@
 				<!-- Portfolio Sortable Col 3 Start -->
 				<section class="section-lg pbmit-sortable-yes pbmit-element-portfolio-style-1">
 					<div class="container">
+						<div class="pbmit-heading-subheading text-center">
+							<h4 class="pbmit-subtitle">OUR GALLERY</h4>
+							<h2 class="pbmit-title">Our Work & Facilities</h2>
+							<div class="pbmit-heading-desc col-sm-8 col-md-6 mx-auto mb-4">
+								Take a look at our manufacturing facilities, machinery, and successful projects delivered to our clients.
+							</div>
+						</div>
 						<div class="pbmit-sortable-list">
 							<ul class="pbmit-sortable-list-ul">
 								<li><a href="#" class="pbmit-sortable-link pbmit-selected" data-sortby="*">All</a></li>
