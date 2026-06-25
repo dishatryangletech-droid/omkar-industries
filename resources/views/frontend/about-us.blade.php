@@ -22,7 +22,8 @@
 							<div class="pbmit-breadcrumb">
 								<div class="pbmit-breadcrumb-inner">
 									<span>
-										<a title="" href="{{ route('frontend.home') }}" class="home"><span>Home</span></a>
+										<a title="" href="{{ route('frontend.home') }}"
+											class="home"><span>Home</span></a>
 									</span>
 									<span class="sep"></span>
 									<span><span class="post-root post post-post current-item"> About Us</span></span>
@@ -265,15 +266,14 @@
 											<div class="pbmit-fid-inner">
 												<span class="pbmit-fid-before"></span>
 												<span class="pbmit-number-rotate numinate"
-													data-appear-animation="animateDigits" data-from="0"
-													data-to="{{ $stat1Num ?: '0' }}" data-interval="5" data-before=""
-													data-before-style="" data-after=""
-													data-after-style="">{{ $stat1Num ?: '0' }}</span>
-												<span class="pbmit-fid"><span>{{ $stat1Suffix }}</span></span>
+													data-appear-animation="animateDigits" data-from="0" data-to="1997"
+													data-interval="5" data-before="" data-before-style="" data-after=""
+													data-after-style="">1997</span>
+												<span class="pbmit-fid"><span></span></span>
 											</div>
 											<h2 class="pbmit-fid-title"></h2>
 											<div class="pbmit-heading-desc">
-												{{ $aboutUs->subtitle_dsc1 ?? 'They are in a job related to their field of study' }}
+												Established with over 28+ years.
 											</div>
 										</div>
 									</div>
@@ -289,17 +289,16 @@
 									<div class="pbmit-fld-contents">
 										<div class="pbmit-fld-wrap">
 											<div class="pbmit-fid-inner">
-												<span class="pbmit-fid-before"></span>
+												<span class="pbmit-fid-before">₹</span>
 												<span class="pbmit-number-rotate numinate"
-													data-appear-animation="animateDigits" data-from="0"
-													data-to="{{ $stat2Num ?: '0' }}" data-interval="5" data-before=""
-													data-before-style="" data-after=""
-													data-after-style="">{{ $stat2Num ?: '0' }}</span>
-												<span class="pbmit-fid"><span>{{ $stat2Suffix }}</span></span>
+													data-appear-animation="animateDigits" data-from="0" data-to="85"
+													data-interval="5" data-before="" data-before-style="" data-after=""
+													data-after-style="">85</span>
+												<span class="pbmit-fid"><span>L+</span></span>
 											</div>
 											<h2 class="pbmit-fid-title"></h2>
 											<div class="pbmit-heading-desc">
-												{{ $aboutUs->subtitle_dsc2 ?? 'Achieved career growth within their sector industry.' }}
+												Annual turnover reflecting our consistent growth.
 											</div>
 										</div>
 									</div>
@@ -317,15 +316,14 @@
 											<div class="pbmit-fid-inner">
 												<span class="pbmit-fid-before"></span>
 												<span class="pbmit-number-rotate numinate"
-													data-appear-animation="animateDigits" data-from="0"
-													data-to="{{ $stat3Num ?: '0' }}" data-interval="5" data-before=""
-													data-before-style="" data-after=""
-													data-after-style="">{{ $stat3Num ?: '0' }}</span>
-												<span class="pbmit-fid"><span>{{ $stat3Suffix }}</span></span>
+													data-appear-animation="animateDigits" data-from="0" data-to="6"
+													data-interval="5" data-before="" data-before-style="" data-after=""
+													data-after-style="">6</span>
+												<span class="pbmit-fid"><span>+</span></span>
 											</div>
 											<h2 class="pbmit-fid-title"></h2>
 											<div class="pbmit-heading-desc">
-												{{ $aboutUs->subtitle_dsc3 ?? 'Gained experience through real-world project.' }}
+												Manufacturing premium wood processing machines for customers.
 											</div>
 										</div>
 									</div>
@@ -483,7 +481,7 @@
 								</div>
 								<div class="col-md-6 right-col">
 									<div class="text-md-end mt-md-0 mt-4">
-										<a href="https://www.youtube.com/watch?v=x36EQP2og-k"
+										<a href="https://www.youtube.com/watch?v=IWUbHtNdKlU"
 											class="pbmit-video-play-btn pbmin-lightbox-video">
 											<svg aria-hidden="true" class="e-font-icon-svg e-fas-play"
 												viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
@@ -502,7 +500,7 @@
 									<div class="ps-xl-4">
 										<div class="pbmit-heading-subheading text-center text-xl-start">
 											<h4 class="pbmit-subtitle" style="text-transform: uppercase;">OUR SERVICE
-												PROVIDE IN AREA</h4>
+												PROVIDE IN COUNTRY</h4>
 										</div>
 										<div class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-xl-start mt-4"
 											style="width:980px;">
@@ -531,11 +529,10 @@
 								</div>
 								<div class="col-md-12 col-xl-4">
 									<div class="pbmit-heading-subheading text-center text-xl-start">
-										<h4 class="pbmit-subtitle">OUR LOCATIONS</h4>
 									</div>
 									<div class="map-img text-center text-xl-start mt-4">
 										<img src="{{ asset('frontend/images/homepage-2/map.png') }}" class="img-fluid"
-											alt="">
+											alt="" style="height: 300px; margin-top: -65px;">
 									</div>
 								</div>
 							</div>
@@ -569,11 +566,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Preparation Of Materials
+												Material Selection & Preparation
 											</h2>
-											<div class="pbmit-heading-desc">Moreover by automating repetitive tasks, you
-												can
-												free up your workforce.</div>
+											<div class="pbmit-heading-desc">Premium raw materials are carefully selected
+												to ensure durability and consistent machine performance.</div>
 										</div>
 									</div>
 								</article>
@@ -593,11 +589,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Component Sourcing and Procurement
+												Precision Manufacturing
 											</h2>
-											<div class="pbmit-heading-desc">Clear processes reduce confusion and keep
-												teams
-												focused on goals.</div>
+											<div class="pbmit-heading-desc">Advanced machining processes deliver
+												accurate components with exceptional dimensional precision.</div>
 										</div>
 									</div>
 								</article>
@@ -617,10 +612,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Testing and Quality Control
+												Quality Testing & Inspection
 											</h2>
-											<div class="pbmit-heading-desc">Modern tools ensure reliability and meet
-												industry standards by default.</div>
+											<div class="pbmit-heading-desc">Every machine undergoes rigorous quality
+												checks before reaching our customers.</div>
 										</div>
 									</div>
 								</article>
@@ -642,11 +637,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Final Assembly and Integration
+												Delivery & Customer Support
 											</h2>
-											<div class="pbmit-heading-desc">Proven workflows ensure seamless completion
-												and
-												product readiness.</div>
+											<div class="pbmit-heading-desc">Timely delivery and dedicated support ensure
+												complete customer satisfaction.</div>
 										</div>
 									</div>
 								</article>
@@ -796,8 +790,9 @@
 											<h2 class="pbmit-title">What Our Customers Say?</h2>
 										</div>
 										<div class="swiper-slider" data-autoplay="false" data-loop="false"
-											data-dots="false" data-arrows="true" data-arrows-class="about-testimonial-arrow"
-											data-columns="1" data-margin="30" data-effect="slide">
+											data-dots="false" data-arrows="true"
+											data-arrows-class="about-testimonial-arrow" data-columns="1"
+											data-margin="30" data-effect="slide">
 											<div class="swiper-wrapper">
 												@forelse($testimonials as $index => $testimonial)
 													<article class="pbmit-testimonial-style-1 swiper-slide">
@@ -828,7 +823,9 @@
 													<article class="pbmit-testimonial-style-1 swiper-slide">
 														<div class="pbminfotech-post-item">
 															<blockquote class="pbminfotech-testimonial-text">
-																<p>They are the best of the best, and expertly trained team members who take the extra step and go the extra mile.</p>
+																<p>They are the best of the best, and expertly trained team
+																	members who take the extra step and go the extra mile.
+																</p>
 															</blockquote>
 															<div class="pbminfotech-box-star-ratings">
 																@for($i = 1; $i <= 5; $i++)
@@ -838,7 +835,8 @@
 															<div class="pbminfotech-box-author">
 																<div class="pbmit-auther-content">
 																	<h3 class="pbminfotech-box-title">Customer</h3>
-																	<div class="pbminfotech-testimonial-detail">Wood Industries</div>
+																	<div class="pbminfotech-testimonial-detail">Wood
+																		Industries</div>
 																</div>
 															</div>
 														</div>
@@ -900,4 +898,3 @@
 		<!-- Scripts JS -->
 	</div>
 </x-layouts.app>
-

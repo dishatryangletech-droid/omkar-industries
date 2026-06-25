@@ -146,38 +146,34 @@
 					<div class="col-md-6">
 						<div class=" pbmit-footer-social-area">
 							<ul class="pbmit-social-links">
+								@if(!empty($footerSettings->facebook_link))
 								<li class="pbmit-social-li pbmit-social-facebook">
-									@php 
-										$fbLink = $footerSettings->facebook_link ?? '#'; 
-									@endphp
-									<a title="Facebook" href="{{ $fbLink }}" target="_blank">
+									<a title="Facebook" href="{{ $footerSettings->facebook_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-facebook-f"></i></span>
 									</a>
 								</li>
+								@endif
+								@if(!empty($footerSettings->twitter_link))
 								<li class="pbmit-social-li pbmit-social-twitter">
-									@php 
-										$twLink = $footerSettings->twitter_link ?? '#'; 
-									@endphp
-									<a title="Twitter" href="{{ $twLink }}" target="_blank">
+									<a title="Twitter" href="{{ $footerSettings->twitter_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-twitter-2"></i></span>
 									</a>
 								</li>
+								@endif
+								@if(!empty($footerSettings->linkedin_link))
 								<li class="pbmit-social-li pbmit-social-linkedin">
-									@php 
-										$liLink = $footerSettings->linkedin_link ?? '#'; 
-									@endphp
-									<a title="LinkedIn" href="{{ $liLink }}" target="_blank">
+									<a title="LinkedIn" href="{{ $footerSettings->linkedin_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-linkedin-in"></i></span>
 									</a>
 								</li>
+								@endif
+								@if(!empty($footerSettings->instagram_link))
 								<li class="pbmit-social-li pbmit-social-instagram">
-									@php 
-										$igLink = $footerSettings->instagram_link ?? '#'; 
-									@endphp
-									<a title="Instagram" href="{{ $igLink }}" target="_blank">
+									<a title="Instagram" href="{{ $footerSettings->instagram_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-instagram"></i></span>
 									</a>
 								</li>
+								@endif
 							</ul>
 						</div>
 					</div>

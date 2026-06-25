@@ -68,7 +68,7 @@
 								@foreach($careers as $index => $career)
 								<div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}" id="v-pills-job{{ $career->id }}" role="tabpanel" aria-labelledby="v-pills-job{{ $career->id }}-tab">
 									<h3 class="mb-1">{{ $career->title }}</h3>
-									<p class="fw-bold mb-3" style="color:#ffb800"><i class="ti ti-briefcase me-1"></i> Job Type: {{ $career->job_type }}</p>
+									<p class="fw-bold mb-3"><i class="ti ti-briefcase me-1"></i> Job Type: {{ $career->job_type }}</p>
 									<p>{!! nl2br(e($career->description)) !!}</p>
                                     @if(is_array($career->requirements) && count($career->requirements) > 0)
                                     <h5 class="mt-4 mb-2">Requirements / Position Roles:</h5>

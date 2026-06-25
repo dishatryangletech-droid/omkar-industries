@@ -222,27 +222,38 @@
 					</div>
 					<div class="pbmit-right-box d-flex align-items-center">
 						<div class="pbmit-header-social">
+							@php
+								$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
+							@endphp
 							<ul class="pbmit-social-links">
+								@if(!empty($footerSettings->facebook_link))
 								<li class="pbmit-social-li pbmit-social-facebook">
-									<a title="Facebook" href="#" target="_blank">
+									<a title="Facebook" href="{{ $footerSettings->facebook_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-facebook-f"></i></span>
 									</a>
 								</li>
+								@endif
+								@if(!empty($footerSettings->twitter_link))
 								<li class="pbmit-social-li pbmit-social-twitter">
-									<a title="Twitter" href="#" target="_blank">
+									<a title="Twitter" href="{{ $footerSettings->twitter_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-twitter-2"></i></span>
 									</a>
 								</li>
-								<li class="pbmit-social-li pbmit-social-youtube">
-									<a title="Youtube" href="#" target="_blank">
-										<span><i class="pbmit-base-icon-youtube-play"></i></span>
+								@endif
+								@if(!empty($footerSettings->linkedin_link))
+								<li class="pbmit-social-li pbmit-social-linkedin">
+									<a title="LinkedIn" href="{{ $footerSettings->linkedin_link }}" target="_blank">
+										<span><i class="pbmit-base-icon-linkedin-in"></i></span>
 									</a>
 								</li>
+								@endif
+								@if(!empty($footerSettings->instagram_link))
 								<li class="pbmit-social-li pbmit-social-instagram">
-									<a title="Instagram" href="#" target="_blank">
+									<a title="Instagram" href="{{ $footerSettings->instagram_link }}" target="_blank">
 										<span><i class="pbmit-base-icon-instagram"></i></span>
 									</a>
 								</li>
+								@endif
 							</ul>
 						</div>
 						<div class="pbmit-header-button">

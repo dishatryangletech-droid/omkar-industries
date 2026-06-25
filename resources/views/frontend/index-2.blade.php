@@ -193,12 +193,16 @@
 
 						</div>
 						<div class="row">
+							@php
+								$gridSetting = \App\Models\GeneralSetting::first()->product_grid_columns ?? 3;
+								$gridClass = $gridSetting == 2 ? 'col-md-6 col-lg-6' : ($gridSetting == 4 ? 'col-md-6 col-lg-3' : 'col-md-6 col-lg-4');
+							@endphp
 							@foreach($products as $product)
 								@php
 									$isParent = \App\Models\Product::where('parent_id', $product->id)->exists();
 									$productUrl = route('product-details', ['slug' => $product->slug]);
 								@endphp
-								<div class="col-md-4 mb-5">
+								<div class="{{ $gridClass }} mb-5">
 									<article class="pbmit-service-style-1">
 										<div class="pbminfotech-post-item">
 											<div class="pbmit-box-content-wrap">
@@ -240,7 +244,7 @@
 						</div>
 						<div class="pbmit-bottom-text text-center mt-5 pt-md-2">
 							Latest solutions, and decades of experience. &nbsp; <a
-								href="{{ url('our-product') }}"><u>Explore Other Products</u></a>
+								href="{{ url('our-product/other-product-page') }}"><u>Explore Other Products</u></a>
 						</div>
 					</div>
 				</section>
@@ -401,14 +405,14 @@
 											<div class="pbmit-fid-inner">
 												<span class="pbmit-fid-before"></span>
 												<span class="pbmit-number-rotate numinate"
-													data-appear-animation="animateDigits" data-from="0" data-to="92"
+													data-appear-animation="animateDigits" data-from="0" data-to="1997"
 													data-interval="5" data-before="" data-before-style="" data-after=""
-													data-after-style="">92</span>
-												<span class="pbmit-fid"><span>%</span></span>
+													data-after-style="">1997</span>
+												<span class="pbmit-fid"><span></span></span>
 											</div>
 											<h2 class="pbmit-fid-title"></h2>
 											<div class="pbmit-heading-desc">
-												They are in a job related to their field of study
+												Established with over 28+ years.
 											</div>
 										</div>
 									</div>
@@ -424,16 +428,16 @@
 									<div class="pbmit-fld-contents">
 										<div class="pbmit-fld-wrap">
 											<div class="pbmit-fid-inner">
-												<span class="pbmit-fid-before"></span>
+												<span class="pbmit-fid-before">₹</span>
 												<span class="pbmit-number-rotate numinate"
 													data-appear-animation="animateDigits" data-from="0" data-to="85"
 													data-interval="5" data-before="" data-before-style="" data-after=""
 													data-after-style="">85</span>
-												<span class="pbmit-fid"><span>%</span></span>
+												<span class="pbmit-fid"><span>L+</span></span>
 											</div>
 											<h2 class="pbmit-fid-title"></h2>
 											<div class="pbmit-heading-desc">
-												Achieved career growth within their sector industry.
+												Annual turnover reflecting our consistent growth.
 											</div>
 										</div>
 									</div>
@@ -451,14 +455,14 @@
 											<div class="pbmit-fid-inner">
 												<span class="pbmit-fid-before"></span>
 												<span class="pbmit-number-rotate numinate"
-													data-appear-animation="animateDigits" data-from="0" data-to="90"
+													data-appear-animation="animateDigits" data-from="0" data-to="6"
 													data-interval="5" data-before="" data-before-style="" data-after=""
-													data-after-style="">90</span>
-												<span class="pbmit-fid"><span>%</span></span>
+													data-after-style="">6</span>
+												<span class="pbmit-fid"><span>+</span></span>
 											</div>
 											<h2 class="pbmit-fid-title"></h2>
 											<div class="pbmit-heading-desc">
-												Gained experience through real-world project.
+												Manufacturing premium wood processing machines for customers.
 											</div>
 										</div>
 									</div>
@@ -499,11 +503,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Preparation Of Materials
+												Material Selection & Preparation
 											</h2>
-											<div class="pbmit-heading-desc">Moreover by automating repetitive tasks, you
-												can
-												free up your workforce.</div>
+											<div class="pbmit-heading-desc">Premium raw materials are carefully selected
+												to ensure durability and consistent machine performance.</div>
 										</div>
 									</div>
 								</article>
@@ -523,11 +526,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Component Sourcing and Procurement
+												Precision Manufacturing
 											</h2>
-											<div class="pbmit-heading-desc">Clear processes reduce confusion and keep
-												teams
-												focused on goals.</div>
+											<div class="pbmit-heading-desc">Advanced machining processes deliver
+												accurate components with exceptional dimensional precision.</div>
 										</div>
 									</div>
 								</article>
@@ -547,10 +549,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Testing and Quality Control
+												Quality Testing & Inspection
 											</h2>
-											<div class="pbmit-heading-desc">Modern tools ensure reliability and meet
-												industry standards by default.</div>
+											<div class="pbmit-heading-desc">Every machine undergoes rigorous quality
+												checks before reaching our customers.</div>
 										</div>
 									</div>
 								</article>
@@ -572,11 +574,10 @@
 												</div>
 											</div>
 											<h2 class="pbmit-element-title">
-												Final Assembly and Integration
+												Delivery & Customer Support
 											</h2>
-											<div class="pbmit-heading-desc">Proven workflows ensure seamless completion
-												and
-												product readiness.</div>
+											<div class="pbmit-heading-desc">Timely delivery and dedicated support ensure
+												complete customer satisfaction.</div>
 										</div>
 									</div>
 								</article>
@@ -592,7 +593,7 @@
 					<div class="container-fluid p-0">
 						<div class="video-play-bg">
 							<div class="pbmit-icon-wrapper">
-								<a href="https://www.youtube.com/watch?v=x36EQP2og-k"
+								<a href="https://www.youtube.com/watch?v=IWUbHtNdKlU"
 									class="pbmit-video-play-btn pbmin-lightbox-video">
 									<svg aria-hidden="true" class="e-font-icon-svg e-fas-play" viewBox="0 0 448 512"
 										xmlns="http://www.w3.org/2000/svg">

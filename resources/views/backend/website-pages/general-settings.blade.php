@@ -93,6 +93,20 @@
                                     <div class="invalid-feedback d-block mb-3">{{ $message }}</div>
                                 @enderror
                             </div>
+
+                            <!-- Product Grid Columns -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label font-weight-bold" for="product_grid_columns">Product Grid Columns</label>
+                                <select class="form-select @error('product_grid_columns') is-invalid @enderror" id="product_grid_columns" name="product_grid_columns">
+                                    <option value="2" {{ old('product_grid_columns', $settings->product_grid_columns) == 2 ? 'selected' : '' }}>2 Columns</option>
+                                    <option value="3" {{ old('product_grid_columns', $settings->product_grid_columns ?? 3) == 3 ? 'selected' : '' }}>3 Columns</option>
+                                    <option value="4" {{ old('product_grid_columns', $settings->product_grid_columns) == 4 ? 'selected' : '' }}>4 Columns</option>
+                                </select>
+                                <small class="text-muted d-block mt-1">Number of products to show per row on the frontend (Home, Products list, Related products).</small>
+                                @error('product_grid_columns')
+                                    <div class="invalid-feedback d-block mb-3">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="mt-4 text-end">

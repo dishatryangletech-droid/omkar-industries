@@ -55,11 +55,15 @@
 							</div>
 						</div>
 						<div class="pbmit-element-posts-wrapper row">
+							@php
+								$gridSetting = \App\Models\GeneralSetting::first()->product_grid_columns ?? 3;
+								$gridClass = $gridSetting == 2 ? 'col-md-6 col-lg-6' : ($gridSetting == 4 ? 'col-md-6 col-lg-3' : 'col-md-6 col-lg-4');
+							@endphp
 							@foreach($filteredProducts as $product)
 								@php
 									$productUrl = route('product-details', ['slug' => $product->slug]);
 								@endphp
-								<article class="pbmit-service-style-1 col-md-6 col-lg-4">
+								<article class="pbmit-service-style-1 {{ $gridClass }}">
 									<div class="pbminfotech-post-item">
 										<div class="pbmit-box-content-wrap">
 											<div class="pbmit-image-wrap">

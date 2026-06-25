@@ -13,7 +13,7 @@ class HomeController extends Controller
         $faqs = \App\Models\Faq::where('status', 'Active')->orderBy('sort_order', 'asc')->get();
         $testimonials = \App\Models\Testimonial::where('status', 'Active')->get();
         $partners = \Illuminate\Support\Facades\File::exists(public_path('frontend/images/partner_logos')) ? \Illuminate\Support\Facades\File::files(public_path('frontend/images/partner_logos')) : [];
-        
+
         $aboutUs = \App\Models\HomePage::where('section_type', 'about_us')->first();
         $mission = \App\Models\AboutUs::find(1);
         $vision = \App\Models\AboutUs::find(2);
