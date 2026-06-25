@@ -107,9 +107,21 @@
 							<div class="pbmit-single-project-details-wrapper">
 								<div class="pbmit-featured-img-wrapper">
 									@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
-									<img src="{{ isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)) ? asset('storage/' . $product->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/portfolio/portfolio-single-01.webp')) }}"
-										class="img-fluid w-100" style="height: 600px; object-fit: contain;"
-										alt="{{ $product->title ?? 'Product Image' }}">
+									@if(isset($product) && $product->slider_images && is_array($product->slider_images) && count($product->slider_images) > 0)
+										<div class="swiper-slider overflow-hidden" data-columns="1" data-loop="true" data-autoplay="true" data-autoplayspeed="3000" data-dots="true" data-arrows="true" data-effect="slide" data-margin="0">
+											<div class="swiper-wrapper">
+												@foreach($product->slider_images as $img)
+													<div class="swiper-slide">
+														<img src="{{ asset('storage/' . $img) }}" class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $product->title ?? 'Product Slider Image' }}">
+													</div>
+												@endforeach
+											</div>
+										</div>
+									@else
+										<img src="{{ isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)) ? asset('storage/' . $product->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/portfolio/portfolio-single-01.webp')) }}"
+											class="img-fluid w-100" style="height: 600px; object-fit: contain;"
+											alt="{{ $product->title ?? 'Product Image' }}">
+									@endif
 								</div>
 							</div>
 							<div class="pbmit-entry-content">
@@ -365,9 +377,9 @@
 
 									<div class="row">
 										<div class="col-md-6 full-width-1200">
-											<div class="swiper-slider" data-columns="1" data-loop="true"
+											<div class="swiper-slider overflow-hidden" data-columns="1" data-loop="false"
 												data-autoplay="true" data-autoplayspeed="3000" data-dots="true"
-												data-arrows="false">
+												data-arrows="false" data-effect="slide" data-margin="30">
 												<div class="swiper-wrapper">
 													@if(isset($product) && $product->client_review_images && is_array($product->client_review_images) && count($product->client_review_images) > 0)
 														@foreach($product->client_review_images as $img)
