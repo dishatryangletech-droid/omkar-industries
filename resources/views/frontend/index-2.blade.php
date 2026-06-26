@@ -902,7 +902,7 @@
 							<h4 class="pbmit-subtitle">Fresh News</h4>
 							<h2 class="pbmit-title">Articles & blog posts with <br> useful information</h2>
 						</div>
-						<div class="swiper-slider" data-autoplay="false" data-loop="false" data-dots="false"
+						<div class="swiper-slider" data-autoplay="false" data-loop="false" data-dots="true"
 							data-arrows="false" data-columns="3" data-margin="30" data-effect="slide">
 							<div class="swiper-wrapper">
 								@foreach($blogs as $blog)

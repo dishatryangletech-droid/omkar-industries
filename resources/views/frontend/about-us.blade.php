@@ -502,8 +502,7 @@
 											<h4 class="pbmit-subtitle" style="text-transform: uppercase;">OUR SERVICE
 												PROVIDE IN COUNTRY</h4>
 										</div>
-										<div class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-xl-start mt-4"
-											style="width:980px;">
+										<div class="country-flags d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-xl-start mt-4">
 											@foreach(\App\Models\Client::where('status', 'Active')->orderBy('name', 'asc')->get() as $client)
 												<div class="text-center" style="width: 55px;">
 													<div style="height: 35px; display: flex; align-items: center; justify-content: center;"
@@ -530,7 +529,7 @@
 								<div class="col-md-12 col-xl-4">
 									<div class="pbmit-heading-subheading text-center text-xl-start">
 									</div>
-									<div class="map-img text-center text-xl-start mt-4">
+									<div class="map-img service-map-img text-center text-xl-start mt-4">
 										<img src="{{ asset('frontend/images/homepage-2/map.png') }}" class="img-fluid"
 											alt="" style="height: 300px; margin-top: -65px;">
 									</div>
@@ -720,7 +719,7 @@
 								</article>
 							@endforeach
 
-							<div class="col-md-12 col-lg-4 col-xl-6 d-flex align-items-center">
+							<div class="team-cta-col col-md-12 col-lg-4 col-xl-6 d-flex align-items-center">
 								<div class="team-btn-bg w-100" style="margin-left: 0;margin-top: -80px;">
 									<p class="pbmit-text"> Skilled experts driving quality and innovation.<br>Together,
 										we build quality and trust.</p>

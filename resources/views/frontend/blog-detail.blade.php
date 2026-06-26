@@ -28,7 +28,7 @@
 		}
 	</style>
 <!-- Page Wrapper -->
-   <div class="page-wrapper">
+   <div class="page-wrapper detail-page blog-detail-page">
 
 	<!-- Header Main Area -->
 	<header class="site-header pbmit-header-style-1" id="masthead">
@@ -79,9 +79,9 @@
 									<div class="pbmit-featured-img-wrapper">
 										<div class="pbmit-featured-wrapper">
 											@if($blog->image)
-											<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $blog->title }}">
+											<img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid w-100 detail-main-image" style="height: 600px; object-fit: contain;" alt="{{ $blog->title }}">
 											@else
-											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $blog->title }}">
+											<img src="{{ asset('frontend/images/blog/blog-04b.jpg') }}" class="img-fluid w-100 detail-main-image" style="height: 600px; object-fit: contain;" alt="{{ $blog->title }}">
 											@endif
 										</div>
 									</div>  

@@ -80,12 +80,15 @@
 	}
 	var pbmit_toggleSidebar = function() {
 		jQuery('#menu-toggle').on('click', function() {
-			jQuery("body:not(.mega-menu-pbminfotech-top) .pbmit-navbar > div, body:not(.mega-menu-pbminfotech-top)").toggleClass("active");
+			jQuery("body:not(.mega-menu-pbminfotech-top) #masthead .pbmit-navbar > div, body:not(.mega-menu-pbminfotech-top)").addClass("active");
+			jQuery(".pbmit-mobile-menu-bg").addClass("active");
+			jQuery("body").addClass("pbmit-mobile-menu-open");
 		})
-		if (jQuery('.pbmit-navbar > div > .closepanel').length == 0) {
-			jQuery('.pbmit-navbar > div').append('<span class="closepanel"><svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="20.163" height="20.163" viewBox="0 0 26.163 26.163"><rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect><rect width="36" height="1" transform="translate(0 25.456) rotate(-45)"></rect></svg></span>');
-			jQuery('.pbmit-navbar > div > .closepanel, .mega-menu-pbminfotech-top .nav-menu-toggle').on('click', function() {
-				jQuery(".pbmit-navbar > div, body, .mega-menu-wrap").toggleClass("active");
+		if (jQuery('#masthead .pbmit-navbar > div > .closepanel').length == 0) {
+			jQuery('#masthead .pbmit-navbar > div').append('<span class="closepanel"><svg class="qodef-svg--close qodef-m" xmlns="http://www.w3.org/2000/svg" width="20.163" height="20.163" viewBox="0 0 26.163 26.163"><rect width="36" height="1" transform="translate(0.707) rotate(45)"></rect><rect width="36" height="1" transform="translate(0 25.456) rotate(-45)"></rect></svg></span>');
+			jQuery('#masthead .pbmit-navbar > div > .closepanel, .mega-menu-pbminfotech-top .nav-menu-toggle').on('click', function() {
+				jQuery("#masthead .pbmit-navbar > div, body, .mega-menu-wrap, .pbmit-mobile-menu-bg").removeClass("active");
+				jQuery("body").removeClass("pbmit-mobile-menu-open");
 			});
 			return false;
 		}

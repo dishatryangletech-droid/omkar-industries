@@ -1,7 +1,7 @@
 <x-layouts.app title="Exhibition Details - Omkar">
 <div>
 <!-- Page Wrapper -->
-    <div class="page-wrapper">
+    <div class="page-wrapper detail-page exhibition-detail-page">
 
 		<!-- Header Main Area -->
 		<header class="site-header pbmit-header-style-1" id="masthead">
@@ -53,7 +53,7 @@
 										? asset('storage/' . $exhibition->image) 
 										: asset('frontend/images/blog/blog-01.jpg');
 								@endphp
-								<img src="{{ $imagePath }}" alt="{{ $exhibition->title }}" style="width: 100%; height: 600px; object-fit: cover; border-radius: 10px;">
+								<img src="{{ $imagePath }}" class="detail-main-image" alt="{{ $exhibition->title }}" style="width: 100%; height: 600px; object-fit: cover; border-radius: 10px;">
 							</div>
 						</div>
 						<div class="row">

@@ -50,7 +50,7 @@
 			}
 		</style>
 		<!-- Page Wrapper -->
-		<div class="page-wrapper">
+		<div class="page-wrapper detail-page product-detail-page">
 
 			<!-- Header Main Area -->
 			<header class="site-header pbmit-header-style-1" id="masthead">
@@ -112,14 +112,14 @@
 											<div class="swiper-wrapper">
 												@foreach($product->slider_images as $img)
 													<div class="swiper-slide">
-														<img src="{{ asset('storage/' . $img) }}" class="img-fluid w-100" style="height: 600px; object-fit: contain;" alt="{{ $product->title ?? 'Product Slider Image' }}">
+														<img src="{{ asset('storage/' . $img) }}" class="img-fluid w-100 detail-main-image" style="height: 600px; object-fit: contain;" alt="{{ $product->title ?? 'Product Slider Image' }}">
 													</div>
 												@endforeach
 											</div>
 										</div>
 									@else
 										<img src="{{ isset($product) && $product->image && file_exists(public_path('storage/' . $product->image)) ? asset('storage/' . $product->image) : ($defaultSettings && $defaultSettings->default_product_image ? asset('storage/' . $defaultSettings->default_product_image) : asset('frontend/images/portfolio/portfolio-single-01.webp')) }}"
-											class="img-fluid w-100" style="height: 600px; object-fit: contain;"
+											class="img-fluid w-100 detail-main-image" style="height: 600px; object-fit: contain;"
 											alt="{{ $product->title ?? 'Product Image' }}">
 									@endif
 								</div>

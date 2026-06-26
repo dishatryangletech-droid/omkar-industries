@@ -89,6 +89,9 @@
 							<nav class="main-navigation pbmit-navbar main-menu navbar-expand-xl navbar-light"
 								id="site-navigation">
 								<div class="collapse navbar-collapse" id="pbmit-menu">
+									<button type="button" class="closepanel" aria-label="Close menu">
+										<span aria-hidden="true">&times;</span>
+									</button>
 									<ul class="navigation clearfix" id="pbmit-top-menu">
 										<li class="{{ request()->is('home') || request()->is('/') ? 'active' : '' }}">
 											<a href="/home">Home</a>
@@ -109,7 +112,7 @@
 										<li
 											class="dropdown {{ request()->is('products') || request()->is('product-details') ? 'active' : '' }}">
 											<a href="/products">Products</a>
-											<ul
+											<ul class="pbmit-mega-menu-content"
 												style="width: 900px; padding: 25px; left: 0; right: auto; transform: none; box-sizing: border-box; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
 												<li style="padding: 0; display: block;">
 													<div class="row">
@@ -162,15 +165,12 @@
 																		style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
 																		<h6 class="text-white mb-1 fw-bold mb-2">{{ $otherProduct->title }}</h6>
 																		<a href="{{ route('product-details', ['slug' => $otherProduct->slug]) }}"
-																			class="pbmit-btn pbmit-btn-white"
-																			style="transform: scale(0.85); transform-origin: left top; margin-top: 15px;">
+																			class="pbmit-btn pbmit-mega-view-all">
 																			<span class="pbmit-button-content-wrapper">
 																				<span class="pbmit-button-icon">
-																					<i
-																						class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																					<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																				</span>
-																				<span class="pbmit-button-text">View
-																					All</span>
+																				<span class="pbmit-button-text">View All</span>
 																			</span>
 																		</a>
 																	</div>
@@ -185,15 +185,12 @@
 																			Products
 																		</h6>
 																		<a href="/products"
-																			class="pbmit-btn pbmit-btn-white"
-																			style="transform: scale(0.85); transform-origin: left top; margin-top: 15px;">
+																			class="pbmit-btn pbmit-mega-view-all">
 																			<span class="pbmit-button-content-wrapper">
 																				<span class="pbmit-button-icon">
-																					<i
-																						class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																					<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																				</span>
-																				<span class="pbmit-button-text">View
-																					All</span>
+																				<span class="pbmit-button-text">View All</span>
 																			</span>
 																		</a>
 																	</div>

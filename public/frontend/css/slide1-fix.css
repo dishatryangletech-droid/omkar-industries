@@ -29,8 +29,9 @@
 	#slide-1 .pbmit-slider-title { font-size: 71px; line-height: 71px; }
 }
 @media(max-width:767px) {
-	#slide-1 .pbmit-slider-title { font-size: 49px; line-height: 49px; border-bottom: none; }
-	#slide-1 .pbmit-slider-desc { display: none; }
+	#slide-1 .pbmit-slider-title { font-size: 49px; line-height: 49px; border-bottom: none; margin-top: 10px; }
+	#slide-1 .pbmit-slider-desc { display: block; margin-top: 15px; }
+	#slide-1 .pbmit-slider-content { padding-top: 140px; }
 }
 @media(max-width:575px) {
 	#slide-1 .pbmit-slider-title { font-size: 35px; line-height: 35px; margin-bottom: 0; }
