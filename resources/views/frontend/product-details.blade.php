@@ -48,6 +48,14 @@
 			.pbmit-btn-sm:hover .pbmit-button-text {
 				text-shadow: 0 -18px #16222d, 0 0 #16222d !important;
 			}
+
+			.product-detail-slider .swiper-button-prev {
+				left: 10px !important;
+				right: auto !important;
+			}
+			.product-detail-slider .swiper-button-next {
+				right: 10px !important;
+			}
 		</style>
 		<!-- Page Wrapper -->
 		<div class="page-wrapper detail-page product-detail-page">
@@ -108,7 +116,7 @@
 								<div class="pbmit-featured-img-wrapper">
 									@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
 									@if(isset($product) && $product->slider_images && is_array($product->slider_images) && count($product->slider_images) > 0)
-										<div class="swiper-slider overflow-hidden" data-columns="1" data-loop="true" data-autoplay="true" data-autoplayspeed="3000" data-dots="true" data-arrows="true" data-effect="slide" data-margin="0">
+										<div class="swiper-slider overflow-hidden product-detail-slider" data-columns="1" data-loop="true" data-autoplay="true" data-autoplayspeed="3000" data-dots="true" data-arrows="true" data-effect="slide" data-margin="0">
 											<div class="swiper-wrapper">
 												@foreach($product->slider_images as $img)
 													<div class="swiper-slide">

@@ -7,10 +7,27 @@
 					<div class="site-branding">
 						<h1 class="site-title">
 							<a href="/index-2">
-								<img class="pbmit-main-logo" src="{{ asset('frontend/images/omkar-logo.png') }}"
-									alt="Induyst" style="width: 68px;">
-								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/omkar-logo.png') }}"
-									alt="Induyst">
+								<img class="pbmit-main-logo" src="{{ asset('frontend/images/full-logo2.png') }}"
+									alt="Induyst" style="width: auto; height: auto; max-height: 100%; max-width: 500px;
+    margin-top: 39px;
+    margin-left: -20px;">
+								<style>
+									.pbmit-sticky-header .pbmit-main-logo {
+										display: none !important;
+									}
+
+									.pbmit-sticky-header .pbmit-sticky-logo {
+										display: inline-block !important;
+										max-height: 150px !important;
+										max-width: 500px !important;
+									}
+
+									.pbmit-sticky-header .site-branding {
+										margin-right: 20px;
+									}
+								</style>
+								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/full-logo.png') }}"
+									alt="Induyst" style="width: auto; height: auto;">
 							</a>
 						</h1>
 					</div>
@@ -125,9 +142,9 @@
 																@php
 																	$otherProduct = \App\Models\Product::where('slug', 'other-product-page')->first();
 																	$otherId = $otherProduct ? $otherProduct->id : 0;
-																	
+
 																	$standaloneNav = \App\Models\Product::where('status', 'Active')
-																		->where(function($q) {
+																		->where(function ($q) {
 																			$q->whereNull('parent_id')->orWhere('parent_id', 0);
 																		})->where('is_parent', false)->where('id', '!=', $otherId)->take(4)->get();
 																	$parentNav = \App\Models\Product::where('status', 'Active')
@@ -138,7 +155,8 @@
 																	@php
 																		$navUrl = route('product-details', ['slug' => $navProduct->slug]);
 																	@endphp
-																	<div class="col-md-4 text-center {{ $loop->iteration > 3 ? 'pt-2' : '' }}">
+																	<div
+																		class="col-md-4 text-center {{ $loop->iteration > 3 ? 'pt-2' : '' }}">
 																		<a href="{{ $navUrl }}" class="d-block"
 																			style="padding: 0; text-decoration: none;">
 																			<img src="{{ ($navProduct->image && file_exists(public_path('storage/' . $navProduct->image))) ? asset('storage/' . $navProduct->image) : asset('frontend/images/portfolio/portfolio-img-01.jpg') }}"
@@ -151,7 +169,8 @@
 																	</div>
 																@endforeach
 																<div class="col-md-4 text-center d-xl-none pt-2">
-																	<a href="{{ $otherProduct ? route('product-details', ['slug' => $otherProduct->slug]) : '/products' }}" class="d-block"
+																	<a href="{{ $otherProduct ? route('product-details', ['slug' => $otherProduct->slug]) : '/products' }}"
+																		class="d-block"
 																		style="padding: 0; text-decoration: none;">
 																		<img src="{{ ($otherProduct && $otherProduct->image && file_exists(public_path('storage/' . $otherProduct->image))) ? asset('storage/' . $otherProduct->image) : asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
 																			class="img-fluid rounded w-100"
@@ -174,14 +193,18 @@
 																		alt="{{ $otherProduct->title }}">
 																	<div class="position-absolute bottom-0 start-0 w-100 p-3"
 																		style="background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-																		<h6 class="text-white mb-1 fw-bold mb-2">{{ $otherProduct->title }}</h6>
+																		<h6 class="text-white mb-1 fw-bold mb-2">
+																			{{ $otherProduct->title }}
+																		</h6>
 																		<a href="{{ route('product-details', ['slug' => $otherProduct->slug]) }}"
 																			class="pbmit-btn pbmit-mega-view-all">
 																			<span class="pbmit-button-content-wrapper">
 																				<span class="pbmit-button-icon">
-																					<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																					<i
+																						class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																				</span>
-																				<span class="pbmit-button-text">View All</span>
+																				<span class="pbmit-button-text">View
+																					All</span>
 																			</span>
 																		</a>
 																	</div>
@@ -199,9 +222,11 @@
 																			class="pbmit-btn pbmit-mega-view-all">
 																			<span class="pbmit-button-content-wrapper">
 																				<span class="pbmit-button-icon">
-																					<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																					<i
+																						class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
 																				</span>
-																				<span class="pbmit-button-text">View All</span>
+																				<span class="pbmit-button-text">View
+																					All</span>
 																			</span>
 																		</a>
 																	</div>
@@ -235,32 +260,32 @@
 							@endphp
 							<ul class="pbmit-social-links">
 								@if(!empty($footerSettings->facebook_link))
-								<li class="pbmit-social-li pbmit-social-facebook">
-									<a title="Facebook" href="{{ $footerSettings->facebook_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-facebook-f"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-facebook">
+										<a title="Facebook" href="{{ $footerSettings->facebook_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-facebook-f"></i></span>
+										</a>
+									</li>
 								@endif
 								@if(!empty($footerSettings->twitter_link))
-								<li class="pbmit-social-li pbmit-social-twitter">
-									<a title="Twitter" href="{{ $footerSettings->twitter_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-twitter-2"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-twitter">
+										<a title="Twitter" href="{{ $footerSettings->twitter_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-twitter-2"></i></span>
+										</a>
+									</li>
 								@endif
 								@if(!empty($footerSettings->linkedin_link))
-								<li class="pbmit-social-li pbmit-social-linkedin">
-									<a title="LinkedIn" href="{{ $footerSettings->linkedin_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-linkedin-in"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-linkedin">
+										<a title="LinkedIn" href="{{ $footerSettings->linkedin_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-linkedin-in"></i></span>
+										</a>
+									</li>
 								@endif
 								@if(!empty($footerSettings->instagram_link))
-								<li class="pbmit-social-li pbmit-social-instagram">
-									<a title="Instagram" href="{{ $footerSettings->instagram_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-instagram"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-instagram">
+										<a title="Instagram" href="{{ $footerSettings->instagram_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-instagram"></i></span>
+										</a>
+									</li>
 								@endif
 							</ul>
 						</div>
