@@ -13,9 +13,17 @@
 	content: none !important;
 }
 #slide-1 .pbmit-slider-content { padding: 380px 0 130px 0; }
-#slide-1 .pbmit-slider-title {
-	font-size: 120px; line-height: 120px; font-weight: 800; padding-bottom: 20px;
+#slide-1 .pbmit-slider-title, #slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title {
+	font-size: 120px; line-height: 110px; font-weight: 800; padding-bottom: 20px;
 	margin-bottom: 30px; text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title {
+	font-size: 80px; line-height: 80px; font-weight: 800; padding-bottom: 20px;
+	margin-bottom: 30px; text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+#slide-2 .pbmit-slider-desc, #slide-3 .pbmit-slider-desc {
+	font-size: 20px; line-height: 25px;
 }
 #slide-1 .pbmit-button .pbmit-btn.white .pbmit-button-content-wrapper:before { background-color: var(--pbmit-global-color); }
 #slide-1 .pbmit-button .pbmit-btn.white .pbmit-button-icon i { color: var(--pbmit-blackish-color); }
@@ -26,20 +34,21 @@
 }
 @media(max-width:991px) {
 	#slide-1 .pbmit-slider-content { padding: 0; }
-	#slide-1 .pbmit-slider-title { font-size: 71px; line-height: 71px; }
+	#slide-1 .pbmit-slider-title, #slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title { font-size: 71px; line-height: 71px; }
 }
 @media(max-width:767px) {
-	#slide-1 .pbmit-slider-title { font-size: 49px; line-height: 49px; border-bottom: none; margin-top: 10px; }
-	#slide-1 .pbmit-slider-desc { display: block; margin-top: 15px; }
+	#slide-1 .pbmit-slider-title, #slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title { font-size: 49px; line-height: 49px; border-bottom: none; margin-top: 10px; }
+	#slide-1 .pbmit-slider-desc { display: block; }
 	#slide-1 .pbmit-slider-content { padding-top: 140px; }
+	#slide-3 .pbmit-slider-content { padding-top: 90px; }
 }
 @media(max-width:575px) {
-	#slide-1 .pbmit-slider-title { font-size: 35px; line-height: 35px; margin-bottom: 0; }
+	#slide-1 .pbmit-slider-title, #slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title { font-size: 35px; line-height: 35px; margin-bottom: 0; }
 }
 @media(max-width:480px) {
-	#slide-1 .pbmit-slider-title { font-size: 31px; line-height: 31px; }
+	#slide-1 .pbmit-slider-title, #slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title { font-size: 55px; line-height: 44px; }
 }
 @media(max-width:375px) {
-	#slide-1 .pbmit-slider-title { margin-bottom: 20px; }
+	#slide-1 .pbmit-slider-title, #slide-2 .pbmit-slider-title, #slide-3 .pbmit-slider-title { margin-bottom: 20px; }
 	#slide-1 .pbmit-slider-desc { font-size: 17px; margin-bottom: 20px; }
 }

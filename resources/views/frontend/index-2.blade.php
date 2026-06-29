@@ -166,6 +166,15 @@
 															</a>
 														</div>
 													</div>
+													@if($sliderThree?->photo)
+														<div class="d-block d-lg-none text-center"
+															style="margin-top: 30px; margin-bottom: 20px;">
+															<img src="{{ route('uploads.public', ['path' => $sliderThree->photo]) }}"
+																alt="{{ $sliderThree->title ?: 'Slider image' }}"
+																class="img-fluid"
+																style="max-height: 140px; object-fit: contain;">
+														</div>
+													@endif
 												</div>
 											</div>
 										</div>

@@ -3131,3 +3131,40 @@ body {
 		max-height: 240px !important;
 	}
 }
+
+
+.slider-three-img {
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32%;
+    height: 68%;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    .slider-three-img {
+        width: 45%;
+        height: auto;
+        right: 5%;
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 767px) {
+    .slider-three-img {
+        width: 80%;
+        top: auto;
+        bottom: 5%;
+        right: 10%;
+        transform: none;
+        opacity: 0.3;
+    }
+}
+
+
+

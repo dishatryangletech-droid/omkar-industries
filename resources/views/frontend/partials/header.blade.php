@@ -150,6 +150,17 @@
 																		</a>
 																	</div>
 																@endforeach
+																<div class="col-md-4 text-center d-xl-none pt-2">
+																	<a href="{{ $otherProduct ? route('product-details', ['slug' => $otherProduct->slug]) : '/products' }}" class="d-block"
+																		style="padding: 0; text-decoration: none;">
+																		<img src="{{ ($otherProduct && $otherProduct->image && file_exists(public_path('storage/' . $otherProduct->image))) ? asset('storage/' . $otherProduct->image) : asset('frontend/images/portfolio/portfolio-single-01.webp') }}"
+																			class="img-fluid rounded w-100"
+																			style="height: 100px; object-fit: contain;"
+																			alt="{{ $otherProduct ? $otherProduct->title : 'Other Products' }}">
+																		<span class="d-block fw-bold mt-2"
+																			style="font-size: 14px; color: #333;">{{ $otherProduct ? $otherProduct->title : 'Other Products' }}</span>
+																	</a>
+																</div>
 															</div>
 														</div>
 														<!-- Right side: Image -->
