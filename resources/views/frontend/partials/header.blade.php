@@ -25,6 +25,22 @@
 									.pbmit-sticky-header .site-branding {
 										margin-right: 20px;
 									}
+
+									@media (max-width: 767px) {
+										.pbmit-main-logo {
+											width: 220px !important;
+											max-width: 100% !important;
+											margin-top: 10px !important;
+											margin-left: -10px !important;
+										}
+
+										.pbmit-sticky-header .pbmit-sticky-logo {
+											max-height: 100px !important;
+											max-width: 100% !important;
+											margin-top: 10px !important;
+											margin-left: -10px !important;
+										}
+									}
 								</style>
 								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/full-logo.png') }}"
 									alt="Induyst" style="width: auto; height: auto;">
