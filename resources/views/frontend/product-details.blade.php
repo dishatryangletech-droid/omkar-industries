@@ -252,7 +252,7 @@
 														@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
 														<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : asset('frontend/images/no-image.png') }}"
 															alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100"
-															style="height: 180px; object-fit: cover;">
+															style="height: 180px; object-fit: contain;">
 													</div>
 													<h4
 														style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">
@@ -276,7 +276,7 @@
 														@php $defaultSettings = \App\Models\GeneralSetting::first(); @endphp
 														<img src="{{ isset($part['image']) ? asset('storage/' . $part['image']) : asset('frontend/images/no-image.png') }}"
 															alt="{{ $part['name'] ?? 'Part' }}" class="img-fluid w-100"
-															style="height: 180px; object-fit: cover;">
+															style="height: 180px; object-fit: contain;">
 													</div>
 													<h4
 														style="font-size: 16px; font-weight: 600; color: var(--pbmit-blackish-color);">

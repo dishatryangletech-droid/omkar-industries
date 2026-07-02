@@ -264,7 +264,7 @@
 					<div class="container-fluid p-0">
 						<div class="row g-0">
 							<div class="col-md-4">
-								<div class="about-one-left-bg"></div>
+								<div class="about-one-left-bg" @if(isset($aboutUs) && $aboutUs->photo) style="background-image: url('{{ asset('storage/' . $aboutUs->photo) }}');" @endif></div>
 							</div>
 							<div class="col-md-8">
 								<div class="about-one-right-box">

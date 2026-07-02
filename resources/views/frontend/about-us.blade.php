@@ -43,7 +43,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 col-xl-5 about-two-left-col">
-								<div class="about-two-img"></div>
+								<div class="about-two-img" @if(isset($aboutUs) && $aboutUs->photo) style="background-image: url('{{ asset('storage/' . $aboutUs->photo) }}');" @endif></div>
 							</div>
 							<div class="col-md-12 col-xl-7 about-two-right-col">
 								<div class="about-two-content">
