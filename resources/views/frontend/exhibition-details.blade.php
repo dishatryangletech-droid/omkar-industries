@@ -9,8 +9,15 @@
 		</header>
 		<!-- Header Main Area End Here -->
 
-		<!-- Title Bar -->
-		<div class="pbmit-title-bar-wrapper">
+	@php
+		$bgImage = '';
+		$pageBanner = \App\Models\PageBanner::where('page_name', 'like', '%Exhibition%')->first();
+		if ($pageBanner && $pageBanner->image && file_exists(public_path('storage/' . $pageBanner->image))) {
+			$bgImage = route('uploads.public', ['path' => $pageBanner->image]);
+		}
+	@endphp
+	<!-- Title Bar -->
+	<div class="pbmit-title-bar-wrapper" @if($bgImage) style="background-image: url('{{ $bgImage }}') !important;" @endif>
 			<div class="container">
 				<div class="pbmit-title-bar-content">
 					<div class="pbmit-title-bar-content-inner">
@@ -49,7 +56,7 @@
 						<div class="pbmit-single-project-details-wrapper">
 							<div class="pbmit-featured-img-wrapper">
 								@php
-									$imagePath = $exhibition->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($exhibition->image) 
+									$imagePath = $exhibition->image && file_exists(public_path('storage/' . $exhibition->image)) 
 										? asset('storage/' . $exhibition->image) 
 										: asset('frontend/images/blog/blog-01.jpg');
 								@endphp

@@ -36,8 +36,15 @@
 		</header>
 	<!-- Header Main Area End Here -->
 
+	@php
+		$bgImage = '';
+		$pageBanner = \App\Models\PageBanner::where('page_name', 'like', '%Blog%')->first();
+		if ($pageBanner && $pageBanner->image && file_exists(public_path('storage/' . $pageBanner->image))) {
+			$bgImage = route('uploads.public', ['path' => $pageBanner->image]);
+		}
+	@endphp
 	<!-- Title Bar -->
-	<div class="pbmit-title-bar-wrapper">
+	<div class="pbmit-title-bar-wrapper" @if($bgImage) style="background-image: url('{{ $bgImage }}') !important;" @endif>
 		<div class="container">
 			<div class="pbmit-title-bar-content">
 				<div class="pbmit-title-bar-content-inner">
