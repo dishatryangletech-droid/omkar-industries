@@ -72,7 +72,7 @@
 															class="pbmit-month">{{ $blog->date ? $blog->date->format('M') : '' }}</span>
 													</span>
 												</div>
-												<div class="pbmit-meta-wraper">
+												<div class="pbmit-meta-wraper" style="position: relative; transform: none; width: 100%; margin-top: 15px; bottom: auto;">
 													<div class="pbmit-meta-author pbmit-meta-line">
 														<span class="pbmit-post-author">Admin</span>
 													</div>

@@ -82,7 +82,7 @@
 						<ul class="menu">
 							@php
 								$quickLinks = [];
-								if($footerSettings && $footerSettings->quick_links) {
+								if ($footerSettings && $footerSettings->quick_links) {
 									$quickLinks = is_string($footerSettings->quick_links) ? json_decode($footerSettings->quick_links, true) : $footerSettings->quick_links;
 								}
 							@endphp
@@ -105,7 +105,7 @@
 						<ul class="menu">
 							@php
 								$otherLinks = [];
-								if($footerSettings && $footerSettings->other_links) {
+								if ($footerSettings && $footerSettings->other_links) {
 									$otherLinks = is_string($footerSettings->other_links) ? json_decode($footerSettings->other_links, true) : $footerSettings->other_links;
 								}
 							@endphp
@@ -147,32 +147,32 @@
 						<div class=" pbmit-footer-social-area">
 							<ul class="pbmit-social-links">
 								@if(!empty($footerSettings->facebook_link))
-								<li class="pbmit-social-li pbmit-social-facebook">
-									<a title="Facebook" href="{{ $footerSettings->facebook_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-facebook-f"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-facebook">
+										<a title="Facebook" href="{{ $footerSettings->facebook_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-facebook-f"></i></span>
+										</a>
+									</li>
 								@endif
 								@if(!empty($footerSettings->twitter_link))
-								<li class="pbmit-social-li pbmit-social-twitter">
-									<a title="Twitter" href="{{ $footerSettings->twitter_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-twitter-2"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-twitter">
+										<a title="Twitter" href="{{ $footerSettings->twitter_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-twitter-2"></i></span>
+										</a>
+									</li>
 								@endif
 								@if(!empty($footerSettings->linkedin_link))
-								<li class="pbmit-social-li pbmit-social-linkedin">
-									<a title="LinkedIn" href="{{ $footerSettings->linkedin_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-linkedin-in"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-linkedin">
+										<a title="LinkedIn" href="{{ $footerSettings->linkedin_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-linkedin-in"></i></span>
+										</a>
+									</li>
 								@endif
 								@if(!empty($footerSettings->instagram_link))
-								<li class="pbmit-social-li pbmit-social-instagram">
-									<a title="Instagram" href="{{ $footerSettings->instagram_link }}" target="_blank">
-										<span><i class="pbmit-base-icon-instagram"></i></span>
-									</a>
-								</li>
+									<li class="pbmit-social-li pbmit-social-instagram">
+										<a title="Instagram" href="{{ $footerSettings->instagram_link }}" target="_blank">
+											<span><i class="pbmit-base-icon-instagram"></i></span>
+										</a>
+									</li>
 								@endif
 							</ul>
 						</div>

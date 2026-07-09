@@ -2424,7 +2424,7 @@ aside.widget.widget-tag-cloud a,
 	color: var(--pbmit-white-color);
 }
 .pbmit-footer-style-1 .pbmit-footer-logo img {
-    max-height: 55px;
+    max-height: 100px;
 }
 .pbmit-footer-style-1 .pbmit-footer-contact-area .row {
     border: 1px solid rgba(var(--pbmit-white-color-rgb), 0.2);
