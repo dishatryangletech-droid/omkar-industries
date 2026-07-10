@@ -208,6 +208,15 @@ Route::get('/products', function () {
         $q->whereNull('parent_id')->orWhere('parent_id', 0);
     })->where('status', 'Active')->where('is_visible', 1)->get();
     
+    $headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
+    $headerProductIds = $headerSettings['all_machines'] ?? [];
+    if (!empty($headerProductIds)) {
+        $products = $products->sortBy(function($model) use ($headerProductIds) {
+            $pos = array_search($model->id, $headerProductIds);
+            return $pos === false ? 99999 : $pos;
+        })->values();
+    }
+    
     return view('frontend.services', compact('products'));
 })->name('products');
 
@@ -484,7 +493,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Website Pages Settings
     // ==========================================
     Route::prefix('website-pages')->name('website-pages.')->group(function () use ($defaults) {
-        Route::get('header-settings', function () use ($defaults) { return view('backend.website-pages.header-settings', $defaults); })->name('header-settings');
+        Route::get('header-settings', function () use ($defaults) { 
+            $headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
+            $defaults['selectedAll'] = $headerSettings['all_machines'] ?? [];
+            return view('backend.website-pages.header-settings', $defaults); 
+        })->name('header-settings');
+        
+        Route::post('header-settings', function (Illuminate\Http\Request $request) {
+            $allMachines = $request->input('all_machines', []);
+            \Illuminate\Support\Facades\Storage::disk('local')->put('header_settings.json', json_encode(['all_machines' => $allMachines]));
+            return redirect()->back()->with('success', 'Header Settings saved successfully!');
+        })->name('header-settings.post');
         
         Route::get('footer-settings', function () use ($defaults) { 
             // Use FooterSetting for this view

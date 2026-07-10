@@ -61,7 +61,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="mb-4">Global Header & Navigation Settings</h5>
-                    <form action="#" method="POST">
+                    <form action="{{ route('admin.website-pages.header-settings.post') }}" method="POST">
                         @csrf
                         <div class="row">
                             <!-- Header Dropdown Products Section -->
@@ -72,13 +72,15 @@
                                 <select id="all-select" class="select2 form-select">
                                     <option value="">-- Add a Product --</option>
                                     @foreach($products as $product)
-                                        <option value="{{ $product->id }}" data-title="{{ $product->title }}">
-                                            {{ $product->title }}
-                                        </option>
+                                        @if( ($product->parent_id === null || $product->parent_id == 0) && $product->slug !== 'other-product-page' )
+                                            <option value="{{ $product->id }}" data-title="{{ $product->title }}">
+                                                {{ $product->title }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
 
-                                @php $selectedAll = $settings->all_machines ?? []; @endphp
+                                @php $selectedAll = $selectedAll ?? []; @endphp
                                 <ul id="all-list" class="sortable-list" data-name="all_machines">
                                     @foreach($selectedAll as $id)
                                         @php $p = $products->firstWhere('id', $id); @endphp

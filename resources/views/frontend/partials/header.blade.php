@@ -158,14 +158,25 @@
 																@php
 																	$otherProduct = \App\Models\Product::where('slug', 'other-product-page')->first();
 																	$otherId = $otherProduct ? $otherProduct->id : 0;
-
-																	$standaloneNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
-																		->where(function ($q) {
-																			$q->whereNull('parent_id')->orWhere('parent_id', 0);
-																		})->where('is_parent', false)->where('id', '!=', $otherId)->take(4)->get();
-																	$parentNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
-																		->where('is_parent', true)->where('id', '!=', $otherId)->take(3)->get();
-																	$navProducts = $standaloneNav->merge($parentNav);
+																	
+																	$headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
+																	$headerProductIds = $headerSettings['all_machines'] ?? [];
+																	
+																	if (!empty($headerProductIds)) {
+																		$idString = implode(',', $headerProductIds);
+																		$navProducts = \App\Models\Product::whereIn('id', $headerProductIds)
+																						->where('status', 'Active')
+																						->orderByRaw("FIELD(id, {$idString})")
+																						->get();
+																	} else {
+																		$standaloneNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
+																			->where(function ($q) {
+																				$q->whereNull('parent_id')->orWhere('parent_id', 0);
+																			})->where('is_parent', false)->where('id', '!=', $otherId)->take(4)->get();
+																		$parentNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
+																			->where('is_parent', true)->where('id', '!=', $otherId)->take(3)->get();
+																		$navProducts = $standaloneNav->merge($parentNav);
+																	}
 																@endphp
 																@foreach($navProducts as $navProduct)
 																	@php

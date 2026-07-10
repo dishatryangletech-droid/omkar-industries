@@ -23,6 +23,15 @@ class HomeController extends Controller
             $q->whereNull('parent_id')->orWhere('parent_id', 0);
         })->where('status', 'Active')->where('is_visible', 1)->where('slug', '!=', 'other-product-page')->get();
 
+        $headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
+        $headerProductIds = $headerSettings['all_machines'] ?? [];
+        if (!empty($headerProductIds)) {
+            $products = $products->sortBy(function($model) use ($headerProductIds) {
+                $pos = array_search($model->id, $headerProductIds);
+                return $pos === false ? 99999 : $pos;
+            })->values();
+        }
+
         $faqSection = \App\Models\HomePage::where('section_type', 'faq_section')->first();
         $homeSliders = \App\Models\Slider::where('status', 'Active')->orderBy('id')->take(3)->get();
         $slider = $homeSliders->get(0);
