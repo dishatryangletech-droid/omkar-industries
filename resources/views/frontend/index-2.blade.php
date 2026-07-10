@@ -17,261 +17,276 @@
 			<!-- Header Main Area -->
 			<header class="site-header pbmit-header-style-1" id="masthead">
 				@include('frontend.partials.header')
+
 				<div class="pbmit-slider-area pbmit-slider-one pbmit-slider-two">
-					<div class="swiper-slider" data-autoplay="true" data-autoplayspeed="2000" data-loop="true" data-dots="false"
-						data-arrows="true" data-columns="1" data-margin="0" data-effect="fade">
+					<div class="swiper-slider" data-autoplay="true" data-autoplayspeed="2000" data-loop="true"
+						data-dots="false" data-arrows="true" data-columns="1" data-margin="0" data-effect="fade">
 						<div class="swiper-wrapper">
-	<!-- Slide1 -->
-	<div class="swiper-slide" id="slide-1">
-		<div class="pbmit-slider-item">
-			<div class="pbmit-slider-bg"
-				style="background-image: url({{ $slider?->background_photo ? route('uploads.public', ['path' => $slider->background_photo]) : asset('frontend/images/banner-slider-img/slider1-01.jpg') }});">
-			</div>
-			<div class="container">
-				<div class="pbmit-slider-content">
-					<h5 class="pbmit-slider-subtitle transform-right transform-delay-1"
-						style="{{ $slider?->sub_title_color ? 'color: ' . $slider->sub_title_color . ';' : '' }}">
-						{{ $slider?->subtitle ?: 'Forging the Future' }}
-					</h5>
-					<h2 class="pbmit-slider-title transform-right transform-delay-2"
-						style="{{ $slider?->main_title_color ? 'color: ' . $slider->main_title_color . ';' : '' }}">
-						{!! $slider?->title ? nl2br(e($slider->title)) : 'Manufacturing <br>Your Vision' !!}
-					</h2>
-					<div class="d-lg-flex align-items-center justify-content-end">
-						<div class="pbmit-slider-desc transform-center transform-delay-3"
-							style="{{ $slider?->description_color ? 'color: ' . $slider->description_color . ';' : '' }}">
-							{!! $slider?->description ? nl2br(e($slider->description)) : 'Whether it is small-scale custom work or large-scale<br> production we build with purpose, power & precision.' !!}
-						</div>
-						<div class="pbmit-button ms-xl-5 ms-lg-3">
-							<div class="transform-bottom transform-delay-4">
-								<a href="{{ $slider?->btn_link ?: '/about-us' }}" class="pbmit-btn white mb-5">
-									<span class="pbmit-button-content-wrapper">
-										<span class="pbmit-button-icon">
-											<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-										</span>
-										<span class="pbmit-button-text">{{ $slider?->btn_title ?: 'Discover More' }}</span>
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Slide2 -->
-	@php
-		$slideTwoWords = preg_split('/\s+/', trim($sliderTwo?->title ?: 'Engineering the Future'));
-		$slideTwoFirstWord = array_shift($slideTwoWords) ?: 'Engineering';
-		$slideTwoLastWord = count($slideTwoWords) ? array_pop($slideTwoWords) : '';
-		$slideTwoMiddleWords = implode(' ', $slideTwoWords);
-	@endphp
-	<div class="swiper-slide" id="slide-2">
-		<div class="pbmit-slider-item">
-			<div class="pbmit-slider-bg"
-				style="background-image: url({{ $sliderTwo?->background_photo ? route('uploads.public', ['path' => $sliderTwo->background_photo]) : asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-1">
-						<div class="pbmit-slider-content">
-							<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
-								style="{{ $sliderTwo?->sub_title_color ? 'color: ' . $sliderTwo->sub_title_color . ';' : '' }}">
-								<span>{{ $sliderTwo?->subtitle ?: 'Forging the Future' }}</span>
-							</h5>
-							<h2 class="pbmit-slider-title transform-left transform-delay-2"
-								style="{{ $sliderTwo?->main_title_color ? 'color: ' . $sliderTwo->main_title_color . ';' : '' }}">
-								<span class="first">{{ $slideTwoFirstWord }}</span>
-								<span class="second">{{ $slideTwoMiddleWords }}
-									<span class="pbmit-global-color">{{ $slideTwoLastWord }}</span>
-								</span>
-							</h2>
-							<p class="pbmit-slider-desc"
-								style="{{ $sliderTwo?->description_color ? 'color: ' . $sliderTwo->description_color . ';' : '' }}">
-								<span>{!! $sliderTwo?->description ? nl2br(e($sliderTwo->description)) : 'Whether it is small-scale custom work or large scale production <br> we build with purpose, power and precision.' !!}</span>
-							</p>
-							<div class="pbmit-button d-flex align-items-center">
-								<div class="transform-bottom transform-delay-4">
-									<a href="{{ $sliderTwo?->btn_link ?: '/about-us' }}" class="pbmit-btn white">
-										<span class="pbmit-button-content-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-											</span>
-											<span class="pbmit-button-text">{{ $sliderTwo?->btn_title ?: 'Discover More' }}</span>
-										</span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Slide3 -->
-	@php
-		$slideThreeWords = preg_split('/\s+/', trim($sliderThree?->title ?: 'Constructing the Industry'));
-		$slideThreeFirstWord = array_shift($slideThreeWords) ?: 'Constructing';
-		$slideThreeLastWord = count($slideThreeWords) ? array_pop($slideThreeWords) : '';
-		$slideThreeMiddleWords = implode(' ', $slideThreeWords);
-	@endphp
-	<div class="swiper-slide" id="slide-3">
-		<div class="pbmit-slider-item">
-			<div class="pbmit-slider-bg"
-				style="background-image: url({{ $sliderThree?->background_photo ? route('uploads.public', ['path' => $sliderThree->background_photo]) : asset('frontend/images/banner-slider-img/slider2-03.jpg') }});">
-			</div>
-			@if($sliderThree?->photo)
-				<img src="{{ route('uploads.public', ['path' => $sliderThree->photo]) }}"
-					alt="{{ $sliderThree->title ?: 'Slider image' }}"
-					class="d-none d-lg-block position-absolute"
-					style="right: 3%; top: 50%; transform: translateY(-50%); width: 32%; height: 68%; object-fit: contain; object-position: center; background: transparent; z-index: 1; pointer-events: none;">
-			@endif
-			<div class="container position-relative" style="z-index: 2;">
-				<div class="row">
-					<div class="col-md-9 col-lg-8 col-1">
-						<div class="pbmit-slider-content">
-							<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
-								style="{{ $sliderThree?->sub_title_color ? 'color: ' . $sliderThree->sub_title_color . ';' : '' }}">
-								<span>{{ $sliderThree?->subtitle ?: 'Built for the Future' }}</span>
-							</h5>
-							<h2 class="pbmit-slider-title transform-left transform-delay-2"
-								style="{{ $sliderThree?->main_title_color ? 'color: ' . $sliderThree->main_title_color . ';' : '' }}">
-								<span class="first">{{ $slideThreeFirstWord }}</span>
-								<span class="second">{{ $slideThreeMiddleWords }}
-									<span class="pbmit-global-color">{{ $slideThreeLastWord }}</span>
-								</span>
-							</h2>
-							<p class="pbmit-slider-desc"
-								style="{{ $sliderThree?->description_color ? 'color: ' . $sliderThree->description_color . ';' : '' }}">
-								<span>{!! $sliderThree?->description ? nl2br(e($sliderThree->description)) : 'Whether it is tailored fabrication or high-volume production <br> we build with purpose, power and precision.' !!}</span>
-							</p>
-							<div class="pbmit-button d-flex align-items-center">
-								<div class="transform-bottom transform-delay-4">
-									<a href="{{ $sliderThree?->btn_link ?: '/about-us' }}" class="pbmit-btn white">
-										<span class="pbmit-button-content-wrapper">
-											<span class="pbmit-button-icon">
-												<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-											</span>
-											<span class="pbmit-button-text">{{ $sliderThree?->btn_title ?: 'Discover More' }}</span>
-										</span>
-									</a>
+							<!-- Slide1 -->
+							<div class="swiper-slide" id="slide-1">
+								<div class="pbmit-slider-item">
+									<div class="pbmit-slider-bg"
+										style="background-image: url({{ $slider?->background_photo ? route('uploads.public', ['path' => $slider->background_photo]) : asset('frontend/images/banner-slider-img/slider1-01.jpg') }});">
+									</div>
+									<div class="container">
+										<div class="pbmit-slider-content">
+											<h5 class="pbmit-slider-subtitle transform-right transform-delay-1"
+												style="{{ $slider?->sub_title_color ? 'color: ' . $slider->sub_title_color . ';' : '' }}">
+												{{ $slider?->subtitle ?: 'Forging the Future' }}
+											</h5>
+											<h2 class="pbmit-slider-title transform-right transform-delay-2"
+												style="{{ $slider?->main_title_color ? 'color: ' . $slider->main_title_color . ';' : '' }}">
+												{!! $slider?->title ? nl2br(e($slider->title)) : 'Manufacturing <br>Your Vision' !!}
+											</h2>
+											<div class="d-lg-flex align-items-center justify-content-end">
+												<div class="pbmit-slider-desc transform-center transform-delay-3"
+													style="{{ $slider?->description_color ? 'color: ' . $slider->description_color . ';' : '' }}">
+													{!! $slider?->description ? nl2br(e($slider->description)) : 'Whether it is small-scale custom work or large-scale<br> production we build with purpose, power & precision.' !!}
+												</div>
+												<div class="pbmit-button ms-xl-5 ms-lg-3">
+													<div class="transform-bottom transform-delay-4">
+														<a href="{{ $slider?->btn_link ?: '/about-us' }}"
+															class="pbmit-btn white mb-5">
+															<span class="pbmit-button-content-wrapper">
+																<span class="pbmit-button-icon">
+																	<i
+																		class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																</span>
+																<span
+																	class="pbmit-button-text">{{ $slider?->btn_title ?: 'Discover More' }}</span>
+															</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 
-							@if($sliderThree?->photo)
-								<div class="d-block d-lg-none text-center" style="margin-top: 30px; margin-bottom: 20px;">
-									<img src="{{ route('uploads.public', ['path' => $sliderThree->photo]) }}"
-										alt="{{ $sliderThree->title ?: 'Slider image' }}"
-										class="img-fluid"
-										style="max-height: 140px; object-fit: contain;">
+							<!-- Slide2 -->
+							@php
+								$slideTwoWords = preg_split('/\s+/', trim($sliderTwo?->title ?: 'Engineering the Future'));
+								$slideTwoFirstWord = array_shift($slideTwoWords) ?: 'Engineering';
+								$slideTwoLastWord = count($slideTwoWords) ? array_pop($slideTwoWords) : '';
+								$slideTwoMiddleWords = implode(' ', $slideTwoWords);
+							@endphp
+							<div class="swiper-slide" id="slide-2">
+								<div class="pbmit-slider-item">
+									<div class="pbmit-slider-bg"
+										style="background-image: url({{ $sliderTwo?->background_photo ? route('uploads.public', ['path' => $sliderTwo->background_photo]) : asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
+									</div>
+									<div class="container">
+										<div class="row">
+											<div class="col-md-8 col-1">
+												<div class="pbmit-slider-content">
+													<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+														style="{{ $sliderTwo?->sub_title_color ? 'color: ' . $sliderTwo->sub_title_color . ';' : '' }}">
+														<span>{{ $sliderTwo?->subtitle ?: 'Forging the Future' }}</span>
+													</h5>
+													<h2 class="pbmit-slider-title transform-left transform-delay-2"
+														style="{{ $sliderTwo?->main_title_color ? 'color: ' . $sliderTwo->main_title_color . ';' : '' }}">
+														<span class="first">{{ $slideTwoFirstWord }}</span>
+														<span class="second">{{ $slideTwoMiddleWords }}
+															<span
+																class="pbmit-global-color">{{ $slideTwoLastWord }}</span>
+														</span>
+													</h2>
+													<p class="pbmit-slider-desc"
+														style="{{ $sliderTwo?->description_color ? 'color: ' . $sliderTwo->description_color . ';' : '' }}">
+														<span>{!! $sliderTwo?->description ? nl2br(e($sliderTwo->description)) : 'Whether it is small-scale custom work or large scale production <br> we build with purpose, power and precision.' !!}</span>
+													</p>
+													<div class="pbmit-button d-flex align-items-center">
+														<div class="transform-bottom transform-delay-4">
+															<a href="{{ $sliderTwo?->btn_link ?: '/about-us' }}"
+																class="pbmit-btn white">
+																<span class="pbmit-button-content-wrapper">
+																	<span class="pbmit-button-icon">
+																		<i
+																			class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																	</span>
+																	<span
+																		class="pbmit-button-text">{{ $sliderTwo?->btn_title ?: 'Discover More' }}</span>
+																</span>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-							@endif
+							</div>
+
+							<!-- Slide3 -->
+							@php
+								$slideThreeWords = preg_split('/\s+/', trim($sliderThree?->title ?: 'Constructing the Industry'));
+								$slideThreeFirstWord = array_shift($slideThreeWords) ?: 'Constructing';
+								$slideThreeLastWord = count($slideThreeWords) ? array_pop($slideThreeWords) : '';
+								$slideThreeMiddleWords = implode(' ', $slideThreeWords);
+							@endphp
+							<div class="swiper-slide" id="slide-3">
+								<div class="pbmit-slider-item">
+									<div class="pbmit-slider-bg"
+										style="background-image: url({{ $sliderThree?->background_photo ? route('uploads.public', ['path' => $sliderThree->background_photo]) : asset('frontend/images/banner-slider-img/slider2-03.jpg') }});">
+									</div>
+									@if($sliderThree?->photo)
+										<img src="{{ route('uploads.public', ['path' => $sliderThree->photo]) }}"
+											alt="{{ $sliderThree->title ?: 'Slider image' }}"
+											class="d-none d-lg-block position-absolute"
+											style="right: 3%; top: 50%; transform: translateY(-50%); width: 32%; height: 68%; object-fit: contain; object-position: center; background: transparent; z-index: 1; pointer-events: none;">
+									@endif
+									<div class="container position-relative" style="z-index: 2;">
+										<div class="row">
+											<div class="col-md-9 col-lg-8 col-1">
+												<div class="pbmit-slider-content">
+													<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+														style="{{ $sliderThree?->sub_title_color ? 'color: ' . $sliderThree->sub_title_color . ';' : '' }}">
+														<span>{{ $sliderThree?->subtitle ?: 'Built for the Future' }}</span>
+													</h5>
+													<h2 class="pbmit-slider-title transform-left transform-delay-2"
+														style="{{ $sliderThree?->main_title_color ? 'color: ' . $sliderThree->main_title_color . ';' : '' }}">
+														<span class="first">{{ $slideThreeFirstWord }}</span>
+														<span class="second">{{ $slideThreeMiddleWords }}
+															<span
+																class="pbmit-global-color">{{ $slideThreeLastWord }}</span>
+														</span>
+													</h2>
+													<p class="pbmit-slider-desc"
+														style="{{ $sliderThree?->description_color ? 'color: ' . $sliderThree->description_color . ';' : '' }}">
+														<span>{!! $sliderThree?->description ? nl2br(e($sliderThree->description)) : 'Whether it is tailored fabrication or high-volume production <br> we build with purpose, power and precision.' !!}</span>
+													</p>
+													<div class="pbmit-button d-flex align-items-center">
+														<div class="transform-bottom transform-delay-4">
+															<a href="{{ $sliderThree?->btn_link ?: '/about-us' }}"
+																class="pbmit-btn white">
+																<span class="pbmit-button-content-wrapper">
+																	<span class="pbmit-button-icon">
+																		<i
+																			class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																	</span>
+																	<span
+																		class="pbmit-button-text">{{ $sliderThree?->btn_title ?: 'Discover More' }}</span>
+																</span>
+															</a>
+														</div>
+													</div>
+
+													@if($sliderThree?->photo)
+														<div class="d-block d-lg-none text-center"
+															style="margin-top: 30px; margin-bottom: 20px;">
+															<img src="{{ route('uploads.public', ['path' => $sliderThree->photo]) }}"
+																alt="{{ $sliderThree->title ?: 'Slider image' }}"
+																class="img-fluid"
+																style="max-height: 140px; object-fit: contain;">
+														</div>
+													@endif
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{{-- Slide 4 onwards - Layout 2 and Layout 3 repeat --}}
+							@foreach($extraSliders as $key => $item)
+								@php
+									$slideNo = $key + 4;
+									$isLayoutThree = $key % 2 == 1;
+
+									$words = preg_split('/\s+/', trim($item?->title ?: 'Engineering the Future'));
+									$firstWord = array_shift($words) ?: 'Engineering';
+									$lastWord = count($words) ? array_pop($words) : '';
+									$middleWords = implode(' ', $words);
+								@endphp
+
+								<div class="swiper-slide" id="slide-{{ $slideNo }}">
+									<div class="pbmit-slider-item">
+										<div class="pbmit-slider-bg"
+											style="background-image: url({{ $item?->background_photo ? route('uploads.public', ['path' => $item->background_photo]) : asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
+										</div>
+
+										@if($isLayoutThree && $item?->photo)
+											<img src="{{ route('uploads.public', ['path' => $item->photo]) }}"
+												alt="{{ $item->title ?: 'Slider image' }}"
+												class="d-none d-lg-block position-absolute"
+												style="right: 3%; top: 50%; transform: translateY(-50%); width: 32%; height: 68%; object-fit: contain; object-position: center; background: transparent; z-index: 1; pointer-events: none;">
+										@endif
+
+										<div class="container position-relative" style="z-index: 2;">
+											<div class="row">
+												<div
+													class="{{ $isLayoutThree ? 'col-md-9 col-lg-8 col-1' : 'col-md-8 col-1' }}">
+													<div class="pbmit-slider-content">
+
+														{{-- Subtitle --}}
+														@if(!empty($item?->subtitle))
+															<h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
+																style="{{ $item?->sub_title_color ? 'color: ' . $item->sub_title_color . ';' : '' }}">
+																<span>{{ $item->subtitle }}</span>
+															</h5>
+														@endif
+
+														{{-- Title --}}
+														@if(!empty($item?->title))
+															<h2 class="pbmit-slider-title transform-left transform-delay-2"
+																style="{{ $item?->main_title_color ? 'color: ' . $item->main_title_color . ';' : '' }}">
+																<span class="first">{{ $firstWord }}</span>
+																<span class="second">
+																	{{ $middleWords }}
+																	@if($lastWord)
+																		<span class="pbmit-global-color">{{ $lastWord }}</span>
+																	@endif
+																</span>
+															</h2>
+														@endif
+
+														{{-- Description --}}
+														@if(!empty($item?->description))
+															<p class="pbmit-slider-desc"
+																style="{{ $item?->description_color ? 'color: ' . $item->description_color . ';' : '' }}">
+																<span>{!! nl2br(e($item->description)) !!}</span>
+															</p>
+														@endif
+
+														{{-- Button --}}
+														@if(!empty($item?->btn_title))
+															<div class="pbmit-button d-flex align-items-center">
+																<div class="transform-bottom transform-delay-4">
+																	<a href="{{ $item?->btn_link ?: '#' }}"
+																		class="pbmit-btn white">
+																		<span class="pbmit-button-content-wrapper">
+																			<span class="pbmit-button-icon">
+																				<i
+																					class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+																			</span>
+																			<span class="pbmit-button-text">
+																				{{ $item->btn_title }}
+																			</span>
+																		</span>
+																	</a>
+																</div>
+															</div>
+														@endif
+
+														{{-- Mobile Image --}}
+														@if($isLayoutThree && !empty($item?->photo))
+															<div class="d-block d-lg-none text-center"
+																style="margin-top:30px; margin-bottom:20px;">
+																<img src="{{ route('uploads.public', ['path' => $item->photo]) }}"
+																	alt="{{ $item->title ?: 'Slider image' }}" class="img-fluid"
+																	style="max-height:140px; object-fit:contain;">
+															</div>
+														@endif
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							@endforeach
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	{{-- Slide 4 onwards - Layout 2 and Layout 3 repeat --}}
-	@foreach($extraSliders as $key => $item)
-		@php
-			$slideNo = $key + 4;
-			$isLayoutThree = $key % 2 == 1;
-
-			$words = preg_split('/\s+/', trim($item?->title ?: 'Engineering the Future'));
-			$firstWord = array_shift($words) ?: 'Engineering';
-			$lastWord = count($words) ? array_pop($words) : '';
-			$middleWords = implode(' ', $words);
-		@endphp
-
-		<div class="swiper-slide" id="slide-{{ $slideNo }}">
-			<div class="pbmit-slider-item">
-				<div class="pbmit-slider-bg"
-					style="background-image: url({{ $item?->background_photo ? route('uploads.public', ['path' => $item->background_photo]) : asset('frontend/images/banner-slider-img/slider2-01.jpg') }});">
-				</div>
-
-				@if($isLayoutThree && $item?->photo)
-					<img src="{{ route('uploads.public', ['path' => $item->photo]) }}"
-						alt="{{ $item->title ?: 'Slider image' }}"
-						class="d-none d-lg-block position-absolute"
-						style="right: 3%; top: 50%; transform: translateY(-50%); width: 32%; height: 68%; object-fit: contain; object-position: center; background: transparent; z-index: 1; pointer-events: none;">
-				@endif
-
-				<div class="container position-relative" style="z-index: 2;">
-    <div class="row">
-        <div class="{{ $isLayoutThree ? 'col-md-9 col-lg-8 col-1' : 'col-md-8 col-1' }}">
-            <div class="pbmit-slider-content">
-
-                {{-- Subtitle --}}
-                @if(!empty($item?->subtitle))
-                    <h5 class="pbmit-slider-subtitle transform-right-1 transform-delay-1"
-                        style="{{ $item?->sub_title_color ? 'color: '.$item->sub_title_color.';' : '' }}">
-                        <span>{{ $item->subtitle }}</span>
-                    </h5>
-                @endif
-
-                {{-- Title --}}
-                @if(!empty($item?->title))
-                    <h2 class="pbmit-slider-title transform-left transform-delay-2"
-                        style="{{ $item?->main_title_color ? 'color: '.$item->main_title_color.';' : '' }}">
-                        <span class="first">{{ $firstWord }}</span>
-                        <span class="second">
-                            {{ $middleWords }}
-                            @if($lastWord)
-                                <span class="pbmit-global-color">{{ $lastWord }}</span>
-                            @endif
-                        </span>
-                    </h2>
-                @endif
-
-                {{-- Description --}}
-                @if(!empty($item?->description))
-                    <p class="pbmit-slider-desc"
-                        style="{{ $item?->description_color ? 'color: '.$item->description_color.';' : '' }}">
-                        <span>{!! nl2br(e($item->description)) !!}</span>
-                    </p>
-                @endif
-
-                {{-- Button --}}
-                @if(!empty($item?->btn_title))
-                    <div class="pbmit-button d-flex align-items-center">
-                        <div class="transform-bottom transform-delay-4">
-                            <a href="{{ $item?->btn_link ?: '#' }}" class="pbmit-btn white">
-                                <span class="pbmit-button-content-wrapper">
-                                    <span class="pbmit-button-icon">
-                                        <i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-                                    </span>
-                                    <span class="pbmit-button-text">
-                                        {{ $item->btn_title }}
-                                    </span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                @endif
-
-                {{-- Mobile Image --}}
-                @if($isLayoutThree && !empty($item?->photo))
-                    <div class="d-block d-lg-none text-center"
-                        style="margin-top:30px; margin-bottom:20px;">
-                        <img src="{{ route('uploads.public', ['path' => $item->photo]) }}"
-                            alt="{{ $item->title ?: 'Slider image' }}"
-                            class="img-fluid"
-                            style="max-height:140px; object-fit:contain;">
-                    </div>
-                @endif
-
-            </div>
-        </div>
-    </div>
-</div>
-			</div>
-		</div>
-	@endforeach
-</div>
 					</div>
 				</div>
 			</header>
@@ -341,10 +356,19 @@
 								</div>
 							@endforeach
 						</div>
-						<div class="pbmit-bottom-text text-center mt-5 pt-md-2">
+
+						<div class="alert alert-warning alert-dismissible fade show text-center mx-auto shadow-sm"
+							role="alert" style="max-width: 1293px; font-size: 16px; padding: 15px 20px;">
+							<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#856404" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: -4px;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M8.069 0c.262 0 .52.017.76.057a4.1 4.1 0 0 1 .697.154c.228.069.451.155.674.263.217.103.44.229.663.366.377.24.748.434 1.126.589a7.537 7.537 0 0 0 2.331.525c.406.029.823.046 1.257.046v4c0 .76-.097 1.48-.291 2.166a8.996 8.996 0 0 1-.789 1.943 10.312 10.312 0 0 1-1.188 1.725 15.091 15.091 0 0 1-1.492 1.532 17.57 17.57 0 0 1-1.703 1.325c-.594.412-1.194.795-1.794 1.143l-.24.143-.24-.143a27.093 27.093 0 0 1-1.806-1.143 15.58 15.58 0 0 1-1.703-1.325 15.082 15.082 0 0 1-1.491-1.532 10.947 10.947 0 0 1-1.194-1.725 9.753 9.753 0 0 1-.789-1.943A7.897 7.897 0 0 1 .571 6V2c.435 0 .852-.017 1.258-.046a8.16 8.16 0 0 0 1.188-.171c.383-.086.766-.2 1.143-.354A6.563 6.563 0 0 0 5.28.846C5.72.56 6.166.349 6.606.21A4.79 4.79 0 0 1 8.069 0zm6.502 2.983a9.566 9.566 0 0 1-2.234-.377 7.96 7.96 0 0 1-2.046-.943A4.263 4.263 0 0 0 9.23 1.16 3.885 3.885 0 0 0 8.074.994a3.99 3.99 0 0 0-1.165.166 3.946 3.946 0 0 0-1.058.503A7.926 7.926 0 0 1 3.8 2.61c-.709.206-1.451.332-2.229.378v3.017c0 .663.086 1.297.258 1.908a8.58 8.58 0 0 0 .72 1.743 9.604 9.604 0 0 0 1.08 1.572c.417.491.862.948 1.342 1.382.48.435.983.835 1.509 1.206.531.372 1.063.709 1.594 1.017a22.397 22.397 0 0 0 1.589-1.017 15.389 15.389 0 0 0 1.514-1.206c.48-.434.926-.891 1.343-1.382a9.596 9.596 0 0 0 1.08-1.572 8.258 8.258 0 0 0 .709-1.743 6.814 6.814 0 0 0 .262-1.908V2.983z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.797 4.709l-.44-.378-.406.035-4.36 5.148-1.485-2.12-.4-.068-.463.331-.069.4 1.909 2.726.217.12.457.028.234-.102 4.835-5.715-.029-.405z"></path></g></svg>
+							We work all over India that in Omkar only.
+						</div>
+
+						<div class="pbmit-bottom-text text-center mt-5 pt-md-2 mb-4">
 							Latest solutions, and decades of experience. &nbsp; <a
 								href="{{ url('our-product/other-product-page') }}"><u>Explore Other Products</u></a>
 						</div>
+
+
 					</div>
 				</section>
 				<!-- Service End -->
@@ -354,7 +378,9 @@
 					<div class="container-fluid p-0">
 						<div class="row g-0">
 							<div class="col-md-4">
-								<div class="about-one-left-bg" @if(isset($aboutUs) && $aboutUs->photo) style="background-image: url('{{ asset('storage/' . $aboutUs->photo) }}');" @endif></div>
+								<div class="about-one-left-bg" @if(isset($aboutUs) && $aboutUs->photo)
+								style="background-image: url('{{ asset('storage/' . $aboutUs->photo) }}');" @endif>
+								</div>
 							</div>
 							<div class="col-md-8">
 								<div class="about-one-right-box">
@@ -813,9 +839,10 @@
 												</div>
 											</div>
 											<div class="col-md-12 col-lg-8">
-												<div class="swiper-slider" data-autoplay="true" data-autoplayspeed="2000" data-loop="false"
-													data-dots="true" data-arrows="false" data-columns="1"
-													data-margin="30" data-effect="slide">
+												<div class="swiper-slider" data-autoplay="true"
+													data-autoplayspeed="2000" data-loop="false" data-dots="true"
+													data-arrows="false" data-columns="1" data-margin="30"
+													data-effect="slide">
 													<div class="swiper-wrapper">
 														@foreach($testimonials as $index => $testimonial)
 															<article class="pbmit-testimonial-style-2 swiper-slide">
@@ -866,7 +893,9 @@
 					<div class="container-fluid p-0">
 						<div class="row g-0">
 							<div class="col-md-4 first-col">
-								<div class="accordion-img" style="background-image: url('{{ (isset($faqSection) && $faqSection->photo) ? asset('storage/' . $faqSection->photo) : asset('frontend/images/homepage-1/bg/accordion-img.jpg') }}');"></div>
+								<div class="accordion-img"
+									style="background-image: url('{{ (isset($faqSection) && $faqSection->photo) ? asset('storage/' . $faqSection->photo) : asset('frontend/images/homepage-1/bg/accordion-img.jpg') }}');">
+								</div>
 							</div>
 							<div class="col-md-8 second-col">
 								<div class="accordion-one-right-box">
@@ -1031,7 +1060,8 @@
 																	class="pbmit-month">{{ $blog->date ? $blog->date->format('M') : '' }}</span>
 															</span>
 														</div>
-														<div class="pbmit-meta-wraper" style="position: relative; transform: none; width: 100%; margin-top: 15px; bottom: auto;">
+														<div class="pbmit-meta-wraper"
+															style="position: relative; transform: none; width: 100%; margin-top: 15px; bottom: auto;">
 															<div class="pbmit-meta-author pbmit-meta-line">
 																<span class="pbmit-post-author">Admin</span>
 															</div>

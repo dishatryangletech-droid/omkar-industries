@@ -21,7 +21,7 @@ class HomeController extends Controller
 
         $products = \App\Models\Product::where(function ($q) {
             $q->whereNull('parent_id')->orWhere('parent_id', 0);
-        })->where('status', 'Active')->where('slug', '!=', 'other-product-page')->get();
+        })->where('status', 'Active')->where('is_visible', 1)->where('slug', '!=', 'other-product-page')->get();
 
         $faqSection = \App\Models\HomePage::where('section_type', 'faq_section')->first();
         $homeSliders = \App\Models\Slider::where('status', 'Active')->orderBy('id')->take(3)->get();

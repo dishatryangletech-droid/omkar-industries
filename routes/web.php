@@ -206,7 +206,7 @@ Route::get('/certificate', function () {
 Route::get('/products', function () {
     $products = Product::where(function ($q) {
         $q->whereNull('parent_id')->orWhere('parent_id', 0);
-    })->where('status', 'Active')->get();
+    })->where('status', 'Active')->where('is_visible', 1)->get();
     
     return view('frontend.services', compact('products'));
 })->name('products');
@@ -224,7 +224,7 @@ Route::get('/our-product/{slug?}', function ($slug = null) {
     // If the product is a category (parent), show its children
     if ($product->is_parent || Product::where('parent_id', $product->id)->exists()) {
         $parent = $product;
-        $products = Product::where('parent_id', $parent->id)->where('status', 'Active')->get();
+        $products = Product::where('parent_id', $parent->id)->where('status', 'Active')->where('is_visible', 1)->get();
         return view('frontend.services', compact('products', 'parent'));
     }
 
@@ -234,6 +234,7 @@ Route::get('/our-product/{slug?}', function ($slug = null) {
         $relatedProducts = \App\Models\Product::where('parent_id', $product->parent_id)
                                   ->where('id', '!=', $product->id)
                                   ->where('status', 'Active')
+                                  ->where('is_visible', 1)
                                   ->take(3)
                                   ->get();
     }

@@ -159,11 +159,11 @@
 																	$otherProduct = \App\Models\Product::where('slug', 'other-product-page')->first();
 																	$otherId = $otherProduct ? $otherProduct->id : 0;
 
-																	$standaloneNav = \App\Models\Product::where('status', 'Active')
+																	$standaloneNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
 																		->where(function ($q) {
 																			$q->whereNull('parent_id')->orWhere('parent_id', 0);
 																		})->where('is_parent', false)->where('id', '!=', $otherId)->take(4)->get();
-																	$parentNav = \App\Models\Product::where('status', 'Active')
+																	$parentNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
 																		->where('is_parent', true)->where('id', '!=', $otherId)->take(3)->get();
 																	$navProducts = $standaloneNav->merge($parentNav);
 																@endphp
