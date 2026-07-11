@@ -634,6 +634,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('testimonials', \App\Http\Controllers\Backend\TestimonialController::class)->except('show');
         Route::resource('exhibitions', ExhibitionController::class);
         Route::resource('team-partners', TeamPartnerController::class);
+        Route::get('welcome-popup', [\App\Http\Controllers\Backend\WelcomePopupController::class, 'index'])->name('welcome-popup');
+        Route::post('welcome-popup', [\App\Http\Controllers\Backend\WelcomePopupController::class, 'store'])->name('welcome-popup.store');
         Route::get('brochure-page', function () use ($defaults) { return view('backend.website-pages.brochure-page', $defaults); })->name('brochure-page.index');
     });
 });

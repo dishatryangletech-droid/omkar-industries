@@ -1257,7 +1257,79 @@
 
 			<!-- GSAP Animation -->
 
-			<!-- Scripts JS -->
+			<!-- Welcome Popup Modal -->
+			@if(isset($welcomePopup) && $welcomePopup->is_active)
+			<div class="modal fade" id="welcomePopupModal" tabindex="-1" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 900px;">
+					<div class="modal-content shadow-lg border-0" style="border-radius: 20px; overflow: hidden; background-color: #ffffff;">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 20px; top: 20px; z-index: 10; background-color: rgba(255,255,255,0.9); border-radius: 50%; padding: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.3s ease;"></button>
+						<div class="row g-0">
+							<!-- Left Side Image -->
+							<div class="col-md-5 d-none d-md-block" style="background: url('{{ $welcomePopup->image ? asset('storage/' . $welcomePopup->image) : asset('frontend/images/homepage-1/slider/slider-01.jpg') }}') center/cover no-repeat; min-height: 450px;">
+							</div>
+							
+							<!-- Right Side Content -->
+							<div class="col-md-7 d-flex align-items-center position-relative">
+								<div class="card-body" style="padding: 3rem 4rem 3rem 3rem;">
+									@if($welcomePopup->subtitle)
+										<div class="d-flex align-items-center mb-3">
+											<span style="height: 2px; width: 30px; background-color: #f7a51c; display: inline-block; margin-right: 10px;"></span>
+											<h6 class="fw-bold text-uppercase mb-0" style="color: #f7a51c; font-size: 0.85rem; letter-spacing: 1.5px;">{{ $welcomePopup->subtitle }}</h6>
+										</div>
+									@endif
+									
+									@if($welcomePopup->title)
+										<h2 class="mb-4 fw-bolder" style="color: #121b22; font-size: 2.5rem; line-height: 1.2; text-transform: capitalize;">{{ $welcomePopup->title }}</h2>
+									@endif
+									
+									@if($welcomePopup->content)
+										<p class="text-muted mb-5" style="font-size: 1.05rem; line-height: 1.7;">{{ $welcomePopup->content }}</p>
+									@endif
+									
+									@if($welcomePopup->button_text && $welcomePopup->button_link)
+										<a href="{{ $welcomePopup->button_link }}" class="pbmit-btn">
+											<span class="pbmit-button-content-wrapper">
+												<span class="pbmit-button-icon">
+													<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
+												</span>
+												<span class="pbmit-button-text">{{ $welcomePopup->button_text }}</span>
+											</span>
+										</a>
+									@endif
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<style>
+				#welcomePopupModal .btn-close:hover {
+					background-color: #f7a51c !important;
+					transform: rotate(90deg);
+				}
+				#welcomePopupModal .modal-content {
+					animation: popupFadeIn 0.5s ease-out forwards;
+				}
+				@keyframes popupFadeIn {
+					from { opacity: 0; transform: translateY(20px) scale(0.95); }
+					to { opacity: 1; transform: translateY(0) scale(1); }
+				}
+			</style>
+			
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					if (!sessionStorage.getItem('omkar_welcome_popup_shown')) {
+						setTimeout(function() {
+							var welcomeModal = new bootstrap.Modal(document.getElementById('welcomePopupModal'));
+							welcomeModal.show();
+							sessionStorage.setItem('omkar_welcome_popup_shown', 'true');
+						}, 1500);
+					}
+				});
+			</script>
+			@endif
+			
 		</div>
 		@php
 			ob_end_flush();

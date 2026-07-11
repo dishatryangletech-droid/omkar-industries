@@ -48,6 +48,9 @@ class HomeController extends Controller
 	->get();
 
         $exhibitions = \App\Models\Exhibition::where('status', 'Active')->get();
+        $ourClients = \App\Models\Client::where('status', 'Active')->get();
+        $welcomePopup = \App\Models\WelcomePopup::where('is_active', 1)->first();
+
         $exhibition = $exhibitions->first(function ($ex) {
             $period = $ex->scheduled_period;
             if (empty($period)) return false;
@@ -71,6 +74,6 @@ class HomeController extends Controller
             }
         });
 
-        return view('frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection', 'slider', 'sliderTwo', 'sliderThree', 'extraSliders', 'exhibition'));
+        return view('frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection', 'slider', 'sliderTwo', 'sliderThree', 'extraSliders', 'exhibition', 'welcomePopup'));
     }
 }

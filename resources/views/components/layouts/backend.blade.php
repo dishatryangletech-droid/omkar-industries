@@ -213,6 +213,14 @@
                                     <div data-i18n="General Settings">General Settings (Contact)</div>
                                 </a>
                             </li>
+                            
+                            <li
+                                class="menu-item {{ Route::is('admin.website-pages.welcome-popup') ? 'active' : '' }}">
+
+                                <a href="{{ route('admin.website-pages.welcome-popup') }}" class="menu-link">
+                                    <div data-i18n="Welcome Popup">Welcome Popup</div>
+                                </a>
+                            </li>
 
                             <li class="menu-item {{ Route::is('admin.website-pages.sliders.*') ? 'active' : '' }}">
 
