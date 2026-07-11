@@ -904,19 +904,19 @@
 										<div class="swiper-wrapper">
 											@foreach($partners as $partner)
 												<article class="pbmit-client-style-1 swiper-slide">
-													<div class="pbmit-border-wrapper">
-														<div class="pbmit-client-wrapper pbmit-client-with-hover-img">
+													<div class="pbmit-border-wrapper" style="background-color: transparent !important;">
+														<div class="pbmit-client-wrapper pbmit-client-with-hover-img d-flex justify-content-center align-items-center" style="height: 80px; background-color: transparent !important;">
 															<h4 class="pbmit-hide">Partner</h4>
-															<div class="pbmit-client-hover-img">
+															<div class="pbmit-client-hover-img d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; background-color: transparent !important;">
 																<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
 																	alt="Partner"
-																	style="max-height: 65px; width: auto; object-fit: contain;">
+																	style="height: 65px; width: auto; max-width: 100%; object-fit: contain; background-color: transparent !important;">
 															</div>
-															<div class="pbmit-featured-img-wrapper">
-																<div class="pbmit-featured-wrapper">
+															<div class="pbmit-featured-img-wrapper d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; background-color: transparent !important;">
+																<div class="pbmit-featured-wrapper d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; background-color: transparent !important;">
 																	<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
 																		class="img-fluid" alt="Partner"
-																		style="max-height: 65px; width: auto; object-fit: contain;">
+																		style="height: 65px; width: auto; max-width: 100%; object-fit: contain; background-color: transparent !important;">
 																</div>
 															</div>
 														</div>
