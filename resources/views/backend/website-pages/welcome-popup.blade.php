@@ -41,7 +41,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="form-label">Content / Description</label>
-                            <textarea class="form-control" name="content" rows="4">{{ old('content', $popup->content) }}</textarea>
+                            <textarea class="form-control ckeditor" id="content" name="content" rows="4">{{ old('content', $popup->content) }}</textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -85,3 +85,21 @@
     </div>
 </div>
 @endsection
+
+@push('page-js')
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        $(document).ready(function() {
+            if ($('.ckeditor').length) {
+                CKEDITOR.config.versionCheck = false;
+                $('.ckeditor').each(function() {
+                    CKEDITOR.replace($(this).attr('id'), {
+                        height: 300,
+                        removeButtons: 'PasteFromWord',
+                        versionCheck: false
+                    });
+                });
+            }
+        });
+    </script>
+@endpush

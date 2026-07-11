@@ -1283,7 +1283,9 @@
 									@endif
 									
 									@if($welcomePopup->content)
-										<p class="text-muted mb-5" style="font-size: 1.05rem; line-height: 1.7;">{{ $welcomePopup->content }}</p>
+										<div class="text-muted mb-5" style="font-size: 1.05rem; line-height: 1.7;">
+											{!! $welcomePopup->content !!}
+										</div>
 									@endif
 									
 									@if($welcomePopup->button_text && $welcomePopup->button_link)
@@ -1304,6 +1306,12 @@
 			</div>
 			
 			<style>
+				#welcomePopupModal {
+					z-index: 999999 !important;
+				}
+				.modal-backdrop {
+					z-index: 999998 !important;
+				}
 				#welcomePopupModal .btn-close:hover {
 					background-color: #f7a51c !important;
 					transform: rotate(90deg);
