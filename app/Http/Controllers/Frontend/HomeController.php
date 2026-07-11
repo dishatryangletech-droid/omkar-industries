@@ -47,6 +47,30 @@ class HomeController extends Controller
 	 ->orderBy('id', 'asc')
 	->get();
 
-        return view('frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection', 'slider', 'sliderTwo', 'sliderThree', 'extraSliders'));
+        $exhibitions = \App\Models\Exhibition::where('status', 'Active')->get();
+        $exhibition = $exhibitions->first(function ($ex) {
+            $period = $ex->scheduled_period;
+            if (empty($period)) return false;
+            
+            $dates = explode('-', $period);
+            $endDateString = trim(end($dates));
+            
+            try {
+                $endDate = \Carbon\Carbon::parse($endDateString);
+                
+                // If it's just month and year, push to end of month
+                if (preg_match('/^[a-zA-Z]+\s+\d{4}$/', $endDateString)) {
+                    $endDate = $endDate->endOfMonth();
+                } else {
+                    $endDate = $endDate->endOfDay();
+                }
+                
+                return $endDate->isFuture() || $endDate->isToday();
+            } catch (\Exception $e) {
+                return false;
+            }
+        });
+
+        return view('frontend.index-2', compact('blogs', 'faqs', 'testimonials', 'partners', 'aboutUs', 'mission', 'vision', 'goal', 'products', 'faqSection', 'slider', 'sliderTwo', 'sliderThree', 'extraSliders', 'exhibition'));
     }
 }

@@ -8,8 +8,8 @@
 						<h1 class="site-title">
 							<a href="/index-2">
 								<img class="pbmit-main-logo" src="{{ asset('frontend/images/full-logo2.png') }}"
-									alt="Induyst" style="width: auto; height: auto; max-height: 100%; max-width: 500px;
-    margin-top: 39px;
+									alt="Induyst" style="width: auto; height: auto; max-height: 100%; max-width: 430px;
+    margin-top: 29px;
     margin-left: -20px;">
 								<style>
 									.pbmit-sticky-header .pbmit-main-logo {
@@ -18,8 +18,9 @@
 
 									.pbmit-sticky-header .pbmit-sticky-logo {
 										display: inline-block !important;
-										max-height: 150px !important;
-										max-width: 500px !important;
+										max-height: 180px !important;
+										max-width: 280px !important;
+										margin-top: 10px !important;
 									}
 
 									.pbmit-sticky-header .site-branding {
@@ -158,16 +159,16 @@
 																@php
 																	$otherProduct = \App\Models\Product::where('slug', 'other-product-page')->first();
 																	$otherId = $otherProduct ? $otherProduct->id : 0;
-																	
+
 																	$headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
 																	$headerProductIds = $headerSettings['all_machines'] ?? [];
-																	
+
 																	if (!empty($headerProductIds)) {
 																		$idString = implode(',', $headerProductIds);
 																		$navProducts = \App\Models\Product::whereIn('id', $headerProductIds)
-																						->where('status', 'Active')
-																						->orderByRaw("FIELD(id, {$idString})")
-																						->get();
+																			->where('status', 'Active')
+																			->orderByRaw("FIELD(id, {$idString})")
+																			->get();
 																	} else {
 																		$standaloneNav = \App\Models\Product::where('status', 'Active')->where('is_visible', 1)
 																			->where(function ($q) {
