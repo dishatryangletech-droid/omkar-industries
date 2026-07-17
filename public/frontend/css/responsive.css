@@ -2343,7 +2343,7 @@ body {
 	.pbmit-header-style-1 .pbmit-header-text-box {
         position: relative;
         flex: 1;
-        margin-left: 20px;
+        margin-left: -94px;
         color: rgba(var(--pbmit-white-color-rgb), .7);
     }
 	.pbmit-header-style-1 .pbmit-header-text-box:before{

@@ -11,8 +11,6 @@
 									alt="Induyst" style="width: auto; height: auto; max-height: 100%; max-width: 430px;
     margin-top: 29px;
     margin-left: -20px;">
-								<span class="pbmit-main-logo"
-									style="margin-top: 5px; margin-left: 10px; margin-right: 10px; width: 1px; height: 65px; background-color: #bbb; display: inline-block;"></span>
 								<img class="pbmit-main-logo" src="{{ asset('frontend/images/omkar-logo2.png') }}"
 									alt="Omkar"
 									style="width: auto; height: auto; max-height: 100%; max-width: 80px; margin-top: 7px;">
