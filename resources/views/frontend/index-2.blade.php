@@ -19,11 +19,11 @@
 				@include('frontend.partials.header')
 
 				<div class="pbmit-slider-area pbmit-slider-one pbmit-slider-two">
-					<div class="swiper-slider" data-autoplay="true" data-autoplayspeed="2000" data-loop="true"
+					<div class="swiper-slider" data-autoplay="true" data-autoplayspeed="3000" data-loop="true"
 						data-dots="false" data-arrows="true" data-columns="1" data-margin="0" data-effect="fade">
 						<div class="swiper-wrapper">
 							<!-- Slide1 -->
-							<div class="swiper-slide" id="slide-1">
+							<div class="swiper-slide" id="slide-1" data-swiper-autoplay="3000">
 								<div class="pbmit-slider-item">
 									<div class="pbmit-slider-bg"
 										style="background-image: url({{ $slider?->background_photo ? route('uploads.public', ['path' => $slider->background_photo]) : asset('frontend/images/banner-slider-img/slider1-01.jpg') }});">
@@ -1332,7 +1332,7 @@
 							var welcomeModal = new bootstrap.Modal(document.getElementById('welcomePopupModal'));
 							welcomeModal.show();
 							sessionStorage.setItem('omkar_welcome_popup_shown', 'true');
-						}, 1500);
+						}, 15000); // 15 seconds delay
 					}
 				});
 			</script>
