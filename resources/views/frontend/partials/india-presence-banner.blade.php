@@ -1,4 +1,32 @@
 <!-- Omkar India Wide Compact Banner Section Start -->
+<style>
+	.omkar-india-compact-banner {
+		transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+	.omkar-india-compact-banner:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 14px 32px rgba(212, 136, 6, 0.16) !important;
+		border-color: #ffd875 !important;
+	}
+	.omkar-img-card {
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+	}
+	.omkar-img-card img {
+		transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+	}
+	.omkar-india-compact-banner:hover .omkar-img-card {
+		border-color: #ffd875 !important;
+	}
+	.omkar-img-card:hover {
+		transform: translateY(-5px) scale(1.03);
+		box-shadow: 0 10px 22px rgba(212, 136, 6, 0.22) !important;
+		border-color: #d48806 !important;
+	}
+	.omkar-img-card:hover img {
+		transform: scale(1.08);
+	}
+</style>
+
 <a href="{{ url('our-product/tct-band-saw-blade-carbide-blade') }}" class="d-block text-decoration-none" style="color: inherit;">
 	<div class="omkar-india-compact-banner mx-auto mt-2 mb-3"
 		style="max-width: 1293px; width: 100%; background: #fff8e1; border-radius: 16px; border: 1px solid #ffe8a1; border-left: 6px solid #d48806; box-shadow: 0 8px 24px rgba(212, 136, 6, 0.08); padding: 18px 25px; min-height: 180px; max-height: 210px; display: flex; align-items: center; overflow: hidden; position: relative; cursor: pointer;">
@@ -12,19 +40,19 @@
 			<div class="col-lg-5 col-md-5 col-12 p-0">
 				<div class="d-flex align-items-center justify-content-between gap-2">
 					<div class="omkar-img-card rounded-3 p-2 bg-white text-center border"
-						style="width: 32%; height: 135px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-color: #ffe8a1 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+						style="width: 32%; height: 135px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-color: #ffe8a1 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
 						<img src="{{ asset('frontend/images/india-presence/tct-bandsaw-blade-2.png') }}"
 							alt="TCT Bandsaw Blade" class="img-fluid"
 							style="max-height: 90px; max-width: 100%; object-fit: contain;">
 					</div>
 					<div class="omkar-img-card rounded-3 p-2 bg-white text-center border"
-						style="width: 32%; height: 135px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-color: #ffe8a1 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+						style="width: 32%; height: 135px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-color: #ffe8a1 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
 						<img src="{{ asset('frontend/images/india-presence/bandsaw-blade-1.png') }}"
 							alt="Coiled Bandsaw Blade" class="img-fluid"
 							style="max-height: 90px; max-width: 100%; object-fit: contain;">
 					</div>
 					<div class="omkar-img-card rounded-3 p-2 bg-white text-center border"
-						style="width: 32%; height: 135px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-color: #ffe8a1 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s ease;">
+						style="width: 32%; height: 135px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-color: #ffe8a1 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
 						<img src="{{ asset('frontend/images/india-presence/dachuan-blade-3.png') }}"
 							alt="Distributor Quality Blade" class="img-fluid"
 							style="max-height: 90px; max-width: 100%; object-fit: contain;">
