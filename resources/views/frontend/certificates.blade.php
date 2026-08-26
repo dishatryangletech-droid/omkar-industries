@@ -97,51 +97,119 @@
 							<article class="col-md-6 col-lg-4 mb-4">
 								<div
 									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div style="border-radius: 10px; overflow: hidden; margin-bottom: 20px;">
-										<img src="{{ asset('frontend/images/portfolio/portfolio-01.jpg') }}"
-											class="img-fluid w-100" alt="Certificate 1"
-											style="object-fit: cover; border-radius: 10px;">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/OMKAR_INDUSTRIES_ISO.png') }}"
+											class="img-fluid" alt="ISO Certification"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title" style="font-size: 22px; margin-bottom: 5px;">
-											ISO 9001
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											ISO Certification
 										</h2>
-										<div class="pbmit-heading-desc" style="color: #666;">Quality Management Standard
-										</div>
+										<div class="pbmit-heading-desc" style="color: #666;">Omkar Industries ISO</div>
 									</div>
 								</div>
 							</article>
 							<article class="col-md-6 col-lg-4 mb-4">
 								<div
 									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div style="border-radius: 10px; overflow: hidden; margin-bottom: 20px;">
-										<img src="{{ asset('frontend/images/portfolio/portfolio-02.jpg') }}"
-											class="img-fluid w-100" alt="Certificate 2"
-											style="object-fit: cover; border-radius: 10px;">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/ZED MSME Bronze.png') }}"
+											class="img-fluid" alt="ZED MSME Bronze"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title" style="font-size: 22px; margin-bottom: 5px;">
-											ISO 14001
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											ZED MSME Bronze
 										</h2>
-										<div class="pbmit-heading-desc" style="color: #666;">Environmental Management
-										</div>
+										<div class="pbmit-heading-desc" style="color: #666;">MSME Certification</div>
 									</div>
 								</div>
 							</article>
 							<article class="col-md-6 col-lg-4 mb-4">
 								<div
 									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div style="border-radius: 10px; overflow: hidden; margin-bottom: 20px;">
-										<img src="{{ asset('frontend/images/portfolio/portfolio-03.jpg') }}"
-											class="img-fluid w-100" alt="Certificate 3"
-											style="object-fit: cover; border-radius: 10px;">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/ZED MSME.png') }}"
+											class="img-fluid" alt="ZED MSME"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
 									</div>
 									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title" style="font-size: 22px; margin-bottom: 5px;">
-											ISO 45001
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											ZED MSME
 										</h2>
-										<div class="pbmit-heading-desc" style="color: #666;">Health & Safety
-											Certification</div>
+										<div class="pbmit-heading-desc" style="color: #666;">MSME Certification</div>
+									</div>
+								</div>
+							</article>
+							<article class="col-md-6 col-lg-4 mb-4">
+								<div
+									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/Gold Medal 1.png') }}"
+											class="img-fluid" alt="Gold Medal 1"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
+									</div>
+									<div class="pbmit-ihbox-contents">
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											Gold Medal 1
+										</h2>
+										<div class="pbmit-heading-desc" style="color: #666;">Industry Recognition</div>
+									</div>
+								</div>
+							</article>
+							<article class="col-md-6 col-lg-4 mb-4">
+								<div
+									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/gold medal 2.png') }}"
+											class="img-fluid" alt="Gold Medal 2"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
+									</div>
+									<div class="pbmit-ihbox-contents">
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											Gold Medal 2
+										</h2>
+										<div class="pbmit-heading-desc" style="color: #666;">Industry Recognition</div>
+									</div>
+								</div>
+							</article>
+							<article class="col-md-6 col-lg-4 mb-4">
+								<div
+									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/MEDALS.jpeg') }}"
+											class="img-fluid" alt="Medals"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
+									</div>
+									<div class="pbmit-ihbox-contents">
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											Medals
+										</h2>
+										<div class="pbmit-heading-desc" style="color: #666;">Industry Recognition</div>
+									</div>
+								</div>
+							</article>
+							<article class="col-md-6 col-lg-4 mb-4">
+								<div
+									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/OMKAR_INDU_CERTI.jpeg') }}"
+											class="img-fluid" alt="Omkar Industry Certificate"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
+									</div>
+									<div class="pbmit-ihbox-contents">
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											Omkar Industry Certificate
+										</h2>
+										<div class="pbmit-heading-desc" style="color: #666;">Omkar Industries ISO</div>
 									</div>
 								</div>
 							</article>
