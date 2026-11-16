@@ -651,6 +651,22 @@
 
 				<!-- Client Start -->
 				<section class="client-section-two">
+					<style>
+						.client-section-two .swiper-slider,
+						.client-section-two .swiper-wrapper,
+						.client-section-two .swiper-slide,
+						.client-section-two .pbmit-border-wrapper,
+						.client-section-two .pbmit-client-wrapper {
+							height: 110px !important;
+						}
+						.client-section-two img {
+							max-height: 85px !important;
+							height: 85px !important;
+							max-width: 190px !important;
+							width: auto !important;
+							object-fit: contain !important;
+						}
+					</style>
 					<div class="container-fluid p-0">
 						<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false"
 							data-arrows="false" data-columns="6" data-margin="0" data-effect="slide">
@@ -663,13 +679,13 @@
 												<div class="pbmit-client-hover-img">
 													<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
 														alt="Partner"
-														style="max-height: 65px; width: auto; object-fit: contain;">
+														style="height: 85px; max-height: 85px; width: auto; object-fit: contain;">
 												</div>
 												<div class="pbmit-featured-img-wrapper">
 													<div class="pbmit-featured-wrapper">
 														<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
 															class="img-fluid" alt="Partner"
-															style="max-height: 65px; width: auto; object-fit: contain;">
+															style="height: 85px; max-height: 85px; width: auto; object-fit: contain;">
 													</div>
 												</div>
 											</div>

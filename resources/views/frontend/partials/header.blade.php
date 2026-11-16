@@ -10,10 +10,11 @@
 								<img class="pbmit-main-logo" src="{{ asset('frontend/images/full-logo2.png') }}"
 									alt="Induyst" style="width: auto; height: auto; max-height: 100%; max-width: 430px;
     margin-top: 29px;
-    margin-left: -20px;">
-								<img class="pbmit-main-logo" src="{{ asset('frontend/images/omkar-logo2.png') }}"
-									alt="Omkar"
-									style="width: auto; height: auto; max-height: 100%; max-width: 80px; margin-top: 7px;">
+    margin-left: -10px;
+    padding-right: 5px;">
+								<img class="pbmit-main-logo pbmit-round-logo"
+									src="{{ asset('frontend/images/omkar-logo2.png') }}" alt="Omkar"
+									style="width: auto; height: auto; max-height: 80px; max-width: 90px; margin-top: -6px; margin-left: 12px; padding: 2px 6px;">
 								<style>
 									.pbmit-sticky-header .pbmit-main-logo {
 										display: none !important;
@@ -22,8 +23,9 @@
 									.pbmit-sticky-header .pbmit-sticky-logo {
 										display: inline-block !important;
 										max-height: 180px !important;
-										max-width: 280px !important;
-										margin-top: 10px !important;
+										max-width: 350px !important;
+										margin-top: 0 !important;
+										vertical-align: middle;
 									}
 
 									.pbmit-sticky-header .site-branding {
@@ -38,11 +40,29 @@
 											margin-left: -10px !important;
 										}
 
+										.pbmit-main-logo.pbmit-round-logo {
+											width: auto !important;
+											max-width: 65px !important;
+											max-height: 60px !important;
+											margin-top: 5px !important;
+											margin-left: 8px !important;
+											padding: 2px !important;
+										}
+
 										.pbmit-sticky-header .pbmit-sticky-logo {
 											max-height: 100px !important;
 											max-width: 100% !important;
-											margin-top: 10px !important;
+											margin-top: 0 !important;
 											margin-left: -10px !important;
+										}
+
+										.pbmit-sticky-header .pbmit-sticky-logo.pbmit-sticky-round-logo {
+											width: auto !important;
+											max-width: 60px !important;
+											max-height: 52px !important;
+											margin-top: 0 !important;
+											margin-left: 5px !important;
+											padding: 2px !important;
 										}
 									}
 
@@ -53,12 +73,12 @@
 									}
 								</style>
 								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/full-logo.png') }}"
-									alt="Induyst" style="width: auto; height: auto;">
+									alt="Induyst" style="width: auto; height: auto; padding: 2px 0; vertical-align: middle;">
 								<span class="pbmit-sticky-logo"
-									style="margin-top: 15px !important; margin-left: 10px; margin-right: 10px; width: 1px !important; height: 35px !important; background-color: #bbb;"></span>
-								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/omkar-logo-bc-2.png') }}"
-									alt="Omkar"
-									style="width: auto !important; height: auto !important; max-width: 85px !important; max-height: 59px !important; margin-top: 2px !important;">
+									style="margin-top: 0 !important; margin-left: 12px; margin-right: 12px; width: 1px !important; height: 45px !important; background-color: #bbb; vertical-align: middle;"></span>
+								<img class="pbmit-sticky-logo pbmit-sticky-round-logo"
+									src="{{ asset('frontend/images/omkar-logo-bc-2.png') }}" alt="Omkar"
+									style="width: auto !important; height: auto !important; max-width: 90px !important; max-height: 80px !important; margin-top: 0 !important; padding: 2px 6px !important; vertical-align: middle;">
 							</a>
 						</h1>
 					</div>
