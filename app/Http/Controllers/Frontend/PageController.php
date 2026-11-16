@@ -61,10 +61,12 @@ class PageController extends Controller
     {
         $generalSetting = \App\Models\GeneralSetting::first();
         $footerSetting = \Illuminate\Support\Facades\DB::table('footer_settings')->first();
+        $countryContacts = \App\Models\CountryContact::where('status', 'Active')->orderBy('sort_order', 'asc')->get();
 
         return view('frontend.contact-us', [
             'generalSetting' => $generalSetting,
             'footerSetting' => $footerSetting,
+            'countryContacts' => $countryContacts,
         ]);
     }
 

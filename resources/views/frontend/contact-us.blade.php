@@ -403,6 +403,147 @@
 			</section>
 			<!-- Contact Form End -->
 
+			@if(isset($countryContacts) && $countryContacts->count() > 0)
+			<!-- Global Presence / Country Contacts Section Start -->
+			<style>
+				.country-contact-card {
+					position: relative;
+					background: #ffffff;
+					border: 1px solid #e8ecf2 !important;
+					border-radius: 16px !important;
+					box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+					transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+					overflow: hidden;
+					display: flex;
+					flex-direction: column;
+				}
+				.country-contact-card::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 3px;
+					background: linear-gradient(90deg, #d48806 0%, #f5c05c 100%);
+					opacity: 0.85;
+					transition: height 0.3s ease;
+				}
+				.country-contact-card:hover {
+					transform: translateY(-6px);
+					box-shadow: 0 16px 36px rgba(212, 136, 6, 0.12) !important;
+					border-color: #ffd77c !important;
+				}
+				.country-contact-card:hover::before {
+					height: 4px;
+				}
+				.country-icon-circle {
+					width: 42px;
+					height: 42px;
+					min-width: 42px;
+					border-radius: 50%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: 16px;
+				}
+				.country-contact-card a:hover {
+					color: #d48806 !important;
+				}
+			</style>
+			<section class="country-contacts-section py-5">
+				<div class="container">
+					<div class="row text-center mb-5">
+						<div class="col-12">
+							<div class="pbmit-heading-subheading text-center">
+								<h4 class="pbmit-subtitle">Global Presence</h4>
+								<h2 class="pbmit-title">Our International Offices & Contacts</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row g-4 justify-content-center">
+						@foreach($countryContacts as $contact)
+							<div class="col-md-6 col-lg-4 d-flex">
+								<div class="country-contact-card w-100 p-4">
+									
+									<!-- Country Header (Logo & Name) -->
+									<div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+										<div class="d-flex align-items-center">
+											@if($contact->logo)
+												<div class="me-3 rounded-2 border overflow-hidden d-flex align-items-center justify-content-center bg-white shadow-sm"
+													 style="width: 56px; height: 40px; min-width: 56px; border-color: #e2e8f0 !important; padding: 2px;">
+													<img src="{{ asset('storage/' . $contact->logo) }}" alt="{{ $contact->country_name }}"
+														 style="max-height: 100%; max-width: 100%; object-fit: contain;">
+												</div>
+											@else
+												<div class="me-3 rounded-circle d-flex align-items-center justify-content-center"
+													 style="width: 46px; height: 46px; min-width: 46px; background: #fff8e8; color: #d48806; border: 1px solid #ffe6a6;">
+													<i class="pbmit-induyst-icon pbmit-induyst-icon-location-1" style="font-size: 20px;"></i>
+												</div>
+											@endif
+											<div>
+												<h4 class="mb-0 fw-bold" style="font-size: 1.25rem; color: #1e293b;">{{ $contact->country_name }}</h4>
+												<span style="font-size: 12px; color: #64748b; font-weight: 500;">Branch Office</span>
+											</div>
+										</div>
+										<span class="badge" style="background: rgba(212, 136, 6, 0.12); color: #d48806; font-size: 11px; padding: 5px 10px; border-radius: 20px; font-weight: 600;">
+											Active
+										</span>
+									</div>
+
+									<!-- Info items in card body -->
+									<div class="card-info-body flex-grow-1">
+										@if($contact->address)
+											<div class="d-flex mb-3">
+												<div class="country-icon-circle me-3" style="background: #fff8e6; color: #d48806;">
+													<i class="pbmit-induyst-icon pbmit-induyst-icon-location-1"></i>
+												</div>
+												<div class="pt-1">
+													<span class="d-block text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px; color: #94a3b8;">Address</span>
+													<div style="color: #334155; font-size: 14px; line-height: 1.5; font-weight: 500;">
+														{!! nl2br(e($contact->address)) !!}
+													</div>
+												</div>
+											</div>
+										@endif
+
+										@if($contact->phone)
+											<div class="d-flex mb-3">
+												<div class="country-icon-circle me-3" style="background: #eff6ff; color: #0284c7;">
+													<i class="pbmit-induyst-icon pbmit-induyst-icon-telephone"></i>
+												</div>
+												<div class="pt-1">
+													<span class="d-block text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px; color: #94a3b8;">Phone</span>
+													<a href="tel:{{ preg_replace('/[^0-9+]/', '', $contact->phone) }}" class="fw-semibold text-decoration-none" style="color: #1e293b; font-size: 15px; transition: color 0.2s;">
+														{{ $contact->phone }}
+													</a>
+												</div>
+											</div>
+										@endif
+
+										@if($contact->email)
+											<div class="d-flex">
+												<div class="country-icon-circle me-3" style="background: #f0fdf4; color: #16a34a;">
+													<i class="pbmit-induyst-icon pbmit-induyst-icon-mail"></i>
+												</div>
+												<div class="pt-1">
+													<span class="d-block text-uppercase fw-semibold" style="font-size: 11px; letter-spacing: 0.5px; color: #94a3b8;">Email</span>
+													<a href="mailto:{{ $contact->email }}" class="fw-medium text-decoration-none text-break" style="color: #1e293b; font-size: 14px; transition: color 0.2s;">
+														{{ $contact->email }}
+													</a>
+												</div>
+											</div>
+										@endif
+									</div>
+
+								</div>
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</section>
+			<!-- Global Presence / Country Contacts Section End -->
+			@endif
+
 			<!-- Iframe -->
 			<section class="contact-iframe-section section-lgb" data-aos="fade-up" data-aos-duration="800">
 				<div class="container">

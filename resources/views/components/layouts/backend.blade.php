@@ -288,6 +288,13 @@
                                     <div data-i18n="Brochure Page">Brochure Page</div>
                                 </a>
                             </li>
+                            <li
+                                class="menu-item {{ Route::is('admin.website-pages.country-contacts.*') ? 'active' : '' }}">
+
+                                <a href="{{ route('admin.website-pages.country-contacts.index') }}" class="menu-link">
+                                    <div data-i18n="Country Contacts">Country Contacts</div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
