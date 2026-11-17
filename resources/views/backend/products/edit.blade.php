@@ -199,6 +199,27 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="col-12 mt-3 child-field" id="related-products-selection-wrapper">
+                                                <label class="form-label fw-medium text-uppercase small">
+                                                    <i class="ti ti-link me-1"></i> Select Related Products (Optional)
+                                                </label>
+                                                @php
+                                                    $selectedRelated = old('related_products', $product->related_products ?? []);
+                                                    if (!is_array($selectedRelated)) {
+                                                        $selectedRelated = json_decode($selectedRelated, true) ?? [];
+                                                    }
+                                                @endphp
+                                                <select name="related_products[]" class="select2 form-control" multiple data-placeholder="Choose related products to display on frontend...">
+                                                    @foreach($all_products as $relItem)
+                                                        @if($relItem->id != $product->id)
+                                                            <option value="{{ $relItem->id }}" {{ in_array($relItem->id, $selectedRelated) ? 'selected' : '' }}>
+                                                                {{ $relItem->title }} {{ $relItem->parent ? '(' . $relItem->parent->title . ')' : '' }}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                                <small class="text-muted d-block mt-1">Select specific products to display in the "Related Products" section on this product's frontend page. If left empty, related products will be shown condition-wise (sibling products under the same category).</small>
+                                            </div>
                                         </div>
 
                                         <input type="hidden" name="design_type" value="design1">

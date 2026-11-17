@@ -43,7 +43,7 @@
 					<div class="container p-0">
 						<div class="pbmit-heading-subheading text-center">
 							<h4 class="pbmit-subtitle">Our Journey</h4>
-							<h2 class="pbmit-title">Milestones Of <br> Our History (1977 - 2026)</h2>
+							<h2 class="pbmit-title">Milestones Of <br> Our History (1977 - Present)</h2>
 						</div>
 						<div class="pbmit-timeline-post-items">
 							<!-- 1. Year 1977 -->
@@ -53,9 +53,9 @@
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
 												<h4 class="pbmit-year">1977</h4>
-												<h3 class="pbmit-title">FOUNDATION OF OMKAR</h3>
+												<h3 class="pbmit-title">FOUNDATION & EARLY START</h3>
 												<div class="simple-text">
-													<p>In 1977, Omkar Industries began its journey in Ahmedabad with a focused vision: to deliver dependable, high-precision woodworking machinery for regional artisans and sawmills. Starting with dedicated craftsmanship and fundamental band saw engineering, we laid down the groundwork for decades of industrial excellence.</p>
+													<p>In 1977, Omkar Industries laid its foundation in Ahmedabad with a focused vision: to deliver dependable, high-precision woodworking machinery and band saw solutions for sawmills and craftsmen, setting the benchmark for industrial excellence.</p>
 												</div>
 											</div>
 										</div>
@@ -73,16 +73,16 @@
 								</div>
 							</div>
 
-							<!-- 2. Year 1992 -->
+							<!-- 2. Year 2010 -->
 							<div class="pbmit-timeline-inner">
 								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">1992</h4>
-												<h3 class="pbmit-title">ADVANCED VERTICAL BANDSAWS</h3>
+												<h4 class="pbmit-year">2010</h4>
+												<h3 class="pbmit-title">EXPANSION OF OPERATIONS & WORK</h3>
 												<div class="simple-text">
-													<p>Building upon initial successes, Omkar expanded its manufacturing capacity and pioneered custom-built Vertical Bandsaw Machines. With refined engineering, standardized parts, and robust steel fabrication, our machinery became a benchmark for speed, durability, and smooth wood processing across western India.</p>
+													<p>To meet rising industrial demand, Omkar undertook a major expansion of its manufacturing infrastructure in Ahmedabad. We scaled up workshop capacity, upgraded heavy-duty machinery lines, and significantly broadened our nationwide market presence across India.</p>
 												</div>
 											</div>
 										</div>
@@ -93,23 +93,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-02.jpg') }}"
-													class="img-fluid" alt="1992 - Expansion">
+													class="img-fluid" alt="2010 - Expansion">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<!-- 3. Year 2005 -->
+							<!-- 3. Year 2016 -->
 							<div class="pbmit-timeline-inner">
 								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2005</h4>
-												<h3 class="pbmit-title">PLYWOOD & INDUSTRIAL SOLUTIONS</h3>
+												<h4 class="pbmit-year">2016</h4>
+												<h3 class="pbmit-title">VENTURING INTO GLOBAL EXPORTS</h3>
 												<div class="simple-text">
-													<p>Recognizing the rapid growth of the interior and plywood sector, Omkar engineered heavy-duty Plywood Glue Spreaders and DD Saw Machinery. These machines revolutionized production speeds and uniform glue distribution, earning the trust of leading industrial panel and board manufacturers nationwide.</p>
+													<p>Marking a strategic leap onto the international stage, Omkar commenced direct exports of heavy-duty woodworking machines and high-tensile band saw blades to various overseas countries, gaining strong footholds across the Middle East and neighboring regions.</p>
 												</div>
 											</div>
 										</div>
@@ -120,23 +120,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-03.jpg') }}"
-													class="img-fluid" alt="2005 - Plywood Solutions">
+													class="img-fluid" alt="2016 - Global Exports">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<!-- 4. Year 2015 -->
+							<!-- 4. Year 2018 -->
 							<div class="pbmit-timeline-inner">
 								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2015</h4>
-												<h3 class="pbmit-title">ISO QUALITY & NATIONWIDE REACH</h3>
+												<h4 class="pbmit-year">2018</h4>
+												<h3 class="pbmit-title">ACCELERATED EXPORT NETWORK EXPANSION</h3>
 												<div class="simple-text">
-													<p>Achieved ISO 9001 quality compliance and formalized rigorous multi-stage quality assurance protocols. Omkar expanded its distribution network across all major Indian states, establishing dedicated service networks and crossing the landmark milestone of 1,500+ successful industrial installations.</p>
+													<p>Recognized for outstanding reliability and low maintenance, Omkar rapidly expanded its overseas shipments by adding many more countries across Africa, Asia, and the Gulf, solidifying our reputation as a trusted international machinery supplier.</p>
 												</div>
 											</div>
 										</div>
@@ -147,23 +147,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-04.jpg') }}"
-													class="img-fluid" alt="2015 - Quality & Reach">
+													class="img-fluid" alt="2018 - Export Growth">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<!-- 5. Year 2021 -->
+							<!-- 5. Year 2026 -->
 							<div class="pbmit-timeline-inner">
 								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2021</h4>
-												<h3 class="pbmit-title">GLOBAL EXPORT EXPANSION</h3>
+												<h4 class="pbmit-year">2026</h4>
+												<h3 class="pbmit-title">OVERSEAS HEAD OFFICES & 34+ COUNTRIES</h3>
 												<div class="simple-text">
-													<p>Entered dynamic international export markets across the Middle East, Africa, and neighboring regions. We introduced high-tensile TCT and carbon band saw blades along with specialized woodworking lines, gaining widespread international acclaim for minimal maintenance and heavy-duty performance.</p>
+													<p>Achieved a landmark global milestone by establishing dedicated international head offices and overseas branch networks. Today, Omkar Industries proudly operates a robust international presence spanning 34+ countries worldwide with direct support and supply channels.</p>
 												</div>
 											</div>
 										</div>
@@ -174,23 +174,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-05.jpg') }}"
-													class="img-fluid" alt="2021 - Global Exports">
+													class="img-fluid" alt="2026 - 34+ Countries Global Offices">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<!-- 6. Year 2026 -->
+							<!-- 6. Year Present -->
 							<div class="pbmit-timeline-inner">
 								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">2026 - Present</h4>
-												<h3 class="pbmit-title">SMART AUTOMATION & NEXT-GEN MACHINERY</h3>
+												<h4 class="pbmit-year">Present</h4>
+												<h3 class="pbmit-title">SMART AUTOMATION & CONTINUOUS INNOVATION</h3>
 												<div class="simple-text">
-													<p>Today, Omkar Industries is powering forward with semi-automated and CNC-integrated wood processing machines. Backed by state-of-the-art facilities in Ahmedabad, 2,500+ trusted clients worldwide, and an enduring legacy since 1977, we continue to shape the future of wood machinery manufacturing.</p>
+													<p>Today and moving ahead, Omkar Industries continues to innovate with semi-automated and advanced wood processing machinery. Backed by 48+ years of engineering mastery and 2,500+ satisfied clients globally, we are shaping the future of industrial woodworking.</p>
 												</div>
 											</div>
 										</div>
@@ -201,7 +201,7 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-06.jpg') }}"
-													class="img-fluid" alt="2026 - Modern Automation">
+													class="img-fluid" alt="Present - Smart Automation">
 											</div>
 										</div>
 									</div>

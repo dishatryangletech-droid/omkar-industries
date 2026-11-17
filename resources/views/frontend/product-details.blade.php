@@ -463,6 +463,17 @@
 			</section>
 			<!-- Single Detail Style 1 End -->
 
+			@php
+				$relIds = $product->related_products;
+				if (!empty($relIds) && is_array($relIds)) {
+					$relatedProducts = \App\Models\Product::whereIn('id', $relIds)
+						->where('status', 'Active')
+						->where('is_visible', 1)
+						->get();
+				} else {
+					$relatedProducts = collect();
+				}
+			@endphp
 			@if(isset($relatedProducts) && $relatedProducts->count() > 0)
 			<section class="section-sm pt-0">
 				<div class="container">

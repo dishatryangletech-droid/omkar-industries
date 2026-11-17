@@ -237,14 +237,13 @@ Route::get('/our-product/{slug?}', function ($slug = null) {
         return view('frontend.services', compact('products', 'parent'));
     }
 
-    // Fetch related products (siblings with same parent)
+    // Fetch related products: Only show if explicitly selected in backend
     $relatedProducts = collect();
-    if ($product->parent_id) {
-        $relatedProducts = \App\Models\Product::where('parent_id', $product->parent_id)
-                                  ->where('id', '!=', $product->id)
+    $relatedIds = $product->related_products;
+    if (!empty($relatedIds) && is_array($relatedIds)) {
+        $relatedProducts = \App\Models\Product::whereIn('id', $relatedIds)
                                   ->where('status', 'Active')
                                   ->where('is_visible', 1)
-                                  ->take(3)
                                   ->get();
     }
 
