@@ -42,19 +42,20 @@
 				<div class="pbmit-element-timeline-style-2">
 					<div class="container p-0">
 						<div class="pbmit-heading-subheading text-center">
-							<h4 class="pbmit-subtitle">Our History</h4>
-							<h2 class="pbmit-title">Essential Features Of <br> Our History.</h2>
+							<h4 class="pbmit-subtitle">Our Journey</h4>
+							<h2 class="pbmit-title">Milestones Of <br> Our History (1977 - 2026)</h2>
 						</div>
 						<div class="pbmit-timeline-post-items">
+							<!-- 1. Year 1977 -->
 							<div class="pbmit-timeline-inner">
-								<div class=" col-lg-12 pbmit-ourhistory-type2">
+								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">1997 - Present</h4>
-												<h3 class="pbmit-title">OMKAR INDUSTRIES</h3>
+												<h4 class="pbmit-year">1977</h4>
+												<h3 class="pbmit-title">FOUNDATION OF OMKAR</h3>
 												<div class="simple-text">
-													<p>Established in 1997, Omkar Industries has been strengthening wooden products makers with advanced technological machines. We stand among the leading manufacturers, suppliers, and exporters of Wood Processing Machinery, Vertical Bandsaw Machines, Plywood Making Machinery, and more.</p>
+													<p>In 1977, Omkar Industries began its journey in Ahmedabad with a focused vision: to deliver dependable, high-precision woodworking machinery for regional artisans and sawmills. Starting with dedicated craftsmanship and fundamental band saw engineering, we laid down the groundwork for decades of industrial excellence.</p>
 												</div>
 											</div>
 										</div>
@@ -65,21 +66,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-01.jpg') }}"
-													class="img-fluid" alt="2021 - 2022">
+													class="img-fluid" alt="1977 - Foundation">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<!-- 2. Year 1992 -->
 							<div class="pbmit-timeline-inner">
-								<div class=" col-lg-12 pbmit-ourhistory-type2">
+								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">Ahmedabad (Gujarat)</h4>
-												<h3 class="pbmit-title">COMPANY PROFILE</h3>
+												<h4 class="pbmit-year">1992</h4>
+												<h3 class="pbmit-title">ADVANCED VERTICAL BANDSAWS</h3>
 												<div class="simple-text">
-													<p>Based in Ahmedabad (Gujarat), Omkar Industries is a renowned manufacturer, supplier, and exporter of reliable machinery including DD Saw Machines, Plywood Glue Spreaders, and Vertical Bandsaw Machines. Engineered with top-grade materials, our machines are highly demanded for their robustness, speed, and minimal maintenance.</p>
+													<p>Building upon initial successes, Omkar expanded its manufacturing capacity and pioneered custom-built Vertical Bandsaw Machines. With refined engineering, standardized parts, and robust steel fabrication, our machinery became a benchmark for speed, durability, and smooth wood processing across western India.</p>
 												</div>
 											</div>
 										</div>
@@ -90,21 +93,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-02.jpg') }}"
-													class="img-fluid" alt="2022 - 2023">
+													class="img-fluid" alt="1992 - Expansion">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<!-- 3. Year 2005 -->
 							<div class="pbmit-timeline-inner">
-								<div class=" col-lg-12 pbmit-ourhistory-type2">
+								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">100% Quality Range</h4>
-												<h3 class="pbmit-title">QUALITY ASSURANCE</h3>
+												<h4 class="pbmit-year">2005</h4>
+												<h3 class="pbmit-title">PLYWOOD & INDUSTRIAL SOLUTIONS</h3>
 												<div class="simple-text">
-													<p>We are devoted to producing and serving superior quality machinery. Our experienced engineers develop products in tandem with national norms, and strict quality checkers examine all machinery prior to dispatch to ensure perfection in construction, performance, and durability.</p>
+													<p>Recognizing the rapid growth of the interior and plywood sector, Omkar engineered heavy-duty Plywood Glue Spreaders and DD Saw Machinery. These machines revolutionized production speeds and uniform glue distribution, earning the trust of leading industrial panel and board manufacturers nationwide.</p>
 												</div>
 											</div>
 										</div>
@@ -115,27 +120,23 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-03.jpg') }}"
-													class="img-fluid" alt="2023 - 2024">
+													class="img-fluid" alt="2005 - Plywood Solutions">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<!-- 4. Year 2015 -->
 							<div class="pbmit-timeline-inner">
-								<div class=" col-lg-12 pbmit-ourhistory-type2">
+								<div class="col-lg-12 pbmit-ourhistory-type2">
 									<div class="row pbmit-ourhistory-row">
 										<div class="col-lg-5 pbmit-ourhistory-right">
 											<div class="content">
-												<h4 class="pbmit-year">Our Catalog</h4>
-												<h3 class="pbmit-title">PRODUCTS WE OFFER</h3>
+												<h4 class="pbmit-year">2015</h4>
+												<h3 class="pbmit-title">ISO QUALITY & NATIONWIDE REACH</h3>
 												<div class="simple-text">
-													<p>We specialize in a wide range of reliable and high-performance machines. Our top products include:</p>
-													<ul style="list-style-type: none; padding-left: 0; margin-top: 15px;">
-														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Plywood Glue Spreaders</li>
-														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Heavy Duty Glue Spreaders</li>
-														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Industrial Glue Spreaders</li>
-														<li><i class="pbmit-base-icon-right-arrow" style="color: #ff9800; font-size: 12px; margin-right: 10px;"></i>Glue Spreader Machines</li>
-													</ul>
+													<p>Achieved ISO 9001 quality compliance and formalized rigorous multi-stage quality assurance protocols. Omkar expanded its distribution network across all major Indian states, establishing dedicated service networks and crossing the landmark milestone of 1,500+ successful industrial installations.</p>
 												</div>
 											</div>
 										</div>
@@ -146,7 +147,61 @@
 										<div class="col-lg-5 pbmit-ourhistory-left">
 											<div class="pbmit-timeline-image">
 												<img src="{{ asset('frontend/images/history/history-04.jpg') }}"
-													class="img-fluid" alt="2024 - 2025">
+													class="img-fluid" alt="2015 - Quality & Reach">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 5. Year 2021 -->
+							<div class="pbmit-timeline-inner">
+								<div class="col-lg-12 pbmit-ourhistory-type2">
+									<div class="row pbmit-ourhistory-row">
+										<div class="col-lg-5 pbmit-ourhistory-right">
+											<div class="content">
+												<h4 class="pbmit-year">2021</h4>
+												<h3 class="pbmit-title">GLOBAL EXPORT EXPANSION</h3>
+												<div class="simple-text">
+													<p>Entered dynamic international export markets across the Middle East, Africa, and neighboring regions. We introduced high-tensile TCT and carbon band saw blades along with specialized woodworking lines, gaining widespread international acclaim for minimal maintenance and heavy-duty performance.</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-2 pbmit-ourhistory-center">
+											<div class="pbmit-history-line"></div>
+											<div class="pbmit-history-center-dot"></div>
+										</div>
+										<div class="col-lg-5 pbmit-ourhistory-left">
+											<div class="pbmit-timeline-image">
+												<img src="{{ asset('frontend/images/history/history-05.jpg') }}"
+													class="img-fluid" alt="2021 - Global Exports">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 6. Year 2026 -->
+							<div class="pbmit-timeline-inner">
+								<div class="col-lg-12 pbmit-ourhistory-type2">
+									<div class="row pbmit-ourhistory-row">
+										<div class="col-lg-5 pbmit-ourhistory-right">
+											<div class="content">
+												<h4 class="pbmit-year">2026 - Present</h4>
+												<h3 class="pbmit-title">SMART AUTOMATION & NEXT-GEN MACHINERY</h3>
+												<div class="simple-text">
+													<p>Today, Omkar Industries is powering forward with semi-automated and CNC-integrated wood processing machines. Backed by state-of-the-art facilities in Ahmedabad, 2,500+ trusted clients worldwide, and an enduring legacy since 1977, we continue to shape the future of wood machinery manufacturing.</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-2 pbmit-ourhistory-center">
+											<div class="pbmit-history-line"></div>
+											<div class="pbmit-history-center-dot"></div>
+										</div>
+										<div class="col-lg-5 pbmit-ourhistory-left">
+											<div class="pbmit-timeline-image">
+												<img src="{{ asset('frontend/images/history/history-06.jpg') }}"
+													class="img-fluid" alt="2026 - Modern Automation">
 											</div>
 										</div>
 									</div>

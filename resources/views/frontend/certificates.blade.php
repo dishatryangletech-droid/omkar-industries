@@ -145,23 +145,7 @@
 									</div>
 								</div>
 							</article>
-							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
-										<img src="{{ asset('frontend/images/portfolio/Gold Medal 1.png') }}"
-											class="img-fluid" alt="Gold Medal 1"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
-									<div class="pbmit-ihbox-contents">
-										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
-											Gold Medal 1
-										</h2>
-										<div class="pbmit-heading-desc" style="color: #666;">Industry Recognition</div>
-									</div>
-								</div>
-							</article>
+
 							<article class="col-md-6 col-lg-4 mb-4">
 								<div
 									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
@@ -173,7 +157,7 @@
 									</div>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
-											Gold Medal 2
+											Gold Medal
 										</h2>
 										<div class="pbmit-heading-desc" style="color: #666;">Industry Recognition</div>
 									</div>
@@ -184,15 +168,33 @@
 									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
 									<div
 										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
-										<img src="{{ asset('frontend/images/portfolio/MEDALS.jpeg') }}"
-											class="img-fluid" alt="Medals"
+										<img src="{{ asset('frontend/images/portfolio/TM OMKAR.jpg') }}"
+											class="img-fluid" alt="Trade Mark Medals"
 											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
 									</div>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
-											Medals
+											Trade Certificate Mark
 										</h2>
-										<div class="pbmit-heading-desc" style="color: #666;">Industry Recognition</div>
+										<div class="pbmit-heading-desc" style="#666;">Trade Mark Medal</div>
+									</div>
+								</div>
+							</article>
+							<article class="col-md-6 col-lg-4 mb-4">
+								<div
+									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+									<div
+										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+										<img src="{{ asset('frontend/images/portfolio/UDYAM Certificate 2025.jpg') }}"
+											class="img-fluid" alt="UDYAM Certificate 2025"
+											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
+									</div>
+									<div class="pbmit-ihbox-contents">
+										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
+											UDYAM Certificate 2025
+										</h2>
+										<div class="pbmit-heading-desc" style="#666;">6UDYAM Certificate 2025 Medal
+										</div>
 									</div>
 								</div>
 							</article>

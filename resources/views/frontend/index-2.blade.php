@@ -954,30 +954,108 @@
 									
 								</div>
 								<div class="col-12" style="padding-top: 50px;">
-									<div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="false"
-										data-arrows="false" data-columns="5" data-margin="20" data-effect="slide">
-										<div class="swiper-wrapper">
-											@foreach($partners as $partner)
-												<article class="pbmit-client-style-1 swiper-slide">
-													<div class="pbmit-border-wrapper" style="background-color: transparent !important;">
-														<div class="pbmit-client-wrapper pbmit-client-with-hover-img d-flex justify-content-center align-items-center" style="height: 100px; background-color: transparent !important;">
-															<h4 class="pbmit-hide">Partner</h4>
-															<div class="pbmit-client-hover-img d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; background-color: transparent !important;">
-																<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
-																	alt="Partner"
-																	style="height: 85px; width: auto; max-width: 100%; object-fit: contain; background-color: transparent !important;">
-															</div>
-															<div class="pbmit-featured-img-wrapper d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; background-color: transparent !important;">
-																<div class="pbmit-featured-wrapper d-flex justify-content-center align-items-center" style="width: 100%; height: 100%; background-color: transparent !important;">
-																	<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
-																		class="img-fluid" alt="Partner"
-																		style="height: 85px; width: auto; max-width: 100%; object-fit: contain; background-color: transparent !important;">
-																</div>
-															</div>
+									<style>
+										.pbmit-partner-marquee-wrap {
+											width: 100%;
+											overflow: hidden;
+											position: relative;
+											padding: 15px 0;
+										}
+										.pbmit-partner-marquee-track {
+											display: flex;
+											width: max-content;
+											user-select: none;
+											animation: pbmitPartnerScroll 45s linear infinite;
+										}
+										.pbmit-partner-marquee-wrap:hover .pbmit-partner-marquee-track {
+											animation-play-state: paused;
+										}
+										@keyframes pbmitPartnerScroll {
+											0% {
+												transform: translateX(0);
+											}
+											100% {
+												transform: translateX(-50%);
+											}
+										}
+										.pbmit-partner-marquee-set {
+											display: flex;
+											align-items: center;
+											gap: 55px;
+											padding-right: 55px;
+											flex-shrink: 0;
+										}
+										.pbmit-partner-logo-item {
+											flex: 0 0 auto;
+											display: flex;
+											align-items: center;
+											justify-content: center;
+											height: 95px;
+											background: transparent !important;
+											transition: transform 0.3s ease;
+										}
+										.pbmit-partner-logo-item:hover {
+											transform: scale(1.06);
+										}
+										.pbmit-partner-logo-img {
+											height: 80px;
+											max-height: 80px;
+											width: auto;
+											max-width: 180px;
+											object-fit: contain;
+											display: block;
+											background-color: transparent !important;
+										}
+										@media (max-width: 768px) {
+											.pbmit-partner-marquee-set {
+												gap: 30px;
+												padding-right: 30px;
+											}
+											.pbmit-partner-marquee-track {
+												animation-duration: 25s;
+											}
+											.pbmit-partner-logo-img {
+												height: 60px;
+												max-height: 60px;
+												max-width: 140px;
+											}
+											.pbmit-partner-logo-item {
+												height: 75px;
+											}
+										}
+									</style>
+									@php
+										$partnerCount = count($partners);
+										// Repeat inside each set so that each set has at least 20 logos (exceeds 3500px, filling any screen)
+										$repeatPerSet = $partnerCount > 0 ? max(1, (int)ceil(20 / $partnerCount)) : 1;
+									@endphp
+									<div class="pbmit-partner-marquee-wrap">
+										<div class="pbmit-partner-marquee-track">
+											{{-- Set A --}}
+											<div class="pbmit-partner-marquee-set">
+												@for ($r = 0; $r < $repeatPerSet; $r++)
+													@foreach($partners as $partner)
+														<div class="pbmit-partner-logo-item">
+															<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
+																alt="Partner Logo"
+																class="pbmit-partner-logo-img">
 														</div>
-													</div>
-												</article>
-											@endforeach
+													@endforeach
+												@endfor
+											</div>
+
+											{{-- Set B (Clone for 100% seamless, gap-free infinite loop) --}}
+											<div class="pbmit-partner-marquee-set" aria-hidden="true">
+												@for ($r = 0; $r < $repeatPerSet; $r++)
+													@foreach($partners as $partner)
+														<div class="pbmit-partner-logo-item">
+															<img src="{{ asset('frontend/images/partner_logos/' . $partner->getFilename()) }}"
+																alt="Partner Logo"
+																class="pbmit-partner-logo-img">
+														</div>
+													@endforeach
+												@endfor
+											</div>
 										</div>
 									</div>
 								</div>
