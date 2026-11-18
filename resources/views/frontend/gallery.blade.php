@@ -1,6 +1,6 @@
 <x-layouts.app title="Gallery - Omkar">
 @push('page-css')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}" />
     <style>
         .pbmit-sortable-list-ul li a.pbmit-sortable-link {
             border: 1px solid #b7b3b37a;
@@ -121,27 +121,34 @@
 		<!-- Page Wrapper End -->
 	</div>
 @push('page-js')
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="{{ asset('frontend/js/fancybox.umd.js') }}"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            Fancybox.bind('[data-fancybox="gallery"]', {
-                Toolbar: {
-                    display: {
-                        left: ["infobar"],
-                        middle: [
-                            "zoomIn",
-                            "zoomOut",
-                            "toggle1:1",
-                            "rotateCCW",
-                            "rotateCW",
-                            "flipX",
-                            "flipY",
-                        ],
-                        right: ["slideshow", "thumbs", "close"],
-                    },
-                },
-            });
-        });
+        (function() {
+            function initGalleryFancybox() {
+                if (typeof Fancybox !== 'undefined') {
+                    Fancybox.bind('[data-fancybox="gallery"]', {
+                        Toolbar: {
+                            display: {
+                                left: ["infobar"],
+                                middle: [
+                                    "zoomIn",
+                                    "zoomOut",
+                                    "toggle1:1",
+                                    "rotateCCW",
+                                    "rotateCW",
+                                ],
+                                right: ["slideshow", "thumbs", "close"],
+                            },
+                        },
+                    });
+                }
+            }
+            initGalleryFancybox();
+            if (document.readyState === 'loading') {
+                document.addEventListener("DOMContentLoaded", initGalleryFancybox);
+            }
+            window.addEventListener('load', initGalleryFancybox);
+        })();
     </script>
 @endpush
 </x-layouts.app>
