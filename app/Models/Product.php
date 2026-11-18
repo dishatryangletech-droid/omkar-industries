@@ -20,6 +20,7 @@ class Product extends Model
         'client_review_images' => 'array',
         'client_review_faqs' => 'array',
         'process_steps' => 'array',
+        'product_videos' => 'array',
     ];
 
     public function specifications()

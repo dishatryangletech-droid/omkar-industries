@@ -348,6 +348,73 @@
                          
                         </div>
                     <div class="child-field">
+                        <!-- Multiple Videos Section -->
+                        <div class="card border mb-4 mt-3" style="background: #fafafc;">
+                            <div class="card-body p-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2 flex-wrap gap-2">
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-primary">
+                                            <i class="ti ti-video me-1"></i> Product Videos (Multiple with Title / Label)
+                                        </h6>
+                                        <small class="text-muted">Add multiple videos with a label/title (e.g. Machine Working Demo, Cutting Process). These will display side-by-side with the product summary on frontend.</small>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-label-primary waves-effect" onclick="addProductVideo()">
+                                        <i class="ti ti-plus me-1"></i> Add Video
+                                    </button>
+                                </div>
+                                <div id="product-videos-container" class="row g-3 mt-1">
+                                    @if(!empty($product->product_videos) && is_array($product->product_videos))
+                                        @foreach($product->product_videos as $idx => $v)
+                                            @php
+                                                $videoFile = $v['video'] ?? $v['video_link'] ?? '';
+                                                $isLocalFile = $videoFile && !str_starts_with($videoFile, 'http');
+                                            @endphp
+                                            @if(!empty($videoFile))
+                                                <div class="col-md-6 col-12" id="product-video-row-{{ $idx }}">
+                                                    <div class="border rounded p-3 bg-white shadow-sm position-relative">
+                                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                                            <span class="badge bg-label-primary fw-bold">
+                                                                <i class="ti ti-video me-1"></i> Video #{{ $idx + 1 }}
+                                                            </span>
+                                                            <button type="button" class="btn btn-sm btn-icon btn-label-danger"
+                                                                onclick="document.getElementById('product-video-row-{{ $idx }}').remove()" title="Remove Video">
+                                                                <i class="ti ti-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            <label class="form-label small fw-medium mb-1">Video Title / Label</label>
+                                                            <input type="text" name="product_videos[{{ $idx }}][title]"
+                                                                class="form-control form-control-sm"
+                                                                value="{{ $v['title'] ?? '' }}"
+                                                                placeholder="e.g. Machine Working Demo">
+                                                        </div>
+                                                        <div>
+                                                            <label class="form-label small fw-medium mb-1">Upload Video File</label>
+                                                            <input type="file" name="product_videos[{{ $idx }}][video]"
+                                                                class="form-control form-control-sm"
+                                                                accept="video/mp4,video/webm,video/ogg,video/quicktime,video/*">
+                                                            <input type="hidden" name="product_videos[{{ $idx }}][existing_video]" value="{{ $videoFile }}">
+                                                            
+                                                            <div class="mt-2 p-2 rounded bg-light border d-flex align-items-center justify-content-between">
+                                                                <div class="d-flex align-items-center gap-2 overflow-hidden">
+                                                                    <i class="ti ti-video text-primary fs-5"></i>
+                                                                    <span class="small text-truncate" style="max-width: 180px;">{{ basename($videoFile) }}</span>
+                                                                </div>
+                                                                <a href="{{ $isLocalFile ? asset('storage/' . $videoFile) : $videoFile }}" target="_blank" class="btn btn-xs btn-outline-primary py-0 px-2">
+                                                                    <i class="ti ti-eye me-1"></i> View Video
+                                                                </a>
+                                                            </div>
+                                                            <small class="text-muted d-block mt-1" style="font-size: 0.72rem;">Current video kept if no new file uploaded.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
                     <hr class="my-4">
                     <div class="row">
                         <div class="col-md-6">
@@ -829,6 +896,34 @@
         let featureIndex = {{ $product->key_features ? count($product->key_features) : 0 }};
         let specTableIndex = {{ $product->specifications ? count($product->specifications) : 0 }};
         let clientReviewFaqIndex = {{ $product->client_review_faqs ? count($product->client_review_faqs) : 0 }};
+        let productVideoIndex = {{ (!empty($product->product_videos) && is_array($product->product_videos)) ? count($product->product_videos) : 0 }};
+
+        function addProductVideo() {
+            const idx = productVideoIndex++;
+            const html = `
+                <div class="col-md-6 col-12" id="product-video-row-${idx}">
+                    <div class="border rounded p-3 bg-white shadow-sm position-relative">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-label-primary fw-bold">
+                                <i class="ti ti-brand-youtube me-1"></i> Video #${idx + 1}
+                            </span>
+                            <button type="button" class="btn btn-sm btn-icon btn-label-danger" onclick="document.getElementById('product-video-row-${idx}').remove()" title="Remove Video">
+                                <i class="ti ti-trash"></i>
+                            </button>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small fw-medium mb-1">Video Title / Label</label>
+                            <input type="text" name="product_videos[${idx}][title]" class="form-control form-control-sm" placeholder="e.g. Machine Working Demo">
+                        </div>
+                        <div>
+                            <label class="form-label small fw-medium mb-1">Upload Video File</label>
+                            <input type="file" name="product_videos[${idx}][video]" class="form-control form-control-sm" accept="video/mp4,video/webm,video/ogg,video/quicktime,video/*">
+                            <small class="text-muted d-block mt-1" style="font-size: 0.72rem;"><i class="ti ti-info-circle me-1"></i>Formats: MP4, WebM, MOV. Max: 100MB.</small>
+                        </div>
+                    </div>
+                </div>`;
+            document.getElementById('product-videos-container').insertAdjacentHTML('beforeend', html);
+        }
         let processStepIndex = {{ $product->process_steps ? count($product->process_steps) : 0 }};
         let sectionIndex = 0;
 

@@ -71,6 +71,10 @@
 										border-right: none !important;
 										padding-right: 0 !important;
 									}
+
+									.pbmit-header-phone-link:hover {
+										color: var(--pbmit-global-color) !important;
+									}
 								</style>
 								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/full-logo.png') }}"
 									alt="Induyst" style="width: auto; height: auto; padding: 2px 0; vertical-align: middle;">
@@ -88,16 +92,35 @@
 					<div class="pbmit-header-info ml-auto d-flex align-items-center">
 						<div class="pbmit-header-info-inner">
 							<div class="pbmit-header-box pbmit-header-box-1">
-								<a href="tel:(000)123456789">
-									<span class="pbmit-header-box-icon">
+								@php
+									$phoneRaw = $generalSettings->contact_phone ?? '(000)123456789';
+									$cleanRaw = preg_replace('/<br\s*\/?>/i', "\n", $phoneRaw);
+									$phones = preg_split('/(?:\s*[\/,\n|]+\s*|\s+(?=\+)|\s+(?=[0-9]{10}))/', $cleanRaw);
+									$phones = array_values(array_filter(array_map('trim', $phones)));
+									$firstCleanPhone = count($phones) > 0 ? preg_replace('/[^0-9+]/', '', $phones[0]) : '';
+								@endphp
+								<span class="pbmit-header-box-icon">
+									<a href="tel:{{ $firstCleanPhone ?: '123456789' }}" style="color: inherit; text-decoration: none;">
 										<i class="pbmit-induyst-icon pbmit-induyst-icon-telephone"></i>
+									</a>
+								</span>
+								<span class="pbmit-box-content">
+									<span class="pbmit-header-box-title">Need to talk</span>
+									<span class="pbmit-header-box-content" style="display: flex !important; flex-direction: column !important; justify-content: center; line-height: 1.25;">
+										@if(count($phones) > 1)
+											@foreach($phones as $phone)
+												@php $cleanPhone = preg_replace('/[^0-9+]/', '', $phone); @endphp
+												<a href="tel:{{ $cleanPhone }}" class="pbmit-header-phone-link" style="display: block !important; color: inherit; text-decoration: none; font-size: 14px; line-height: 1.35; white-space: nowrap;">
+													{{ $phone }}
+												</a>
+											@endforeach
+										@else
+											<a href="tel:{{ $firstCleanPhone }}" class="pbmit-header-phone-link" style="display: block !important; color: inherit; text-decoration: none;">
+												{{ $phones[0] ?? $phoneRaw }}
+											</a>
+										@endif
 									</span>
-									<span class="pbmit-box-content">
-										<span class="pbmit-header-box-title">Need to talk</span>
-										<span
-											class="pbmit-header-box-content">{{ $generalSettings->contact_phone ?? '(000)123456789' }}</span>
-									</span>
-								</a>
+								</span>
 							</div>
 							<div class="pbmit-header-box pbmit-header-box-2">
 								<a href="#">

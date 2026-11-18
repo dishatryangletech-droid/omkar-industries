@@ -133,67 +133,242 @@
 								</div>
 							</div>
 							<div class="pbmit-entry-content">
-								<div data-aos="fade-up" data-aos-duration="800">
-									<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
-										@if(isset($product) && $product->content)
-											<div class="pbmit-custom-heading mb-0">
-												<h3 class="pbmit-title mb-0" style="margin-bottom: 0;">Project Summary :
-												</h3>
+								@php
+									$validProductVideos = [];
+									if (!empty($product->product_videos) && is_array($product->product_videos)) {
+										foreach ($product->product_videos as $pv) {
+											$vFile = trim($pv['video'] ?? $pv['video_link'] ?? '');
+											$pTitle = trim($pv['title'] ?? '');
+											if (!empty($vFile)) {
+												$isUrl = str_starts_with($vFile, 'http://') || str_starts_with($vFile, 'https://');
+												$isYoutube = false;
+												$embedUrl = '';
+												$videoUrl = '';
+
+												if ($isUrl) {
+													$videoUrl = $vFile;
+													if (preg_match('/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/', $vFile, $m)) {
+														$isYoutube = true;
+														$embedUrl = 'https://www.youtube.com/embed/' . $m[1] . '?rel=0';
+													} else {
+														$embedUrl = $vFile;
+													}
+												} else {
+													$videoUrl = asset('storage/' . $vFile);
+													$embedUrl = $videoUrl;
+												}
+
+												$validProductVideos[] = [
+													'title' => !empty($pTitle) ? $pTitle : 'Product Video ' . (count($validProductVideos) + 1),
+													'video_url' => $videoUrl,
+													'embed_url' => $embedUrl,
+													'is_youtube' => $isYoutube,
+												];
+											}
+										}
+									}
+									$hasMultipleVideos = count($validProductVideos) > 0;
+								@endphp
+
+								@if($hasMultipleVideos)
+									<div class="row align-items-start g-4">
+										<!-- Left Side: Product Summary & Advantages -->
+										<div class="col-lg-7 col-md-12">
+											<div data-aos="fade-up" data-aos-duration="800">
+												<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+													@if(isset($product) && $product->content)
+														<div class="pbmit-custom-heading mb-0">
+															<h3 class="pbmit-title mb-0" style="margin-bottom: 0;">Project Summary :</h3>
+														</div>
+													@endif
+													<div class="d-flex align-items-center gap-2">
+														@if(isset($product) && $product->video_link)
+															<a href="{{ $product->video_link }}"
+																class="pbmit-btn pbmit-btn-sm pbmin-lightbox-video">
+																<span class="pbmit-button-content-wrapper">
+																	<span class="pbmit-button-icon">
+																		<i class="pbmit-base-icon-play-button"></i>
+																	</span>
+																	<span class="pbmit-button-text">Watch Video</span>
+																</span>
+															</a>
+														@endif
+														@if(isset($product) && $product->brochure)
+															<a href="{{ asset('storage/' . $product->brochure) }}"
+																class="pbmit-btn pbmit-btn-sm" download>
+																<span class="pbmit-button-content-wrapper">
+																	<span class="pbmit-button-icon">
+																		<i class="pbmit-base-icon-download"></i>
+																	</span>
+																	<span class="pbmit-button-text">Download PDF</span>
+																</span>
+															</a>
+														@endif
+													</div>
+												</div>
+												@if(isset($product) && $product->content)
+													@php
+														$htmlContent = html_entity_decode($product->content);
+														$htmlContent = str_replace(['<p><p>', '</p></p>', '&lt;p&gt;', '&lt;/p&gt;'], ['<p>', '</p>', '', ''], $htmlContent);
+														$htmlContent = preg_replace('/<p>/i', '<p class="pbmit-firstletter">', trim($htmlContent), 1);
+													@endphp
+													{!! $htmlContent !!}
+												@endif
 											</div>
-										@endif
-										<div class="d-flex align-items-center gap-3">
-											<!-- Video Play Button -->
-											@if(isset($product) && $product->video_link)
-												<a href="{{ $product->video_link }}"
-													class="pbmit-btn pbmit-btn-sm pbmin-lightbox-video">
-													<span class="pbmit-button-content-wrapper">
-														<span class="pbmit-button-icon">
-															<i class="pbmit-base-icon-play-button"></i>
-														</span>
-														<span class="pbmit-button-text">Watch Video</span>
-													</span>
-												</a>
-											@endif
-											<!-- Download PDF Button -->
-											@if(isset($product) && $product->brochure)
-												<a href="{{ asset('storage/' . $product->brochure) }}"
-													class="pbmit-btn pbmit-btn-sm" download>
-													<span class="pbmit-button-content-wrapper">
-														<span class="pbmit-button-icon">
-															<i class="pbmit-base-icon-download"></i>
-														</span>
-														<span class="pbmit-button-text">Download PDF</span>
-													</span>
-												</a>
+
+											@if(isset($product) && $product->advantages && is_array($product->advantages) && count($product->advantages) > 0)
+												<div class="pbmit-custom-heading mt-4">
+													<h3 class="pbmit-title">Project Advantages :</h3>
+												</div>
+												<div class="list-group-wrap mb-4" style="padding-left: 0;">
+													<ul class="list-group">
+														@foreach($product->advantages as $advantage)
+															<li class="list-group-item">
+																<span class="pbmit-icon-list-icon">
+																	<i class="pbmit-base-icon-checkbox"></i>
+																</span>
+																<span class="pbmit-icon-list-text">{{ $advantage }}</span>
+															</li>
+														@endforeach
+													</ul>
+												</div>
 											@endif
 										</div>
-									</div>
-									@if(isset($product) && $product->content)
-										@php
-											$htmlContent = html_entity_decode($product->content);
-											$htmlContent = str_replace(['<p><p>', '</p></p>', '&lt;p&gt;', '&lt;/p&gt;'], ['<p>', '</p>', '', ''], $htmlContent);
-											$htmlContent = preg_replace('/<p>/i', '<p class="pbmit-firstletter">', trim($htmlContent), 1);
-										@endphp
-										{!! $htmlContent !!}
-									@endif
-								</div>
-								@if(isset($product) && $product->advantages && is_array($product->advantages) && count($product->advantages) > 0)
-									<div class="pbmit-custom-heading mt-4">
-										<h3 class="pbmit-title">Project Advantages :</h3>
-									</div>
-									<div class="list-group-wrap mb-4" style="padding-left: 0;">
-										<ul class="list-group">
-											@foreach($product->advantages as $advantage)
-												<li class="list-group-item">
-													<span class="pbmit-icon-list-icon">
-														<i class="pbmit-base-icon-checkbox"></i>
-													</span>
-													<span class="pbmit-icon-list-text">{{ $advantage }}</span>
-												</li>
-											@endforeach
-										</ul>
+
+										<!-- Right Side: Product Videos (Compact) -->
+										<div class="col-lg-5 col-md-12">
+											<div data-aos="fade-up" data-aos-duration="800">
+												<div class="pbmit-custom-heading mb-3">
+													<h3 class="pbmit-title mb-0" style="font-size: 24px;">Product Videos :</h3>
+												</div>
+												<div class="product-videos-card p-3 rounded" style="background: #fbfbfb; border: 1px solid #e9e9e9; box-shadow: 0 4px 15px rgba(0,0,0,0.03); max-width: 440px;">
+													<!-- Main Video Player -->
+													<div class="main-video-player-container position-relative rounded overflow-hidden mb-2" style="max-height: 230px; background: #000; display: flex; align-items: center; justify-content: center;">
+														<div id="video-player-target" class="w-100 h-100 d-flex align-items-center justify-content-center">
+															@if($validProductVideos[0]['is_youtube'])
+																<div class="w-100 position-relative" style="padding-top: 56.25%;">
+																	<iframe src="{{ $validProductVideos[0]['embed_url'] }}"
+																			class="position-absolute top-0 start-0 w-100 h-100 border-0"
+																			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+																			allowfullscreen></iframe>
+																</div>
+															@else
+																<video controls playsinline controlsList="nodownload" class="w-100" style="max-height: 230px; width: 100%; object-fit: contain; background: #000; display: block;" src="{{ $validProductVideos[0]['video_url'] }}">
+																	Your browser does not support the video tag.
+																</video>
+															@endif
+														</div>
+													</div>
+
+													<!-- Active Video Info -->
+													<div class="d-flex align-items-center justify-content-between mb-2 px-1">
+														<div class="d-flex align-items-center gap-2 overflow-hidden">
+															<span class="badge rounded-pill" style="background-color: var(--pbmit-global-color); color: #fff; font-size: 10px; padding: 3px 8px;">Playing</span>
+															<span class="fw-bold text-dark text-truncate" id="active-video-title" style="font-size: 13.5px;">
+																{{ $validProductVideos[0]['title'] }}
+															</span>
+														</div>
+														<a id="active-video-external-btn" href="{{ $validProductVideos[0]['video_url'] }}" target="_blank"
+														   class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1"
+														   style="font-size: 11px; padding: 2px 8px; border-radius: 4px;">
+															<span>Open</span> <i class="pbmit-base-icon-play-button" style="font-size: 9px;"></i>
+														</a>
+													</div>
+
+													<!-- Video Playlist / Selection (if more than 1) -->
+													@if(count($validProductVideos) > 1)
+														<div class="video-playlist-wrapper pt-1 border-top">
+															<div class="small fw-bold text-uppercase text-muted mb-2 ps-1" style="font-size: 10.5px; letter-spacing: 0.5px;">Select Video ({{ count($validProductVideos) }})</div>
+															<div class="video-playlist-list d-flex flex-column gap-1" style="max-height: 180px; overflow-y: auto; padding-right: 2px;">
+																@foreach($validProductVideos as $vIdx => $vItem)
+																	<div class="video-playlist-item d-flex align-items-center justify-content-between p-2 rounded {{ $vIdx === 0 ? 'video-item-active' : '' }}"
+																		 style="cursor: pointer; transition: all 0.25s ease; border: 1px solid {{ $vIdx === 0 ? 'var(--pbmit-global-color)' : '#eaeaea' }}; background: {{ $vIdx === 0 ? 'rgba(var(--pbmit-global-color-rgb, 240, 100, 30), 0.05)' : '#ffffff' }};"
+																		 onclick="selectProductVideo('{{ $vItem['video_url'] }}', '{{ $vItem['embed_url'] }}', {{ $vItem['is_youtube'] ? 'true' : 'false' }}, '{{ addslashes($vItem['title']) }}', this)">
+																		<div class="d-flex align-items-center gap-2 overflow-hidden">
+																			<div class="video-play-btn-circle rounded-circle d-flex align-items-center justify-content-center"
+																				 style="width: 26px; height: 26px; min-width: 26px; background: {{ $vIdx === 0 ? 'var(--pbmit-global-color)' : '#e4e4e4' }}; color: {{ $vIdx === 0 ? '#ffffff' : '#444444' }}; transition: all 0.2s;">
+																				<i class="pbmit-base-icon-play-button" style="font-size: 9px; margin-left: 2px;"></i>
+																			</div>
+																			<span class="video-item-name fw-medium text-dark text-truncate" style="font-size: 12.5px;">
+																				{{ $vItem['title'] }}
+																			</span>
+																		</div>
+																		<span class="badge rounded-pill bg-light text-muted border small ms-2 px-2 py-0" style="font-size: 10px;">
+																			#{{ $vIdx + 1 }}
+																		</span>
+																	</div>
+																@endforeach
+															</div>
+														</div>
+													@endif
+												</div>
+											</div>
+										</div>
 									</div>
 								@else
+									{{-- Full-width layout when no multiple videos added --}}
+									<div data-aos="fade-up" data-aos-duration="800">
+										<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+											@if(isset($product) && $product->content)
+												<div class="pbmit-custom-heading mb-0">
+													<h3 class="pbmit-title mb-0" style="margin-bottom: 0;">Project Summary :
+													</h3>
+												</div>
+											@endif
+											<div class="d-flex align-items-center gap-3">
+												<!-- Video Play Button -->
+												@if(isset($product) && $product->video_link)
+													<a href="{{ $product->video_link }}"
+														class="pbmit-btn pbmit-btn-sm pbmin-lightbox-video">
+														<span class="pbmit-button-content-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-play-button"></i>
+															</span>
+															<span class="pbmit-button-text">Watch Video</span>
+														</span>
+													</a>
+												@endif
+												<!-- Download PDF Button -->
+												@if(isset($product) && $product->brochure)
+													<a href="{{ asset('storage/' . $product->brochure) }}"
+														class="pbmit-btn pbmit-btn-sm" download>
+														<span class="pbmit-button-content-wrapper">
+															<span class="pbmit-button-icon">
+																<i class="pbmit-base-icon-download"></i>
+															</span>
+															<span class="pbmit-button-text">Download PDF</span>
+														</span>
+													</a>
+												@endif
+											</div>
+										</div>
+										@if(isset($product) && $product->content)
+											@php
+												$htmlContent = html_entity_decode($product->content);
+												$htmlContent = str_replace(['<p><p>', '</p></p>', '&lt;p&gt;', '&lt;/p&gt;'], ['<p>', '</p>', '', ''], $htmlContent);
+												$htmlContent = preg_replace('/<p>/i', '<p class="pbmit-firstletter">', trim($htmlContent), 1);
+											@endphp
+											{!! $htmlContent !!}
+										@endif
+									</div>
+									@if(isset($product) && $product->advantages && is_array($product->advantages) && count($product->advantages) > 0)
+										<div class="pbmit-custom-heading mt-4">
+											<h3 class="pbmit-title">Project Advantages :</h3>
+										</div>
+										<div class="list-group-wrap mb-4" style="padding-left: 0;">
+											<ul class="list-group">
+												@foreach($product->advantages as $advantage)
+													<li class="list-group-item">
+														<span class="pbmit-icon-list-icon">
+															<i class="pbmit-base-icon-checkbox"></i>
+														</span>
+														<span class="pbmit-icon-list-text">{{ $advantage }}</span>
+													</li>
+												@endforeach
+											</ul>
+										</div>
+									@else
+									@endif
 								@endif
 
 								@if(isset($product) && $product->specifications && $product->specifications->count() > 0)
@@ -568,5 +743,44 @@
 		<!-- GSAP Animation -->
 
 		<!-- Scripts JS -->
+		<script>
+			function selectProductVideo(videoUrl, embedUrl, isYoutube, title, element) {
+				var target = document.getElementById('video-player-target');
+				var titleEl = document.getElementById('active-video-title');
+				var extBtn = document.getElementById('active-video-external-btn');
+
+				if (target) {
+					if (isYoutube) {
+						target.innerHTML = '<div class="w-100 position-relative" style="padding-top: 56.25%;"><iframe src="' + embedUrl + '" class="position-absolute top-0 start-0 w-100 h-100 border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+					} else {
+						target.innerHTML = '<video controls autoplay playsinline controlsList="nodownload" class="w-100" style="max-height: 230px; width: 100%; object-fit: contain; background: #000; display: block;" src="' + videoUrl + '">Your browser does not support the video tag.</video>';
+					}
+				}
+				if (titleEl) titleEl.textContent = title;
+				if (extBtn) extBtn.href = videoUrl;
+
+				var items = document.querySelectorAll('.video-playlist-item');
+				items.forEach(function(item) {
+					item.classList.remove('video-item-active');
+					item.style.borderColor = '#eaeaea';
+					item.style.background = '#ffffff';
+					var circle = item.querySelector('.video-play-btn-circle');
+					if (circle) {
+						circle.style.backgroundColor = '#e4e4e4';
+						circle.style.color = '#444444';
+					}
+				});
+				if (element) {
+					element.classList.add('video-item-active');
+					element.style.borderColor = 'var(--pbmit-global-color)';
+					element.style.background = 'rgba(var(--pbmit-global-color-rgb, 240, 100, 30), 0.05)';
+					var activeCircle = element.querySelector('.video-play-btn-circle');
+					if (activeCircle) {
+						activeCircle.style.backgroundColor = 'var(--pbmit-global-color)';
+						activeCircle.style.color = '#ffffff';
+					}
+				}
+			}
+		</script>
 	</div>
 </x-layouts.app>

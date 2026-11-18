@@ -1,4 +1,126 @@
 <x-layouts.app title="Certificates - Omkar">
+@push('page-css')
+    <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}" />
+    <style>
+        /* Fancybox Modal & Navigation Styling */
+        .fancybox__container {
+            --fancybox-bg: rgba(18, 34, 45, 0.96);
+            --fancybox-color: #ffffff;
+            --fancybox-accent-color: #d4af37;
+            z-index: 9999999 !important;
+        }
+        .fancybox__toolbar {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(8px);
+            padding: 10px 15px !important;
+        }
+        .fancybox__toolbar .carousel__button {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-radius: 8px !important;
+            margin: 0 4px !important;
+            transition: all 0.25s ease;
+        }
+        .fancybox__toolbar .carousel__button:hover {
+            background: #d4af37 !important;
+            color: #000000 !important;
+        }
+        .fancybox__nav .carousel__button {
+            background: rgba(255, 255, 255, 0.25) !important;
+            backdrop-filter: blur(10px);
+            border-radius: 50% !important;
+            width: 54px !important;
+            height: 54px !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+        .fancybox__nav .carousel__button:hover {
+            background: #d4af37 !important;
+            color: #000000 !important;
+            transform: scale(1.12);
+        }
+        .fancybox__nav .carousel__button.is-prev {
+            left: 20px !important;
+        }
+        .fancybox__nav .carousel__button.is-next {
+            right: 20px !important;
+        }
+        .fancybox__thumb {
+            border-radius: 6px !important;
+            border: 2px solid transparent !important;
+            transition: all 0.3s ease;
+        }
+        .fancybox__thumb.is-selected {
+            border-color: #d4af37 !important;
+            transform: scale(1.05);
+        }
+        .certificate-card {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 15px;
+            padding: 15px;
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+            border-color: #d4af37;
+        }
+        .certificate-img-wrap {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fdfdfd;
+            padding: 8px;
+            position: relative;
+            cursor: pointer;
+        }
+        .certificate-img-wrap img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+        .certificate-card:hover .certificate-img-wrap img {
+            transform: scale(1.04);
+        }
+        .certificate-zoom-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            color: #222;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .certificate-card:hover .certificate-zoom-badge {
+            background: #d4af37;
+            color: #fff;
+        }
+        .certificate-zoom-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+@endpush
 	<div>
 		<!-- Page Wrapper -->
 		<div class="page-wrapper">
@@ -95,14 +217,22 @@
 						</div>
 						<div class="row pbmit-element-posts-wrapper">
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/OMKAR_INDUSTRIES_ISO.png') }}"
+										data-fancybox="certificates"
+										data-caption="ISO Certification - Omkar Industries ISO"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/OMKAR_INDUSTRIES_ISO.png') }}"
-											class="img-fluid" alt="ISO Certification"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="ISO Certification">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											ISO Certification
@@ -111,15 +241,24 @@
 									</div>
 								</div>
 							</article>
+
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/ZED MSME Bronze.png') }}"
+										data-fancybox="certificates"
+										data-caption="ZED MSME Bronze - MSME Certification"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/ZED MSME Bronze.png') }}"
-											class="img-fluid" alt="ZED MSME Bronze"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="ZED MSME Bronze">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											ZED MSME Bronze
@@ -128,15 +267,24 @@
 									</div>
 								</div>
 							</article>
+
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/ZED MSME.png') }}"
+										data-fancybox="certificates"
+										data-caption="ZED MSME - MSME Certification"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/ZED MSME.png') }}"
-											class="img-fluid" alt="ZED MSME"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="ZED MSME">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											ZED MSME
@@ -147,14 +295,22 @@
 							</article>
 
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/gold medal 2.png') }}"
+										data-fancybox="certificates"
+										data-caption="Gold Medal - Industry Recognition"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/gold medal 2.png') }}"
-											class="img-fluid" alt="Gold Medal 2"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="Gold Medal 2">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											Gold Medal
@@ -163,50 +319,76 @@
 									</div>
 								</div>
 							</article>
+
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/TM OMKAR.jpg') }}"
+										data-fancybox="certificates"
+										data-caption="Trade Certificate Mark - Trade Mark Medal"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/TM OMKAR.jpg') }}"
-											class="img-fluid" alt="Trade Mark Medals"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="Trade Mark Medals">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											Trade Certificate Mark
 										</h2>
-										<div class="pbmit-heading-desc" style="#666;">Trade Mark Medal</div>
+										<div class="pbmit-heading-desc" style="color: #666;">Trade Mark Medal</div>
 									</div>
 								</div>
 							</article>
+
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/UDYAM Certificate 2025.jpg') }}"
+										data-fancybox="certificates"
+										data-caption="UDYAM Certificate 2025"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/UDYAM Certificate 2025.jpg') }}"
-											class="img-fluid" alt="UDYAM Certificate 2025"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="UDYAM Certificate 2025">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											UDYAM Certificate 2025
 										</h2>
-										<div class="pbmit-heading-desc" style="#666;">6UDYAM Certificate 2025 Medal
-										</div>
+										<div class="pbmit-heading-desc" style="color: #666;">UDYAM Certificate 2025 Medal</div>
 									</div>
 								</div>
 							</article>
+
 							<article class="col-md-6 col-lg-4 mb-4">
-								<div
-									style="background: #fff; border: 1px solid #eaeaea; border-radius: 15px; padding: 15px; height: 100%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-									<div
-										style="border-radius: 10px; overflow: hidden; margin-bottom: 20px; height: 320px; display: flex; align-items: center; justify-content: center; background: #fdfdfd; padding: 5px;">
+								<div class="certificate-card">
+									<a href="{{ asset('frontend/images/portfolio/OMKAR_INDU_CERTI.jpeg') }}"
+										data-fancybox="certificates"
+										data-caption="Omkar Industry Certificate - Omkar Industries ISO"
+										class="certificate-img-wrap d-block text-decoration-none">
 										<img src="{{ asset('frontend/images/portfolio/OMKAR_INDU_CERTI.jpeg') }}"
-											class="img-fluid" alt="Omkar Industry Certificate"
-											style="max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 8px;">
-									</div>
+											class="img-fluid" alt="Omkar Industry Certificate">
+										<div class="certificate-zoom-badge" title="Click to view">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<circle cx="11" cy="11" r="8"></circle>
+												<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+												<line x1="11" y1="8" x2="11" y2="14"></line>
+												<line x1="8" y1="11" x2="14" y2="11"></line>
+											</svg>
+										</div>
+									</a>
 									<div class="pbmit-ihbox-contents">
 										<h2 class="pbmit-element-title" style="font-size: 20px; margin-bottom: 5px;">
 											Omkar Industry Certificate
@@ -226,4 +408,91 @@
 			@include('frontend.partials.footer')
 
 		</div>
+	</div>
+
+@push('page-js')
+    <script src="{{ asset('frontend/js/fancybox.umd.js') }}"></script>
+    <script>
+        (function() {
+            function initCertificatesGallery() {
+                if (typeof Fancybox !== 'undefined') {
+                    Fancybox.destroy();
+                    Fancybox.bind('[data-fancybox="certificates"]', {
+                        loop: true,
+                        closeButton: 'top',
+                        Navigation: true,
+                        Carousel: {
+                            Navigation: true,
+                            friction: 0.85,
+                        },
+                        Toolbar: {
+                            display: {
+                                left: ["infobar"],
+                                middle: [
+                                    "zoomIn",
+                                    "zoomOut",
+                                    "toggle1:1",
+                                    "rotateCCW",
+                                    "rotateCW",
+                                ],
+                                right: ["slideshow", "thumbs", "close"],
+                            },
+                        },
+                        Images: {
+                            initialSize: "fit",
+                            Panzoom: {
+                                maxScale: 3,
+                            },
+                        },
+                        Thumbs: {
+                            autoStart: true,
+                        },
+                    });
+                }
+            }
+
+            // Run immediately
+            initCertificatesGallery();
+
+            // Also attach as listener if document is still loading
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCertificatesGallery);
+            }
+            window.addEventListener('load', initCertificatesGallery);
+
+            // Safety click handler: Ensure clicking the link triggers Fancybox and never navigates away
+            document.addEventListener('click', function(e) {
+                var targetLink = e.target.closest('a[data-fancybox="certificates"]');
+                if (targetLink) {
+                    if (typeof Fancybox !== 'undefined') {
+                        e.preventDefault();
+                        var allItems = Array.from(document.querySelectorAll('a[data-fancybox="certificates"]'));
+                        var index = allItems.indexOf(targetLink);
+                        Fancybox.show(allItems.map(function(item) {
+                            return {
+                                src: item.getAttribute('href'),
+                                caption: item.getAttribute('data-caption') || '',
+                                thumb: item.querySelector('img') ? item.querySelector('img').getAttribute('src') : item.getAttribute('href')
+                            };
+                        }), {
+                            startIndex: index >= 0 ? index : 0,
+                            loop: true,
+                            closeButton: 'top',
+                            Toolbar: {
+                                display: {
+                                    left: ["infobar"],
+                                    middle: ["zoomIn", "zoomOut", "toggle1:1", "rotateCCW", "rotateCW"],
+                                    right: ["slideshow", "thumbs", "close"]
+                                }
+                            },
+                            Thumbs: {
+                                autoStart: true
+                            }
+                        });
+                    }
+                }
+            });
+        })();
+    </script>
+@endpush
 </x-layouts.app>
