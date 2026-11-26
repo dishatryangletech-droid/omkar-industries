@@ -417,6 +417,30 @@ Route::prefix('admin')->name('admin.')->group(function () {
         $defaults['galleries'] = Gallery::all();
         return view('backend.gallery.index', $defaults);
     })->name('gallery.index');
+
+    Route::post('gallery/set-default', function (Request $request) {
+        $id = $request->input('id');
+        
+        Gallery::query()->update(['is_default' => false]);
+        
+        if ($id && $id !== 'all') {
+            $gallery = Gallery::findOrFail($id);
+            $gallery->update(['is_default' => true]);
+            $tabName = $gallery->tab_name;
+        } else {
+            $tabName = 'All';
+        }
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => "'{$tabName}' is now set as the default active tab!",
+                'default_id' => $id
+            ]);
+        }
+        
+        return back()->with('success', "'{$tabName}' is now set as the default active tab!");
+    })->name('gallery.set-default');
     
     Route::post('gallery', function (Request $request) {
         Gallery::create([

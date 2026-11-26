@@ -19,12 +19,25 @@
     @endif
 
     <div class="card">
+        <div class="card-header pb-2 d-flex flex-wrap justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <h5 class="mb-0">Gallery Tabs</h5>
+                <div class="form-check form-check-inline m-0 border rounded px-3 py-1 bg-lighter" title="Set 'All' tab as default active in frontend">
+                    <input class="form-check-input default-tab-radio" type="radio" name="default_active_tab" id="default_tab_all" value="all" {{ !$galleries->contains('is_default', true) ? 'checked' : '' }}>
+                    <label class="form-check-label fw-semibold cursor-pointer small" for="default_tab_all">
+                        Default: <strong>"All"</strong>
+                    </label>
+                </div>
+            </div>
+            <small class="text-muted"><i class="ti ti-info-circle me-1"></i>Select radio button to instantly set which tab opens first on the frontend Gallery page.</small>
+        </div>
         <div class="card-datatable table-responsive pt-0">
             <table class="datatables-gallery table table-hover align-middle">
                 <thead class="border-bottom">
                     <tr>
                         <th class="fw-bold">#ID</th>
                         <th class="fw-bold">Tab Name</th>
+                        <th class="fw-bold text-center">Default Active</th>
                         <th class="fw-bold">Status</th>
                         <th class="fw-bold">Images</th>
                         <th class="fw-bold text-center">Actions</th>
@@ -38,6 +51,23 @@
                                 <a href="{{ route('admin.gallery.show', $gallery->id) }}" class="fw-medium">
                                     {{ $gallery->tab_name }}
                                 </a>
+                            </td>
+                            <td class="default-tab-cell text-center" onclick="event.stopPropagation();">
+                                <div class="form-check form-check-inline m-0">
+                                    <input class="form-check-input default-tab-radio" 
+                                           type="radio" 
+                                           name="default_active_tab" 
+                                           id="default_tab_{{ $gallery->id }}" 
+                                           value="{{ $gallery->id }}"
+                                           {{ $gallery->is_default ? 'checked' : '' }}
+                                           data-name="{{ $gallery->tab_name }}"
+                                           title="Click to set '{{ $gallery->tab_name }}' as the default active tab">
+                                    <label class="form-check-label cursor-pointer" for="default_tab_{{ $gallery->id }}">
+                                        @if($gallery->is_default)
+                                            <span class="badge bg-label-primary badge-sm ms-1 default-badge">Active</span>
+                                        @endif
+                                    </label>
+                                </div>
                             </td>
                             <td>
                                 @if($gallery->status === 'active')
@@ -212,10 +242,54 @@
 
             // Handle row click to show images
             $(document).on('click', '.datatables-gallery tbody tr', function(e) {
-                if ($(e.target).closest('td').index() === 4 || $(e.target).is('button') || $(e.target).is('i') || $(e.target).is('a') || $(e.target).hasClass('delete-btn')) {
+                if ($(e.target).closest('td').hasClass('default-tab-cell') || $(e.target).closest('td').index() === 5 || $(e.target).is('button') || $(e.target).is('i') || $(e.target).is('a') || $(e.target).is('input') || $(e.target).hasClass('delete-btn')) {
                     return;
                 }
                 window.location.href = $(this).data('url');
+            });
+
+            // Handle default tab radio change via AJAX
+            $(document).on('change', '.default-tab-radio', function(e) {
+                e.stopPropagation();
+                var selectedId = $(this).val();
+                var $radio = $(this);
+                
+                $.ajax({
+                    url: "{{ route('admin.gallery.set-default') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        id: selectedId
+                    },
+                    success: function(response) {
+                        $('.default-badge').remove();
+                        if (selectedId !== 'all') {
+                            $radio.closest('td').find('label').html('<span class="badge bg-label-primary badge-sm ms-1 default-badge">Active</span>');
+                        }
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                icon: 'success',
+                                title: response.message || 'Default active tab updated!',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        }
+                    },
+                    error: function() {
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                toast: true,
+                                position: 'top-end',
+                                icon: 'error',
+                                title: 'Failed to update default tab.',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        }
+                    }
+                });
             });
 
             // Show modal if there are validation errors

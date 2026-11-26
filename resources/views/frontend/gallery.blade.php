@@ -63,13 +63,18 @@
 								Take a look at our manufacturing facilities, machinery, and successful projects delivered to our clients.
 							</div>
 						</div>
+						@php
+							$defaultGallery = $galleries ? $galleries->firstWhere('is_default', true) : null;
+							$defaultSortby = $defaultGallery ? \Illuminate\Support\Str::slug($defaultGallery->tab_name) : '*';
+						@endphp
 						<div class="pbmit-sortable-list">
 							<ul class="pbmit-sortable-list-ul">
-								<li><a href="#" class="pbmit-sortable-link pbmit-selected" data-sortby="*">All</a></li>
+								<li><a href="#" class="pbmit-sortable-link {{ $defaultSortby === '*' ? 'pbmit-selected' : '' }}" data-sortby="*">All</a></li>
 								@if($galleries && $galleries->count() > 0)
 									@foreach($galleries as $gallery)
-										<li><a href="#" class="pbmit-sortable-link"
-												data-sortby="{{ \Illuminate\Support\Str::slug($gallery->tab_name) }}">{{ $gallery->tab_name }}</a>
+										@php $tabSlug = \Illuminate\Support\Str::slug($gallery->tab_name); @endphp
+										<li><a href="#" class="pbmit-sortable-link {{ $defaultSortby === $tabSlug ? 'pbmit-selected' : '' }}"
+												data-sortby="{{ $tabSlug }}">{{ $gallery->tab_name }}</a>
 										</li>
 									@endforeach
 								@endif
@@ -81,7 +86,7 @@
 									@if(is_array($gallery->images) || is_object($gallery->images))
 										@foreach($gallery->images as $image)
 											<article
-												class="pbmit-portfolio-style-1 col-md-6 col-lg-4 {{ \Illuminate\Support\Str::slug($gallery->tab_name) }}">
+												class="pbmit-ele pbmit-portfolio-style-1 col-md-6 col-lg-4 {{ \Illuminate\Support\Str::slug($gallery->tab_name) }}">
 												<div class="pbminfotech-post-content">
 													<div class="pbminfotech-post-warpper">
 														<div class="pbmit-featured-img-wrapper">
@@ -143,11 +148,35 @@
                     });
                 }
             }
+
+            function applyDefaultTabFilter() {
+                var $activeLink = jQuery('.pbmit-sortable-list a.pbmit-selected');
+                if ($activeLink.length && $activeLink.data('sortby') !== '*') {
+                    var selector = '.' + $activeLink.data('sortby');
+                    var $boxes = jQuery('.pbmit-element-posts-wrapper');
+                    if ($boxes.data('isotope')) {
+                        $boxes.isotope({
+                            filter: selector,
+                            itemSelector: '.pbmit-ele',
+                            animationEngine: 'best-available'
+                        });
+                    } else {
+                        $activeLink.trigger('click');
+                    }
+                }
+            }
+
             initGalleryFancybox();
             if (document.readyState === 'loading') {
                 document.addEventListener("DOMContentLoaded", initGalleryFancybox);
             }
-            window.addEventListener('load', initGalleryFancybox);
+            window.addEventListener('load', function() {
+                initGalleryFancybox();
+                setTimeout(applyDefaultTabFilter, 120);
+            });
+            jQuery(document).ready(function() {
+                setTimeout(applyDefaultTabFilter, 150);
+            });
         })();
     </script>
 @endpush

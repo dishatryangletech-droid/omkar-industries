@@ -9,9 +9,10 @@ class Gallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tab_name', 'status', 'images'];
+    protected $fillable = ['tab_name', 'status', 'images', 'is_default'];
 
     protected $casts = [
         'images' => 'array',
+        'is_default' => 'boolean',
     ];
 }
