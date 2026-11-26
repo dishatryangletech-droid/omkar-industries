@@ -922,10 +922,15 @@
                             <label class="form-label small fw-medium mb-1">Video Title / Label</label>
                             <input type="text" name="product_videos[${idx}][title]" class="form-control form-control-sm" placeholder="e.g. Machine Working Demo">
                         </div>
-                        <div>
+                        <div class="mb-2">
                             <label class="form-label small fw-medium mb-1">Upload Video File</label>
                             <input type="file" name="product_videos[${idx}][video]" class="form-control form-control-sm" accept="video/mp4,video/webm,video/ogg,video/quicktime,video/*">
                             <small class="text-muted d-block mt-1" style="font-size: 0.72rem;"><i class="ti ti-info-circle me-1"></i>Formats: MP4, WebM, MOV. Max: 100MB.</small>
+                        </div>
+                        <div>
+                            <label class="form-label small fw-medium mb-1">Thumbnail Image (Cover)</label>
+                            <input type="file" name="product_videos[${idx}][thumbnail]" class="form-control form-control-sm" accept="image/jpeg,image/png,image/webp,image/*">
+                            <small class="text-muted d-block mt-1" style="font-size: 0.72rem;"><i class="ti ti-photo me-1"></i>Shown on video before play. Formats: JPG, PNG, WEBP.</small>
                         </div>
                     </div>
                 </div>`;

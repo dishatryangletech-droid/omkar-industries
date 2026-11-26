@@ -158,11 +158,20 @@
 													$embedUrl = $videoUrl;
 												}
 
+												$thumbPath = trim($pv['thumbnail'] ?? '');
+												$thumbUrl = null;
+												if (!empty($thumbPath)) {
+													$thumbUrl = str_starts_with($thumbPath, 'http') ? $thumbPath : asset('storage/' . $thumbPath);
+												} elseif ($isYoutube && isset($m[1])) {
+													$thumbUrl = 'https://img.youtube.com/vi/' . $m[1] . '/hqdefault.jpg';
+												}
+
 												$validProductVideos[] = [
 													'title' => !empty($pTitle) ? $pTitle : 'Product Video ' . (count($validProductVideos) + 1),
 													'video_url' => $videoUrl,
 													'embed_url' => $embedUrl,
 													'is_youtube' => $isYoutube,
+													'thumbnail' => $thumbUrl,
 												];
 											}
 										}
@@ -173,7 +182,7 @@
 								@if($hasMultipleVideos)
 									<div class="row align-items-start g-4">
 										<!-- Left Side: Product Summary & Advantages -->
-										<div class="col-lg-7 col-md-12">
+										<div class="col-lg-8 col-md-12">
 											<div data-aos="fade-up" data-aos-duration="800">
 												<div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
 													@if(isset($product) && $product->content)
@@ -236,71 +245,59 @@
 										</div>
 
 										<!-- Right Side: Product Videos (Compact) -->
-										<div class="col-lg-5 col-md-12">
+										<div class="col-lg-4 col-md-12">
 											<div data-aos="fade-up" data-aos-duration="800">
 												<div class="pbmit-custom-heading mb-3">
-													<h3 class="pbmit-title mb-0" style="font-size: 24px;">Product Videos :</h3>
+													<h3 class="pbmit-title mb-0" style="font-size: 20px;">Product Videos :</h3>
 												</div>
-												<div class="product-videos-card p-3 rounded" style="background: #fbfbfb; border: 1px solid #e9e9e9; box-shadow: 0 4px 15px rgba(0,0,0,0.03); max-width: 440px;">
-													<!-- Main Video Player -->
-													<div class="main-video-player-container position-relative rounded overflow-hidden mb-2" style="max-height: 230px; background: #000; display: flex; align-items: center; justify-content: center;">
-														<div id="video-player-target" class="w-100 h-100 d-flex align-items-center justify-content-center">
-															@if($validProductVideos[0]['is_youtube'])
-																<div class="w-100 position-relative" style="padding-top: 56.25%;">
-																	<iframe src="{{ $validProductVideos[0]['embed_url'] }}"
-																			class="position-absolute top-0 start-0 w-100 h-100 border-0"
-																			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-																			allowfullscreen></iframe>
-																</div>
-															@else
-																<video controls playsinline controlsList="nodownload" class="w-100" style="max-height: 230px; width: 100%; object-fit: contain; background: #000; display: block;" src="{{ $validProductVideos[0]['video_url'] }}">
-																	Your browser does not support the video tag.
-																</video>
-															@endif
-														</div>
-													</div>
-
-													<!-- Active Video Info -->
-													<div class="d-flex align-items-center justify-content-between mb-2 px-1">
-														<div class="d-flex align-items-center gap-2 overflow-hidden">
-															<span class="badge rounded-pill" style="background-color: var(--pbmit-global-color); color: #fff; font-size: 10px; padding: 3px 8px;">Playing</span>
-															<span class="fw-bold text-dark text-truncate" id="active-video-title" style="font-size: 13.5px;">
-																{{ $validProductVideos[0]['title'] }}
-															</span>
-														</div>
-														<a id="active-video-external-btn" href="{{ $validProductVideos[0]['video_url'] }}" target="_blank"
-														   class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1"
-														   style="font-size: 11px; padding: 2px 8px; border-radius: 4px;">
-															<span>Open</span> <i class="pbmit-base-icon-play-button" style="font-size: 9px;"></i>
-														</a>
-													</div>
-
-													<!-- Video Playlist / Selection (if more than 1) -->
-													@if(count($validProductVideos) > 1)
-														<div class="video-playlist-wrapper pt-1 border-top">
-															<div class="small fw-bold text-uppercase text-muted mb-2 ps-1" style="font-size: 10.5px; letter-spacing: 0.5px;">Select Video ({{ count($validProductVideos) }})</div>
-															<div class="video-playlist-list d-flex flex-column gap-1" style="max-height: 180px; overflow-y: auto; padding-right: 2px;">
-																@foreach($validProductVideos as $vIdx => $vItem)
-																	<div class="video-playlist-item d-flex align-items-center justify-content-between p-2 rounded {{ $vIdx === 0 ? 'video-item-active' : '' }}"
-																		 style="cursor: pointer; transition: all 0.25s ease; border: 1px solid {{ $vIdx === 0 ? 'var(--pbmit-global-color)' : '#eaeaea' }}; background: {{ $vIdx === 0 ? 'rgba(var(--pbmit-global-color-rgb, 240, 100, 30), 0.05)' : '#ffffff' }};"
-																		 onclick="selectProductVideo('{{ $vItem['video_url'] }}', '{{ $vItem['embed_url'] }}', {{ $vItem['is_youtube'] ? 'true' : 'false' }}, '{{ addslashes($vItem['title']) }}', this)">
-																		<div class="d-flex align-items-center gap-2 overflow-hidden">
-																			<div class="video-play-btn-circle rounded-circle d-flex align-items-center justify-content-center"
-																				 style="width: 26px; height: 26px; min-width: 26px; background: {{ $vIdx === 0 ? 'var(--pbmit-global-color)' : '#e4e4e4' }}; color: {{ $vIdx === 0 ? '#ffffff' : '#444444' }}; transition: all 0.2s;">
-																				<i class="pbmit-base-icon-play-button" style="font-size: 9px; margin-left: 2px;"></i>
+												<div class="product-videos-card rounded position-relative" style="background: #fbfbfb; border: 1px solid #e9e9e9; box-shadow: 0 4px 15px rgba(0,0,0,0.03); max-width: 350px; padding: 10px !important;">
+													<div class="swiper-slider product-videos-swiper overflow-hidden"
+														 data-columns="1"
+														 data-loop="{{ count($validProductVideos) > 1 ? 'true' : 'false' }}"
+														 data-autoplay="{{ count($validProductVideos) > 1 ? 'true' : 'false' }}"
+														 data-autoplayspeed="4000"
+														 data-dots="{{ count($validProductVideos) > 1 ? 'true' : 'false' }}"
+														 data-arrows="false"
+														 data-effect="slide"
+														 data-margin="20">
+														<div class="swiper-wrapper">
+															@foreach($validProductVideos as $vIdx => $vItem)
+																<div class="swiper-slide">
+																	<!-- Video Player -->
+																	<div class="position-relative rounded overflow-hidden mb-2" style="max-height: 185px; background: #000; display: flex; align-items: center; justify-content: center;">
+																		@if($vItem['is_youtube'])
+																			<div class="w-100 position-relative" style="padding-top: 56.25%;">
+																				<iframe src="{{ $vItem['embed_url'] }}"
+																						class="position-absolute top-0 start-0 w-100 h-100 border-0 swiper-no-swiping"
+																						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+																						allowfullscreen></iframe>
 																			</div>
-																			<span class="video-item-name fw-medium text-dark text-truncate" style="font-size: 12.5px;">
-																				{{ $vItem['title'] }}
-																			</span>
-																		</div>
-																		<span class="badge rounded-pill bg-light text-muted border small ms-2 px-2 py-0" style="font-size: 10px;">
-																			#{{ $vIdx + 1 }}
-																		</span>
+																		@else
+																			<video controls playsinline preload="metadata" controlsList="nodownload" class="w-100 swiper-no-swiping" style="max-height: 185px; width: 100%; object-fit: contain; background: #000; display: block;" src="{{ $vItem['video_url'] }}" @if(!empty($vItem['thumbnail'])) poster="{{ $vItem['thumbnail'] }}" @endif>
+																				Your browser does not support the video tag.
+																			</video>
+																		@endif
 																	</div>
-																@endforeach
-															</div>
+
+																	<!-- Video Name / Title & Open Button (Next Tab) -->
+																	<div class="d-flex align-items-center justify-content-between pt-1 px-1 gap-2">
+																		<div class="d-flex align-items-center gap-1 overflow-hidden">
+																			<i class="pbmit-base-icon-play-button text-primary" style="font-size: 9px; min-width: 9px;"></i>
+																			<h5 class="fw-semibold text-dark mb-0 text-truncate" style="font-size: 12.5px;" title="{{ $vItem['title'] }}">
+																				{{ $vItem['title'] }}
+																			</h5>
+																		</div>
+																		<a href="{{ $vItem['video_url'] }}" target="_blank"
+																		   class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1 py-0 px-2 flex-shrink-0"
+																		   style="font-size: 10px; height: 22px; border-radius: 4px;"
+																		   title="Open in new tab">
+																			<span>Open</span> <i class="pbmit-base-icon-play-button" style="font-size: 7px;"></i>
+																		</a>
+																	</div>
+																</div>
+															@endforeach
 														</div>
-													@endif
+													</div>
 												</div>
 											</div>
 										</div>
@@ -743,44 +740,66 @@
 		<!-- GSAP Animation -->
 
 		<!-- Scripts JS -->
-		<script>
-			function selectProductVideo(videoUrl, embedUrl, isYoutube, title, element) {
-				var target = document.getElementById('video-player-target');
-				var titleEl = document.getElementById('active-video-title');
-				var extBtn = document.getElementById('active-video-external-btn');
-
-				if (target) {
-					if (isYoutube) {
-						target.innerHTML = '<div class="w-100 position-relative" style="padding-top: 56.25%;"><iframe src="' + embedUrl + '" class="position-absolute top-0 start-0 w-100 h-100 border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
-					} else {
-						target.innerHTML = '<video controls autoplay playsinline controlsList="nodownload" class="w-100" style="max-height: 230px; width: 100%; object-fit: contain; background: #000; display: block;" src="' + videoUrl + '">Your browser does not support the video tag.</video>';
-					}
-				}
-				if (titleEl) titleEl.textContent = title;
-				if (extBtn) extBtn.href = videoUrl;
-
-				var items = document.querySelectorAll('.video-playlist-item');
-				items.forEach(function(item) {
-					item.classList.remove('video-item-active');
-					item.style.borderColor = '#eaeaea';
-					item.style.background = '#ffffff';
-					var circle = item.querySelector('.video-play-btn-circle');
-					if (circle) {
-						circle.style.backgroundColor = '#e4e4e4';
-						circle.style.color = '#444444';
-					}
-				});
-				if (element) {
-					element.classList.add('video-item-active');
-					element.style.borderColor = 'var(--pbmit-global-color)';
-					element.style.background = 'rgba(var(--pbmit-global-color-rgb, 240, 100, 30), 0.05)';
-					var activeCircle = element.querySelector('.video-play-btn-circle');
-					if (activeCircle) {
-						activeCircle.style.backgroundColor = 'var(--pbmit-global-color)';
-						activeCircle.style.color = '#ffffff';
-					}
-				}
+		<style>
+			.product-videos-swiper .swiper-pagination {
+				position: relative !important;
+				bottom: 0 !important;
+				margin-top: 8px !important;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 			}
+			.product-videos-swiper[data-dots="true"] {
+				padding-bottom: 0px !important;
+			}
+			.product-videos-swiper .swiper-pagination-bullet {
+				width: 6px;
+				height: 6px;
+				margin: 0 3px !important;
+				background: #999;
+				opacity: 0.4;
+				transition: all 0.25s ease;
+				cursor: pointer;
+			}
+			.product-videos-swiper .swiper-pagination-bullet-active {
+				background: var(--pbmit-global-color, #e05e19);
+				opacity: 1;
+				width: 16px;
+				border-radius: 3px;
+			}
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var swiperEl = document.querySelector('.product-videos-swiper');
+				if (swiperEl) {
+					var checkSwiper = setInterval(function() {
+						if (swiperEl.swiper) {
+							clearInterval(checkSwiper);
+							var s = swiperEl.swiper;
+							s.on('slideChange', function() {
+								swiperEl.querySelectorAll('video').forEach(function(v) { v.pause(); });
+								swiperEl.querySelectorAll('iframe').forEach(function(f) {
+									var src = f.src; f.src = src;
+								});
+							});
+
+							// When video starts playing, pause autoplay; resume when paused/ended
+							swiperEl.querySelectorAll('video').forEach(function(v) {
+								v.addEventListener('play', function() {
+									if (s.autoplay && s.autoplay.running) s.autoplay.stop();
+								});
+								v.addEventListener('pause', function() {
+									if (s.autoplay && !s.autoplay.running) s.autoplay.start();
+								});
+								v.addEventListener('ended', function() {
+									if (s.autoplay && !s.autoplay.running) s.autoplay.start();
+								});
+							});
+						}
+					}, 200);
+					setTimeout(function() { clearInterval(checkSwiper); }, 5000);
+				}
+			});
 		</script>
 	</div>
 </x-layouts.app>

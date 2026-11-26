@@ -368,6 +368,8 @@
                                             @php
                                                 $videoFile = $v['video'] ?? $v['video_link'] ?? '';
                                                 $isLocalFile = $videoFile && !str_starts_with($videoFile, 'http');
+                                                $thumbFile = $v['thumbnail'] ?? '';
+                                                $isLocalThumb = $thumbFile && !str_starts_with($thumbFile, 'http');
                                             @endphp
                                             @if(!empty($videoFile))
                                                 <div class="col-md-6 col-12" id="product-video-row-{{ $idx }}">
@@ -388,7 +390,7 @@
                                                                 value="{{ $v['title'] ?? '' }}"
                                                                 placeholder="e.g. Machine Working Demo">
                                                         </div>
-                                                        <div>
+                                                        <div class="mb-2">
                                                             <label class="form-label small fw-medium mb-1">Upload Video File</label>
                                                             <input type="file" name="product_videos[{{ $idx }}][video]"
                                                                 class="form-control form-control-sm"
@@ -405,6 +407,21 @@
                                                                 </a>
                                                             </div>
                                                             <small class="text-muted d-block mt-1" style="font-size: 0.72rem;">Current video kept if no new file uploaded.</small>
+                                                        </div>
+                                                        <div>
+                                                            <label class="form-label small fw-medium mb-1">Thumbnail Image (Cover)</label>
+                                                            <input type="file" name="product_videos[{{ $idx }}][thumbnail]"
+                                                                class="form-control form-control-sm"
+                                                                accept="image/jpeg,image/png,image/webp,image/*">
+                                                            <input type="hidden" name="product_videos[{{ $idx }}][existing_thumbnail]" value="{{ $thumbFile }}">
+                                                            @if($thumbFile)
+                                                                <div class="mt-1 d-flex align-items-center gap-2">
+                                                                    <img src="{{ $isLocalThumb ? asset('storage/' . $thumbFile) : $thumbFile }}" style="width: 50px; height: 35px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                                                                    <small class="text-muted" style="font-size: 0.72rem;">Current thumbnail kept if no new file chosen.</small>
+                                                                </div>
+                                                            @else
+                                                                <small class="text-muted d-block mt-1" style="font-size: 0.72rem;"><i class="ti ti-photo me-1"></i>Shown on video before play. Formats: JPG, PNG, WEBP.</small>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -915,10 +932,15 @@
                             <label class="form-label small fw-medium mb-1">Video Title / Label</label>
                             <input type="text" name="product_videos[${idx}][title]" class="form-control form-control-sm" placeholder="e.g. Machine Working Demo">
                         </div>
-                        <div>
+                        <div class="mb-2">
                             <label class="form-label small fw-medium mb-1">Upload Video File</label>
                             <input type="file" name="product_videos[${idx}][video]" class="form-control form-control-sm" accept="video/mp4,video/webm,video/ogg,video/quicktime,video/*">
                             <small class="text-muted d-block mt-1" style="font-size: 0.72rem;"><i class="ti ti-info-circle me-1"></i>Formats: MP4, WebM, MOV. Max: 100MB.</small>
+                        </div>
+                        <div>
+                            <label class="form-label small fw-medium mb-1">Thumbnail Image (Cover)</label>
+                            <input type="file" name="product_videos[${idx}][thumbnail]" class="form-control form-control-sm" accept="image/jpeg,image/png,image/webp,image/*">
+                            <small class="text-muted d-block mt-1" style="font-size: 0.72rem;"><i class="ti ti-photo me-1"></i>Shown on video before play. Formats: JPG, PNG, WEBP.</small>
                         </div>
                     </div>
                 </div>`;

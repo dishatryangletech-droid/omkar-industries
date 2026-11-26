@@ -57,13 +57,16 @@ class ProductController extends Controller
         $data = $request->only(['title', 'slug', 'sub_title', 'short_description', 'content', 'video_link', 'key_features', 'industries', 'meta_title', 'meta_description', 'meta_keywords', 'trade_information', 'advantages', 'related_products', 'parent_id', 'client_review_title', 'client_review_description']);
         $data['related_products'] = $request->input('related_products', []);
 
-        // Handle Multiple Product Videos (Upload Video Files)
+        // Handle Multiple Product Videos (Upload Video Files & Thumbnails)
         $product_videos = [];
         $kept_video_files = [];
+        $kept_thumb_files = [];
         if ($request->has('product_videos') && is_array($request->product_videos)) {
             foreach ($request->product_videos as $vid) {
                 $vidTitle = trim($vid['title'] ?? '');
                 $videoPath = null;
+                $thumbPath = null;
+
                 if (isset($vid['video']) && $vid['video'] instanceof \Illuminate\Http\UploadedFile && $vid['video']->isValid()) {
                     $videoPath = $vid['video']->store('products/videos', 'public');
                     $kept_video_files[] = $videoPath;
@@ -74,22 +77,35 @@ class ProductController extends Controller
                     $videoPath = trim($vid['video_link']);
                 }
 
+                if (isset($vid['thumbnail']) && $vid['thumbnail'] instanceof \Illuminate\Http\UploadedFile && $vid['thumbnail']->isValid()) {
+                    $thumbPath = $vid['thumbnail']->store('products/video_thumbnails', 'public');
+                    $kept_thumb_files[] = $thumbPath;
+                } elseif (!empty($vid['existing_thumbnail'])) {
+                    $thumbPath = $vid['existing_thumbnail'];
+                    $kept_thumb_files[] = $thumbPath;
+                }
+
                 if (!empty($videoPath)) {
                     $product_videos[] = [
                         'title' => $vidTitle,
                         'video' => $videoPath,
+                        'thumbnail' => $thumbPath,
                     ];
                 }
             }
         }
         $data['product_videos'] = empty($product_videos) ? null : $product_videos;
 
-        // Cleanup removed video files from storage
+        // Cleanup removed video files and thumbnails from storage
         if (isset($product) && $product->product_videos && is_array($product->product_videos)) {
             foreach ($product->product_videos as $oldVid) {
                 $oldFile = $oldVid['video'] ?? $oldVid['video_link'] ?? null;
                 if ($oldFile && !in_array($oldFile, $kept_video_files) && !str_starts_with($oldFile, 'http') && Storage::disk('public')->exists($oldFile)) {
                     Storage::disk('public')->delete($oldFile);
+                }
+                $oldThumb = $oldVid['thumbnail'] ?? null;
+                if ($oldThumb && !in_array($oldThumb, $kept_thumb_files) && !str_starts_with($oldThumb, 'http') && Storage::disk('public')->exists($oldThumb)) {
+                    Storage::disk('public')->delete($oldThumb);
                 }
             }
         }
@@ -272,13 +288,16 @@ class ProductController extends Controller
         $data['key_features'] = $request->input('key_features', []);
         $data['related_products'] = $request->input('related_products', []);
 
-        // Handle Multiple Product Videos (Upload Video Files)
+        // Handle Multiple Product Videos (Upload Video Files & Thumbnails)
         $product_videos = [];
         $kept_video_files = [];
+        $kept_thumb_files = [];
         if ($request->has('product_videos') && is_array($request->product_videos)) {
             foreach ($request->product_videos as $vid) {
                 $vidTitle = trim($vid['title'] ?? '');
                 $videoPath = null;
+                $thumbPath = null;
+
                 if (isset($vid['video']) && $vid['video'] instanceof \Illuminate\Http\UploadedFile && $vid['video']->isValid()) {
                     $videoPath = $vid['video']->store('products/videos', 'public');
                     $kept_video_files[] = $videoPath;
@@ -289,22 +308,35 @@ class ProductController extends Controller
                     $videoPath = trim($vid['video_link']);
                 }
 
+                if (isset($vid['thumbnail']) && $vid['thumbnail'] instanceof \Illuminate\Http\UploadedFile && $vid['thumbnail']->isValid()) {
+                    $thumbPath = $vid['thumbnail']->store('products/video_thumbnails', 'public');
+                    $kept_thumb_files[] = $thumbPath;
+                } elseif (!empty($vid['existing_thumbnail'])) {
+                    $thumbPath = $vid['existing_thumbnail'];
+                    $kept_thumb_files[] = $thumbPath;
+                }
+
                 if (!empty($videoPath)) {
                     $product_videos[] = [
                         'title' => $vidTitle,
                         'video' => $videoPath,
+                        'thumbnail' => $thumbPath,
                     ];
                 }
             }
         }
         $data['product_videos'] = empty($product_videos) ? null : $product_videos;
 
-        // Cleanup removed video files from storage
+        // Cleanup removed video files and thumbnails from storage
         if (isset($product) && $product->product_videos && is_array($product->product_videos)) {
             foreach ($product->product_videos as $oldVid) {
                 $oldFile = $oldVid['video'] ?? $oldVid['video_link'] ?? null;
                 if ($oldFile && !in_array($oldFile, $kept_video_files) && !str_starts_with($oldFile, 'http') && Storage::disk('public')->exists($oldFile)) {
                     Storage::disk('public')->delete($oldFile);
+                }
+                $oldThumb = $oldVid['thumbnail'] ?? null;
+                if ($oldThumb && !in_array($oldThumb, $kept_thumb_files) && !str_starts_with($oldThumb, 'http') && Storage::disk('public')->exists($oldThumb)) {
+                    Storage::disk('public')->delete($oldThumb);
                 }
             }
         }

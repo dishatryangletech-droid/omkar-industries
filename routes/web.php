@@ -495,12 +495,53 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('header-settings', function () use ($defaults) { 
             $headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
             $defaults['selectedAll'] = $headerSettings['all_machines'] ?? [];
+            $defaults['headerSettings'] = $headerSettings;
             return view('backend.website-pages.header-settings', $defaults); 
         })->name('header-settings');
         
         Route::post('header-settings', function (Illuminate\Http\Request $request) {
-            $allMachines = $request->input('all_machines', []);
-            \Illuminate\Support\Facades\Storage::disk('local')->put('header_settings.json', json_encode(['all_machines' => $allMachines]));
+            $request->validate([
+                'brochure_file' => 'nullable|file|mimes:pdf,doc,docx|max:51200',
+                'video_file' => 'nullable|file|mimes:mp4,webm,ogg,mov|max:102400',
+                'video_link' => 'nullable|string|max:500',
+                'brochure_title' => 'nullable|string|max:100',
+                'video_title' => 'nullable|string|max:100',
+            ]);
+
+            $headerSettings = \Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : [];
+
+            $headerSettings['all_machines'] = $request->input('all_machines', []);
+            $headerSettings['brochure_title'] = $request->input('brochure_title', 'Brochure');
+            $headerSettings['video_title'] = $request->input('video_title', 'Watch Video');
+            $headerSettings['video_link'] = $request->input('video_link', null);
+
+            // Handle brochure file upload
+            if ($request->hasFile('brochure_file')) {
+                if (!empty($headerSettings['brochure_file']) && \Illuminate\Support\Facades\Storage::disk('public')->exists($headerSettings['brochure_file'])) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($headerSettings['brochure_file']);
+                }
+                $headerSettings['brochure_file'] = $request->file('brochure_file')->store('header/brochures', 'public');
+            } elseif ($request->boolean('remove_brochure')) {
+                if (!empty($headerSettings['brochure_file']) && \Illuminate\Support\Facades\Storage::disk('public')->exists($headerSettings['brochure_file'])) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($headerSettings['brochure_file']);
+                }
+                $headerSettings['brochure_file'] = null;
+            }
+
+            // Handle video file upload
+            if ($request->hasFile('video_file')) {
+                if (!empty($headerSettings['video_file']) && \Illuminate\Support\Facades\Storage::disk('public')->exists($headerSettings['video_file'])) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($headerSettings['video_file']);
+                }
+                $headerSettings['video_file'] = $request->file('video_file')->store('header/videos', 'public');
+            } elseif ($request->boolean('remove_video')) {
+                if (!empty($headerSettings['video_file']) && \Illuminate\Support\Facades\Storage::disk('public')->exists($headerSettings['video_file'])) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($headerSettings['video_file']);
+                }
+                $headerSettings['video_file'] = null;
+            }
+
+            \Illuminate\Support\Facades\Storage::disk('local')->put('header_settings.json', json_encode($headerSettings, JSON_PRETTY_PRINT));
             return redirect()->back()->with('success', 'Header Settings saved successfully!');
         })->name('header-settings.post');
         

@@ -332,6 +332,34 @@
 												href="/contact-us">Contact Us</a></li>
 										<li class="{{ request()->is('career') ? 'active' : '' }}"><a
 												href="/career">Career</a></li>
+
+										@php
+											$headerSettings = $headerSettings ?? (\Illuminate\Support\Facades\Storage::disk('local')->exists('header_settings.json') ? json_decode(\Illuminate\Support\Facades\Storage::disk('local')->get('header_settings.json'), true) : []);
+											$hasBrochure = !empty($headerSettings['brochure_file']) && \Illuminate\Support\Facades\Storage::disk('public')->exists($headerSettings['brochure_file']);
+											$brochureTitle = !empty($headerSettings['brochure_title']) ? $headerSettings['brochure_title'] : 'Brochure';
+											$brochureUrl = $hasBrochure ? route('uploads.public', ['path' => $headerSettings['brochure_file']]) : null;
+
+											$hasVideoFile = !empty($headerSettings['video_file']) && \Illuminate\Support\Facades\Storage::disk('public')->exists($headerSettings['video_file']);
+											$hasVideoLink = !empty($headerSettings['video_link']);
+											$hasVideo = $hasVideoFile || $hasVideoLink;
+											$videoTitle = !empty($headerSettings['video_title']) ? $headerSettings['video_title'] : 'Watch Video';
+											$videoUrl = $hasVideoFile ? route('uploads.public', ['path' => $headerSettings['video_file']]) : ($hasVideoLink ? $headerSettings['video_link'] : null);
+										@endphp
+
+										@if($hasBrochure)
+											<li class="d-lg-none">
+												<a href="{{ $brochureUrl }}" target="_blank" download class="text-danger fw-bold">
+													<i class="ti ti-download me-1"></i> {{ $brochureTitle }}
+												</a>
+											</li>
+										@endif
+										@if($hasVideo)
+											<li class="d-lg-none">
+												<a href="{{ $videoUrl }}" target="_blank" class="text-warning fw-bold {{ $hasVideoLink ? 'pbmin-lightbox-video' : '' }}">
+													<i class="ti ti-control-play me-1"></i> {{ $videoTitle }}
+												</a>
+											</li>
+										@endif
 									</ul>
 								</div>
 							</nav>
@@ -339,6 +367,71 @@
 
 					</div>
 					<div class="pbmit-right-box d-flex align-items-center">
+						<style>
+							.pbmit-header-custom-btn {
+								display: inline-flex;
+								align-items: center;
+								gap: 6px;
+								padding: 8px 16px;
+								border-radius: 8px;
+								font-size: 13.5px;
+								font-weight: 600;
+								line-height: 1.2;
+								text-decoration: none;
+								transition: all 0.3s ease;
+								white-space: nowrap;
+							}
+							.pbmit-header-custom-btn.btn-brochure {
+								background-color: #b77051;
+								color: #ffffff !important;
+								border: 1.5px solid #b77051;
+							}
+							.pbmit-header-custom-btn.btn-brochure:hover {
+								background-color: #b77051;
+								border-color: #b77051;
+								color: #ffffff !important;
+								box-shadow: 0 4px 12px rgba(186, 0, 1, 0.3);
+								transform: translateY(-1px);
+							}
+							.pbmit-header-custom-btn.btn-video {
+								background-color: #febd17;
+								color: #111111 !important;
+								border: 1.5px solid #febd17;
+							}
+							.pbmit-header-custom-btn.btn-video:hover {
+								background-color: #e5a70d;
+								border-color: #e5a70d;
+								color: #000000 !important;
+								box-shadow: 0 4px 12px rgba(254, 189, 23, 0.35);
+								transform: translateY(-1px);
+							}
+							.pbmit-header-custom-btn i {
+								font-size: 14px;
+							}
+							@media (max-width: 991px) {
+								.pbmit-header-action-buttons {
+									display: none !important;
+								}
+							}
+						</style>
+
+						@if($hasBrochure || $hasVideo)
+							<div class="pbmit-header-action-buttons d-flex align-items-center me-2">
+								@if($hasBrochure)
+									<a href="{{ $brochureUrl }}" target="_blank" download class="pbmit-header-custom-btn btn-brochure me-2" title="Download {{ $brochureTitle }}">
+										<i class="ti ti-download"></i>
+										<span>{{ $brochureTitle }}</span>
+									</a>
+								@endif
+
+								@if($hasVideo)
+									<a href="{{ $videoUrl }}" target="_blank" class="pbmit-header-custom-btn btn-video me-2 {{ $hasVideoLink ? 'pbmin-lightbox-video' : '' }}" title="{{ $videoTitle }}">
+										<i class="ti ti-control-play"></i>
+										<span>{{ $videoTitle }}</span>
+									</a>
+								@endif
+							</div>
+						@endif
 						<div class="pbmit-header-social">
 							@php
 								$footerSettings = class_exists('App\Models\FooterSetting') ? \App\Models\FooterSetting::first() : null;
