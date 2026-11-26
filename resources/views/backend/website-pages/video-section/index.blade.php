@@ -46,7 +46,7 @@
         </div>
     @endif
 
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.website-pages.video-section.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
 

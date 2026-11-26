@@ -86,9 +86,73 @@
 
         <div class="row">
             <div class="col-12">
-                <!-- Main Section (Stored in home_pages) -->
-                <fieldset class="form-fieldset shadow-sm">
-                    <legend>Main Section</legend>
+                <!-- Section 1: About Us Page Section (Dedicated to /about-us page) -->
+                <fieldset class="form-fieldset shadow-sm mb-4" style="border: 1.5px solid #7367f0;">
+                    <legend style="color: #7367f0;"><i class="ti ti-file-text me-1"></i> About Us Page - Main Section</legend>
+                    <div class="alert alert-primary py-2 px-3 mb-3 small d-flex align-items-center">
+                        <i class="ti ti-info-circle fs-5 me-2"></i>
+                        <span>These fields dynamically control the main banner/content of the <strong>About Us page (<code>/about-us</code>)</strong>. They are completely separate from the Home page.</span>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Title</label>
+                            <input type="text" class="form-control" name="about_page_title" 
+                                   value="{{ old('about_page_title', $mainSection->about_page_title) }}" 
+                                   placeholder="e.g. Trusted Woodworking Machinery Manufacturer & Expoters Since 1977.">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Sub Title</label>
+                            <input type="text" class="form-control" name="about_page_subtitle" 
+                                   value="{{ old('about_page_subtitle', $mainSection->about_page_subtitle) }}" 
+                                   placeholder="e.g. OMKAR INDUSTRIES">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold">Top Description (Next to Vision / Mission)</label>
+                            <textarea class="form-control ckeditor" id="about_page_description" name="about_page_description" rows="5">{{ old('about_page_description', $mainSection->about_page_description) }}</textarea>
+                            <small class="text-muted">Content, history, and manufacturing facility paragraphs shown beside the Vision / Mission slider.</small>
+                        </div>
+
+                        <!-- Dedicated Bottom Boxes (Placed under Image and Vision/Mission) -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold"><i class="ti ti-layout-grid me-1 text-danger"></i> Bottom Box 1 (Under Left Image / ACHIEVEMENTS)</label>
+                            <textarea class="form-control ckeditor" id="about_page_box1" name="about_page_box1" rows="4">{{ old('about_page_box1', $mainSection->about_page_box1) }}</textarea>
+                            <small class="text-muted">Leave empty to auto-extract "OUR ACHIEVEMENTS" from the main description above, or enter custom content here.</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold"><i class="ti ti-layout-grid me-1 text-warning"></i> Bottom Box 2 (Under Vision/Mission / EXPERTISE)</label>
+                            <textarea class="form-control ckeditor" id="about_page_box2" name="about_page_box2" rows="4">{{ old('about_page_box2', $mainSection->about_page_box2) }}</textarea>
+                            <small class="text-muted">Leave empty to auto-extract "OUR EXPERTISE" from the main description above, or enter custom content here.</small>
+                        </div>
+
+                        <!-- Featured Photo -->
+                        <div class="col-12">
+                            <div class="admin-sub-section">
+                                <div class="admin-sub-section-title"><i class="ti ti-photo"></i> Featured Image (Left Frame / Photo)</div>
+                                <div class="d-flex flex-wrap align-items-center gap-4">
+                                    <div class="flex-grow-1">
+                                        <input type="file" name="about_page_photo" class="form-control form-control-sm mb-2" accept="image/*" onchange="previewAboutPageImage(this)">
+                                        <small class="text-primary d-block fw-medium" style="font-size: 0.75rem;"><i class="ti ti-info-circle me-1"></i>Allowed: JPG, JPEG, PNG, WEBP. Recommended size: 1024x1024px.</small>
+                                    </div>
+                                    <div>
+                                        @if($mainSection->about_page_photo)
+                                            <img id="about_page_image_preview" src="{{ asset('storage/' . $mainSection->about_page_photo) }}" class="img-preview" style="height: 110px; width: 110px; object-fit: cover;">
+                                        @else
+                                            <img id="about_page_image_preview" src="" class="img-preview" style="display: none; height: 110px; width: 110px; object-fit: cover;">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Section 2: Home Page About Section (Stored in home_pages) -->
+                <fieldset class="form-fieldset shadow-sm mb-4" style="border: 1.5px solid #00bad1;">
+                    <legend style="color: #00bad1;"><i class="ti ti-home me-1"></i> Home Page - About Us Section</legend>
+                    <div class="alert alert-info py-2 px-3 mb-3 small d-flex align-items-center">
+                        <i class="ti ti-info-circle fs-5 me-2"></i>
+                        <span>These fields control the About section displayed on the <strong>Home page</strong> (<code>/</code>).</span>
+                    </div>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Title <span class="text-danger">*</span></label>
@@ -375,6 +439,16 @@
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('#image_preview').attr('src', e.target.result).show();
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function previewAboutPageImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#about_page_image_preview').attr('src', e.target.result).show();
                 }
                 reader.readAsDataURL(input.files[0]);
             }

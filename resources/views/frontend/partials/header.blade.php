@@ -77,7 +77,8 @@
 									}
 								</style>
 								<img class="pbmit-sticky-logo" src="{{ asset('frontend/images/full-logo.png') }}"
-									alt="Induyst" style="width: auto; height: auto; padding: 2px 0; vertical-align: middle;">
+									alt="Induyst"
+									style="width: auto; height: auto; padding: 2px 0; vertical-align: middle;">
 								<span class="pbmit-sticky-logo"
 									style="margin-top: 0 !important; margin-left: 12px; margin-right: 12px; width: 1px !important; height: 45px !important; background-color: #bbb; vertical-align: middle;"></span>
 								<img class="pbmit-sticky-logo pbmit-sticky-round-logo"
@@ -100,22 +101,26 @@
 									$firstCleanPhone = count($phones) > 0 ? preg_replace('/[^0-9+]/', '', $phones[0]) : '';
 								@endphp
 								<span class="pbmit-header-box-icon">
-									<a href="tel:{{ $firstCleanPhone ?: '123456789' }}" style="color: inherit; text-decoration: none;">
+									<a href="tel:{{ $firstCleanPhone ?: '123456789' }}"
+										style="color: inherit; text-decoration: none;">
 										<i class="pbmit-induyst-icon pbmit-induyst-icon-telephone"></i>
 									</a>
 								</span>
 								<span class="pbmit-box-content">
 									<span class="pbmit-header-box-title">Need to talk</span>
-									<span class="pbmit-header-box-content" style="display: flex !important; flex-direction: column !important; justify-content: center; line-height: 1.25;">
+									<span class="pbmit-header-box-content"
+										style="display: flex !important; flex-direction: column !important; justify-content: center; line-height: 1.25;">
 										@if(count($phones) > 1)
 											@foreach($phones as $phone)
 												@php $cleanPhone = preg_replace('/[^0-9+]/', '', $phone); @endphp
-												<a href="tel:{{ $cleanPhone }}" class="pbmit-header-phone-link" style="display: block !important; color: inherit; text-decoration: none; font-size: 14px; line-height: 1.35; white-space: nowrap;">
+												<a href="tel:{{ $cleanPhone }}" class="pbmit-header-phone-link"
+													style="display: block !important; color: inherit; text-decoration: none; font-size: 14px; line-height: 1.35; white-space: nowrap;">
 													{{ $phone }}
 												</a>
 											@endforeach
 										@else
-											<a href="tel:{{ $firstCleanPhone }}" class="pbmit-header-phone-link" style="display: block !important; color: inherit; text-decoration: none;">
+											<a href="tel:{{ $firstCleanPhone }}" class="pbmit-header-phone-link"
+												style="display: block !important; color: inherit; text-decoration: none;">
 												{{ $phones[0] ?? $phoneRaw }}
 											</a>
 										@endif
@@ -348,15 +353,17 @@
 
 										@if($hasBrochure)
 											<li class="d-lg-none">
-												<a href="{{ $brochureUrl }}" target="_blank" download class="text-danger fw-bold">
-													<i class="ti ti-download me-1"></i> {{ $brochureTitle }}
+												<a href="{{ $brochureUrl }}" target="_blank" download
+													class="text-danger fw-bold">
+													<i class="fa fa-file-pdf-o me-1"></i> {{ $brochureTitle }}
 												</a>
 											</li>
 										@endif
 										@if($hasVideo)
 											<li class="d-lg-none">
-												<a href="{{ $videoUrl }}" target="_blank" class="text-warning fw-bold {{ $hasVideoLink ? 'pbmin-lightbox-video' : '' }}">
-													<i class="ti ti-control-play me-1"></i> {{ $videoTitle }}
+												<a href="{{ $videoUrl }}" target="_blank"
+													class="text-warning fw-bold {{ $hasVideoLink ? 'pbmin-lightbox-video' : '' }}">
+													<i class="fa fa-play-circle me-1"></i> {{ $videoTitle }}
 												</a>
 											</li>
 										@endif
@@ -368,46 +375,121 @@
 					</div>
 					<div class="pbmit-right-box d-flex align-items-center">
 						<style>
-							.pbmit-header-custom-btn {
+							.pbmit-header-action-buttons {
+								display: flex;
+								align-items: center;
+								gap: 8px;
+							}
+
+							.pbmit-header-icon-btn {
+								position: relative;
 								display: inline-flex;
 								align-items: center;
-								gap: 6px;
-								padding: 8px 16px;
-								border-radius: 8px;
-								font-size: 13.5px;
-								font-weight: 600;
-								line-height: 1.2;
-								text-decoration: none;
+								justify-content: center;
+								width: 54px;
+								height: 54px;
+								border-radius: 10px;
+								border: none !important;
+								outline: none !important;
+								text-decoration: none !important;
 								transition: all 0.3s ease;
-								white-space: nowrap;
+								box-sizing: border-box;
+								box-shadow: none !important;
 							}
-							.pbmit-header-custom-btn.btn-brochure {
-								background-color: #b77051;
-								color: #ffffff !important;
-								border: 1.5px solid #b77051;
+
+							/* White inner box icon holder matching "Get In Touch" */
+							.pbmit-header-icon-btn .btn-icon-box {
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								width: 44px;
+								height: 44px;
+								background-color: #ffffff;
+								border-radius: 10px;
+								border: none !important;
+								transition: all 0.3s ease;
 							}
-							.pbmit-header-custom-btn.btn-brochure:hover {
-								background-color: #b77051;
-								border-color: #b77051;
-								color: #ffffff !important;
-								box-shadow: 0 4px 12px rgba(186, 0, 1, 0.3);
-								transform: translateY(-1px);
-							}
-							.pbmit-header-custom-btn.btn-video {
+
+							.pbmit-header-icon-btn.btn-brochure {
 								background-color: #febd17;
-								color: #111111 !important;
-								border: 1.5px solid #febd17;
 							}
-							.pbmit-header-custom-btn.btn-video:hover {
+
+							.pbmit-header-icon-btn.btn-brochure .btn-icon-box i {
+								color: #000000ff;
+								font-size: 20px;
+								transition: transform 0.3s ease;
+							}
+
+							.pbmit-header-icon-btn.btn-brochure:hover {
+								background-color: #febd17;
+								transform: translateY(-2px);
+								box-shadow: #febd17 !important;
+							}
+
+							.pbmit-header-icon-btn.btn-brochure:hover .btn-icon-box i {
+								transform: translateY(2px);
+							}
+
+							.pbmit-header-icon-btn.btn-video {
+								background-color: var(--pbmit-global-color, #febd17);
+							}
+
+							.pbmit-header-icon-btn.btn-video .btn-icon-box i {
+								color: var(--pbmit-blackish-color, #16222d);
+								font-size: 18px;
+								transition: transform 0.3s ease;
+								margin-left: 2px;
+							}
+
+							.pbmit-header-icon-btn.btn-video:hover {
 								background-color: #e5a70d;
-								border-color: #e5a70d;
-								color: #000000 !important;
-								box-shadow: 0 4px 12px rgba(254, 189, 23, 0.35);
-								transform: translateY(-1px);
+								transform: translateY(-2px);
+								box-shadow: 0 4px 12px rgba(254, 189, 23, 0.4) !important;
 							}
-							.pbmit-header-custom-btn i {
-								font-size: 14px;
+
+							.pbmit-header-icon-btn.btn-video:hover .btn-icon-box i {
+								transform: scale(1.15);
 							}
+
+							/* Custom CSS Tooltip - Always 100% Reliable */
+							.pbmit-header-icon-btn .custom-tooltip {
+								position: absolute;
+								top: calc(100% + 10px);
+								left: 50%;
+								transform: translateX(-50%) translateY(5px);
+								background-color: #16222d;
+								color: #ffffff;
+								padding: 5px 11px;
+								border-radius: 6px;
+								font-size: 12px;
+								font-weight: 600;
+								line-height: 1.3;
+								white-space: nowrap;
+								pointer-events: none;
+								opacity: 0;
+								visibility: hidden;
+								transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+								z-index: 999999;
+								box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+							}
+
+							.pbmit-header-icon-btn .custom-tooltip::before {
+								content: '';
+								position: absolute;
+								bottom: 100%;
+								left: 50%;
+								transform: translateX(-50%);
+								border-width: 5px;
+								border-style: solid;
+								border-color: transparent transparent #16222d transparent;
+							}
+
+							.pbmit-header-icon-btn:hover .custom-tooltip {
+								opacity: 1;
+								visibility: visible;
+								transform: translateX(-50%) translateY(0);
+							}
+
 							@media (max-width: 991px) {
 								.pbmit-header-action-buttons {
 									display: none !important;
@@ -416,18 +498,24 @@
 						</style>
 
 						@if($hasBrochure || $hasVideo)
-							<div class="pbmit-header-action-buttons d-flex align-items-center me-2">
+							<div class="pbmit-header-action-buttons me-3">
 								@if($hasBrochure)
-									<a href="{{ $brochureUrl }}" target="_blank" download class="pbmit-header-custom-btn btn-brochure me-2" title="Download {{ $brochureTitle }}">
-										<i class="ti ti-download"></i>
-										<span>{{ $brochureTitle }}</span>
+									<a href="{{ $brochureUrl }}" target="_blank" download
+										class="pbmit-header-icon-btn btn-brochure">
+										<span class="btn-icon-box">
+											<i class="fa fa-file-pdf-o"></i>
+										</span>
+										<span class="custom-tooltip">{{ $brochureTitle }}</span>
 									</a>
 								@endif
 
 								@if($hasVideo)
-									<a href="{{ $videoUrl }}" target="_blank" class="pbmit-header-custom-btn btn-video me-2 {{ $hasVideoLink ? 'pbmin-lightbox-video' : '' }}" title="{{ $videoTitle }}">
-										<i class="ti ti-control-play"></i>
-										<span>{{ $videoTitle }}</span>
+									<a href="{{ $videoUrl }}" target="_blank"
+										class="pbmit-header-icon-btn btn-video {{ $hasVideoLink ? 'pbmin-lightbox-video' : '' }}">
+										<span class="btn-icon-box">
+											<i class="fa fa-play"></i>
+										</span>
+										<span class="custom-tooltip">{{ $videoTitle }}</span>
 									</a>
 								@endif
 							</div>

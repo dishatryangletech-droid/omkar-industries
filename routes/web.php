@@ -658,11 +658,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::post('about-us', function (Request $request) {
             $mainSection = HomePage::firstOrCreate(['section_type' => 'about_us']);
-            $mainData = $request->except(['_token', '_method', 'mission_title', 'mission_description', 'mission_checkpoints', 'vision_title', 'vision_description', 'vision_checkpoints', 'goal_title', 'goal_description', 'goal_checkpoints', 'photo', 'sub_title']);
+            $mainData = $request->except([
+                '_token', '_method', 
+                'mission_title', 'mission_description', 'mission_checkpoints', 
+                'vision_title', 'vision_description', 'vision_checkpoints', 
+                'goal_title', 'goal_description', 'goal_checkpoints', 
+                'photo', 'about_page_photo', 'sub_title'
+            ]);
             $mainData['subtitle'] = $request->sub_title;
 
             if ($request->hasFile('photo')) {
                 $mainData['photo'] = $request->file('photo')->store('about_us', 'public');
+            }
+            if ($request->hasFile('about_page_photo')) {
+                $mainData['about_page_photo'] = $request->file('about_page_photo')->store('about_us', 'public');
             }
             $mainSection->update($mainData);
 
@@ -690,9 +699,90 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return redirect()->route('admin.website-pages.about-us.index')->with('success', 'About Us updated successfully!');
         });
         
-        Route::get('video-section', function () use ($defaults) { return view('backend.website-pages.video-section.index', $defaults); })->name('video-section.index');
-        Route::get('our-clients', function () use ($defaults) { return view('backend.website-pages.our-clients.index', $defaults); })->name('our-clients.index');
-        Route::get('product-section', function () use ($defaults) { return view('backend.website-pages.product-section.index', $defaults); })->name('product-section.index');
+        // Video Section
+        Route::get('video-section', function () use ($defaults) { 
+            $defaults['content'] = HomePage::firstOrCreate(['section_type' => 'video_section']);
+            return view('backend.website-pages.video-section.index', $defaults); 
+        })->name('video-section.index');
+
+        Route::post('video-section', function (Request $request) {
+            $content = HomePage::firstOrCreate(['section_type' => 'video_section']);
+            $data = [
+                'title' => $request->input('title'),
+                'btn_link' => $request->input('video_link'),
+            ];
+
+            if ($request->hasFile('video_file')) {
+                if ($content->video_file && Storage::disk('public')->exists($content->video_file)) {
+                    Storage::disk('public')->delete($content->video_file);
+                }
+                $data['video_file'] = $request->file('video_file')->store('video_section', 'public');
+            }
+
+            if ($request->hasFile('background_photo')) {
+                if ($content->background_photo && Storage::disk('public')->exists($content->background_photo)) {
+                    Storage::disk('public')->delete($content->background_photo);
+                }
+                $data['background_photo'] = $request->file('background_photo')->store('video_section', 'public');
+            }
+
+            $content->update($data);
+
+            return redirect()->back()->with('success', 'Video Section updated successfully!');
+        })->name('video-section.update');
+
+        // Our Clients Page Section
+        Route::get('our-clients', function () use ($defaults) { 
+            $defaults['content'] = HomePage::firstOrCreate(['section_type' => 'our_clients']);
+            return view('backend.website-pages.our-clients.index', $defaults); 
+        })->name('our-clients.index');
+
+        Route::post('our-clients', function (Request $request) {
+            $content = HomePage::firstOrCreate(['section_type' => 'our_clients']);
+            $data = [
+                'title' => $request->input('title'),
+                'btn_link' => $request->input('video_link'),
+            ];
+
+            if ($request->hasFile('video_file')) {
+                if ($content->video_file && Storage::disk('public')->exists($content->video_file)) {
+                    Storage::disk('public')->delete($content->video_file);
+                }
+                $data['video_file'] = $request->file('video_file')->store('our_clients', 'public');
+            }
+
+            if ($request->hasFile('background_photo')) {
+                if ($content->background_photo && Storage::disk('public')->exists($content->background_photo)) {
+                    Storage::disk('public')->delete($content->background_photo);
+                }
+                $data['background_photo'] = $request->file('background_photo')->store('our_clients', 'public');
+            }
+
+            $content->update($data);
+
+            return redirect()->back()->with('success', 'Our Clients section updated successfully!');
+        })->name('our-clients.update');
+
+        // Product Section
+        Route::get('product-section', function () use ($defaults) { 
+            $defaults['content'] = HomePage::firstOrCreate(['section_type' => 'product_section']);
+            $defaults['products'] = Product::where('status', 'Active')->orderBy('title', 'asc')->get();
+            return view('backend.website-pages.product-section.index', $defaults); 
+        })->name('product-section.index');
+
+        Route::post('product-section', function (Request $request) {
+            $content = HomePage::firstOrCreate(['section_type' => 'product_section']);
+            $data = [
+                'title' => $request->input('title'),
+                'subtitle' => $request->input('subtitle'),
+            ];
+            for ($i = 1; $i <= 9; $i++) {
+                $data['subtitle_text' . $i] = $request->input('product_id' . $i);
+            }
+            $content->update($data);
+
+            return redirect()->back()->with('success', 'Product Section updated successfully!');
+        })->name('product-section.update');
         Route::get('page-banners', [\App\Http\Controllers\PageBannerController::class, 'index'])->name('page-banners.index');
         Route::post('page-banners', [\App\Http\Controllers\PageBannerController::class, 'update'])->name('page-banners.update');
         Route::resource('testimonials', \App\Http\Controllers\Backend\TestimonialController::class)->except('show');

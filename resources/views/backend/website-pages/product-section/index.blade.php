@@ -81,7 +81,7 @@
         </div>
     @endif
 
-    <form action="#" method="POST">
+    <form action="{{ route('admin.website-pages.product-section.update') }}" method="POST">
         @csrf
 
         <div class="row">

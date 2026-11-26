@@ -43,54 +43,63 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 col-xl-5 about-two-left-col">
-								<div class="about-two-img" @if(isset($aboutUs) && $aboutUs->photo) style="background-image: url('{{ asset('storage/' . $aboutUs->photo) }}');" @endif></div>
+								@php
+									$aboutPagePhoto = !empty($aboutUs->about_page_photo) ? $aboutUs->about_page_photo : ($aboutUs->photo ?? null);
+									$aboutPageSubtitle = !empty($aboutUs->about_page_subtitle) ? $aboutUs->about_page_subtitle : ($aboutUs->subtitle ?? 'Why Choose us');
+									$aboutPageTitle = !empty($aboutUs->about_page_title) ? $aboutUs->about_page_title : ($aboutUs->title ?? 'We work for you since 1980 Industrial around the world.');
+									$rawDesc = !empty($aboutUs->about_page_description) ? $aboutUs->about_page_description : ($aboutUs->description ?? 'Induyst is a full-service manufacturing company with 15 years of experience serving industries such as automotive, Our mission is to deliver products that meet the highest standards of quality and performance.');
+
+									// Split description into top content and bottom 2 boxes
+									$topDesc = $rawDesc;
+									$bottomBox1 = !empty($aboutUs->about_page_box1) ? $aboutUs->about_page_box1 : null;
+									$bottomBox2 = !empty($aboutUs->about_page_box2) ? $aboutUs->about_page_box2 : null;
+
+									if (empty($bottomBox1) && empty($bottomBox2)) {
+										$achievePos = false;
+										if (preg_match('/<[^>]*>[^<]*OUR\s+ACHIEVEMENTS[^<]*<\/[^>]*>/i', $rawDesc, $m, PREG_OFFSET_CAPTURE)) {
+											$achievePos = $m[0][1];
+										} elseif (($p = stripos($rawDesc, 'OUR ACHIEVEMENTS')) !== false) {
+											$lastTag = strrpos(substr($rawDesc, 0, $p), '<');
+											$achievePos = $lastTag !== false ? $lastTag : $p;
+										}
+
+										if ($achievePos !== false) {
+											$topDesc = trim(substr($rawDesc, 0, $achievePos));
+											$bottomPart = trim(substr($rawDesc, $achievePos));
+
+											$expertisePos = false;
+											if (preg_match('/<[^>]*>[^<]*OUR\s+EXPERTISE[^<]*<\/[^>]*>/i', $bottomPart, $m2, PREG_OFFSET_CAPTURE)) {
+												$expertisePos = $m2[0][1];
+											} elseif (($p2 = stripos($bottomPart, 'OUR EXPERTISE')) !== false) {
+												$lastTag2 = strrpos(substr($bottomPart, 0, $p2), '<');
+												$expertisePos = $lastTag2 !== false ? $lastTag2 : $p2;
+											}
+
+											if ($expertisePos !== false) {
+												$bottomBox1 = trim(substr($bottomPart, 0, $expertisePos));
+												$bottomBox2 = trim(substr($bottomPart, $expertisePos));
+											} else {
+												$bottomBox1 = $bottomPart;
+											}
+										}
+									}
+								@endphp
+								<div class="about-two-img" @if($aboutPagePhoto) style="background-image: url('{{ asset('storage/' . $aboutPagePhoto) }}');" @endif></div>
 							</div>
 							<div class="col-md-12 col-xl-7 about-two-right-col">
 								<div class="about-two-content">
 									<div class="pbmit-heading-subheading">
-										<h4 class="pbmit-subtitle">{{ $aboutUs->subtitle ?? 'Why Choose us' }}</h4>
+										<h4 class="pbmit-subtitle">{{ $aboutPageSubtitle }}</h4>
 										<h2 class="pbmit-title">
-											{{ $aboutUs->title ?? 'We work for you since 1980 Industrial around the world.' }}
+											{{ $aboutPageTitle }}
 										</h2>
 									</div>
 									<div class="inner-box">
 										<div class="row">
 											<div class="col-md-7">
-												<p>{!! Str::limit(strip_tags($aboutUs->description), 350) ?? 'Induyst is a full-service manufacturing company with 15 years of experience serving industries such as automotive, Our mission is to deliver products that meet the highest standards of quality and performance.' !!}
-												</p>
-												<div class="list-group-wrap">
-													<ul class="list-group">
-														@php
-															$checkmarks = [
-																$aboutUs->subtitle_text1 ?? 'Reliable Guarantees You Can Trust',
-																$aboutUs->subtitle_text2 ?? 'Commitment to Eco-Friendly Materials',
-																$aboutUs->subtitle_text3 ?? '',
-																$aboutUs->subtitle_text4 ?? ''
-															];
-														@endphp
-														@foreach($checkmarks as $checkmark)
-															@if(trim($checkmark) !== '')
-																<li class="list-group-item">
-																	<span class="pbmit-icon-list-icon">
-																		<i
-																			class="pbmit-induyst-icon pbmit-induyst-icon-check"></i>
-																	</span>
-																	<span class="pbmit-icon-list-text">{{ $checkmark }}</span>
-																</li>
-															@endif
-														@endforeach
-													</ul>
+												<div class="about-two-description">
+													{!! $topDesc !!}
 												</div>
-												<a href="{{ $aboutUs->btn_link ?? '/about-us' }}"
-													class="pbmit-btn blackish">
-													<span class="pbmit-button-content-wrapper">
-														<span class="pbmit-button-icon">
-															<i class="pbmit-induyst-icon pbmit-induyst-icon-next"></i>
-														</span>
-														<span
-															class="pbmit-button-text">{{ $aboutUs->btn_title ?? 'Discover More' }}</span>
-													</span>
-												</a>
 											</div>
 											<div class="col-md-5">
 												<div class="swiper-slider pbmit-column-one mt-md-0 mt-5"
@@ -238,6 +247,29 @@
 								</div>
 							</div>
 						</div>
+
+						@if(!empty($bottomBox1) || !empty($bottomBox2))
+							<div class="row mt-4 pt-2">
+								@if(!empty($bottomBox1))
+									<div class="{{ !empty($bottomBox2) ? 'col-md-6 col-12' : 'col-12' }} mb-4">
+										<div class="p-4 rounded-3 h-100" style="background-color: #f6f8fb;">
+											<div class="about-two-description">
+												{!! $bottomBox1 !!}
+											</div>
+										</div>
+									</div>
+								@endif
+								@if(!empty($bottomBox2))
+									<div class="{{ !empty($bottomBox1) ? 'col-md-6 col-12' : 'col-12' }} mb-4">
+										<div class="p-4 rounded-3 h-100" style="background-color: #f6f8fb;">
+											<div class="about-two-description">
+												{!! $bottomBox2 !!}
+											</div>
+										</div>
+									</div>
+								@endif
+							</div>
+						@endif
 					</div>
 				</section>
 				<!-- About End -->
